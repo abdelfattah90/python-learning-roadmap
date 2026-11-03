@@ -1,0 +1,571 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#fcfcfc" />
+    <title>[اسم الدرس] | Python Learning Roadmap</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/style.css" />
+  </head>
+  <!--
+  قالب درس Python (templet.html)
+  - المحتوى الحالي تجريبي (درس Python Variables): استبدله بمحتوى الدرس مع الحفاظ على الهيكل.
+  - لا تغيّر أسماء الـ classes ولا تضف CSS جديدًا؛ كل الأنماط في assets/style.css.
+  - كرّر <article class="concept"> لكل عنصر في نطاق الدرس.
+  - الكود والـ output في نفس <figure class="code-block">. اهرب الرموز < > & داخل الكود.
+  - ألوان الكود: tk-kw (keyword) | tk-fn (function) | tk-str | tk-num | tk-com (comment).
+  - للأخطاء: <div class="output is-error">. الصناديق: callout-why | callout-pitfall | callout-internals | callout-tip | callout-problem.
+  - مستوى السؤال: level-basic | level-mid | level-trap. افتح أول سؤال فقط بـ open.
+-->
+  <body>
+    <svg
+      width="0"
+      height="0"
+      style="position: absolute"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <symbol id="i-copy" viewBox="0 0 24 24">
+        <rect x="9" y="9" width="12" height="12" rx="2.5" />
+        <path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15" />
+      </symbol>
+    </svg>
+    <div
+      class="sr-only"
+      id="copy-status"
+      role="status"
+      aria-live="polite"
+    ></div>
+
+    <main class="page">
+      <header class="hero lesson-hero">
+        <span class="eyebrow"
+          ><span class="eyebrow-dot"></span> المرحلة 01:
+          <span dir="ltr">Variables &amp; Data Types</span></span
+        >
+        <h1>
+          <span class="h1-ar">المتغيرات</span>
+          <span class="h1-en" dir="ltr">Python Variables</span>
+        </h1>
+        <p class="hero-description">
+          كيف يربط Python الأسماء بالكائنات، ولماذا يغيّر هذا فهمك للإسناد
+          (assignment) والنسخ والمقارنة.
+        </p>
+      </header>
+
+      <div class="roadmap">
+        <!-- ================= الجزء الأول ================= -->
+        <section class="stage-card" id="part-1" aria-labelledby="part-1-title">
+          <header class="stage-header">
+            <div class="stage-number">الجزء 01</div>
+            <div class="stage-heading">
+              <h2 id="part-1-title">
+                <span class="stage-title-en" dir="ltr"
+                  >Explanation &amp; Summary</span
+                ><span class="sep" aria-hidden="true"> - </span
+                ><span class="stage-title-ar">الشرح والملخص</span>
+              </h2>
+              <span class="stage-topic-count">الرسالة الأولى</span>
+            </div>
+          </header>
+
+          <div class="lesson-body">
+            <!-- 1) الشرح -->
+            <section class="lesson-section" id="explain">
+              <h3 class="section-title"><b>01</b>الشرح</h3>
+
+              <article class="concept">
+                <h4 class="topic-title">
+                  <span class="topic-title-en" dir="ltr">Names and Objects</span
+                  ><span class="sep" aria-hidden="true"> - </span
+                  ><span class="topic-title-ar">الأسماء والكائنات</span>
+                </h4>
+                <div class="callout callout-why">
+                  <span class="callout-title">لماذا؟</span>
+                  <p>
+                    في Python المتغير ليس صندوقًا يحمل قيمة، بل
+                    <code>name</code> يشير إلى <code>object</code>. فهم هذا
+                    يفسّر سلوك <code>mutable</code> و<code>immutable</code>
+                    لاحقًا.
+                  </p>
+                </div>
+
+                <figure class="code-block">
+                  <figcaption class="code-head">
+                    <span class="code-meta"
+                      ><span class="code-lang">Python</span
+                      ><span class="code-file">names.py</span></span
+                    >
+                    <button
+                      type="button"
+                      class="btn btn-ghost btn-sm"
+                      data-copy-code
+                      aria-label="نسخ الكود"
+                    >
+                      <svg
+                        class="btn-icon"
+                        width="14"
+                        height="14"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                      >
+                        <use href="#i-copy" /></svg
+                      ><span class="btn-label">نسخ</span>
+                    </button>
+                  </figcaption>
+                  <pre
+                    class="code"
+                  ><code><span class="tk-com"># two names, one object</span>
+a = [<span class="tk-num">1</span>, <span class="tk-num">2</span>, <span class="tk-num">3</span>]
+b = a
+b.append(<span class="tk-num">4</span>)
+<span class="tk-fn">print</span>(a)
+<span class="tk-fn">print</span>(a <span class="tk-kw">is</span> b)</code></pre>
+                  <div class="output" role="group" aria-label="Output">
+                    <div class="output-label">Output</div>
+                    <pre dir="ltr"><code>[1, 2, 3, 4]
+True</code></pre>
+                  </div>
+                </figure>
+                <p>
+                  الإسناد <code>b = a</code> لا ينسخ القائمة؛ هو يربط اسمًا
+                  ثانيًا بالكائن نفسه، ولذلك ظهر التعديل عند قراءة
+                  <code>a</code>.
+                </p>
+
+                <figure class="diagram">
+                  <pre dir="ltr">
+   names               objects
+┌───────┐          ┌──────────────────┐
+│   a   │──┐       │ list             │
+└───────┘  ├──────▶│ [1, 2, 3, 4]     │
+┌───────┐  │       └──────────────────┘
+│   b   │──┘
+└───────┘</pre
+                  >
+                  <figcaption>
+                    اسمان يشيران إلى كائن واحد في الـ heap.
+                  </figcaption>
+                </figure>
+
+                <div class="callout callout-internals">
+                  <span class="callout-title">داخليًا (CPython)</span>
+                  <p>
+                    كل كائن يحمل <code>reference count</code>؛ هنا يساوي 2. عند
+                    وصوله إلى صفر يُحرَّر الكائن مباشرة.
+                  </p>
+                </div>
+              </article>
+
+              <article class="concept">
+                <h4 class="topic-title">
+                  <span class="topic-title-en" dir="ltr">Dynamic Typing</span
+                  ><span class="sep" aria-hidden="true"> - </span
+                  ><span class="topic-title-ar">الكتابة الديناميكية</span>
+                </h4>
+                <p>
+                  النوع يخص الكائن لا الاسم، لذلك يمكن إعادة ربط الاسم نفسه
+                  بكائن من نوع آخر.
+                </p>
+
+                <figure class="code-block">
+                  <figcaption class="code-head">
+                    <span class="code-meta"
+                      ><span class="code-lang">Python</span
+                      ><span class="code-file">dynamic.py</span></span
+                    >
+                    <button
+                      type="button"
+                      class="btn btn-ghost btn-sm"
+                      data-copy-code
+                      aria-label="نسخ الكود"
+                    >
+                      <svg
+                        class="btn-icon"
+                        width="14"
+                        height="14"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                      >
+                        <use href="#i-copy" /></svg
+                      ><span class="btn-label">نسخ</span>
+                    </button>
+                  </figcaption>
+                  <pre class="code"><code>x = <span class="tk-num">10</span>
+<span class="tk-fn">print</span>(<span class="tk-fn">type</span>(x))
+x = <span class="tk-str">"ten"</span>
+<span class="tk-fn">print</span>(<span class="tk-fn">type</span>(x))</code></pre>
+                  <div class="output" role="group" aria-label="Output">
+                    <div class="output-label">Output</div>
+                    <pre dir="ltr"><code>&lt;class 'int'&gt;
+&lt;class 'str'&gt;</code></pre>
+                  </div>
+                </figure>
+
+                <div class="callout callout-pitfall">
+                  <span class="callout-title">خطأ شائع</span>
+                  <p>
+                    قراءة اسم لم يُربط بعد تُنتج <code>NameError</code> وقت
+                    التشغيل، لا وقت الكتابة.
+                  </p>
+                </div>
+
+                <figure class="code-block">
+                  <figcaption class="code-head">
+                    <span class="code-meta"
+                      ><span class="code-lang">Python</span
+                      ><span class="code-file">main.py</span></span
+                    >
+                    <button
+                      type="button"
+                      class="btn btn-ghost btn-sm"
+                      data-copy-code
+                      aria-label="نسخ الكود"
+                    >
+                      <svg
+                        class="btn-icon"
+                        width="14"
+                        height="14"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                      >
+                        <use href="#i-copy" /></svg
+                      ><span class="btn-label">نسخ</span>
+                    </button>
+                  </figcaption>
+                  <pre
+                    class="code"
+                  ><code><span class="tk-fn">print</span>(count)</code></pre>
+                  <div
+                    class="output is-error"
+                    role="group"
+                    aria-label="Error output"
+                  >
+                    <div class="output-label">Error</div>
+                    <pre dir="ltr"><code>Traceback (most recent call last):
+  File "main.py", line 1, in &lt;module&gt;
+    print(count)
+NameError: name 'count' is not defined</code></pre>
+                  </div>
+                </figure>
+
+                <div class="callout callout-tip">
+                  <span class="callout-title">متى أستخدمه</span>
+                  <p>
+                    أضف <code>type hints</code> عند الفائدة؛ لا تغيّر السلوك وقت
+                    التشغيل، لكنها تفيد المحرر وأدوات الفحص مثل
+                    <code>mypy</code>.
+                  </p>
+                </div>
+              </article>
+            </section>
+
+            <!-- 2) الملخص: من 7 إلى 10 نقاط -->
+            <section class="lesson-section" id="summary">
+              <h3 class="section-title"><b>02</b>الملخص</h3>
+              <ul class="summary-list">
+                <li>
+                  المتغير في Python اسم (<code>name</code>) يشير إلى كائن، وليس
+                  مساحة ذاكرة بنوع ثابت.
+                </li>
+                <li>
+                  الإسناد <code>b = a</code> ينسخ الـ reference ولا ينسخ الكائن.
+                </li>
+                <li>
+                  استخدم <code>is</code> لمقارنة الهوية و<code>==</code> لمقارنة
+                  القيمة.
+                </li>
+                <li>النوع يخص الكائن، لذلك يمكن إعادة ربط الاسم بنوع مختلف.</li>
+                <li>
+                  قراءة اسم غير معرَّف تنتج <code>NameError</code> وقت التشغيل.
+                </li>
+              </ul>
+            </section>
+          </div>
+        </section>
+
+        <!-- ================= الجزء الثاني ================= -->
+        <section class="stage-card" id="part-2" aria-labelledby="part-2-title">
+          <header class="stage-header">
+            <div class="stage-number">الجزء 02</div>
+            <div class="stage-heading">
+              <h2 id="part-2-title">
+                <span class="stage-title-en" dir="ltr"
+                  >Interview &amp; Practice</span
+                ><span class="sep" aria-hidden="true"> - </span
+                ><span class="stage-title-ar">الأسئلة والمسألة العملية</span>
+              </h2>
+              <span class="stage-topic-count">بعد كتابة «الجزء الثاني»</span>
+            </div>
+          </header>
+
+          <div class="lesson-body">
+            <!-- 3) أسئلة المقابلات: من 6 إلى 8 (أساسي ثم متوسط ثم فخ) -->
+            <section class="lesson-section" id="interview">
+              <h3 class="section-title"><b>03</b>أسئلة المقابلات</h3>
+              <div class="qa-list">
+                <details class="qa" open>
+                  <summary>
+                    <span class="level level-basic">أساسي</span
+                    ><span class="qa-q"
+                      >ما الفرق بين المتغير في Python وفي C؟</span
+                    >
+                  </summary>
+                  <div class="qa-body">
+                    <p>
+                      في C المتغير موقع ذاكرة بنوع ثابت يخزّن القيمة. في Python
+                      المتغير اسم يشير إلى كائن، والإسناد يعيد ربط الاسم ولا
+                      ينسخ البيانات. لذلك يمكن لاسمين الإشارة إلى الكائن نفسه.
+                    </p>
+                    <p class="qa-follow">
+                      <strong>سؤال متابعة:</strong> ماذا يحدث للكائن حين لا يبقى
+                      أي اسم يشير إليه؟
+                    </p>
+                  </div>
+                </details>
+
+                <details class="qa">
+                  <summary>
+                    <span class="level level-mid">متوسط</span
+                    ><span class="qa-q"
+                      >ما الفرق بين <code>is</code> و<code>==</code>؟</span
+                    >
+                  </summary>
+                  <div class="qa-body">
+                    <p>
+                      <code>==</code> تقارن القيم عبر <code>__eq__</code>، أما
+                      <code>is</code> فتقارن الهوية، أي هل الاسمان يشيران إلى
+                      الكائن نفسه. استخدم <code>is</code> مع
+                      <code>None</code> فقط تقريبًا.
+                    </p>
+                  </div>
+                </details>
+
+                <details class="qa">
+                  <summary>
+                    <span class="level level-trap">سؤال فخ</span
+                    ><span class="qa-q"
+                      >هل Python pass-by-value أم pass-by-reference؟</span
+                    >
+                  </summary>
+                  <div class="qa-body">
+                    <p>
+                      لا هذا ولا ذاك بالمعنى الحرفي؛ يُمرَّر الـ reference إلى
+                      الكائن بالقيمة (pass by object reference). تعديل كائن
+                      <code>mutable</code> داخل الدالة يظهر للمستدعي، أما إعادة
+                      إسناد المعامل فلا تؤثر عليه.
+                    </p>
+                    <p class="qa-follow">
+                      <strong>سؤال متابعة:</strong> لماذا لا يتغير
+                      <code>int</code> الممرَّر إلى دالة تزيده بواحد؟
+                    </p>
+                  </div>
+                </details>
+              </div>
+            </section>
+
+            <!-- 4) المسألة العملية: فهم، خطة، كود، قرارات، اختبار، تحسين -->
+            <section class="lesson-section" id="problem">
+              <h3 class="section-title"><b>04</b>المسألة العملية</h3>
+              <div class="callout callout-problem">
+                <span class="callout-title">المسألة</span>
+                <p>
+                  نظام يبني إعدادات (config) لكل مستخدم من إعدادات افتراضية
+                  مشتركة. تعديل إعدادات مستخدم واحد يغيّر الإعدادات الافتراضية
+                  لكل المستخدمين. أصلح المشكلة.
+                </p>
+              </div>
+
+              <ol class="solution">
+                <li class="sol-step">
+                  <h4>فهم المشكلة</h4>
+                  <p>
+                    القاموس يحتوي قائمة <code>tags</code> متداخلة؛ النسخ السطحي
+                    يشارك هذه القائمة بين كل النسخ.
+                  </p>
+                </li>
+                <li class="sol-step">
+                  <h4>خطة الحل</h4>
+                  <p>
+                    نبني نسخة مستقلة بالكامل من الإعدادات الافتراضية عند كل
+                    استدعاء، ثم نطبّق التعديلات عليها.
+                  </p>
+                </li>
+                <li class="sol-step">
+                  <h4>الكود الكامل</h4>
+                  <figure class="code-block">
+                    <figcaption class="code-head">
+                      <span class="code-meta"
+                        ><span class="code-lang">Python</span
+                        ><span class="code-file">config.py</span></span
+                      >
+                      <button
+                        type="button"
+                        class="btn btn-ghost btn-sm"
+                        data-copy-code
+                        aria-label="نسخ الكود"
+                      >
+                        <svg
+                          class="btn-icon"
+                          width="14"
+                          height="14"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          aria-hidden="true"
+                        >
+                          <use href="#i-copy" /></svg
+                        ><span class="btn-label">نسخ</span>
+                      </button>
+                    </figcaption>
+                    <pre
+                      class="code"
+                    ><code><span class="tk-kw">from</span> copy <span class="tk-kw">import</span> deepcopy
+
+DEFAULTS = {<span class="tk-str">"theme"</span>: <span class="tk-str">"light"</span>, <span class="tk-str">"tags"</span>: [<span class="tk-str">"new"</span>]}
+
+
+<span class="tk-kw">def</span> <span class="tk-fn">build_config</span>(overrides: <span class="tk-fn">dict</span>) -&gt; <span class="tk-fn">dict</span>:
+    config = deepcopy(DEFAULTS)
+    config.update(overrides)
+    <span class="tk-kw">return</span> config
+
+
+user = build_config({<span class="tk-str">"theme"</span>: <span class="tk-str">"dark"</span>})
+user[<span class="tk-str">"tags"</span>].append(<span class="tk-str">"vip"</span>)
+<span class="tk-fn">print</span>(DEFAULTS[<span class="tk-str">"tags"</span>])
+<span class="tk-fn">print</span>(user)</code></pre>
+                    <div class="output" role="group" aria-label="Output">
+                      <div class="output-label">Output</div>
+                      <pre dir="ltr"><code>['new']
+{'theme': 'dark', 'tags': ['new', 'vip']}</code></pre>
+                    </div>
+                  </figure>
+                </li>
+                <li class="sol-step">
+                  <h4>شرح القرارات</h4>
+                  <p>
+                    اخترنا <code>deepcopy</code> لأن
+                    <code>copy.copy</code> يشارك القائمة الداخلية. ولم نعدّل
+                    <code>DEFAULTS</code> داخل الدالة، فبقي الاستدعاء بلا آثار
+                    جانبية.
+                  </p>
+                </li>
+                <li class="sol-step">
+                  <h4>اختبار سريع</h4>
+                  <p>
+                    الناتج أعلاه يثبت أن <code>DEFAULTS["tags"]</code> بقيت
+                    <code>['new']</code> بعد تعديل نسخة المستخدم.
+                  </p>
+                </li>
+                <li class="sol-step">
+                  <h4>تحسين أو بديل</h4>
+                  <p>
+                    إن كانت الإعدادات ثابتة فعلًا، فاستخدم
+                    <code>dataclass(frozen=True)</code> مع
+                    <code>tuple</code> بدل <code>list</code>، فلا تحتاج إلى
+                    النسخ العميق.
+                  </p>
+                </li>
+              </ol>
+            </section>
+          </div>
+        </section>
+      </div>
+
+      <footer class="footer">
+        <span class="footer-note">Python Learning Roadmap</span>
+        <span class="footer-note">المرحلة 01 - الدرس 01</span>
+      </footer>
+    </main>
+
+    <script>
+      ;(function () {
+        'use strict'
+        var live = document.getElementById('copy-status')
+
+        function fallbackCopy(text) {
+          var ta = document.createElement('textarea')
+          ta.value = text
+          ta.setAttribute('readonly', '')
+          ta.style.cssText = 'position:fixed;top:-1000px;opacity:0;'
+          document.body.appendChild(ta)
+          ta.select()
+          var ok = false
+          try {
+            ok = document.execCommand('copy')
+          } catch (err) {
+            ok = false
+          }
+          document.body.removeChild(ta)
+          return ok
+        }
+
+        function copyText(text) {
+          if (navigator.clipboard && window.isSecureContext) {
+            return navigator.clipboard.writeText(text).then(
+              function () {
+                return true
+              },
+              function () {
+                return fallbackCopy(text)
+              },
+            )
+          }
+          return Promise.resolve(fallbackCopy(text))
+        }
+
+        document.addEventListener('click', function (e) {
+          var btn = e.target.closest('[data-copy-code]')
+          if (!btn) {
+            return
+          }
+          var label = btn.querySelector('.btn-label')
+          var code = btn.closest('.code-block').querySelector('pre.code')
+          if (!btn.dataset.label) {
+            btn.dataset.label = label.textContent
+          }
+          copyText(code.textContent).then(function (ok) {
+            label.textContent = ok ? 'تم النسخ' : 'تعذّر النسخ'
+            btn.classList.toggle('is-copied', ok)
+            btn.classList.toggle('is-failed', !ok)
+            live.textContent = ok
+              ? 'تم نسخ الكود'
+              : 'تعذّر النسخ، حدّد الكود يدويًا ثم انسخه'
+            clearTimeout(btn._timer)
+            btn._timer = setTimeout(function () {
+              label.textContent = btn.dataset.label
+              btn.classList.remove('is-copied', 'is-failed')
+            }, 1800)
+          })
+        })
+
+        window.addEventListener('beforeprint', function () {
+          document.querySelectorAll('details.qa').forEach(function (d) {
+            d.open = true
+          })
+        })
+      })()
+    </script>
+  </body>
+</html>

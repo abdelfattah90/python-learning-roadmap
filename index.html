@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="خطة تعلّم Python مُعاد تقسيمها إلى دروس بحجم محادثة واحدة، مع Prompt جاهز للشرح والملخص وأسئلة المقابلات ومسألة عملية.">
+  <meta name="theme-color" content="#fcfcfc">
+  <title>خطة تعلّم Python المحسّنة | W3Schools</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500;600;700;800&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <div class="sr-only" id="copy-status" role="status" aria-live="polite"></div>
+  <main class="page">
+    <header class="hero">
+      <span class="eyebrow"><span class="eyebrow-dot"></span> مسار تعلّم منظم</span>
+      <h1>خطة تعلّم Python</h1>
+      <p class="hero-description">
+        نسخة مُعاد تقسيمها من خريطة الطريق المبنية على W3Schools، بعد تجاوز مرحلة المقدمة وإعداد البيئة.
+        كل درس بحجم محادثة واحدة، ومعه Prompt جاهز يشرح الموضوع ثم يلخّصه ويختبرك بأسئلة مقابلات ومسألة عملية.
+      </p>
+      <div class="hero-stats">
+        <span class="stat"><strong>13</strong> مرحلة تعليمية</span>
+        <span class="stat"><strong>63</strong> درسًا</span>
+        <span class="stat">المصدر: W3Schools</span>
+      </div>
+    </header>
+
+    <ol class="how" aria-label="طريقة الاستخدام">
+      <li>
+        <span class="how-num" aria-hidden="true">1</span>
+        <h3>محادثة جديدة لكل درس</h3>
+        <p>افتح محادثة جديدة في Claude لكل درس؛ فحدود الاستخدام في الخطة المجانية تُستهلك أسرع كلما طالت المحادثة.</p>
+      </li>
+      <li>
+        <span class="how-num" aria-hidden="true">2</span>
+        <h3>انسخ Prompt الدرس</h3>
+        <p>اضغط «نسخ Prompt» بجانب الدرس، ثم الصقه وأرسله.</p>
+      </li>
+      <li>
+        <span class="how-num" aria-hidden="true">3</span>
+        <h3>تابع بكلمة واحدة</h3>
+        <p>يصلك الشرح والملخص أولًا، ثم اكتب <kbd>الجزء الثاني</kbd> للأسئلة والمسألة. و<kbd>كمل</kbd> إن انقطع الرد.</p>
+      </li>
+    </ol>
+
+    <div class="roadmap-heading">
+      <h2>محتويات المسار</h2>
+      <p>المراحل والدروس مرتبة وفق تسلسل الدراسة المقترح.</p>
+    </div>
+
+    <ul class="stage-nav" aria-label="الانتقال السريع بين المراحل">
+      <li><a href="#stage-1"><b>01</b>المتغيرات وأنواع البيانات</a></li>
+      <li><a href="#stage-2"><b>02</b>النصوص والمعاملات والإدخال</a></li>
+      <li><a href="#stage-3"><b>03</b>التحكم في تدفق البرنامج</a></li>
+      <li><a href="#stage-4"><b>04</b>هياكل البيانات المدمجة</a></li>
+      <li><a href="#stage-5"><b>05</b>الدوال</a></li>
+      <li><a href="#stage-6"><b>06</b>البرمجة كائنية التوجه</a></li>
+      <li><a href="#stage-7"><b>07</b>المكررات والمولّدات والوحدات البرمجية</a></li>
+      <li><a href="#stage-8"><b>08</b>الاستثناءات والتعامل مع الملفات</a></li>
+      <li><a href="#stage-9"><b>09</b>الحزم والمكتبة القياسية</a></li>
+      <li><a href="#stage-10"><b>10</b>مكتبات معالجة البيانات</a></li>
+      <li><a href="#stage-11"><b>11</b>هياكل البيانات والخوارزميات</a></li>
+      <li><a href="#stage-12"><b>12</b>قواعد البيانات</a></li>
+      <li><a href="#stage-13"><b>13</b>تطوير الويب باستخدام Django</a></li>
+    </ul>
+
+    <div class="roadmap">
+      
+      <section class="stage-card" id="stage-1" aria-labelledby="stage-1-title">
+        <header class="stage-header">
+          <div class="stage-number">المرحلة 01</div>
+          <div class="stage-heading">
+            <h2 id="stage-1-title">
+              <span class="stage-title-en" dir="ltr">Variables &amp; Data Types</span><span class="sep" aria-hidden="true"> - </span><span class="stage-title-ar">المتغيرات وأنواع البيانات</span>
+            </h2>
+            <span class="stage-topic-count">4 دروس</span>
+          </div>
+        </header>
+        <ol class="topics-list">
+          <li class="topic-row">
+            <span class="topic-number" aria-hidden="true">01</span>
+            <div class="topic-content">
+              <h3 class="topic-title">
+                <span class="topic-title-en" dir="ltr">Python Variables</span><span class="sep" aria-hidden="true"> - </span><span class="topic-title-ar">المتغيرات</span>
+              </h3>
+              <p class="topic-terms" dir="ltr">Create Variables, Variable Names, Assign Multiple Values, Output Variables, Global Variables.</p>
+            </div>
+            <button type="button" class="btn btn-ghost" data-copy="lesson" data-scope="المرحلة: Variables &amp; Data Types - المتغيرات وأنواع البيانات&#10;الدرس: Python Variables - المتغيرات&#10;عناصر الدرس بالترتيب:&#10;- Create Variables&#10;- Variable Names&#10;- Assign Multiple Values&#10;- Output Variables&#10;- Global Variables" aria-label="نسخ Prompt لدرس Python Variables"><svg class="btn-icon" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2.5"/><path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15"/></svg><span class="btn-label">نسخ Prompt</span></button>
+          </li>
+          <li class="topic-row">
+            <span class="topic-number" aria-hidden="true">02</span>
+            <div class="topic-content">
+              <h3 class="topic-title">
+                <span class="topic-title-en" dir="ltr">Python Data Types</span><span class="sep" aria-hidden="true"> - </span><span class="topic-title-ar">أنواع البيانات</span>
+              </h3>
+              <p class="topic-terms" dir="ltr">str, int, float, complex, list, tuple, range, dict, set, frozenset, bool, bytes, bytearray, memoryview, NoneType, type().</p>
+            </div>
+            <button type="button" class="btn btn-ghost" data-copy="lesson" data-scope="المرحلة: Variables &amp; Data Types - المتغيرات وأنواع البيانات&#10;الدرس: Python Data Types - أنواع البيانات&#10;عناصر الدرس بالترتيب:&#10;- str&#10;- int&#10;- float&#10;- complex&#10;- list&#10;- tuple&#10;- range&#10;- dict&#10;- set&#10;- frozenset&#10;- bool&#10;- bytes&#10;- bytearray&#10;- memoryview&#10;- NoneType&#10;- type()" aria-label="نسخ Prompt لدرس Python Data Types"><svg class="btn-icon" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2.5"/><path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15"/></svg><span class="btn-label">نسخ Prompt</span></button>
+          </li>
+          <li class="topic-row">
+            <span class="topic-number" aria-hidden="true">03</span>
+            <div class="topic-content">
+              <h3 class="topic-title">
+                <span class="topic-title-en" dir="ltr">Python Numbers &amp; Casting</span><span class="sep" aria-hidden="true"> - </span><span class="topic-title-ar">الأرقام وتحويل الأنواع</span>
+              </h3>
+              <p class="topic-terms" dir="ltr">Integers, Floating Point Numbers, Complex Numbers, Random Numbers, Type Conversion, int(), float(), str(), Type Casting.</p>
+            </div>
+            <button type="button" class="btn btn-ghost" data-copy="lesson" data-scope="المرحلة: Variables &amp; Data Types - المتغيرات وأنواع البيانات&#10;الدرس: Python Numbers &amp; Casting - الأرقام وتحويل الأنواع&#10;عناصر الدرس بالترتيب:&#10;- Integers&#10;- Floating Point Numbers&#10;- Complex Numbers&#10;- Random Numbers&#10;- Type Conversion&#10;- int()&#10;- float()&#10;- str()&#10;- Type Casting" aria-label="نسخ Prompt لدرس Python Numbers &amp; Casting"><svg class="btn-icon" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2.5"/><path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15"/></svg><span class="btn-label">نسخ Prompt</span></button>
+          </li>
+          <li class="topic-row">
+            <span class="topic-number" aria-hidden="true">04</span>
+            <div class="topic-content">
+              <h3 class="topic-title">
+                <span class="topic-title-en" dir="ltr">Python Booleans &amp; None</span><span class="sep" aria-hidden="true"> - </span><span class="topic-title-ar">القيم المنطقية وNone</span>
+              </h3>
+              <p class="topic-terms" dir="ltr">Boolean Values, True, False, Boolean Expressions, bool(), None, None vs. False, None vs. 0.</p>
+            </div>
+            <button type="button" class="btn btn-ghost" data-copy="lesson" data-scope="المرحلة: Variables &amp; Data Types - المتغيرات وأنواع البيانات&#10;الدرس: Python Booleans &amp; None - القيم المنطقية وNone&#10;عناصر الدرس بالترتيب:&#10;- Boolean Values&#10;- True&#10;- False&#10;- Boolean Expressions&#10;- bool()&#10;- None&#10;- None vs. False&#10;- None vs. 0" aria-label="نسخ Prompt لدرس Python Booleans &amp; None"><svg class="btn-icon" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2.5"/><path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15"/></svg><span class="btn-label">نسخ Prompt</span></button>
+          </li>
+        </ol>
+      </section>
+      <section class="stage-card" id="stage-2" aria-labelledby="stage-2-title">
+        <header class="stage-header">
+          <div class="stage-number">المرحلة 02</div>
+          <div class="stage-heading">
+            <h2 id="stage-2-title">
+              <span class="stage-title-en" dir="ltr">Strings, Operators &amp; Input</span><span class="sep" aria-hidden="true"> - </span><span class="stage-title-ar">النصوص والمعاملات والإدخال</span>
+            </h2>
+            <span class="stage-topic-count">5 دروس</span>
+          </div>
+        </header>
+        <ol class="topics-list">
+          <li class="topic-row">
+            <span class="topic-number" aria-hidden="true">05</span>
+            <div class="topic-content">
+              <h3 class="topic-title">
+                <span class="topic-title-en" dir="ltr">Python Strings I: Basics</span><span class="sep" aria-hidden="true"> - </span><span class="topic-title-ar">النصوص (1): الأساسيات</span>
+              </h3>
+              <p class="topic-terms" dir="ltr">Create Strings, String Indexing, String Slicing, Modify Strings, Concatenate Strings, Escape Characters.</p>
+            </div>
+            <button type="button" class="btn btn-ghost" data-copy="lesson" data-scope="المرحلة: Strings, Operators &amp; Input - النصوص والمعاملات والإدخال&#10;الدرس: Python Strings I: Basics - النصوص (1): الأساسيات&#10;عناصر الدرس بالترتيب:&#10;- Create Strings&#10;- String Indexing&#10;- String Slicing&#10;- Modify Strings&#10;- Concatenate Strings&#10;- Escape Characters" aria-label="نسخ Prompt لدرس Python Strings I: Basics"><svg class="btn-icon" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2.5"/><path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15"/></svg><span class="btn-label">نسخ Prompt</span></button>
+          </li>
+          <li class="topic-row">
+            <span class="topic-number" aria-hidden="true">06</span>
+            <div class="topic-content">
+              <h3 class="topic-title">
+                <span class="topic-title-en" dir="ltr">Python Strings II: Methods &amp; Formatting</span><span class="sep" aria-hidden="true"> - </span><span class="topic-title-ar">النصوص (2): الدوال والتنسيق</span>
+              </h3>
+              <p class="topic-terms" dir="ltr">String Methods, Format Strings, format(), F-Strings, Formatting Specifiers.</p>
+            </div>
+            <button type="button" class="btn btn-ghost" data-copy="lesson" data-scope="المرحلة: Strings, Operators &amp; Input - النصوص والمعاملات والإدخال&#10;الدرس: Python Strings II: Methods &amp; Formatting - النصوص (2): الدوال والتنسيق&#10;عناصر الدرس بالترتيب:&#10;- String Methods&#10;- Format Strings&#10;- format()&#10;- F-Strings&#10;- Formatting Specifiers" aria-label="نسخ Prompt لدرس Python Strings II: Methods &amp; Formatting"><svg class="btn-icon" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2.5"/><path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15"/></svg><span class="btn-label">نسخ Prompt</span></button>
+          </li>
+          <li class="topic-row">
+            <span class="topic-number" aria-hidden="true">07</span>
+            <div class="topic-content">
+              <h3 class="topic-title">
+                <span class="topic-title-en" dir="ltr">Python Operators I: Core Operators</span><span class="sep" aria-hidden="true"> - </span><span class="topic-title-ar">المعاملات (1): الحسابية والمقارنة والمنطقية</span>
+              </h3>
+              <p class="topic-terms" dir="ltr">Arithmetic Operators, Assignment Operators, Comparison Operators, Logical Operators, Ternary Operator.</p>
+            </div>
+            <button type="button" class="btn btn-ghost" data-copy="lesson" data-scope="المرحلة: Strings, Operators &amp; Input - النصوص والمعاملات والإدخال&#10;الدرس: Python Operators I: Core Operators - المعاملات (1): الحسابية والمقارنة والمنطقية&#10;عناصر الدرس بالترتيب:&#10;- Arithmetic Operators&#10;- Assignment Operators&#10;- Comparison Operators&#10;- Logical Operators&#10;- Ternary Operator" aria-label="نسخ Prompt لدرس Python Operators I: Core Operators"><svg class="btn-icon" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2.5"/><path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15"/></svg><span class="btn-label">نسخ Prompt</span></button>
+          </li>
+          <li class="topic-row">
+            <span class="topic-number" aria-hidden="true">08</span>
+            <div class="topic-content">
+              <h3 class="topic-title">
+                <span class="topic-title-en" dir="ltr">Python Operators II: Identity, Membership &amp; Bitwise</span><span class="sep" aria-hidden="true"> - </span><span class="topic-title-ar">المعاملات (2): الهوية والعضوية والـ Bitwise</span>
+              </h3>
+              <p class="topic-terms" dir="ltr">Identity Operators, Membership Operators, Bitwise Operators, Operator Precedence.</p>
+            </div>
+            <button type="button" class="btn btn-ghost" data-copy="lesson" data-scope="المرحلة: Strings, Operators &amp; Input - النصوص والمعاملات والإدخال&#10;الدرس: Python Operators II: Identity, Membership &amp; Bitwise - المعاملات (2): الهوية والعضوية والـ Bitwise&#10;عناصر الدرس بالترتيب:&#10;- Identity Operators&#10;- Membership Operators&#10;- Bitwise Operators&#10;- Operator Precedence" aria-label="نسخ Prompt لدرس Python Operators II: Identity, Membership &amp; Bitwise"><svg class="btn-icon" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2.5"/><path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15"/></svg><span class="btn-label">نسخ Prompt</span></button>
+          </li>
+          <li class="topic-row">
+            <span class="topic-number" aria-hidden="true">09</span>
+            <div class="topic-content">
+              <h3 class="topic-title">
+                <span class="topic-title-en" dir="ltr">Python User Input</span><span class="sep" aria-hidden="true"> - </span><span class="topic-title-ar">إدخال المستخدم</span>
+              </h3>
+              <p class="topic-terms" dir="ltr">input(), Read User Input, Convert Input Types.</p>
+            </div>
+            <button type="button" class="btn btn-ghost" data-copy="lesson" data-scope="المرحلة: Strings, Operators &amp; Input - النصوص والمعاملات والإدخال&#10;الدرس: Python User Input - إدخال المستخدم&#10;عناصر الدرس بالترتيب:&#10;- input()&#10;- Read User Input&#10;- Convert Input Types" aria-label="نسخ Prompt لدرس Python User Input"><svg class="btn-icon" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2.5"/><path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15"/></svg><span class="btn-label">نسخ Prompt</span></button>
+          </li>
+        </ol>
+      </section>
+      <section class="stage-card" id="stage-3" aria-labelledby="stage-3-title">
+        <header class="stage-header">
+          <div class="stage-number">المرحلة 03</div>
+          <div class="stage-heading">
+            <h2 id="stage-3-title">
+              <span class="stage-title-en" dir="ltr">Control Flow</span><span class="sep" aria-hidden="true"> - </span><span class="stage-title-ar">التحكم في تدفق البرنامج</span>
+            </h2>
+            <span class="stage-topic-count">4 دروس</span>
+          </div>
+        </header>
+        <ol class="topics-list">
+          <li class="topic-row">
+            <span class="topic-number" aria-hidden="true">10</span>
+            <div class="topic-content">
+              <h3 class="topic-title">
+                <span class="topic-title-en" dir="ltr">Python If...Else</span><span class="sep" aria-hidden="true"> - </span><span class="topic-title-ar">الشروط</span>
+              </h3>
+              <p class="topic-terms" dir="ltr">if, elif, else, Shorthand If, Logical Operators, Nested If, pass Statement.</p>
+            </div>
+            <button type="button" class="btn btn-ghost" data-copy="lesson" data-scope="المرحلة: Control Flow - التحكم في تدفق البرنامج&#10;الدرس: Python If...Else - الشروط&#10;عناصر الدرس بالترتيب:&#10;- if&#10;- elif&#10;- else&#10;- Shorthand If&#10;- Logical Operators&#10;- Nested If&#10;- pass Statement" aria-label="نسخ Prompt لدرس Python If...Else"><svg class="btn-icon" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2.5"/><path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15"/></svg><span class="btn-label">نسخ Prompt</span></button>
+          </li>
+          <li class="topic-row">
+            <span class="topic-number" aria-hidden="true">11</span>
+            <div class="topic-content">
+              <h3 class="topic-title">
+                <span class="topic-title-en" dir="ltr">Python Match</span><span class="sep" aria-hidden="true"> - </span><span class="topic-title-ar">مطابقة الأنماط</span>
+              </h3>
+              <p class="topic-terms" dir="ltr">Match Statement, Case Patterns, Match vs. If...Elif.</p>
+            </div>
+            <button type="button" class="btn btn-ghost" data-copy="lesson" data-scope="المرحلة: Control Flow - التحكم في تدفق البرنامج&#10;الدرس: Python Match - مطابقة الأنماط&#10;عناصر الدرس بالترتيب:&#10;- Match Statement&#10;- Case Patterns&#10;- Match vs. If...Elif" aria-label="نسخ Prompt لدرس Python Match"><svg class="btn-icon" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2.5"/><path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15"/></svg><span class="btn-label">نسخ Prompt</span></button>
+          </li>
+          <li class="topic-row">
+            <span class="topic-number" aria-hidden="true">12</span>
+            <div class="topic-content">
+              <h3 class="topic-title">
+                <span class="topic-title-en" dir="ltr">Python While Loops</span><span class="sep" aria-hidden="true"> - </span><span class="topic-title-ar">حلقات While</span>
+              </h3>
+              <p class="topic-terms" dir="ltr">While Loops, Loop Conditions, Break and Continue Control.</p>
+            </div>
+            <button type="button" class="btn btn-ghost" data-copy="lesson" data-scope="المرحلة: Control Flow - التحكم في تدفق البرنامج&#10;الدرس: Python While Loops - حلقات While&#10;عناصر الدرس بالترتيب:&#10;- While Loops&#10;- Loop Conditions&#10;- Break and Continue Control" aria-label="نسخ Prompt لدرس Python While Loops"><svg class="btn-icon" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2.5"/><path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15"/></svg><span class="btn-label">نسخ Prompt</span></button>
+          </li>
+          <li class="topic-row">
+            <span class="topic-number" aria-hidden="true">13</span>
+            <div class="topic-content">
+              <h3 class="topic-title">
+                <span class="topic-title-en" dir="ltr">Python For Loops &amp; range()</span><span class="sep" aria-hidden="true"> - </span><span class="topic-title-ar">حلقات For والنطاقات</span>
+              </h3>
+              <p class="topic-terms" dir="ltr">For Loops, Loop Through Sequences, Nested Loops, Loop Control, range(), Start, Stop, Step, Range with For Loops.</p>
+            </div>
+            <button type="button" class="btn btn-ghost" data-copy="lesson" data-scope="المرحلة: Control Flow - التحكم في تدفق البرنامج&#10;الدرس: Python For Loops &amp; range() - حلقات For والنطاقات&#10;عناصر الدرس بالترتيب:&#10;- For Loops&#10;- Loop Through Sequences&#10;- Nested Loops&#10;- Loop Control&#10;- range()&#10;- Start, Stop, Step&#10;- Range with For Loops" aria-label="نسخ Prompt لدرس Python For Loops &amp; range()"><svg class="btn-icon" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2.5"/><path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15"/></svg><span class="btn-label">نسخ Prompt</span></button>
+          </li>
+        </ol>
+      </section>
+      <section class="stage-card" id="stage-4" aria-labelledby="stage-4-title">
+        <header class="stage-header">
+          <div class="stage-number">المرحلة 04</div>
+          <div class="stage-heading">
+            <h2 id="stage-4-title">
+              <span class="stage-title-en" dir="ltr">Built-in Data Structures</span><span class="sep" aria-hidden="true"> - </span><span class="stage-title-ar">هياكل البيانات المدمجة</span>
+            </h2>
+            <span class="stage-topic-count">7 دروس</span>
+          </div>
+        </header>
+        <ol class="topics-list">
+          <li class="topic-row">
+            <span class="topic-number" aria-hidden="true">14</span>
+            <div class="topic-content">
+              <h3 class="topic-title">
+                <span class="topic-title-en" dir="ltr">Python Lists I: Create &amp; Modify</span><span class="sep" aria-hidden="true"> - </span><span class="topic-title-ar">القوائم (1): الإنشاء والتعديل</span>
+              </h3>
+              <p class="topic-terms" dir="ltr">Create Lists, Access List Items, Change List Items, Add List Items, Remove List Items.</p>
+            </div>
+            <button type="button" class="btn btn-ghost" data-copy="lesson" data-scope="المرحلة: Built-in Data Structures - هياكل البيانات المدمجة&#10;الدرس: Python Lists I: Create &amp; Modify - القوائم (1): الإنشاء والتعديل&#10;عناصر الدرس بالترتيب:&#10;- Create Lists&#10;- Access List Items&#10;- Change List Items&#10;- Add List Items&#10;- Remove List Items" aria-label="نسخ Prompt لدرس Python Lists I: Create &amp; Modify"><svg class="btn-icon" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2.5"/><path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15"/></svg><span class="btn-label">نسخ Prompt</span></button>
+          </li>
+          <li class="topic-row">
+            <span class="topic-number" aria-hidden="true">15</span>
+            <div class="topic-content">
+              <h3 class="topic-title">
+                <span class="topic-title-en" dir="ltr">Python Lists II: Loop, Sort &amp; Copy</span><span class="sep" aria-hidden="true"> - </span><span class="topic-title-ar">القوائم (2): التكرار والترتيب والنسخ</span>
+              </h3>
+              <p class="topic-terms" dir="ltr">Loop Lists, List Comprehension, Sort Lists, Copy Lists, Join Lists, List Methods.</p>
+            </div>
+            <button type="button" class="btn btn-ghost" data-copy="lesson" data-scope="المرحلة: Built-in Data Structures - هياكل البيانات المدمجة&#10;الدرس: Python Lists II: Loop, Sort &amp; Copy - القوائم (2): التكرار والترتيب والنسخ&#10;عناصر الدرس بالترتيب:&#10;- Loop Lists&#10;- List Comprehension&#10;- Sort Lists&#10;- Copy Lists&#10;- Join Lists&#10;- List Methods" aria-label="نسخ Prompt لدرس Python Lists II: Loop, Sort &amp; Copy"><svg class="btn-icon" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2.5"/><path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15"/></svg><span class="btn-label">نسخ Prompt</span></button>
+          </li>
+          <li class="topic-row">
+            <span class="topic-number" aria-hidden="true">16</span>
+            <div class="topic-content">
+              <h3 class="topic-title">
+                <span class="topic-title-en" dir="ltr">Python Tuples</span><span class="sep" aria-hidden="true"> - </span><span class="topic-title-ar">Tuples</span>
+              </h3>
+              <p class="topic-terms" dir="ltr">Create Tuples, Access Tuples, Update Tuples, Unpack Tuples, Loop Tuples, Join Tuples, Tuple Methods.</p>
+            </div>
+            <button type="button" class="btn btn-ghost" data-copy="lesson" data-scope="المرحلة: Built-in Data Structures - هياكل البيانات المدمجة&#10;الدرس: Python Tuples - Tuples&#10;عناصر الدرس بالترتيب:&#10;- Create Tuples&#10;- Access Tuples&#10;- Update Tuples&#10;- Unpack Tuples&#10;- Loop Tuples&#10;- Join Tuples&#10;- Tuple Methods" aria-label="نسخ Prompt لدرس Python Tuples"><svg class="btn-icon" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2.5"/><path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15"/></svg><span class="btn-label">نسخ Prompt</span></button>
+          </li>
+          <li class="topic-row">
+            <span class="topic-number" aria-hidden="true">17</span>
+            <div class="topic-content">
+              <h3 class="topic-title">
+                <span class="topic-title-en" dir="ltr">Python Sets</span><span class="sep" aria-hidden="true"> - </span><span class="topic-title-ar">المجموعات</span>
+              </h3>
+              <p class="topic-terms" dir="ltr">Create Sets, Access Set Items, Add Set Items, Remove Set Items, Loop Sets, Join Sets, Frozenset, Set Methods.</p>
+            </div>
+            <button type="button" class="btn btn-ghost" data-copy="lesson" data-scope="المرحلة: Built-in Data Structures - هياكل البيانات المدمجة&#10;الدرس: Python Sets - المجموعات&#10;عناصر الدرس بالترتيب:&#10;- Create Sets&#10;- Access Set Items&#10;- Add Set Items&#10;- Remove Set Items&#10;- Loop Sets&#10;- Join Sets&#10;- Frozenset&#10;- Set Methods" aria-label="نسخ Prompt لدرس Python Sets"><svg class="btn-icon" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2.5"/><path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15"/></svg><span class="btn-label">نسخ Prompt</span></button>
+          </li>
+          <li class="topic-row">
+            <span class="topic-number" aria-hidden="true">18</span>
+            <div class="topic-content">
+              <h3 class="topic-title">
+                <span class="topic-title-en" dir="ltr">Python Dictionaries I: Create &amp; Modify</span><span class="sep" aria-hidden="true"> - </span><span class="topic-title-ar">القواميس (1): الإنشاء والتعديل</span>
+              </h3>
+              <p class="topic-terms" dir="ltr">Create Dictionaries, Access Dictionary Items, Change Dictionary Items, Add Dictionary Items, Remove Dictionary Items.</p>
+            </div>
+            <button type="button" class="btn btn-ghost" data-copy="lesson" data-scope="المرحلة: Built-in Data Structures - هياكل البيانات المدمجة&#10;الدرس: Python Dictionaries I: Create &amp; Modify - القواميس (1): الإنشاء والتعديل&#10;عناصر الدرس بالترتيب:&#10;- Create Dictionaries&#10;- Access Dictionary Items&#10;- Change Dictionary Items&#10;- Add Dictionary Items&#10;- Remove Dictionary Items" aria-label="نسخ Prompt لدرس Python Dictionaries I: Create &amp; Modify"><svg class="btn-icon" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2.5"/><path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15"/></svg><span class="btn-label">نسخ Prompt</span></button>
+          </li>
+          <li class="topic-row">
+            <span class="topic-number" aria-hidden="true">19</span>
+            <div class="topic-content">
+              <h3 class="topic-title">
+                <span class="topic-title-en" dir="ltr">Python Dictionaries II: Loop, Copy &amp; Nest</span><span class="sep" aria-hidden="true"> - </span><span class="topic-title-ar">القواميس (2): التكرار والنسخ والتداخل</span>
+              </h3>
+              <p class="topic-terms" dir="ltr">Loop Dictionaries, Copy Dictionaries, Nested Dictionaries, Dictionary Methods.</p>
+            </div>
+            <button type="button" class="btn btn-ghost" data-copy="lesson" data-scope="المرحلة: Built-in Data Structures - هياكل البيانات المدمجة&#10;الدرس: Python Dictionaries II: Loop, Copy &amp; Nest - القواميس (2): التكرار والنسخ والتداخل&#10;عناصر الدرس بالترتيب:&#10;- Loop Dictionaries&#10;- Copy Dictionaries&#10;- Nested Dictionaries&#10;- Dictionary Methods" aria-label="نسخ Prompt لدرس Python Dictionaries II: Loop, Copy &amp; Nest"><svg class="btn-icon" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2.5"/><path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15"/></svg><span class="btn-label">نسخ Prompt</span></button>
+          </li>
+          <li class="topic-row">
+            <span class="topic-number" aria-hidden="true">20</span>
+            <div class="topic-content">
+              <h3 class="topic-title">
+                <span class="topic-title-en" dir="ltr">Python Arrays</span><span class="sep" aria-hidden="true"> - </span><span class="topic-title-ar">المصفوفات</span>
+              </h3>
+              <p class="topic-terms" dir="ltr">Create Arrays, Access Array Items, Add Array Items, Remove Array Items, Update Array Items, Arrays vs. Lists.</p>
+            </div>
+            <button type="button" class="btn btn-ghost" data-copy="lesson" data-scope="المرحلة: Built-in Data Structures - هياكل البيانات المدمجة&#10;الدرس: Python Arrays - المصفوفات&#10;عناصر الدرس بالترتيب:&#10;- Create Arrays&#10;- Access Array Items&#10;- Add Array Items&#10;- Remove Array Items&#10;- Update Array Items&#10;- Arrays vs. Lists" aria-label="نسخ Prompt لدرس Python Arrays"><svg class="btn-icon" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2.5"/><path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15"/></svg><span class="btn-label">نسخ Prompt</span></button>
+          </li>
+        </ol>
+      </section>
+      <section class="stage-card" id="stage-5" aria-labelledby="stage-5-title">
+        <header class="stage-header">
+          <div class="stage-number">المرحلة 05</div>
+          <div class="stage-heading">
+            <h2 id="stage-5-title">
+              <span class="stage-title-en" dir="ltr">Functions</span><span class="sep" aria-hidden="true"> - </span><span class="stage-title-ar">الدوال</span>
+            </h2>
+            <span class="stage-topic-count">5 دروس</span>
+          </div>
+        </header>
+        <ol class="topics-list">
+          <li class="topic-row">
+            <span class="topic-number" aria-hidden="true">21</span>
+            <div class="topic-content">
+              <h3 class="topic-title">
+                <span class="topic-title-en" dir="ltr">Python Functions: Basics</span><span class="sep" aria-hidden="true"> - </span><span class="topic-title-ar">أساسيات الدوال</span>
+              </h3>
+              <p class="topic-terms" dir="ltr">Define Functions, Call Functions, Function Arguments, Positional Arguments, Return Values.</p>
+            </div>
+            <button type="button" class="btn btn-ghost" data-copy="lesson" data-scope="المرحلة: Functions - الدوال&#10;الدرس: Python Functions: Basics - أساسيات الدوال&#10;عناصر الدرس بالترتيب:&#10;- Define Functions&#10;- Call Functions&#10;- Function Arguments&#10;- Positional Arguments&#10;- Return Values" aria-label="نسخ Prompt لدرس Python Functions: Basics"><svg class="btn-icon" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2.5"/><path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15"/></svg><span class="btn-label">نسخ Prompt</span></button>
+          </li>
+          <li class="topic-row">
+            <span class="topic-number" aria-hidden="true">22</span>
+            <div class="topic-content">
+              <h3 class="topic-title">
+                <span class="topic-title-en" dir="ltr">Python Function Arguments in Depth</span><span class="sep" aria-hidden="true"> - </span><span class="topic-title-ar">معاملات الدوال بالتفصيل</span>
+              </h3>
+              <p class="topic-terms" dir="ltr">Keyword Arguments, Default Parameter Values, Variable-length Arguments, *args, **kwargs.</p>
+            </div>
+            <button type="button" class="btn btn-ghost" data-copy="lesson" data-scope="المرحلة: Functions - الدوال&#10;الدرس: Python Function Arguments in Depth - معاملات الدوال بالتفصيل&#10;عناصر الدرس بالترتيب:&#10;- Keyword Arguments&#10;- Default Parameter Values&#10;- Variable-length Arguments&#10;- *args&#10;- **kwargs" aria-label="نسخ Prompt لدرس Python Function Arguments in Depth"><svg class="btn-icon" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2.5"/><path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15"/></svg><span class="btn-label">نسخ Prompt</span></button>
+          </li>
+          <li class="topic-row">
+            <span class="topic-number" aria-hidden="true">23</span>
+            <div class="topic-content">
+              <h3 class="topic-title">
+                <span class="topic-title-en" dir="ltr">Python Scope</span><span class="sep" aria-hidden="true"> - </span><span class="topic-title-ar">النطاق</span>
+              </h3>
+              <p class="topic-terms" dir="ltr">Local Scope, Global Scope, Enclosing Scope, Built-in Scope, global Keyword, nonlocal Keyword.</p>
+            </div>
+            <button type="button" class="btn btn-ghost" data-copy="lesson" data-scope="المرحلة: Functions - الدوال&#10;الدرس: Python Scope - النطاق&#10;عناصر الدرس بالترتيب:&#10;- Local Scope&#10;- Global Scope&#10;- Enclosing Scope&#10;- Built-in Scope&#10;- global Keyword&#10;- nonlocal Keyword" aria-label="نسخ Prompt لدرس Python Scope"><svg class="btn-icon" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2.5"/><path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15"/></svg><span class="btn-label">نسخ Prompt</span></button>
+          </li>
+          <li class="topic-row">
+            <span class="topic-number" aria-hidden="true">24</span>
+            <div class="topic-content">
+              <h3 class="topic-title">
+                <span class="topic-title-en" dir="ltr">Python Lambda &amp; Recursion</span><span class="sep" aria-hidden="true"> - </span><span class="topic-title-ar">دوال Lambda والاستدعاء الذاتي</span>
+              </h3>
+              <p class="topic-terms" dir="ltr">Lambda Functions, Lambda Parameters, Lambda Expressions, Recursive Functions, Base Case, Recursive Calls.</p>
+            </div>
+            <button type="button" class="btn btn-ghost" data-copy="lesson" data-scope="المرحلة: Functions - الدوال&#10;الدرس: Python Lambda &amp; Recursion - دوال Lambda والاستدعاء الذاتي&#10;عناصر الدرس بالترتيب:&#10;- Lambda Functions&#10;- Lambda Parameters&#10;- Lambda Expressions&#10;- Recursive Functions&#10;- Base Case&#10;- Recursive Calls" aria-label="نسخ Prompt لدرس Python Lambda &amp; Recursion"><svg class="btn-icon" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2.5"/><path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15"/></svg><span class="btn-label">نسخ Prompt</span></button>
+          </li>
+          <li class="topic-row">
+            <span class="topic-number" aria-hidden="true">25</span>
+            <div class="topic-content">
+              <h3 class="topic-title">
+                <span class="topic-title-en" dir="ltr">Python Decorators</span><span class="sep" aria-hidden="true"> - </span><span class="topic-title-ar">المزيّنات</span>
+              </h3>
+              <p class="topic-terms" dir="ltr">Decorators, Create Decorators, Decorators with Functions.</p>
+            </div>
+            <button type="button" class="btn btn-ghost" data-copy="lesson" data-scope="المرحلة: Functions - الدوال&#10;الدرس: Python Decorators - المزيّنات&#10;عناصر الدرس بالترتيب:&#10;- Decorators&#10;- Create Decorators&#10;- Decorators with Functions" aria-label="نسخ Prompt لدرس Python Decorators"><svg class="btn-icon" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2.5"/><path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15"/></svg><span class="btn-label">نسخ Prompt</span></button>
+          </li>
+        </ol>
+      </section>
+      <section class="stage-card" id="stage-6" aria-labelledby="stage-6-title">
+        <header class="stage-header">
+          <div class="stage-number">المرحلة 06</div>
+          <div class="stage-heading">
+            <h2 id="stage-6-title">
+              <span class="stage-title-en" dir="ltr">Object-Oriented Programming</span><span class="sep" aria-hidden="true"> - </span><span class="stage-title-ar">البرمجة كائنية التوجه</span>
+            </h2>
+            <span class="stage-topic-count">6 دروس</span>
+          </div>
+        </header>
+        <ol class="topics-list">
+          <li class="topic-row">
+            <span class="topic-number" aria-hidden="true">26</span>
+            <div class="topic-content">
+              <h3 class="topic-title">
+                <span class="topic-title-en" dir="ltr">Python Classes &amp; Objects</span><span class="sep" aria-hidden="true"> - </span><span class="topic-title-ar">Classes وObjects</span>
+              </h3>
+              <p class="topic-terms" dir="ltr">Object-Oriented Programming, Classes, Objects, Create Classes, Create Objects, Attributes, Methods.</p>
+            </div>
+            <button type="button" class="btn btn-ghost" data-copy="lesson" data-scope="المرحلة: Object-Oriented Programming - البرمجة كائنية التوجه&#10;الدرس: Python Classes &amp; Objects - Classes وObjects&#10;عناصر الدرس بالترتيب:&#10;- Object-Oriented Programming&#10;- Classes&#10;- Objects&#10;- Create Classes&#10;- Create Objects&#10;- Attributes&#10;- Methods" aria-label="نسخ Prompt لدرس Python Classes &amp; Objects"><svg class="btn-icon" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2.5"/><path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15"/></svg><span class="btn-label">نسخ Prompt</span></button>
+          </li>
+          <li class="topic-row">
+            <span class="topic-number" aria-hidden="true">27</span>
+            <div class="topic-content">
+              <h3 class="topic-title">
+                <span class="topic-title-en" dir="ltr">Python __init__ &amp; self</span><span class="sep" aria-hidden="true"> - </span><span class="topic-title-ar">دالة __init__ والمعامل self</span>
+              </h3>
+              <p class="topic-terms" dir="ltr">Constructor, Object Initialization, Constructor Parameters, self, Instance Attributes, Instance Methods.</p>
+            </div>
+            <button type="button" class="btn btn-ghost" data-copy="lesson" data-scope="المرحلة: Object-Oriented Programming - البرمجة كائنية التوجه&#10;الدرس: Python __init__ &amp; self - دالة __init__ والمعامل self&#10;عناصر الدرس بالترتيب:&#10;- Constructor&#10;- Object Initialization&#10;- Constructor Parameters&#10;- self&#10;- Instance Attributes&#10;- Instance Methods" aria-label="نسخ Prompt لدرس Python __init__ &amp; self"><svg class="btn-icon" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2.5"/><path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15"/></svg><span class="btn-label">نسخ Prompt</span></button>
+          </li>
+          <li class="topic-row">
+            <span class="topic-number" aria-hidden="true">28</span>
+            <div class="topic-content">
+              <h3 class="topic-title">
+                <span class="topic-title-en" dir="ltr">Python Class vs. Instance Members</span><span class="sep" aria-hidden="true"> - </span><span class="topic-title-ar">أعضاء Class مقابل Instance</span>
+              </h3>
+              <p class="topic-terms" dir="ltr">Class Attributes, Class Properties, Instance Properties, @property, Class Methods, Static Methods.</p>
+            </div>
+            <button type="button" class="btn btn-ghost" data-copy="lesson" data-scope="المرحلة: Object-Oriented Programming - البرمجة كائنية التوجه&#10;الدرس: Python Class vs. Instance Members - أعضاء Class مقابل Instance&#10;عناصر الدرس بالترتيب:&#10;- Class Attributes&#10;- Class Properties&#10;- Instance Properties&#10;- @property&#10;- Class Methods&#10;- Static Methods" aria-label="نسخ Prompt لدرس Python Class vs. Instance Members"><svg class="btn-icon" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2.5"/><path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15"/></svg><span class="btn-label">نسخ Prompt</span></button>
+          </li>
+          <li class="topic-row">
+            <span class="topic-number" aria-hidden="true">29</span>
+            <div class="topic-content">
+              <h3 class="topic-title">
+                <span class="topic-title-en" dir="ltr">Python Magic Methods</span><span class="sep" aria-hidden="true"> - </span><span class="topic-title-ar">الدوال السحرية</span>
+              </h3>
+              <p class="topic-terms" dir="ltr">__str__(), __repr__(), __eq__(), __add__(), __len__(), __lt__(), __contains__(), __call__().</p>
+            </div>
+            <button type="button" class="btn btn-ghost" data-copy="lesson" data-scope="المرحلة: Object-Oriented Programming - البرمجة كائنية التوجه&#10;الدرس: Python Magic Methods - الدوال السحرية&#10;عناصر الدرس بالترتيب:&#10;- __str__()&#10;- __repr__()&#10;- __eq__()&#10;- __add__()&#10;- __len__()&#10;- __lt__()&#10;- __contains__()&#10;- __call__()" aria-label="نسخ Prompt لدرس Python Magic Methods"><svg class="btn-icon" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2.5"/><path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15"/></svg><span class="btn-label">نسخ Prompt</span></button>
+          </li>
+          <li class="topic-row">
+            <span class="topic-number" aria-hidden="true">30</span>
+            <div class="topic-content">
+              <h3 class="topic-title">
+                <span class="topic-title-en" dir="ltr">Python Inheritance &amp; Polymorphism</span><span class="sep" aria-hidden="true"> - </span><span class="topic-title-ar">الوراثة وتعدد الأشكال</span>
+              </h3>
+              <p class="topic-terms" dir="ltr">Parent Class, Child Class, Method Overriding, super(), Polymorphism with Functions, Polymorphism with Inheritance.</p>
+            </div>
+            <button type="button" class="btn btn-ghost" data-copy="lesson" data-scope="المرحلة: Object-Oriented Programming - البرمجة كائنية التوجه&#10;الدرس: Python Inheritance &amp; Polymorphism - الوراثة وتعدد الأشكال&#10;عناصر الدرس بالترتيب:&#10;- Parent Class&#10;- Child Class&#10;- Method Overriding&#10;- super()&#10;- Polymorphism with Functions&#10;- Polymorphism with Inheritance" aria-label="نسخ Prompt لدرس Python Inheritance &amp; Polymorphism"><svg class="btn-icon" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2.5"/><path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15"/></svg><span class="btn-label">نسخ Prompt</span></button>
+          </li>
+          <li class="topic-row">
+            <span class="topic-number" aria-hidden="true">31</span>
+            <div class="topic-content">
+              <h3 class="topic-title">
+                <span class="topic-title-en" dir="ltr">Python Encapsulation &amp; Inner Classes</span><span class="sep" aria-hidden="true"> - </span><span class="topic-title-ar">التغليف والفئات الداخلية</span>
+              </h3>
+              <p class="topic-terms" dir="ltr">Public Members, Protected Members, Private Members, Data Encapsulation, Nested Classes, Inner Classes, Outer Class Access.</p>
+            </div>
+            <button type="button" class="btn btn-ghost" data-copy="lesson" data-scope="المرحلة: Object-Oriented Programming - البرمجة كائنية التوجه&#10;الدرس: Python Encapsulation &amp; Inner Classes - التغليف والفئات الداخلية&#10;عناصر الدرس بالترتيب:&#10;- Public Members&#10;- Protected Members&#10;- Private Members&#10;- Data Encapsulation&#10;- Nested Classes&#10;- Inner Classes&#10;- Outer Class Access" aria-label="نسخ Prompt لدرس Python Encapsulation &amp; Inner Classes"><svg class="btn-icon" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2.5"/><path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15"/></svg><span class="btn-label">نسخ Prompt</span></button>
+          </li>
+        </ol>
+      </section>
+      <section class="stage-card" id="stage-7" aria-labelledby="stage-7-title">
+        <header class="stage-header">
+          <div class="stage-number">المرحلة 07</div>
+          <div class="stage-heading">
+            <h2 id="stage-7-title">
+              <span class="stage-title-en" dir="ltr">Iterators, Generators &amp; Modules</span><span class="sep" aria-hidden="true"> - </span><span class="stage-title-ar">المكررات والمولّدات والوحدات البرمجية</span>
+            </h2>
+            <span class="stage-topic-count">3 دروس</span>
+          </div>
+        </header>
+        <ol class="topics-list">
+          <li class="topic-row">
+            <span class="topic-number" aria-hidden="true">32</span>
+            <div class="topic-content">
+              <h3 class="topic-title">
+                <span class="topic-title-en" dir="ltr">Python Iterators</span><span class="sep" aria-hidden="true"> - </span><span class="topic-title-ar">المكررات</span>
+              </h3>
+              <p class="topic-terms" dir="ltr">Iterable Objects, Iterator Objects, iter(), next(), Custom Iterators.</p>
+            </div>
+            <button type="button" class="btn btn-ghost" data-copy="lesson" data-scope="المرحلة: Iterators, Generators &amp; Modules - المكررات والمولّدات والوحدات البرمجية&#10;الدرس: Python Iterators - المكررات&#10;عناصر الدرس بالترتيب:&#10;- Iterable Objects&#10;- Iterator Objects&#10;- iter()&#10;- next()&#10;- Custom Iterators" aria-label="نسخ Prompt لدرس Python Iterators"><svg class="btn-icon" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2.5"/><path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15"/></svg><span class="btn-label">نسخ Prompt</span></button>
+          </li>
+          <li class="topic-row">
+            <span class="topic-number" aria-hidden="true">33</span>
+            <div class="topic-content">
+              <h3 class="topic-title">
+                <span class="topic-title-en" dir="ltr">Python Generators</span><span class="sep" aria-hidden="true"> - </span><span class="topic-title-ar">المولّدات</span>
+              </h3>
+              <p class="topic-terms" dir="ltr">Generator Functions, yield, Generator Expressions, Lazy Evaluation.</p>
+            </div>
+            <button type="button" class="btn btn-ghost" data-copy="lesson" data-scope="المرحلة: Iterators, Generators &amp; Modules - المكررات والمولّدات والوحدات البرمجية&#10;الدرس: Python Generators - المولّدات&#10;عناصر الدرس بالترتيب:&#10;- Generator Functions&#10;- yield&#10;- Generator Expressions&#10;- Lazy Evaluation" aria-label="نسخ Prompt لدرس Python Generators"><svg class="btn-icon" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2.5"/><path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15"/></svg><span class="btn-label">نسخ Prompt</span></button>
+          </li>
+          <li class="topic-row">
+            <span class="topic-number" aria-hidden="true">34</span>
+            <div class="topic-content">
+              <h3 class="topic-title">
+                <span class="topic-title-en" dir="ltr">Python Modules</span><span class="sep" aria-hidden="true"> - </span><span class="topic-title-ar">الوحدات البرمجية</span>
+              </h3>
+              <p class="topic-terms" dir="ltr">Modules, Create Modules, Import Modules, from ... import, Aliases, Built-in Modules.</p>
+            </div>
+            <button type="button" class="btn btn-ghost" data-copy="lesson" data-scope="المرحلة: Iterators, Generators &amp; Modules - المكررات والمولّدات والوحدات البرمجية&#10;الدرس: Python Modules - الوحدات البرمجية&#10;عناصر الدرس بالترتيب:&#10;- Modules&#10;- Create Modules&#10;- Import Modules&#10;- from ... import&#10;- Aliases&#10;- Built-in Modules" aria-label="نسخ Prompt لدرس Python Modules"><svg class="btn-icon" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2.5"/><path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15"/></svg><span class="btn-label">نسخ Prompt</span></button>
+          </li>
+        </ol>
+      </section>
+      <section class="stage-card" id="stage-8" aria-labelledby="stage-8-title">
+        <header class="stage-header">
+          <div class="stage-number">المرحلة 08</div>
+          <div class="stage-heading">
+            <h2 id="stage-8-title">
+              <span class="stage-title-en" dir="ltr">Exceptions &amp; File Handling</span><span class="sep" aria-hidden="true"> - </span><span class="stage-title-ar">الاستثناءات والتعامل مع الملفات</span>
+            </h2>
+            <span class="stage-topic-count">3 دروس</span>
+          </div>
+        </header>
+        <ol class="topics-list">
+          <li class="topic-row">
+            <span class="topic-number" aria-hidden="true">35</span>
+            <div class="topic-content">
+              <h3 class="topic-title">
+                <span class="topic-title-en" dir="ltr">Python Try...Except</span><span class="sep" aria-hidden="true"> - </span><span class="topic-title-ar">معالجة الاستثناءات</span>
+              </h3>
+              <p class="topic-terms" dir="ltr">Exceptions, try, except, else, finally, raise, Exception Handling.</p>
+            </div>
+            <button type="button" class="btn btn-ghost" data-copy="lesson" data-scope="المرحلة: Exceptions &amp; File Handling - الاستثناءات والتعامل مع الملفات&#10;الدرس: Python Try...Except - معالجة الاستثناءات&#10;عناصر الدرس بالترتيب:&#10;- Exceptions&#10;- try&#10;- except&#10;- else&#10;- finally&#10;- raise&#10;- Exception Handling" aria-label="نسخ Prompt لدرس Python Try...Except"><svg class="btn-icon" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2.5"/><path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15"/></svg><span class="btn-label">نسخ Prompt</span></button>
+          </li>
+          <li class="topic-row">
+            <span class="topic-number" aria-hidden="true">36</span>
+            <div class="topic-content">
+              <h3 class="topic-title">
+                <span class="topic-title-en" dir="ltr">Python Open &amp; Read Files</span><span class="sep" aria-hidden="true"> - </span><span class="topic-title-ar">فتح الملفات وقراءتها</span>
+              </h3>
+              <p class="topic-terms" dir="ltr">open(), File Modes, File Objects, Close Files, with Statement, read(), readline(), readlines(), Read Files Line by Line.</p>
+            </div>
+            <button type="button" class="btn btn-ghost" data-copy="lesson" data-scope="المرحلة: Exceptions &amp; File Handling - الاستثناءات والتعامل مع الملفات&#10;الدرس: Python Open &amp; Read Files - فتح الملفات وقراءتها&#10;عناصر الدرس بالترتيب:&#10;- open()&#10;- File Modes&#10;- File Objects&#10;- Close Files&#10;- with Statement&#10;- read()&#10;- readline()&#10;- readlines()&#10;- Read Files Line by Line" aria-label="نسخ Prompt لدرس Python Open &amp; Read Files"><svg class="btn-icon" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2.5"/><path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15"/></svg><span class="btn-label">نسخ Prompt</span></button>
+          </li>
+          <li class="topic-row">
+            <span class="topic-number" aria-hidden="true">37</span>
+            <div class="topic-content">
+              <h3 class="topic-title">
+                <span class="topic-title-en" dir="ltr">Python Write &amp; Delete Files</span><span class="sep" aria-hidden="true"> - </span><span class="topic-title-ar">كتابة الملفات وحذفها</span>
+              </h3>
+              <p class="topic-terms" dir="ltr">Create Files, write(), w Mode, a Mode, Delete Files, os Module, Check File Existence.</p>
+            </div>
+            <button type="button" class="btn btn-ghost" data-copy="lesson" data-scope="المرحلة: Exceptions &amp; File Handling - الاستثناءات والتعامل مع الملفات&#10;الدرس: Python Write &amp; Delete Files - كتابة الملفات وحذفها&#10;عناصر الدرس بالترتيب:&#10;- Create Files&#10;- write()&#10;- w Mode&#10;- a Mode&#10;- Delete Files&#10;- os Module&#10;- Check File Existence" aria-label="نسخ Prompt لدرس Python Write &amp; Delete Files"><svg class="btn-icon" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2.5"/><path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15"/></svg><span class="btn-label">نسخ Prompt</span></button>
+          </li>
+        </ol>
+      </section>
+      <section class="stage-card" id="stage-9" aria-labelledby="stage-9-title">
+        <header class="stage-header">
+          <div class="stage-number">المرحلة 09</div>
+          <div class="stage-heading">
+            <h2 id="stage-9-title">
+              <span class="stage-title-en" dir="ltr">Packages &amp; Standard Library</span><span class="sep" aria-hidden="true"> - </span><span class="stage-title-ar">الحزم والمكتبة القياسية</span>
+            </h2>
+            <span class="stage-topic-count">4 دروس</span>
+          </div>
+        </header>
+        <ol class="topics-list">
+          <li class="topic-row">
+            <span class="topic-number" aria-hidden="true">38</span>
+            <div class="topic-content">
+              <h3 class="topic-title">
+                <span class="topic-title-en" dir="ltr">Python PIP &amp; VirtualEnv</span><span class="sep" aria-hidden="true"> - </span><span class="topic-title-ar">إدارة الحزم والبيئات الافتراضية</span>
+              </h3>
+              <p class="topic-terms" dir="ltr">Package Management, Install Packages, Uninstall Packages, List Installed Packages, PyPI, Virtual Environments, Create Environment, Activate Environment, Manage Dependencies.</p>
+            </div>
+            <button type="button" class="btn btn-ghost" data-copy="lesson" data-scope="المرحلة: Packages &amp; Standard Library - الحزم والمكتبة القياسية&#10;الدرس: Python PIP &amp; VirtualEnv - إدارة الحزم والبيئات الافتراضية&#10;عناصر الدرس بالترتيب:&#10;- Package Management&#10;- Install Packages&#10;- Uninstall Packages&#10;- List Installed Packages&#10;- PyPI&#10;- Virtual Environments&#10;- Create Environment&#10;- Activate Environment&#10;- Manage Dependencies" aria-label="نسخ Prompt لدرس Python PIP &amp; VirtualEnv"><svg class="btn-icon" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2.5"/><path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15"/></svg><span class="btn-label">نسخ Prompt</span></button>
+          </li>
+          <li class="topic-row">
+            <span class="topic-number" aria-hidden="true">39</span>
+            <div class="topic-content">
+              <h3 class="topic-title">
+                <span class="topic-title-en" dir="ltr">Python Dates &amp; Math</span><span class="sep" aria-hidden="true"> - </span><span class="topic-title-ar">التاريخ والوقت والرياضيات</span>
+              </h3>
+              <p class="topic-terms" dir="ltr">datetime Module, Date Objects, Format Dates, Extract Date Components, Math Functions, Mathematical Operations, Math Constants, math Module.</p>
+            </div>
+            <button type="button" class="btn btn-ghost" data-copy="lesson" data-scope="المرحلة: Packages &amp; Standard Library - الحزم والمكتبة القياسية&#10;الدرس: Python Dates &amp; Math - التاريخ والوقت والرياضيات&#10;عناصر الدرس بالترتيب:&#10;- datetime Module&#10;- Date Objects&#10;- Format Dates&#10;- Extract Date Components&#10;- Math Functions&#10;- Mathematical Operations&#10;- Math Constants&#10;- math Module" aria-label="نسخ Prompt لدرس Python Dates &amp; Math"><svg class="btn-icon" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2.5"/><path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15"/></svg><span class="btn-label">نسخ Prompt</span></button>
+          </li>
+          <li class="topic-row">
+            <span class="topic-number" aria-hidden="true">40</span>
+            <div class="topic-content">
+              <h3 class="topic-title">
+                <span class="topic-title-en" dir="ltr">Python JSON</span><span class="sep" aria-hidden="true"> - </span><span class="topic-title-ar">التعامل مع JSON</span>
+              </h3>
+              <p class="topic-terms" dir="ltr">JSON Syntax, JSON to Python Objects, Python Objects to JSON, json.loads(), json.dumps().</p>
+            </div>
+            <button type="button" class="btn btn-ghost" data-copy="lesson" data-scope="المرحلة: Packages &amp; Standard Library - الحزم والمكتبة القياسية&#10;الدرس: Python JSON - التعامل مع JSON&#10;عناصر الدرس بالترتيب:&#10;- JSON Syntax&#10;- JSON to Python Objects&#10;- Python Objects to JSON&#10;- json.loads()&#10;- json.dumps()" aria-label="نسخ Prompt لدرس Python JSON"><svg class="btn-icon" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2.5"/><path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15"/></svg><span class="btn-label">نسخ Prompt</span></button>
+          </li>
+          <li class="topic-row">
+            <span class="topic-number" aria-hidden="true">41</span>
+            <div class="topic-content">
+              <h3 class="topic-title">
+                <span class="topic-title-en" dir="ltr">Python RegEx</span><span class="sep" aria-hidden="true"> - </span><span class="topic-title-ar">التعبيرات النمطية</span>
+              </h3>
+              <p class="topic-terms" dir="ltr">Regular Expressions, Regex Patterns, re Module, findall(), search(), split(), sub().</p>
+            </div>
+            <button type="button" class="btn btn-ghost" data-copy="lesson" data-scope="المرحلة: Packages &amp; Standard Library - الحزم والمكتبة القياسية&#10;الدرس: Python RegEx - التعبيرات النمطية&#10;عناصر الدرس بالترتيب:&#10;- Regular Expressions&#10;- Regex Patterns&#10;- re Module&#10;- findall()&#10;- search()&#10;- split()&#10;- sub()" aria-label="نسخ Prompt لدرس Python RegEx"><svg class="btn-icon" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2.5"/><path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15"/></svg><span class="btn-label">نسخ Prompt</span></button>
+          </li>
+        </ol>
+      </section>
+      <section class="stage-card" id="stage-10" aria-labelledby="stage-10-title">
+        <header class="stage-header">
+          <div class="stage-number">المرحلة 10</div>
+          <div class="stage-heading">
+            <h2 id="stage-10-title">
+              <span class="stage-title-en" dir="ltr">Data Libraries</span><span class="sep" aria-hidden="true"> - </span><span class="stage-title-ar">مكتبات معالجة البيانات</span>
+            </h2>
+            <span class="stage-topic-count">8 دروس</span>
+          </div>
+        </header>
+        <ol class="topics-list">
+          <li class="topic-row">
+            <span class="topic-number" aria-hidden="true">42</span>
+            <div class="topic-content">
+              <h3 class="topic-title">
+                <span class="topic-title-en" dir="ltr">NumPy I: Fundamentals</span><span class="sep" aria-hidden="true"> - </span><span class="topic-title-ar">NumPy (1): الأساسيات</span>
+              </h3>
+              <p class="topic-terms" dir="ltr">Introduction, Create Arrays, Array Indexing, Array Slicing, Data Types, Array Shape.</p>
+            </div>
+            <button type="button" class="btn btn-ghost" data-copy="lesson" data-scope="المرحلة: Data Libraries - مكتبات معالجة البيانات&#10;الدرس: NumPy I: Fundamentals - NumPy (1): الأساسيات&#10;عناصر الدرس بالترتيب:&#10;- Introduction&#10;- Create Arrays&#10;- Array Indexing&#10;- Array Slicing&#10;- Data Types&#10;- Array Shape" aria-label="نسخ Prompt لدرس NumPy I: Fundamentals"><svg class="btn-icon" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2.5"/><path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15"/></svg><span class="btn-label">نسخ Prompt</span></button>
+          </li>
+          <li class="topic-row">
+            <span class="topic-number" aria-hidden="true">43</span>
+            <div class="topic-content">
+              <h3 class="topic-title">
+                <span class="topic-title-en" dir="ltr">NumPy II: Array Operations</span><span class="sep" aria-hidden="true"> - </span><span class="topic-title-ar">NumPy (2): العمليات على المصفوفات</span>
+              </h3>
+              <p class="topic-terms" dir="ltr">Reshaping, Iterating, Joining, Splitting, Searching, Sorting, Filtering.</p>
+            </div>
+            <button type="button" class="btn btn-ghost" data-copy="lesson" data-scope="المرحلة: Data Libraries - مكتبات معالجة البيانات&#10;الدرس: NumPy II: Array Operations - NumPy (2): العمليات على المصفوفات&#10;عناصر الدرس بالترتيب:&#10;- Reshaping&#10;- Iterating&#10;- Joining&#10;- Splitting&#10;- Searching&#10;- Sorting&#10;- Filtering" aria-label="نسخ Prompt لدرس NumPy II: Array Operations"><svg class="btn-icon" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2.5"/><path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15"/></svg><span class="btn-label">نسخ Prompt</span></button>
+          </li>
+          <li class="topic-row">
+            <span class="topic-number" aria-hidden="true">44</span>
+            <div class="topic-content">
+              <h3 class="topic-title">
+                <span class="topic-title-en" dir="ltr">Matplotlib I: Plotting Basics</span><span class="sep" aria-hidden="true"> - </span><span class="topic-title-ar">Matplotlib (1): أساسيات الرسم</span>
+              </h3>
+              <p class="topic-terms" dir="ltr">Introduction, Get Started, Pyplot, Plotting, Markers, Line.</p>
+            </div>
+            <button type="button" class="btn btn-ghost" data-copy="lesson" data-scope="المرحلة: Data Libraries - مكتبات معالجة البيانات&#10;الدرس: Matplotlib I: Plotting Basics - Matplotlib (1): أساسيات الرسم&#10;عناصر الدرس بالترتيب:&#10;- Introduction&#10;- Get Started&#10;- Pyplot&#10;- Plotting&#10;- Markers&#10;- Line" aria-label="نسخ Prompt لدرس Matplotlib I: Plotting Basics"><svg class="btn-icon" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2.5"/><path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15"/></svg><span class="btn-label">نسخ Prompt</span></button>
+          </li>
+          <li class="topic-row">
+            <span class="topic-number" aria-hidden="true">45</span>
+            <div class="topic-content">
+              <h3 class="topic-title">
+                <span class="topic-title-en" dir="ltr">Matplotlib II: Charts &amp; Layout</span><span class="sep" aria-hidden="true"> - </span><span class="topic-title-ar">Matplotlib (2): أنواع الرسوم والتخطيط</span>
+              </h3>
+              <p class="topic-terms" dir="ltr">Labels, Grid, Subplot, Scatter, Bars, Histograms, Pie Charts.</p>
+            </div>
+            <button type="button" class="btn btn-ghost" data-copy="lesson" data-scope="المرحلة: Data Libraries - مكتبات معالجة البيانات&#10;الدرس: Matplotlib II: Charts &amp; Layout - Matplotlib (2): أنواع الرسوم والتخطيط&#10;عناصر الدرس بالترتيب:&#10;- Labels&#10;- Grid&#10;- Subplot&#10;- Scatter&#10;- Bars&#10;- Histograms&#10;- Pie Charts" aria-label="نسخ Prompt لدرس Matplotlib II: Charts &amp; Layout"><svg class="btn-icon" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2.5"/><path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15"/></svg><span class="btn-label">نسخ Prompt</span></button>
+          </li>
+          <li class="topic-row">
+            <span class="topic-number" aria-hidden="true">46</span>
+            <div class="topic-content">
+              <h3 class="topic-title">
+                <span class="topic-title-en" dir="ltr">Pandas I: Series &amp; DataFrames</span><span class="sep" aria-hidden="true"> - </span><span class="topic-title-ar">Pandas (1): Series وDataFrames</span>
+              </h3>
+              <p class="topic-terms" dir="ltr">Series, DataFrames, Read CSV, Read JSON, Analyze Data.</p>
+            </div>
+            <button type="button" class="btn btn-ghost" data-copy="lesson" data-scope="المرحلة: Data Libraries - مكتبات معالجة البيانات&#10;الدرس: Pandas I: Series &amp; DataFrames - Pandas (1): Series وDataFrames&#10;عناصر الدرس بالترتيب:&#10;- Series&#10;- DataFrames&#10;- Read CSV&#10;- Read JSON&#10;- Analyze Data" aria-label="نسخ Prompt لدرس Pandas I: Series &amp; DataFrames"><svg class="btn-icon" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2.5"/><path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15"/></svg><span class="btn-label">نسخ Prompt</span></button>
+          </li>
+          <li class="topic-row">
+            <span class="topic-number" aria-hidden="true">47</span>
+            <div class="topic-content">
+              <h3 class="topic-title">
+                <span class="topic-title-en" dir="ltr">Pandas II: Cleaning &amp; Analysis</span><span class="sep" aria-hidden="true"> - </span><span class="topic-title-ar">Pandas (2): تنظيف البيانات وتحليلها</span>
+              </h3>
+              <p class="topic-terms" dir="ltr">Clean Data, Missing Values, Duplicates, Correlation, Data Visualization.</p>
+            </div>
+            <button type="button" class="btn btn-ghost" data-copy="lesson" data-scope="المرحلة: Data Libraries - مكتبات معالجة البيانات&#10;الدرس: Pandas II: Cleaning &amp; Analysis - Pandas (2): تنظيف البيانات وتحليلها&#10;عناصر الدرس بالترتيب:&#10;- Clean Data&#10;- Missing Values&#10;- Duplicates&#10;- Correlation&#10;- Data Visualization" aria-label="نسخ Prompt لدرس Pandas II: Cleaning &amp; Analysis"><svg class="btn-icon" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2.5"/><path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15"/></svg><span class="btn-label">نسخ Prompt</span></button>
+          </li>
+          <li class="topic-row">
+            <span class="topic-number" aria-hidden="true">48</span>
+            <div class="topic-content">
+              <h3 class="topic-title">
+                <span class="topic-title-en" dir="ltr">SciPy I: Constants, Sparse &amp; Spatial Data</span><span class="sep" aria-hidden="true"> - </span><span class="topic-title-ar">SciPy (1): الثوابت والبيانات المتناثرة والمكانية</span>
+              </h3>
+              <p class="topic-terms" dir="ltr">Constants, Sparse Data, Graphs, Spatial Data.</p>
+            </div>
+            <button type="button" class="btn btn-ghost" data-copy="lesson" data-scope="المرحلة: Data Libraries - مكتبات معالجة البيانات&#10;الدرس: SciPy I: Constants, Sparse &amp; Spatial Data - SciPy (1): الثوابت والبيانات المتناثرة والمكانية&#10;عناصر الدرس بالترتيب:&#10;- Constants&#10;- Sparse Data&#10;- Graphs&#10;- Spatial Data" aria-label="نسخ Prompt لدرس SciPy I: Constants, Sparse &amp; Spatial Data"><svg class="btn-icon" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2.5"/><path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15"/></svg><span class="btn-label">نسخ Prompt</span></button>
+          </li>
+          <li class="topic-row">
+            <span class="topic-number" aria-hidden="true">49</span>
+            <div class="topic-content">
+              <h3 class="topic-title">
+                <span class="topic-title-en" dir="ltr">SciPy II: Interpolation, Statistics &amp; Optimization</span><span class="sep" aria-hidden="true"> - </span><span class="topic-title-ar">SciPy (2): الاستيفاء والإحصاء والتحسين</span>
+              </h3>
+              <p class="topic-terms" dir="ltr">MATLAB Arrays, Interpolation, Statistics, Optimization.</p>
+            </div>
+            <button type="button" class="btn btn-ghost" data-copy="lesson" data-scope="المرحلة: Data Libraries - مكتبات معالجة البيانات&#10;الدرس: SciPy II: Interpolation, Statistics &amp; Optimization - SciPy (2): الاستيفاء والإحصاء والتحسين&#10;عناصر الدرس بالترتيب:&#10;- MATLAB Arrays&#10;- Interpolation&#10;- Statistics&#10;- Optimization" aria-label="نسخ Prompt لدرس SciPy II: Interpolation, Statistics &amp; Optimization"><svg class="btn-icon" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2.5"/><path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15"/></svg><span class="btn-label">نسخ Prompt</span></button>
+          </li>
+        </ol>
+      </section>
+      <section class="stage-card" id="stage-11" aria-labelledby="stage-11-title">
+        <header class="stage-header">
+          <div class="stage-number">المرحلة 11</div>
+          <div class="stage-heading">
+            <h2 id="stage-11-title">
+              <span class="stage-title-en" dir="ltr">Data Structures &amp; Algorithms (DSA)</span><span class="sep" aria-hidden="true"> - </span><span class="stage-title-ar">هياكل البيانات والخوارزميات</span>
+            </h2>
+            <span class="stage-topic-count">7 دروس</span>
+          </div>
+        </header>
+        <ol class="topics-list">
+          <li class="topic-row">
+            <span class="topic-number" aria-hidden="true">50</span>
+            <div class="topic-content">
+              <h3 class="topic-title">
+                <span class="topic-title-en" dir="ltr">DSA Foundations &amp; Big O</span><span class="sep" aria-hidden="true"> - </span><span class="topic-title-ar">أساسيات DSA وتحليل التعقيد</span>
+              </h3>
+              <p class="topic-terms" dir="ltr">Introduction to DSA, Lists and Arrays, Time Complexity (Big O).</p>
+            </div>
+            <button type="button" class="btn btn-ghost" data-copy="lesson" data-scope="المرحلة: Data Structures &amp; Algorithms (DSA) - هياكل البيانات والخوارزميات&#10;الدرس: DSA Foundations &amp; Big O - أساسيات DSA وتحليل التعقيد&#10;عناصر الدرس بالترتيب:&#10;- Introduction to DSA&#10;- Lists and Arrays&#10;- Time Complexity (Big O)" aria-label="نسخ Prompt لدرس DSA Foundations &amp; Big O"><svg class="btn-icon" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2.5"/><path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15"/></svg><span class="btn-label">نسخ Prompt</span></button>
+          </li>
+          <li class="topic-row">
+            <span class="topic-number" aria-hidden="true">51</span>
+            <div class="topic-content">
+              <h3 class="topic-title">
+                <span class="topic-title-en" dir="ltr">Searching &amp; Basic Sorting</span><span class="sep" aria-hidden="true"> - </span><span class="topic-title-ar">البحث والترتيب الأساسي</span>
+              </h3>
+              <p class="topic-terms" dir="ltr">Linear Search, Binary Search, Bubble Sort, Selection Sort, Insertion Sort.</p>
+            </div>
+            <button type="button" class="btn btn-ghost" data-copy="lesson" data-scope="المرحلة: Data Structures &amp; Algorithms (DSA) - هياكل البيانات والخوارزميات&#10;الدرس: Searching &amp; Basic Sorting - البحث والترتيب الأساسي&#10;عناصر الدرس بالترتيب:&#10;- Linear Search&#10;- Binary Search&#10;- Bubble Sort&#10;- Selection Sort&#10;- Insertion Sort" aria-label="نسخ Prompt لدرس Searching &amp; Basic Sorting"><svg class="btn-icon" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2.5"/><path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15"/></svg><span class="btn-label">نسخ Prompt</span></button>
+          </li>
+          <li class="topic-row">
+            <span class="topic-number" aria-hidden="true">52</span>
+            <div class="topic-content">
+              <h3 class="topic-title">
+                <span class="topic-title-en" dir="ltr">Advanced Sorting Algorithms</span><span class="sep" aria-hidden="true"> - </span><span class="topic-title-ar">خوارزميات الترتيب المتقدمة</span>
+              </h3>
+              <p class="topic-terms" dir="ltr">Merge Sort, Quick Sort, Counting Sort, Radix Sort.</p>
+            </div>
+            <button type="button" class="btn btn-ghost" data-copy="lesson" data-scope="المرحلة: Data Structures &amp; Algorithms (DSA) - هياكل البيانات والخوارزميات&#10;الدرس: Advanced Sorting Algorithms - خوارزميات الترتيب المتقدمة&#10;عناصر الدرس بالترتيب:&#10;- Merge Sort&#10;- Quick Sort&#10;- Counting Sort&#10;- Radix Sort" aria-label="نسخ Prompt لدرس Advanced Sorting Algorithms"><svg class="btn-icon" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2.5"/><path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15"/></svg><span class="btn-label">نسخ Prompt</span></button>
+          </li>
+          <li class="topic-row">
+            <span class="topic-number" aria-hidden="true">53</span>
+            <div class="topic-content">
+              <h3 class="topic-title">
+                <span class="topic-title-en" dir="ltr">Stacks &amp; Queues</span><span class="sep" aria-hidden="true"> - </span><span class="topic-title-ar">Stacks وQueues</span>
+              </h3>
+              <p class="topic-terms" dir="ltr">Stacks, Queues.</p>
+            </div>
+            <button type="button" class="btn btn-ghost" data-copy="lesson" data-scope="المرحلة: Data Structures &amp; Algorithms (DSA) - هياكل البيانات والخوارزميات&#10;الدرس: Stacks &amp; Queues - Stacks وQueues&#10;عناصر الدرس بالترتيب:&#10;- Stacks&#10;- Queues" aria-label="نسخ Prompt لدرس Stacks &amp; Queues"><svg class="btn-icon" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2.5"/><path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15"/></svg><span class="btn-label">نسخ Prompt</span></button>
+          </li>
+          <li class="topic-row">
+            <span class="topic-number" aria-hidden="true">54</span>
+            <div class="topic-content">
+              <h3 class="topic-title">
+                <span class="topic-title-en" dir="ltr">Linked Lists &amp; Hash Tables</span><span class="sep" aria-hidden="true"> - </span><span class="topic-title-ar">Linked Lists وHash Tables</span>
+              </h3>
+              <p class="topic-terms" dir="ltr">Linked Lists, Hash Tables.</p>
+            </div>
+            <button type="button" class="btn btn-ghost" data-copy="lesson" data-scope="المرحلة: Data Structures &amp; Algorithms (DSA) - هياكل البيانات والخوارزميات&#10;الدرس: Linked Lists &amp; Hash Tables - Linked Lists وHash Tables&#10;عناصر الدرس بالترتيب:&#10;- Linked Lists&#10;- Hash Tables" aria-label="نسخ Prompt لدرس Linked Lists &amp; Hash Tables"><svg class="btn-icon" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2.5"/><path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15"/></svg><span class="btn-label">نسخ Prompt</span></button>
+          </li>
+          <li class="topic-row">
+            <span class="topic-number" aria-hidden="true">55</span>
+            <div class="topic-content">
+              <h3 class="topic-title">
+                <span class="topic-title-en" dir="ltr">Trees</span><span class="sep" aria-hidden="true"> - </span><span class="topic-title-ar">الأشجار</span>
+              </h3>
+              <p class="topic-terms" dir="ltr">Trees, Binary Trees, Binary Search Trees, AVL Trees.</p>
+            </div>
+            <button type="button" class="btn btn-ghost" data-copy="lesson" data-scope="المرحلة: Data Structures &amp; Algorithms (DSA) - هياكل البيانات والخوارزميات&#10;الدرس: Trees - الأشجار&#10;عناصر الدرس بالترتيب:&#10;- Trees&#10;- Binary Trees&#10;- Binary Search Trees&#10;- AVL Trees" aria-label="نسخ Prompt لدرس Trees"><svg class="btn-icon" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2.5"/><path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15"/></svg><span class="btn-label">نسخ Prompt</span></button>
+          </li>
+          <li class="topic-row">
+            <span class="topic-number" aria-hidden="true">56</span>
+            <div class="topic-content">
+              <h3 class="topic-title">
+                <span class="topic-title-en" dir="ltr">Graphs</span><span class="sep" aria-hidden="true"> - </span><span class="topic-title-ar">Graphs</span>
+              </h3>
+              <p class="topic-terms" dir="ltr">Graphs, Graph Representation, Graph Traversal.</p>
+            </div>
+            <button type="button" class="btn btn-ghost" data-copy="lesson" data-scope="المرحلة: Data Structures &amp; Algorithms (DSA) - هياكل البيانات والخوارزميات&#10;الدرس: Graphs - Graphs&#10;عناصر الدرس بالترتيب:&#10;- Graphs&#10;- Graph Representation&#10;- Graph Traversal" aria-label="نسخ Prompt لدرس Graphs"><svg class="btn-icon" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2.5"/><path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15"/></svg><span class="btn-label">نسخ Prompt</span></button>
+          </li>
+        </ol>
+      </section>
+      <section class="stage-card" id="stage-12" aria-labelledby="stage-12-title">
+        <header class="stage-header">
+          <div class="stage-number">المرحلة 12</div>
+          <div class="stage-heading">
+            <h2 id="stage-12-title">
+              <span class="stage-title-en" dir="ltr">Databases</span><span class="sep" aria-hidden="true"> - </span><span class="stage-title-ar">قواعد البيانات</span>
+            </h2>
+            <span class="stage-topic-count">4 دروس</span>
+          </div>
+        </header>
+        <ol class="topics-list">
+          <li class="topic-row">
+            <span class="topic-number" aria-hidden="true">57</span>
+            <div class="topic-content">
+              <h3 class="topic-title">
+                <span class="topic-title-en" dir="ltr">Python MySQL I: Create &amp; Select</span><span class="sep" aria-hidden="true"> - </span><span class="topic-title-ar">MySQL (1): الإنشاء والاستعلام الأساسي</span>
+              </h3>
+              <p class="topic-terms" dir="ltr">Get Started, Create Database, Create Table, Insert Data, Select Data.</p>
+            </div>
+            <button type="button" class="btn btn-ghost" data-copy="lesson" data-scope="المرحلة: Databases - قواعد البيانات&#10;الدرس: Python MySQL I: Create &amp; Select - MySQL (1): الإنشاء والاستعلام الأساسي&#10;عناصر الدرس بالترتيب:&#10;- Get Started&#10;- Create Database&#10;- Create Table&#10;- Insert Data&#10;- Select Data" aria-label="نسخ Prompt لدرس Python MySQL I: Create &amp; Select"><svg class="btn-icon" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2.5"/><path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15"/></svg><span class="btn-label">نسخ Prompt</span></button>
+          </li>
+          <li class="topic-row">
+            <span class="topic-number" aria-hidden="true">58</span>
+            <div class="topic-content">
+              <h3 class="topic-title">
+                <span class="topic-title-en" dir="ltr">Python MySQL II: Filter, Modify &amp; Join</span><span class="sep" aria-hidden="true"> - </span><span class="topic-title-ar">MySQL (2): التصفية والتعديل والـ Join</span>
+              </h3>
+              <p class="topic-terms" dir="ltr">Where, Order By, Limit, Update, Delete, Join.</p>
+            </div>
+            <button type="button" class="btn btn-ghost" data-copy="lesson" data-scope="المرحلة: Databases - قواعد البيانات&#10;الدرس: Python MySQL II: Filter, Modify &amp; Join - MySQL (2): التصفية والتعديل والـ Join&#10;عناصر الدرس بالترتيب:&#10;- Where&#10;- Order By&#10;- Limit&#10;- Update&#10;- Delete&#10;- Join" aria-label="نسخ Prompt لدرس Python MySQL II: Filter, Modify &amp; Join"><svg class="btn-icon" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2.5"/><path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15"/></svg><span class="btn-label">نسخ Prompt</span></button>
+          </li>
+          <li class="topic-row">
+            <span class="topic-number" aria-hidden="true">59</span>
+            <div class="topic-content">
+              <h3 class="topic-title">
+                <span class="topic-title-en" dir="ltr">Python MongoDB I: Collections &amp; Documents</span><span class="sep" aria-hidden="true"> - </span><span class="topic-title-ar">MongoDB (1): Collections وDocuments</span>
+              </h3>
+              <p class="topic-terms" dir="ltr">Get Started, Create Database, Collections, Insert Documents, Find Documents.</p>
+            </div>
+            <button type="button" class="btn btn-ghost" data-copy="lesson" data-scope="المرحلة: Databases - قواعد البيانات&#10;الدرس: Python MongoDB I: Collections &amp; Documents - MongoDB (1): Collections وDocuments&#10;عناصر الدرس بالترتيب:&#10;- Get Started&#10;- Create Database&#10;- Collections&#10;- Insert Documents&#10;- Find Documents" aria-label="نسخ Prompt لدرس Python MongoDB I: Collections &amp; Documents"><svg class="btn-icon" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2.5"/><path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15"/></svg><span class="btn-label">نسخ Prompt</span></button>
+          </li>
+          <li class="topic-row">
+            <span class="topic-number" aria-hidden="true">60</span>
+            <div class="topic-content">
+              <h3 class="topic-title">
+                <span class="topic-title-en" dir="ltr">Python MongoDB II: Query, Update &amp; Delete</span><span class="sep" aria-hidden="true"> - </span><span class="topic-title-ar">MongoDB (2): الاستعلام والتعديل والحذف</span>
+              </h3>
+              <p class="topic-terms" dir="ltr">Query, Sort, Limit, Update, Delete, Drop Collection.</p>
+            </div>
+            <button type="button" class="btn btn-ghost" data-copy="lesson" data-scope="المرحلة: Databases - قواعد البيانات&#10;الدرس: Python MongoDB II: Query, Update &amp; Delete - MongoDB (2): الاستعلام والتعديل والحذف&#10;عناصر الدرس بالترتيب:&#10;- Query&#10;- Sort&#10;- Limit&#10;- Update&#10;- Delete&#10;- Drop Collection" aria-label="نسخ Prompt لدرس Python MongoDB II: Query, Update &amp; Delete"><svg class="btn-icon" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2.5"/><path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15"/></svg><span class="btn-label">نسخ Prompt</span></button>
+          </li>
+        </ol>
+      </section>
+      <section class="stage-card" id="stage-13" aria-labelledby="stage-13-title">
+        <header class="stage-header">
+          <div class="stage-number">المرحلة 13</div>
+          <div class="stage-heading">
+            <h2 id="stage-13-title">
+              <span class="stage-title-en" dir="ltr">Django</span><span class="sep" aria-hidden="true"> - </span><span class="stage-title-ar">تطوير الويب باستخدام Django</span>
+            </h2>
+            <span class="stage-topic-count">3 دروس</span>
+          </div>
+        </header>
+        <ol class="topics-list">
+          <li class="topic-row">
+            <span class="topic-number" aria-hidden="true">61</span>
+            <div class="topic-content">
+              <h3 class="topic-title">
+                <span class="topic-title-en" dir="ltr">Django I: Project &amp; Views</span><span class="sep" aria-hidden="true"> - </span><span class="topic-title-ar">Django (1): المشروع والـ Views</span>
+              </h3>
+              <p class="topic-terms" dir="ltr">Install Django, Create Projects, Create Apps, Views, URLs.</p>
+            </div>
+            <button type="button" class="btn btn-ghost" data-copy="lesson" data-scope="المرحلة: Django - تطوير الويب باستخدام Django&#10;الدرس: Django I: Project &amp; Views - Django (1): المشروع والـ Views&#10;عناصر الدرس بالترتيب:&#10;- Install Django&#10;- Create Projects&#10;- Create Apps&#10;- Views&#10;- URLs" aria-label="نسخ Prompt لدرس Django I: Project &amp; Views"><svg class="btn-icon" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2.5"/><path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15"/></svg><span class="btn-label">نسخ Prompt</span></button>
+          </li>
+          <li class="topic-row">
+            <span class="topic-number" aria-hidden="true">62</span>
+            <div class="topic-content">
+              <h3 class="topic-title">
+                <span class="topic-title-en" dir="ltr">Django II: Templates, Models &amp; Migrations</span><span class="sep" aria-hidden="true"> - </span><span class="topic-title-ar">Django (2): Templates وModels وMigrations</span>
+              </h3>
+              <p class="topic-terms" dir="ltr">Templates, Models, Migrations.</p>
+            </div>
+            <button type="button" class="btn btn-ghost" data-copy="lesson" data-scope="المرحلة: Django - تطوير الويب باستخدام Django&#10;الدرس: Django II: Templates, Models &amp; Migrations - Django (2): Templates وModels وMigrations&#10;عناصر الدرس بالترتيب:&#10;- Templates&#10;- Models&#10;- Migrations" aria-label="نسخ Prompt لدرس Django II: Templates, Models &amp; Migrations"><svg class="btn-icon" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2.5"/><path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15"/></svg><span class="btn-label">نسخ Prompt</span></button>
+          </li>
+          <li class="topic-row">
+            <span class="topic-number" aria-hidden="true">63</span>
+            <div class="topic-content">
+              <h3 class="topic-title">
+                <span class="topic-title-en" dir="ltr">Django III: QuerySets &amp; Admin</span><span class="sep" aria-hidden="true"> - </span><span class="topic-title-ar">Django (3): QuerySets ولوحة Admin</span>
+              </h3>
+              <p class="topic-terms" dir="ltr">QuerySets, Admin Interface.</p>
+            </div>
+            <button type="button" class="btn btn-ghost" data-copy="lesson" data-scope="المرحلة: Django - تطوير الويب باستخدام Django&#10;الدرس: Django III: QuerySets &amp; Admin - Django (3): QuerySets ولوحة Admin&#10;عناصر الدرس بالترتيب:&#10;- QuerySets&#10;- Admin Interface" aria-label="نسخ Prompt لدرس Django III: QuerySets &amp; Admin"><svg class="btn-icon" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2.5"/><path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15"/></svg><span class="btn-label">نسخ Prompt</span></button>
+          </li>
+        </ol>
+      </section>
+    </div>
+
+    <footer class="footer">
+      <span class="footer-note">Python Learning Roadmap</span>
+      <span class="footer-note">13 مرحلة · 63 درسًا</span>
+    </footer>
+  </main>
+
+  <script type="text/plain" id="prompt-template">
+# الدور
+أنت مدرّس Python ومهندس برمجيات Senior، تشرح بوضوح وعمق وبأسلوب عملي. أنا مهندس برمجيات، وأتعلّم Python الآن. أريد أن أفهم "لماذا" تعمل اللغة بهذه الطريقة، لا أن أحفظ "كيف" أكتب الأوامر فقط.
+
+# نطاق هذا الدرس
+[اكتب هنا اسم الدرس أو المرحلة]
+
+# أسلوب الشرح
+1. اللغة: الشرح بالعربية الواضحة، وكل المصطلحات التقنية بالإنجليزية دون ترجمة (مثل: mutable, reference, list comprehension, decorator). الكود وأسماء المتغيرات والدوال بالإنجليزية.
+2. ابدأ بـ "لماذا": ما المشكلة التي يحلّها كل مفهوم؟ ثم "كيف" يعمل، ثم متى أستخدمه ومتى أتجنّبه.
+3. لكل عنصر في النطاق مثال كود صغير قابل للتشغيل كما هو، يتبعه الناتج المتوقع (output) وشرح مختصر لما حدث.
+4. لا تشرح مفاهيم البرمجة العامة التي أعرفها (مثل: ما هو المتغير أو الحلقة). ركّز على ما يخص Python تحديدًا.
+5. اشرح ما يحدث داخليًا (objects, references, memory, CPython) فقط عندما يضيف فهمًا حقيقيًا، دون استطراد.
+6. نبّه إلى الأخطاء الشائعة (pitfalls) والـ anti-patterns والـ trade-offs.
+7. استخدم ASCII diagram عندما يكون المفهوم بنيويًا أو تدفقيًا (مثل: memory model, call stack, class hierarchy).
+8. الكود بأسلوب production-ready: أسماء واضحة، PEP 8، type hints عند الفائدة، وبدون overengineering.
+9. اعتمد Python 3.10 أو أحدث، وتتبّع كل كود بدقة قبل كتابة ناتجه؛ لا تخمّن الـ output.
+10. وزّع المساحة بحسب أهمية العناصر: العناصر العميقة تأخذ شرحًا أوسع من البسيطة.
+11. التزم بنطاق الدرس، وإن احتجت مفهومًا من درس لاحق فاذكره في سطر واحد دون شرحه.
+
+# بنية الإجابة
+## الجزء الأول (في رسالتك الأولى)
+1. الشرح: مقدمة قصيرة عن "لماذا" هذا الموضوع، ثم شرح عناصر النطاق بالترتيب.
+2. الملخص: من 7 إلى 10 نقاط مركّزة تلخّص الدرس، وتتضمن القواعد والأخطاء التي يجب أن أتذكرها.
+اختم الجزء الأول بسطر واحد فقط: "اكتب: الجزء الثاني — للأسئلة والمسألة العملية".
+
+## الجزء الثاني (بعد أن أكتب "الجزء الثاني")
+3. أسئلة مقابلات العمل: من 6 إلى 8 أسئلة متدرجة (أساسي، ثم متوسط، ثم سؤال فخّ). لكل سؤال إجابة نموذجية بالصيغة التي أجيب بها في مقابلة حقيقية (من 3 إلى 6 جمل، مع مثال كود قصير عند الحاجة)، وسؤال متابعة (follow-up) محتمل إن وُجد.
+4. مسألة عملية: مشكلة واقعية تتطلب تطبيق الدرس (وليست تمرين حفظ)، ثم الحل بهذا الترتيب: فهم المشكلة، ثم خطة الحل، ثم الكود الكامل القابل للتشغيل، ثم شرح القرارات، ثم اختبار سريع للحل، ثم تحسين أو بديل ممكن.
+
+أستخدم النسخة المجانية من claude.ai، وقد تنقطع المحادثة بحدود الاستخدام؛ فاعمل بالطريقة المذكورة في آخر هذا النص حتى أكتب «Continue» فتكمل دون فقد شيء
+
+# قواعد التسليم
+- أستخدم النسخة المجانية من Claude وحدود استخدامها ضيقة: لا تُطل بلا داعٍ، ولا تكرر المقدمات أو تعيد صياغة طلبي، لكن لا تحذف محتوى مهمًا لمجرد الاختصار.
+- إن اقترب الرد من الحد الأقصى للطول، فتوقف عند نهاية نقطة مكتملة، واختم بـ "اكتب: كمل"، ثم تابع من حيث توقفت.
+- ابدأ بالشرح مباشرة دون مقدمات مثل "حسنًا، سأبدأ الآن".
+- بعد انتهاء الجزء الثاني، اذكر في سطر واحد اسم الدرس المنطقي التالي دون شرحه.
+  </script>
+
+  <script>
+    (function () {
+      "use strict";
+      var PLACEHOLDER = "[اكتب هنا اسم الدرس أو المرحلة]";
+      var live = document.getElementById("copy-status");
+      var template = document.getElementById("prompt-template").textContent.trim();
+
+      function fallbackCopy(text) {
+        var ta = document.createElement("textarea");
+        ta.value = text;
+        ta.setAttribute("readonly", "");
+        ta.style.cssText = "position:fixed;top:-1000px;opacity:0;";
+        document.body.appendChild(ta);
+        ta.select();
+        ta.setSelectionRange(0, ta.value.length);
+        var ok = false;
+        try { ok = document.execCommand("copy"); } catch (err) { ok = false; }
+        document.body.removeChild(ta);
+        return ok;
+      }
+
+      function copyText(text) {
+        if (navigator.clipboard && window.isSecureContext) {
+          return navigator.clipboard.writeText(text).then(
+            function () { return true; },
+            function () { return fallbackCopy(text); }
+          );
+        }
+        return Promise.resolve(fallbackCopy(text));
+      }
+
+      function flash(btn, ok) {
+        var label = btn.querySelector(".btn-label");
+        if (!btn.dataset.label) { btn.dataset.label = label.textContent; }
+        label.textContent = ok ? "تم النسخ" : "تعذّر النسخ";
+        btn.classList.toggle("is-copied", ok);
+        btn.classList.toggle("is-failed", !ok);
+        live.textContent = ok ? "تم نسخ الـ Prompt" : "تعذّر النسخ، حدّد النص يدويًا ثم انسخه";
+        clearTimeout(btn._timer);
+        btn._timer = setTimeout(function () {
+          label.textContent = btn.dataset.label;
+          btn.classList.remove("is-copied", "is-failed");
+        }, 1800);
+      }
+
+      document.addEventListener("click", function (e) {
+        var btn = e.target.closest("[data-copy]");
+        if (!btn) { return; }
+        var scope = btn.getAttribute("data-scope");
+        var text = scope ? template.replace(PLACEHOLDER, function () { return scope; }) : template;
+        copyText(text).then(function (ok) { flash(btn, ok); });
+      });
+    })();
+  </script>
+</body>
+</html>
