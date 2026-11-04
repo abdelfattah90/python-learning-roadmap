@@ -1,0 +1,657 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#fcfcfc" />
+    <title>المجموعات | Python Sets | Python Learning Roadmap</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/style.css" />
+  </head>
+  <body>
+    <svg
+      width="0"
+      height="0"
+      style="position: absolute"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <symbol id="i-copy" viewBox="0 0 24 24">
+        <rect x="9" y="9" width="12" height="12" rx="2.5" />
+        <path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15" />
+      </symbol>
+    </svg>
+    <template id="code-block-pattern">
+      <figure class="code-block">
+        <figcaption class="code-head">
+          <span class="code-meta">
+            <span class="code-lang" lang="en">Python</span>
+            <span class="code-file" lang="en">example.py</span>
+          </span>
+          <button
+            type="button"
+            class="btn btn-ghost btn-sm"
+            data-copy-code
+            aria-label="نسخ الكود"
+          >
+            <svg
+              class="btn-icon"
+              viewBox="0 0 24 24"
+              width="14"
+              height="14"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <use href="#i-copy"></use>
+            </svg>
+            <span class="btn-label">نسخ</span>
+          </button>
+        </figcaption>
+        <pre class="code" dir="ltr"><code><!-- ضع الكود هنا كنص HTML مع تهريب الرموز الخاصة --></code></pre>
+        <!-- احذف كتلة output إذا لم يكن للمثال ناتج ثابت ومفيد. -->
+        <div class="output" role="group" aria-label="مخرجات البرنامج">
+          <div class="output-label" lang="en">Output</div>
+          <pre dir="ltr"><code><!-- ضع المخرجات المتحققة هنا --></code></pre>
+        </div>
+      </figure>
+    </template>
+
+    <div
+      class="sr-only"
+      id="copy-status"
+      role="status"
+      aria-live="polite"
+    ></div>
+
+    <main class="page">
+      <header class="hero lesson-hero">
+        <span class="eyebrow">
+          <span class="eyebrow-dot"></span>
+          المرحلة <span dir="ltr">04</span>:
+          <span dir="ltr" lang="en">Built-in Data Structures</span>
+        </span>
+        <h1>
+          <span class="h1-ar">المجموعات</span>
+          <span class="h1-en" dir="ltr" lang="en">Python Sets</span>
+        </h1>
+        <p class="hero-description">كيف نخزّن عناصر فريدة بلا تكرار، ونتحقق من الانتماء بسرعة، ونقارن بين مجموعات البيانات باستخدام set وfrozenset.</p>
+      </header>
+
+      <div class="lesson-parts">
+        <section class="lesson-part-card" id="complete-lesson" aria-labelledby="complete-lesson-title">
+          <header class="part-header">
+            <div class="part-number">درس متكامل</div>
+            <div class="part-heading">
+              <h2 id="complete-lesson-title">
+                <span class="part-title-en" dir="ltr" lang="en">Complete Lesson</span>
+                <span class="sep" aria-hidden="true"> - </span>
+                <span class="part-title-ar">الشرح والملخص والتطبيق</span>
+              </h2>
+              <span class="part-description">كل محتوى الدرس في ملف HTML واحد</span>
+            </div>
+          </header>
+
+          <div class="lesson-body">
+            <section class="lesson-section" id="explain">
+              <h3 class="section-title"><b>01</b>الشرح</h3>
+
+              <article class="concept">
+                <h4><span dir="ltr" lang="en">Create Sets</span> و<span dir="ltr" lang="en">Access Set Items</span>: الإنشاء والوصول</h4>
+                <p>الـ <code dir="ltr">set</code> مجموعة غير مرتبة من عناصر <strong>فريدة</strong>. نحتاجها لإزالة التكرار، وللتحقق السريع من وجود عنصر عبر <code dir="ltr">in</code>، وللمقارنة بين مجموعات البيانات. ننشئها بالأقواس <code dir="ltr">{}</code> أو بالدالة <code dir="ltr">set()</code> على أي iterable، وأي تكرار يُحذف تلقائيًا.</p>
+                <p>لا يوجد <code dir="ltr">index</code> في الـ set، لذلك الوصول إلى العناصر يعني: اختبار الانتماء بـ <code dir="ltr">in</code>، أو المرور عليها بحلقة <code dir="ltr">for</code>، أو استخراج عنصر بـ <code dir="ltr">pop()</code> كما سنرى.</p>
+                <figure class="code-block">
+                  <figcaption class="code-head">
+                    <span class="code-meta">
+                      <span class="code-lang" lang="en">Python</span>
+                      <span class="code-file" lang="en">create_sets.py</span>
+                    </span>
+                    <button
+                      type="button"
+                      class="btn btn-ghost btn-sm"
+                      data-copy-code
+                      aria-label="نسخ الكود"
+                    >
+                      <svg
+                        class="btn-icon"
+                        viewBox="0 0 24 24"
+                        width="14"
+                        height="14"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                      >
+                        <use href="#i-copy"></use>
+                      </svg>
+                      <span class="btn-label">نسخ</span>
+                    </button>
+                  </figcaption>
+                  <pre class="code" dir="ltr"><code>skills = {"python", "kotlin", "python", "dart"}
+print(len(skills))               # duplicates removed
+
+letters = set("banana")          # set() accepts any iterable
+print(sorted(letters))
+
+empty_wrong = {}                 # this is NOT a set
+empty_set = set()
+print(type(empty_wrong).__name__, type(empty_set).__name__)
+
+# skills[0]                      # TypeError: 'set' object is not subscriptable
+# {["a"], 1}                     # TypeError: unhashable type: 'list'
+print("dart" in skills)</code></pre>
+                  <div class="output" role="group" aria-label="مخرجات البرنامج">
+                    <div class="output-label" lang="en">Output</div>
+                    <pre dir="ltr"><code>3
+['a', 'b', 'n']
+dict set
+True</code></pre>
+                  </div>
+                </figure>
+                <p><strong>قيدان مهمان:</strong> <code dir="ltr">{}</code> وحدها تنشئ <code dir="ltr">dict</code> (نوع سنتعلمه لاحقًا) وليس set، فالمجموعة الفارغة تُنشأ بـ <code dir="ltr">set()</code> فقط. وعناصر الـ set يجب أن تكون <code dir="ltr">hashable</code>، أي عمليًا immutable؛ فلا يصح وضع <code dir="ltr">list</code> داخل set، لكن يصح <code dir="ltr">tuple</code>.</p>
+              </article>
+
+              <article class="concept">
+                <h4><span dir="ltr" lang="en">Add Set Items</span> و<span dir="ltr" lang="en">Remove Set Items</span>: الإضافة والحذف</h4>
+                <p>الـ set قابلة للتعديل. <code dir="ltr">add()</code> تضيف عنصرًا واحدًا (وإن كان موجودًا لا يحدث شيء)، و<code dir="ltr">update()</code> تضيف عناصر من iterable واحد أو أكثر. في الحذف: <code dir="ltr">remove()</code> ترفع <code dir="ltr">KeyError</code> إن غاب العنصر، و<code dir="ltr">discard()</code> تتجاهل الغياب بصمت، و<code dir="ltr">pop()</code> تحذف عنصرًا <strong>اعتباطيًا</strong> وتعيده، و<code dir="ltr">clear()</code> تفرغ المجموعة، و<code dir="ltr">del name</code> تحذف المتغير نفسه.</p>
+                <figure class="code-block">
+                  <figcaption class="code-head">
+                    <span class="code-meta">
+                      <span class="code-lang" lang="en">Python</span>
+                      <span class="code-file" lang="en">add_remove.py</span>
+                    </span>
+                    <button
+                      type="button"
+                      class="btn btn-ghost btn-sm"
+                      data-copy-code
+                      aria-label="نسخ الكود"
+                    >
+                      <svg
+                        class="btn-icon"
+                        viewBox="0 0 24 24"
+                        width="14"
+                        height="14"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                      >
+                        <use href="#i-copy"></use>
+                      </svg>
+                      <span class="btn-label">نسخ</span>
+                    </button>
+                  </figcaption>
+                  <pre class="code" dir="ltr"><code>installed = {"git", "python"}
+installed.add("docker")
+installed.update(["adb", "gradle"], ("flutter",))
+installed.remove("git")
+installed.discard("java")        # no error if missing
+# installed.remove("java")       # KeyError
+print(sorted(installed))
+
+item = installed.pop()           # arbitrary element
+print(len(installed))
+installed.clear()
+print(installed)</code></pre>
+                  <div class="output" role="group" aria-label="مخرجات البرنامج">
+                    <div class="output-label" lang="en">Output</div>
+                    <pre dir="ltr"><code>['adb', 'docker', 'flutter', 'gradle', 'python']
+4
+set()</code></pre>
+                  </div>
+                </figure>
+                <p><strong>متى نستخدم ماذا؟</strong> اختر <code dir="ltr">remove()</code> عندما يكون غياب العنصر خطأ منطقيًا تريد اكتشافه، و<code dir="ltr">discard()</code> عندما لا يهمك. وتذكّر أن <code dir="ltr">pop()</code> على set فارغة ترفع <code dir="ltr">KeyError</code>، ولا يجوز افتراض أي عنصر بعينه سيُحذف.</p>
+              </article>
+
+              <article class="concept">
+                <h4><span dir="ltr" lang="en">Loop Sets</span> و<span dir="ltr" lang="en">Join Sets</span>: التكرار والدمج</h4>
+                <p>نمرّ على الـ set بحلقة <code dir="ltr">for</code> كالمعتاد، لكن الترتيب غير مضمون؛ فإن احتجت ترتيبًا ثابتًا استخدم <code dir="ltr">sorted()</code> (تعيد <code dir="ltr">list</code>). أما الدمج والمقارنة فتتم بعمليات المجموعات: <code dir="ltr">union()</code> أو <code dir="ltr">|</code> للاتحاد، <code dir="ltr">intersection()</code> أو <code dir="ltr">&amp;</code> للتقاطع، <code dir="ltr">difference()</code> أو <code dir="ltr">-</code> للفرق، <code dir="ltr">symmetric_difference()</code> أو <code dir="ltr">^</code> للعناصر الموجودة في إحدى المجموعتين فقط.</p>
+                <figure class="code-block">
+                  <figcaption class="code-head">
+                    <span class="code-meta">
+                      <span class="code-lang" lang="en">Python</span>
+                      <span class="code-file" lang="en">loop_join.py</span>
+                    </span>
+                    <button
+                      type="button"
+                      class="btn btn-ghost btn-sm"
+                      data-copy-code
+                      aria-label="نسخ الكود"
+                    >
+                      <svg
+                        class="btn-icon"
+                        viewBox="0 0 24 24"
+                        width="14"
+                        height="14"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                      >
+                        <use href="#i-copy"></use>
+                      </svg>
+                      <span class="btn-label">نسخ</span>
+                    </button>
+                  </figcaption>
+                  <pre class="code" dir="ltr"><code>backend = {"python", "sql", "docker"}
+mobile = {"kotlin", "dart", "sql"}
+
+for skill in sorted(backend):
+    print(skill)
+
+print(sorted(backend | mobile))
+print(sorted(backend &amp; mobile))
+print(sorted(backend - mobile))
+print(sorted(backend ^ mobile))
+
+team = backend.union(mobile, {"git"})
+backend.update(mobile)           # modifies backend in place
+print(len(team), len(backend))</code></pre>
+                  <div class="output" role="group" aria-label="مخرجات البرنامج">
+                    <div class="output-label" lang="en">Output</div>
+                    <pre dir="ltr"><code>docker
+python
+sql
+['dart', 'docker', 'kotlin', 'python', 'sql']
+['sql']
+['docker', 'python']
+['dart', 'docker', 'kotlin', 'python']
+6 5</code></pre>
+                  </div>
+                </figure>
+                <p><strong>الفرق بين الشكلين:</strong> الـ operators تتطلب set على الجانبين، بينما الـ methods تقبل أي iterable مثل <code dir="ltr">list</code>. و<code dir="ltr">union()</code> وأخواتها تُنتج set جديدة ولا تعدّل الأصلية، أما <code dir="ltr">update()</code> فتعدّلها في مكانها.</p>
+              </article>
+
+              <article class="concept">
+                <h4><span dir="ltr" lang="en">Frozenset</span>: المجموعة الثابتة</h4>
+                <p>الـ <code dir="ltr">frozenset</code> نسخة immutable من set: لا تحتوي <code dir="ltr">add()</code> ولا <code dir="ltr">remove()</code>، لكنها <code dir="ltr">hashable</code>. وهذا يعني أنها تصلح <strong>عنصرًا داخل set أخرى</strong>، وتصلح لتثبيت قيم لا يجب أن تتغير مثل مجموعة صلاحيات ثابتة. العمليات عليها (<code dir="ltr">|</code> و<code dir="ltr">&amp;</code> وغيرهما) تعيد كائنًا جديدًا من نوع المعامل الأيسر.</p>
+                <figure class="code-block">
+                  <figcaption class="code-head">
+                    <span class="code-meta">
+                      <span class="code-lang" lang="en">Python</span>
+                      <span class="code-file" lang="en">frozen.py</span>
+                    </span>
+                    <button
+                      type="button"
+                      class="btn btn-ghost btn-sm"
+                      data-copy-code
+                      aria-label="نسخ الكود"
+                    >
+                      <svg
+                        class="btn-icon"
+                        viewBox="0 0 24 24"
+                        width="14"
+                        height="14"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                      >
+                        <use href="#i-copy"></use>
+                      </svg>
+                      <span class="btn-label">نسخ</span>
+                    </button>
+                  </figcaption>
+                  <pre class="code" dir="ltr"><code>readonly = frozenset(["read", "list"])
+print("read" in readonly)
+print(sorted(readonly | {"write"}))
+print(type(readonly | {"write"}).__name__)
+
+# readonly.add("write")   # AttributeError: no attribute 'add'
+
+groups = {frozenset({"read"}), frozenset({"read", "write"})}
+print(len(groups))
+print(frozenset({"read"}) in groups)</code></pre>
+                  <div class="output" role="group" aria-label="مخرجات البرنامج">
+                    <div class="output-label" lang="en">Output</div>
+                    <pre dir="ltr"><code>True
+['list', 'read', 'write']
+frozenset
+2
+True</code></pre>
+                  </div>
+                </figure>
+              </article>
+
+              <article class="concept">
+                <h4><span dir="ltr" lang="en">Set Methods</span>: أهم الدوال</h4>
+                <p>إلى جانب ما سبق، هناك دوال للاختبار: <code dir="ltr">issubset()</code> (مثل <code dir="ltr">&lt;=</code>)، و<code dir="ltr">issuperset()</code> (مثل <code dir="ltr">&gt;=</code>)، و<code dir="ltr">isdisjoint()</code> للتأكد من عدم وجود عناصر مشتركة. و<code dir="ltr">copy()</code> تنشئ نسخة مستقلة قبل التعديل. وهناك نسخ "في المكان" من العمليات: <code dir="ltr">difference_update()</code> و<code dir="ltr">intersection_update()</code> و<code dir="ltr">symmetric_difference_update()</code> تعدّل الـ set نفسها بدل إنشاء جديدة.</p>
+                <figure class="code-block">
+                  <figcaption class="code-head">
+                    <span class="code-meta">
+                      <span class="code-lang" lang="en">Python</span>
+                      <span class="code-file" lang="en">set_methods.py</span>
+                    </span>
+                    <button
+                      type="button"
+                      class="btn btn-ghost btn-sm"
+                      data-copy-code
+                      aria-label="نسخ الكود"
+                    >
+                      <svg
+                        class="btn-icon"
+                        viewBox="0 0 24 24"
+                        width="14"
+                        height="14"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                      >
+                        <use href="#i-copy"></use>
+                      </svg>
+                      <span class="btn-label">نسخ</span>
+                    </button>
+                  </figcaption>
+                  <pre class="code" dir="ltr"><code>required = {"python", "git"}
+installed = {"python", "git", "docker"}
+
+print(required.issubset(installed))
+print(installed.issuperset(required))
+print(required.isdisjoint({"java"}))
+
+backup = installed.copy()
+installed.difference_update({"docker"})
+installed.intersection_update({"python", "docker"})
+print(sorted(installed), len(backup))
+installed.symmetric_difference_update({"python", "kotlin"})
+print(sorted(installed))</code></pre>
+                  <div class="output" role="group" aria-label="مخرجات البرنامج">
+                    <div class="output-label" lang="en">Output</div>
+                    <pre dir="ltr"><code>True
+True
+True
+['python'] 3
+['kotlin']</code></pre>
+                  </div>
+                </figure>
+              </article>
+            </section>
+
+            <section class="lesson-section" id="summary">
+              <h3 class="section-title"><b>02</b>الملخص</h3>
+              <ul class="summary-list">
+                <li>الـ <code dir="ltr">set</code> مجموعة غير مرتبة من عناصر فريدة؛ تُنشأ بـ <code dir="ltr">{}</code> أو <code dir="ltr">set(iterable)</code>، والمجموعة الفارغة تُنشأ بـ <code dir="ltr">set()</code> فقط.</li>
+                <li>لا يوجد <code dir="ltr">index</code>؛ نصل إلى العناصر بـ <code dir="ltr">in</code> أو بحلقة <code dir="ltr">for</code>، ولا نعتمد على ترتيب المرور (نستخدم <code dir="ltr">sorted()</code> عند الحاجة).</li>
+                <li>العناصر يجب أن تكون <code dir="ltr">hashable</code>: يصح <code dir="ltr">tuple</code> و<code dir="ltr">str</code> والأرقام، ولا يصح <code dir="ltr">list</code>.</li>
+                <li>الإضافة بـ <code dir="ltr">add()</code> و<code dir="ltr">update()</code>؛ والحذف بـ <code dir="ltr">remove()</code> (خطأ إن غاب) و<code dir="ltr">discard()</code> (بصمت) و<code dir="ltr">pop()</code> (عنصر اعتباطي) و<code dir="ltr">clear()</code>.</li>
+                <li>الدمج والمقارنة: <code dir="ltr">|</code> و<code dir="ltr">&amp;</code> و<code dir="ltr">-</code> و<code dir="ltr">^</code> أو ما يقابلها من methods التي تقبل أي iterable، وصيغ <code dir="ltr">*_update</code> تعدّل في المكان.</li>
+                <li>الـ <code dir="ltr">frozenset</code> نسخة immutable وhashable تصلح عنصرًا داخل set؛ ودوال الاختبار: <code dir="ltr">issubset()</code> و<code dir="ltr">issuperset()</code> و<code dir="ltr">isdisjoint()</code>.</li>
+              </ul>
+            </section>
+
+            <section class="lesson-section" id="interview-questions">
+              <h3 class="section-title"><b>03</b>أسئلة المقابلات</h3>
+              <div class="qa-list">
+                <details class="qa" open>
+                  <summary>
+                    <span class="qa-q">ما الفرق الأساسي بين <code dir="ltr">list</code> و<code dir="ltr">set</code>؟ ومتى نفضّل الثانية؟</span>
+                    <span class="level level-basic">أساسي</span>
+                  </summary>
+                  <div class="qa-body">
+                    <p>الـ <code dir="ltr">list</code> مرتبة وتسمح بالتكرار وبالوصول بالـ <code dir="ltr">index</code>، أما الـ <code dir="ltr">set</code> فلا تضمن ترتيبًا ولا تقبل التكرار ولا تدعم الـ index. نفضّل set عندما نحتاج إزالة التكرار، أو اختبار انتماء سريعًا بـ <code dir="ltr">in</code> (يعتمد على hash بدل الفحص عنصرًا عنصرًا)، أو عمليات الاتحاد والتقاطع والفرق.</p>
+                  </div>
+                </details>
+
+                <details class="qa">
+                  <summary>
+                    <span class="qa-q">كيف تنشئ set فارغة؟ ولماذا لا تصلح <code dir="ltr">{}</code>؟</span>
+                    <span class="level level-basic">أساسي</span>
+                  </summary>
+                  <div class="qa-body">
+                    <p>نستخدم <code dir="ltr">set()</code>. أما <code dir="ltr">{}</code> فتُنشئ <code dir="ltr">dict</code> فارغًا لأن هذه الصيغة محجوزة له تاريخيًا. الأقواس تُنتج set فقط إذا احتوت عناصر مثل <code dir="ltr">{1, 2}</code>.</p>
+                  </div>
+                </details>
+
+                <details class="qa">
+                  <summary>
+                    <span class="qa-q">ما الفرق بين <code dir="ltr">remove()</code> و<code dir="ltr">discard()</code> و<code dir="ltr">pop()</code>؟</span>
+                    <span class="level level-mid">متوسط</span>
+                  </summary>
+                  <div class="qa-body">
+                    <p><code dir="ltr">remove(x)</code> تحذف العنصر وترفع <code dir="ltr">KeyError</code> إن لم يوجد، فنستخدمها حين يكون غيابه خطأ. <code dir="ltr">discard(x)</code> تحذفه إن وجد وتتجاهل الغياب. أما <code dir="ltr">pop()</code> فلا تأخذ وسيطًا: تحذف عنصرًا اعتباطيًا وتعيده، وترفع <code dir="ltr">KeyError</code> إن كانت المجموعة فارغة.</p>
+                  </div>
+                </details>
+
+                <details class="qa">
+                  <summary>
+                    <span class="qa-q">لماذا لا يمكن وضع <code dir="ltr">list</code> داخل set؟ وما البدائل؟</span>
+                    <span class="level level-mid">متوسط</span>
+                  </summary>
+                  <div class="qa-body">
+                    <p>لأن عناصر الـ set يجب أن تكون <code dir="ltr">hashable</code> بقيمة hash ثابتة، والـ <code dir="ltr">list</code> قابلة للتعديل فلا تحقق ذلك (<code dir="ltr">TypeError: unhashable type</code>). البديل لتخزين تسلسل هو <code dir="ltr">tuple</code>، ولتخزين مجموعة داخل مجموعة هو <code dir="ltr">frozenset</code>.</p>
+                  </div>
+                </details>
+
+                <details class="qa">
+                  <summary>
+                    <span class="qa-q">ماذا تعيد <code dir="ltr">len({1, True, 1.0})</code>؟ ولماذا؟</span>
+                    <span class="level level-trap">فخ</span>
+                  </summary>
+                  <div class="qa-body">
+                    <p>تعيد <code dir="ltr">1</code>. القيم <code dir="ltr">1</code> و<code dir="ltr">True</code> و<code dir="ltr">1.0</code> متساوية (<code dir="ltr">==</code>) ولها نفس الـ hash، فتعدّها الـ set عنصرًا واحدًا، ويبقى أول عنصر أُدخل.</p>
+                    <p class="qa-follow">متابعة: ماذا يطبع <code dir="ltr">print({True, 1})</code>؟ يطبع <code dir="ltr">{True}</code> لأن <code dir="ltr">True</code> أُدخل أولًا.</p>
+                  </div>
+                </details>
+              </div>
+            </section>
+
+            <section class="lesson-section" id="practical">
+              <h3 class="section-title"><b>04</b>المسألة العملية</h3>
+              <div class="callout callout-problem">
+                <p>أقمت ورشتين تدريبيتين، ولديك قائمتا حضور (<code dir="ltr">list</code>) تحتويان أسماء مكررة بسبب التسجيل أكثر من مرة، وقائمة المسجلين الرسمية. المطلوب: عدد الحضور الفريدين، ومن حضر الورشتين، ومن حضر ورشة واحدة فقط، ومن سُجّل ولم يحضر، ومن حضر دون تسجيل، وهل حضر جميع المسجلين.</p>
+              </div>
+              <ol class="solution">
+                <li class="sol-step">
+                  <h4>فهم المطلوب</h4>
+                  <p>المدخلات: قائمتان بهما تكرار وقائمة مسجلين ثابتة. المخرجات ستة أرقام أو قوائم مرتبة. كل المطلوب أسئلة عن التفرد والانتماء والمقارنة، وهذه وظيفة الـ set.</p>
+                </li>
+                <li class="sol-step">
+                  <h4>خطة الحل</h4>
+                  <p>نحوّل كل قائمة حضور إلى set لإزالة التكرار، ثم نطبّق: الاتحاد للحضور الكلي، التقاطع لمن حضر الورشتين، <code dir="ltr">^</code> لمن حضر واحدة فقط، والفرق بين المسجلين والحضور في الاتجاهين، ثم <code dir="ltr">issubset()</code> للتأكد من الحضور الكامل.</p>
+                </li>
+                <li class="sol-step">
+                  <h4>الكود الكامل</h4>
+                  <figure class="code-block">
+                    <figcaption class="code-head">
+                      <span class="code-meta">
+                        <span class="code-lang" lang="en">Python</span>
+                        <span class="code-file" lang="en">workshop_attendance.py</span>
+                      </span>
+                      <button
+                        type="button"
+                        class="btn btn-ghost btn-sm"
+                        data-copy-code
+                        aria-label="نسخ الكود"
+                      >
+                        <svg
+                          class="btn-icon"
+                          viewBox="0 0 24 24"
+                          width="14"
+                          height="14"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          aria-hidden="true"
+                        >
+                          <use href="#i-copy"></use>
+                        </svg>
+                        <span class="btn-label">نسخ</span>
+                      </button>
+                    </figcaption>
+                    <pre class="code" dir="ltr"><code>workshop_a = ["Sara", "Omar", "Laila", "Omar", "Hany"]
+workshop_b = ["Laila", "Hany", "Mona", "Mona", "Yara", "Zaid"]
+registered = frozenset({"Sara", "Omar", "Laila", "Hany", "Mona", "Yara", "Adam"})
+
+attendees_a = set(workshop_a)
+attendees_b = set(workshop_b)
+
+attended = attendees_a | attendees_b
+both = attendees_a &amp; attendees_b
+only_one = attendees_a ^ attendees_b
+absent = registered - attended
+unregistered = attended - registered
+
+print("Unique attendees:", len(attended))
+print("Both workshops:", sorted(both))
+print("Only one workshop:", sorted(only_one))
+print("Absent:", sorted(absent))
+print("Not registered:", sorted(unregistered))
+print("Full attendance:", registered.issubset(attended))</code></pre>
+                    <div class="output" role="group" aria-label="مخرجات البرنامج">
+                      <div class="output-label" lang="en">Output</div>
+                      <pre dir="ltr"><code>Unique attendees: 7
+Both workshops: ['Hany', 'Laila']
+Only one workshop: ['Mona', 'Omar', 'Sara', 'Yara', 'Zaid']
+Absent: ['Adam']
+Not registered: ['Zaid']
+Full attendance: False</code></pre>
+                    </div>
+                  </figure>
+                </li>
+                <li class="sol-step">
+                  <h4>تفسير القرارات</h4>
+                  <p>حوّلنا القوائم إلى set لأن التفرد هو جوهر المسألة. جعلنا <code dir="ltr">registered</code> من نوع <code dir="ltr">frozenset</code> لأنها قائمة رسمية لا يجب تعديلها بالخطأ. واستخدمنا <code dir="ltr">sorted()</code> في الطباعة لأن ترتيب الـ set غير مضمون.</p>
+                </li>
+                <li class="sol-step">
+                  <h4>اختبار سريع</h4>
+                  <p>أضف <code dir="ltr">"Adam"</code> إلى <code dir="ltr">attendees_a</code> قبل الحساب: ستصبح قائمة الغائبين فارغة، وتصبح نتيجة <code dir="ltr">issubset()</code> هي <code dir="ltr">True</code>. جرّبنا هذا السيناريو فعلًا وأعطى النتيجة المتوقعة.</p>
+                </li>
+                <li class="sol-step">
+                  <h4>تحسين أو بديل</h4>
+                  <p>يمكن دمج أكثر من ورشة مباشرة بـ <code dir="ltr">set().union(workshop_a, workshop_b)</code> لأن <code dir="ltr">union()</code> تقبل أي iterable دون تحويل مسبق. لكن إبقاء <code dir="ltr">attendees_a</code> و<code dir="ltr">attendees_b</code> منفصلتين ضروري هنا لأننا نحتاج التقاطع والفرق المتماثل.</p>
+                </li>
+              </ol>
+            </section>
+          </div>
+        </section>
+      </div>
+
+      <footer class="footer">
+        <span class="footer-note" lang="en">Python Learning Roadmap</span>
+        <span class="footer-note">المرحلة 04 - الدرس 17</span>
+      </footer>
+    </main>
+
+    <script>
+      (function () {
+        'use strict'
+
+        var live = document.getElementById('copy-status')
+        var printStates = null
+
+        function fallbackCopy(text) {
+          var textarea = document.createElement('textarea')
+          textarea.value = text
+          textarea.setAttribute('readonly', '')
+          textarea.style.cssText = 'position:fixed;top:-1000px;left:-1000px;opacity:0;'
+
+          try {
+            document.body.appendChild(textarea)
+            textarea.focus()
+            textarea.select()
+            textarea.setSelectionRange(0, textarea.value.length)
+            return document.execCommand('copy')
+          } catch (error) {
+            return false
+          } finally {
+            if (textarea.parentNode) {
+              textarea.parentNode.removeChild(textarea)
+            }
+          }
+        }
+
+        function copyText(text) {
+          if (navigator.clipboard && window.isSecureContext) {
+            return navigator.clipboard.writeText(text).then(
+              function () { return true },
+              function () { return fallbackCopy(text) },
+            ).catch(function () { return false })
+          }
+
+          return Promise.resolve().then(function () {
+            return fallbackCopy(text)
+          }).catch(function () {
+            return false
+          })
+        }
+
+        document.addEventListener('click', function (event) {
+          var target = event.target
+          var button = target && typeof target.closest === 'function'
+            ? target.closest('[data-copy-code]')
+            : null
+
+          if (!button) return
+
+          var label = button.querySelector('.btn-label')
+          var block = button.closest('.code-block')
+          var code = block ? block.querySelector('pre.code > code') : null
+          if (!label || !code) return
+
+          if (!button.dataset.label) button.dataset.label = label.textContent
+
+          copyText(code.textContent).then(function (ok) {
+            label.textContent = ok ? 'تم النسخ' : 'تعذّر النسخ'
+            button.classList.toggle('is-copied', ok)
+            button.classList.toggle('is-failed', !ok)
+
+            if (live) {
+              live.textContent = ok
+                ? 'تم نسخ الكود'
+                : 'تعذّر النسخ، حدّد الكود يدويًا ثم انسخه'
+            }
+
+            window.clearTimeout(button._timer)
+            button._timer = window.setTimeout(function () {
+              label.textContent = button.dataset.label
+              button.classList.remove('is-copied', 'is-failed')
+            }, 1800)
+          })
+        })
+
+        window.addEventListener('beforeprint', function () {
+          if (printStates !== null) return
+
+          var questions = document.querySelectorAll('details.qa')
+          printStates = Array.prototype.map.call(questions, function (item) {
+            return item.open
+          })
+          questions.forEach(function (item) {
+            item.open = true
+          })
+        })
+
+        window.addEventListener('afterprint', function () {
+          if (printStates === null) return
+
+          var questions = document.querySelectorAll('details.qa')
+          questions.forEach(function (item, index) {
+            item.open = printStates[index] === true
+          })
+          printStates = null
+        })
+      })()
+    </script>
+  </body>
+</html>

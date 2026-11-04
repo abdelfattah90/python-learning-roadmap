@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#fcfcfc" />
+    <title>SciPy (1): الثوابت والبيانات المتناثرة والمكانية | Python Learning Roadmap</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/style.css" />
+  </head>
+  <body>
+    <svg
+      width="0"
+      height="0"
+      style="position: absolute"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <symbol id="i-copy" viewBox="0 0 24 24">
+        <rect x="9" y="9" width="12" height="12" rx="2.5" />
+        <path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15" />
+      </symbol>
+    </svg>
+    <template id="code-block-pattern">
+      <figure class="code-block">
+        <figcaption class="code-head">
+          <span class="code-meta">
+            <span class="code-lang" lang="en">Python</span>
+            <span class="code-file" lang="en">example.py</span>
+          </span>
+          <button
+            type="button"
+            class="btn btn-ghost btn-sm"
+            data-copy-code
+            aria-label="نسخ الكود"
+          >
+            <svg
+              class="btn-icon"
+              viewBox="0 0 24 24"
+              width="14"
+              height="14"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <use href="#i-copy"></use>
+            </svg>
+            <span class="btn-label">نسخ</span>
+          </button>
+        </figcaption>
+        <pre class="code" dir="ltr"><code><!-- ضع الكود هنا كنص HTML مع تهريب الرموز الخاصة --></code></pre>
+        <!-- احذف كتلة output إذا لم يكن للمثال ناتج ثابت ومفيد. -->
+        <div class="output" role="group" aria-label="مخرجات البرنامج">
+          <div class="output-label" lang="en">Output</div>
+          <pre dir="ltr"><code><!-- ضع المخرجات المتحققة هنا --></code></pre>
+        </div>
+      </figure>
+    </template>
+
+    <div
+      class="sr-only"
+      id="copy-status"
+      role="status"
+      aria-live="polite"
+    ></div>
+
+    <main class="page">
+      <header class="hero lesson-hero">
+        <span class="eyebrow">
+          <span class="eyebrow-dot"></span>
+          المرحلة <span dir="ltr">10</span>:
+          <span dir="ltr" lang="en">Data Libraries</span>
+        </span>
+        <h1>
+          <span class="h1-ar">SciPy (1): الثوابت والبيانات المتناثرة والمكانية</span>
+          <span class="h1-en" dir="ltr" lang="en">SciPy I: Constants, Sparse &amp; Spatial Data</span>
+        </h1>
+        <p class="hero-description">كيف تستخدم SciPy للثوابت الجاهزة، وتخزّن البيانات الضخمة قليلة القيم، وتحلّل الشبكات، وتجد الجيران والمسافات في البيانات المكانية؟ (مكتبات معالجة البيانات)</p>
+      </header>
+
+      <div class="lesson-parts">
+        <section class="lesson-part-card" id="complete-lesson" aria-labelledby="complete-lesson-title">
+          <header class="part-header">
+            <div class="part-number">درس متكامل</div>
+            <div class="part-heading">
+              <h2 id="complete-lesson-title">
+                <span class="part-title-en" dir="ltr" lang="en">Complete Lesson</span>
+                <span class="sep" aria-hidden="true"> - </span>
+                <span class="part-title-ar">الشرح والملخص والتطبيق</span>
+              </h2>
+              <span class="part-description">كل محتوى الدرس في ملف HTML واحد</span>
+            </div>
+          </header>
+
+          <div class="lesson-body">
+            <section class="lesson-section" id="explain">
+              <h3 class="section-title"><b>01</b>الشرح</h3>
+              <article class="concept"><h4>1) <span dir="ltr" lang="en">Constants</span>: ثوابت وتحويلات جاهزة</h4><p>بدل أن تكتب <code>299792458</code> أو <code>3600</code> يدويًا وتخطئ في رقم، توفّر <code>scipy.constants</code> قيمًا مرجعية بأسماء مقروءة: ثوابت رياضية وفيزيائية (<code>pi</code>, <code>golden</code>, <code>c</code>)، وبادئات SI (<code>kilo</code>, <code>mega</code>)، ووحدات تحويل (<code>minute</code>, <code>hour</code>, <code>inch</code>, <code>mile</code>, <code>kmh</code>).</p><p>القاعدة: كل وحدة تساوي قيمتها بوحدة SI الأساسية؛ الزمن بالثواني، والطول بالأمتار، والسرعة بالمتر/ثانية. لذلك <code>120 * constants.kmh</code> يحوّل 120 km/h إلى m/s. استخدم <code>dir(constants)</code> لاستكشاف الأسماء. والخطأ الشائع: افتراض أن <code>constants.mile</code> بالكيلومترات، بينما هي بالأمتار.</p><figure class="code-block"><figcaption class="code-head"><span class="code-meta"><span class="code-lang" lang="en">Python</span><span class="code-file" lang="en">constants_demo.py</span></span><button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود"><svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-copy"></use></svg><span class="btn-label">نسخ</span></button></figcaption><pre class="code" dir="ltr"><code>from scipy import constants
+
+print(constants.pi, constants.golden)
+print(constants.c)                      # speed of light, m/s
+print(constants.kilo, constants.mega)   # SI prefixes
+print(constants.minute, constants.hour) # seconds
+print(constants.inch, constants.mile)   # meters
+print(120 * constants.kmh)              # 120 km/h in m/s</code></pre><div class="output" role="group" aria-label="مخرجات البرنامج"><div class="output-label" lang="en">Output</div><pre dir="ltr"><code>3.141592653589793 1.618033988749895
+299792458.0
+1000.0 1000000.0
+60.0 3600.0
+0.0254 1609.3439999999998
+33.333333333333336</code></pre></div></figure></article><article class="concept"><h4>2) <span dir="ltr" lang="en">Sparse Data</span>: تخزين القيم غير الصفرية فقط</h4><p>حين تكون معظم خلايا المصفوفة أصفارًا (تقييمات مستخدمين، روابط، ترميز one-hot)، يصبح تخزينها كلها هدرًا للذاكرة والزمن. <code>scipy.sparse</code> يحفظ القيم غير الصفرية ومواضعها فقط. أهم صيغتين: <code>csr_matrix</code> (ضغط حسب الصفوف) سريعة في قراءة الصفوف والضرب، و<code>csc_matrix</code> (ضغط حسب الأعمدة) سريعة في الأعمدة.</p><p>داخل CSR: <code>data</code> القيم، و<code>indices</code> أرقام الأعمدة، و<code>indptr</code> حدود كل صف. <code>nnz</code> عدد القيم المخزنة، و<code>count_nonzero()</code> يعدّ غير الصفرية فعلًا، و<code>eliminate_zeros()</code> يحذف الأصفار المخزنة صراحةً، و<code>sum_duplicates()</code> يجمع الإدخالات المكررة، و<code>toarray()</code> يعيد مصفوفة NumPy كثيفة. القيد: <code>toarray()</code> على مصفوفة ضخمة قد يستهلك ذاكرة هائلة، وتعديل بنية CSR عنصرًا عنصرًا بطيء، فابنِها دفعة واحدة من <code>(data, (rows, cols))</code>.</p><figure class="code-block"><figcaption class="code-head"><span class="code-meta"><span class="code-lang" lang="en">Python</span><span class="code-file" lang="en">sparse_demo.py</span></span><button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود"><svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-copy"></use></svg><span class="btn-label">نسخ</span></button></figcaption><pre class="code" dir="ltr"><code>import numpy as np
+from scipy.sparse import csr_matrix, csc_matrix
+
+dense = np.array([[0, 0, 3], [4, 0, 0], [0, 0, 0], [0, 5, 0]])
+ratings = csr_matrix(dense)
+print(ratings.data, ratings.indices, ratings.indptr)
+print(csc_matrix(dense).indptr)
+
+ratings.data[0] = 0                      # explicit stored zero
+print(ratings.nnz, ratings.count_nonzero())
+ratings.eliminate_zeros()
+print(ratings.nnz)</code></pre><div class="output" role="group" aria-label="مخرجات البرنامج"><div class="output-label" lang="en">Output</div><pre dir="ltr"><code>[3 4 5] [2 0 1] [0 1 2 2 3]
+[0 1 2 3]
+3 2
+2</code></pre></div></figure></article><article class="concept"><h4>3) <span dir="ltr" lang="en">Graphs</span>: الشبكات كمصفوفة تجاور</h4><p>الـ graph هو nodes وedges بينها أوزان. تمثّله <code>scipy.sparse.csgraph</code> بمصفوفة تجاور (adjacency matrix): الخلية <code>[i, j]</code> هي وزن الحافة من i إلى j، وتكون عادةً sparse لأن معظم الشبكات قليلة الروابط.</p><p>أهم الدوال: <code>connected_components</code> (كم مجموعة منفصلة؟)، و<code>dijkstra</code> (أقصر مسار من مصدر، أوزان غير سالبة)، و<code>bellman_ford</code> (يقبل أوزانًا سالبة)، و<code>floyd_warshall</code> (كل الأزواج)، و<code>breadth_first_order</code> و<code>depth_first_order</code> (ترتيب الزيارة). <code>return_predecessors=True</code> يتيح استرجاع المسار، و<code>inf</code> تعني لا يوجد مسار، و<code>-9999</code> في predecessors تعني لا سابق. و<code>directed=False</code> يعامل كل حافة كطريق باتجاهين.</p><figure class="code-block"><figcaption class="code-head"><span class="code-meta"><span class="code-lang" lang="en">Python</span><span class="code-file" lang="en">graph_demo.py</span></span><button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود"><svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-copy"></use></svg><span class="btn-label">نسخ</span></button></figcaption><pre class="code" dir="ltr"><code>from scipy.sparse import csr_matrix
+from scipy.sparse.csgraph import connected_components, dijkstra
+
+# edges: 0-&gt;1 (4), 0-&gt;2 (1), 2-&gt;1 (2), 1-&gt;3 (5); node 4 is isolated
+graph = csr_matrix(([4, 1, 2, 5], ([0, 0, 2, 1], [1, 2, 1, 3])), shape=(5, 5))
+n_parts, labels = connected_components(graph, directed=False)
+print(n_parts, labels.tolist())
+dist, pred = dijkstra(graph, indices=0, return_predecessors=True)
+print(dist)
+print(pred)</code></pre><div class="output" role="group" aria-label="مخرجات البرنامج"><div class="output-label" lang="en">Output</div><pre dir="ltr"><code>2 [0, 0, 0, 0, 1]
+[ 0.  3.  1.  8. inf]
+[-9999     2     0     1 -9999]</code></pre></div></figure></article><article class="concept"><h4>4) <span dir="ltr" lang="en">Spatial Data</span>: الهندسة والمسافات والجيران</h4><p><code>scipy.spatial</code> يتعامل مع نقاط في الفضاء. <code>Delaunay</code> يقسّم النقاط إلى مثلثات (Triangulation) لا تحتوي دائرتها المحيطة أي نقطة أخرى، وتجد المثلثات في <code>simplices</code>. <code>ConvexHull</code> يحسب أصغر غلاف محدب يحيط بالنقاط، ورؤوسه في <code>vertices</code>.</p><p><code>KDTree</code> يبني فهرسًا للبحث عن أقرب جار؛ <code>query</code> يعيد (المسافة، الفهرس) دون مقارنة كل النقاط، ويفيد عند كثرة الاستعلامات. وفي <code>scipy.spatial.distance</code> مقاييس جاهزة: <code>euclidean</code>، و<code>cityblock</code> (Manhattan)، و<code>cosine</code> (تعيد مسافة لا تشابهًا)، و<code>hamming</code> (نسبة المواضع المختلفة). اختر المقياس حسب طبيعة البيانات: اتجاه المتجهات يختلف عن المسافة الفيزيائية.</p><figure class="code-block"><figcaption class="code-head"><span class="code-meta"><span class="code-lang" lang="en">Python</span><span class="code-file" lang="en">spatial_demo.py</span></span><button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود"><svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-copy"></use></svg><span class="btn-label">نسخ</span></button></figcaption><pre class="code" dir="ltr"><code>import numpy as np
+from scipy.spatial import Delaunay, ConvexHull, KDTree
+from scipy.spatial.distance import euclidean, cityblock, cosine, hamming
+
+points = np.array([[0, 0], [4, 0], [4, 3], [0, 3], [2, 1]])
+print(len(Delaunay(points).simplices))
+print(sorted(ConvexHull(points).vertices.tolist()))
+dist, idx = KDTree(points).query([1, 1])
+print(dist, idx)
+print(euclidean([0, 0], [4, 3]), cityblock([0, 0], [4, 3]))
+print(cosine([1, 0], [0, 1]), hamming([1, 0, 1], [1, 1, 1]))</code></pre><div class="output" role="group" aria-label="مخرجات البرنامج"><div class="output-label" lang="en">Output</div><pre dir="ltr"><code>4
+[0, 1, 2, 3]
+1.0 4
+5.0 7
+1.0 0.3333333333333333</code></pre></div></figure></article>
+            </section>
+
+            <section class="lesson-section" id="summary">
+              <h3 class="section-title"><b>02</b>الملخص</h3>
+              <ul class="summary-list">
+                <li><code>scipy.constants</code> يعطي ثوابت ووحدات مرجعية، وكلها بوحدات SI الأساسية (ثوانٍ، أمتار، m/s).</li><li>المصفوفات المتناثرة تخزّن غير الصفري فقط؛ <code>csr_matrix</code> للصفوف و<code>csc_matrix</code> للأعمدة.</li><li><code>nnz</code> يعدّ القيم المخزنة، و<code>count_nonzero()</code> يعدّ غير الصفرية فعلًا، و<code>toarray()</code> قد يستهلك ذاكرة كبيرة.</li><li><code>csgraph</code> يعامل المصفوفة كرسم بياني؛ <code>dijkstra</code> للأوزان غير السالبة، و<code>bellman_ford</code> للسالبة، و<code>floyd_warshall</code> لكل الأزواج.</li><li><code>connected_components</code> يكشف المجموعات المنفصلة، و<code>inf</code> في المسافات تعني عدم وجود مسار.</li><li><code>scipy.spatial</code> يوفر <code>Delaunay</code> و<code>ConvexHull</code> و<code>KDTree</code> ومقاييس المسافة لحل مسائل الموقع والجوار.</li>
+              </ul>
+            </section>
+
+            <section class="lesson-section" id="interview-questions">
+              <h3 class="section-title"><b>03</b>أسئلة المقابلات</h3>
+              <div class="qa-list">
+                <details class="qa" open><summary><span class="qa-q">لماذا نستخدم sparse matrix بدل NumPy array عندما تكون معظم القيم أصفارًا؟</span><span class="level level-basic">أساسي</span></summary><div class="qa-body"><p>لأن الصيغ المتناثرة تخزّن القيم غير الصفرية ومواضعها فقط، فتقل الذاكرة ويقل الحساب على أصفار بلا قيمة. هذا مناسب لمصفوفات التقييمات والروابط الكبيرة. الثمن أنها غير مفيدة للمصفوفات الكثيفة، وأن <code>toarray()</code> قد يفجّر الذاكرة.</p></div></details><details class="qa"><summary><span class="qa-q">لماذا نفضّل <code>scipy.constants</code> على كتابة الأرقام يدويًا؟</span><span class="level level-basic">أساسي</span></summary><div class="qa-body"><p>لأنها تعطي قيمًا مرجعية دقيقة بأسماء مقروءة، فتقل أخطاء النسخ ويصير الكود موثّقًا ذاتيًا. وكل الوحدات بقيم SI الأساسية، فمثلًا <code>constants.hour</code> تساوي 3600 ثانية، ويسهل تجنب الخلط بين الوحدات.</p></div></details><details class="qa"><summary><span class="qa-q">ما الفرق بين CSR وCSC ومتى نختار كل واحدة؟</span><span class="level level-mid">متوسط</span></summary><div class="qa-body"><p>CSR تضغط حسب الصفوف فتناسب قص الصفوف وضرب المصفوفة في متجه، وCSC تضغط حسب الأعمدة فتناسب قص الأعمدة. اختر حسب نمط الوصول الغالب، وحوّل بين الصيغتين بـ <code>tocsr()</code> و<code>tocsc()</code>.</p><p class="qa-follow">متابعة: <code>nnz</code> يعدّ القيم المخزنة وقد تتضمن أصفارًا صريحة، أما <code>count_nonzero()</code> فيعدّ غير الصفرية فعلًا.</p></div></details><details class="qa"><summary><span class="qa-q">كيف تختار بين <code>dijkstra</code> و<code>bellman_ford</code> و<code>floyd_warshall</code>؟</span><span class="level level-mid">متوسط</span></summary><div class="qa-body"><p><code>dijkstra</code> الأفضل لأقصر مسار من مصدر واحد عندما تكون الأوزان غير سالبة. <code>bellman_ford</code> يقبل الأوزان السالبة لكنه أبطأ. <code>floyd_warshall</code> يحسب المسافات بين كل الأزواج، وكلفته مرتفعة على الشبكات الكبيرة.</p></div></details><details class="qa"><summary><span class="qa-q">في <code>ConvexHull</code> ثنائي الأبعاد، ماذا تعيد <code>hull.volume</code> و<code>hull.area</code>؟</span><span class="level level-trap">فخ</span></summary><div class="qa-body"><p>الاسمان مضللان: في 2D تعيد <code>volume</code> المساحة، وتعيد <code>area</code> المحيط. وفي 3D تعيد <code>volume</code> الحجم و<code>area</code> مساحة السطح. لمستطيل 4×3 تكون <code>volume</code> = 12 و<code>area</code> = 14.</p></div></details>
+              </div>
+            </section>
+
+            <section class="lesson-section" id="practical">
+              <h3 class="section-title"><b>04</b>المسألة العملية</h3>
+              <div class="callout callout-problem"><p>شركة توصيل لديها مستودع (النقطة 0) و4 نقاط أخرى بإحداثيات بالكيلومتر. الطرق الموجودة هي: 0-1، 1-2، 2-3، 0-2، والنقطة 4 بعيدة بلا طرق. المطلوب: بناء graph بأطوال الطرق بالأمتار، وعدد المناطق المنفصلة، وأقصر مسافة من المستودع إلى كل نقطة، وأقرب نقطة إلى عميل في الموقع (5, 5).</p></div>
+              <ol class="solution">
+                <li class="sol-step"><h4>فهم المطلوب</h4><p>أربع مخرجات: graph موزون، وعدد المناطق المتصلة، ومسافات من النقطة 0، وأقرب نقطة لإحداثية عميل. الأوزان تُحسب من الإحداثيات ثم تُحوَّل إلى أمتار.</p></li><li class="sol-step"><h4>خطة الحل</h4><p>نحسب طول كل طريق بـ <code>euclidean</code> ونضربه في <code>constants.kilo</code>، ثم نبني <code>csr_matrix</code>، ثم نستدعي <code>connected_components</code> و<code>dijkstra</code>، ونستخدم <code>KDTree</code> لأقرب نقطة.</p></li><li class="sol-step"><h4>الكود الكامل</h4><figure class="code-block"><figcaption class="code-head"><span class="code-meta"><span class="code-lang" lang="en">Python</span><span class="code-file" lang="en">delivery_network.py</span></span><button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود"><svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-copy"></use></svg><span class="btn-label">نسخ</span></button></figcaption><pre class="code" dir="ltr"><code>import numpy as np
+from scipy import constants
+from scipy.sparse import csr_matrix
+from scipy.sparse.csgraph import connected_components, dijkstra
+from scipy.spatial import KDTree
+from scipy.spatial.distance import euclidean
+
+stops = np.array([[0, 0], [3, 4], [6, 4], [6, 8], [20, 20]])  # km
+roads = [(0, 1), (1, 2), (2, 3), (0, 2)]
+
+rows, cols = zip(*roads)
+meters = [euclidean(stops[a], stops[b]) * constants.kilo for a, b in roads]
+graph = csr_matrix((meters, (rows, cols)), shape=(len(stops), len(stops)))
+
+zones, labels = connected_components(graph, directed=False)
+dist = dijkstra(graph, directed=False, indices=0)
+_, nearest = KDTree(stops).query([5, 5])
+
+print(zones, labels.tolist())
+print(dist.round(1))
+print(nearest)</code></pre><div class="output" role="group" aria-label="مخرجات البرنامج"><div class="output-label" lang="en">Output</div><pre dir="ltr"><code>2 [0, 0, 0, 0, 1]
+[    0.   5000.   7211.1 11211.1     inf]
+2</code></pre></div></figure></li><li class="sol-step"><h4>تفسير القرارات</h4><p>استخدمنا sparse لأن عدد الطرق قليل مقارنة بكل الأزواج الممكنة. و<code>directed=False</code> لأن الطريق يُسلك بالاتجاهين رغم أن المصفوفة تخزّنه مرة واحدة. والنقطة 4 تظهر في مجموعة مستقلة وبمسافة <code>inf</code> لأنه لا يوجد طريق إليها. أقرب نقطة هي رقم 2 لأنها الأقرب إلى (5, 5).</p></li><li class="sol-step"><h4>اختبار سريع</h4><p>تحقق أن <code>dist[3]</code> يساوي <code>dist[2] + 4000</code> تقريبًا (طول الطريق 2-3 هو 4 كم)، وأن <code>dist[4]</code> يساوي <code>inf</code>، وأن <code>zones</code> يساوي 2.</p></li><li class="sol-step"><h4>تحسين أو بديل</h4><p>مع طرق كثيرة، أنشئ قائمة <code>roads</code> من ملف بدل كتابتها يدويًا. استخدم <code>return_predecessors=True</code> لاسترجاع المسار نفسه، و<code>floyd_warshall</code> إن احتجت المسافات بين كل الأزواج.</p></li>
+              </ol>
+            </section>
+          </div>
+        </section>
+      </div>
+
+      <footer class="footer">
+        <span class="footer-note" lang="en">Python Learning Roadmap</span>
+        <span class="footer-note">المرحلة 10 - الدرس 48</span>
+      </footer>
+    </main>
+
+    <script>
+      (function () {
+        'use strict'
+
+        var live = document.getElementById('copy-status')
+        var printStates = null
+
+        function fallbackCopy(text) {
+          var textarea = document.createElement('textarea')
+          textarea.value = text
+          textarea.setAttribute('readonly', '')
+          textarea.style.cssText = 'position:fixed;top:-1000px;left:-1000px;opacity:0;'
+
+          try {
+            document.body.appendChild(textarea)
+            textarea.focus()
+            textarea.select()
+            textarea.setSelectionRange(0, textarea.value.length)
+            return document.execCommand('copy')
+          } catch (error) {
+            return false
+          } finally {
+            if (textarea.parentNode) {
+              textarea.parentNode.removeChild(textarea)
+            }
+          }
+        }
+
+        function copyText(text) {
+          if (navigator.clipboard && window.isSecureContext) {
+            return navigator.clipboard.writeText(text).then(
+              function () { return true },
+              function () { return fallbackCopy(text) },
+            ).catch(function () { return false })
+          }
+
+          return Promise.resolve().then(function () {
+            return fallbackCopy(text)
+          }).catch(function () {
+            return false
+          })
+        }
+
+        document.addEventListener('click', function (event) {
+          var target = event.target
+          var button = target && typeof target.closest === 'function'
+            ? target.closest('[data-copy-code]')
+            : null
+
+          if (!button) return
+
+          var label = button.querySelector('.btn-label')
+          var block = button.closest('.code-block')
+          var code = block ? block.querySelector('pre.code > code') : null
+          if (!label || !code) return
+
+          if (!button.dataset.label) button.dataset.label = label.textContent
+
+          copyText(code.textContent).then(function (ok) {
+            label.textContent = ok ? 'تم النسخ' : 'تعذّر النسخ'
+            button.classList.toggle('is-copied', ok)
+            button.classList.toggle('is-failed', !ok)
+
+            if (live) {
+              live.textContent = ok
+                ? 'تم نسخ الكود'
+                : 'تعذّر النسخ، حدّد الكود يدويًا ثم انسخه'
+            }
+
+            window.clearTimeout(button._timer)
+            button._timer = window.setTimeout(function () {
+              label.textContent = button.dataset.label
+              button.classList.remove('is-copied', 'is-failed')
+            }, 1800)
+          })
+        })
+
+        window.addEventListener('beforeprint', function () {
+          if (printStates !== null) return
+
+          var questions = document.querySelectorAll('details.qa')
+          printStates = Array.prototype.map.call(questions, function (item) {
+            return item.open
+          })
+          questions.forEach(function (item) {
+            item.open = true
+          })
+        })
+
+        window.addEventListener('afterprint', function () {
+          if (printStates === null) return
+
+          var questions = document.querySelectorAll('details.qa')
+          questions.forEach(function (item, index) {
+            item.open = printStates[index] === true
+          })
+          printStates = null
+        })
+      })()
+    </script>
+  </body>
+</html>

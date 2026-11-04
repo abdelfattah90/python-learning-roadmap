@@ -1,0 +1,511 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#fcfcfc" />
+    <title>المجموعات الثابتة Tuples | Python Learning Roadmap</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/style.css" />
+  </head>
+  <body>
+    <svg
+      width="0"
+      height="0"
+      style="position: absolute"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <symbol id="i-copy" viewBox="0 0 24 24">
+        <rect x="9" y="9" width="12" height="12" rx="2.5" />
+        <path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15" />
+      </symbol>
+    </svg>
+    <template id="code-block-pattern">
+      <figure class="code-block">
+        <figcaption class="code-head">
+          <span class="code-meta">
+            <span class="code-lang" lang="en">Python</span>
+            <span class="code-file" lang="en">example.py</span>
+          </span>
+          <button
+            type="button"
+            class="btn btn-ghost btn-sm"
+            data-copy-code
+            aria-label="نسخ الكود"
+          >
+            <svg
+              class="btn-icon"
+              viewBox="0 0 24 24"
+              width="14"
+              height="14"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <use href="#i-copy"></use>
+            </svg>
+            <span class="btn-label">نسخ</span>
+          </button>
+        </figcaption>
+        <pre class="code" dir="ltr"><code><!-- ضع الكود هنا كنص HTML مع تهريب الرموز الخاصة --></code></pre>
+        <!-- احذف كتلة output إذا لم يكن للمثال ناتج ثابت ومفيد. -->
+        <div class="output" role="group" aria-label="مخرجات البرنامج">
+          <div class="output-label" lang="en">Output</div>
+          <pre dir="ltr"><code><!-- ضع المخرجات المتحققة هنا --></code></pre>
+        </div>
+      </figure>
+    </template>
+
+    <div
+      class="sr-only"
+      id="copy-status"
+      role="status"
+      aria-live="polite"
+    ></div>
+
+    <main class="page">
+      <header class="hero lesson-hero">
+        <span class="eyebrow">
+          <span class="eyebrow-dot"></span>
+          المرحلة <span dir="ltr">04</span>:
+          <span dir="ltr" lang="en">Built-in Data Structures</span>
+        </span>
+        <h1>
+          <span class="h1-ar">المجموعات الثابتة Tuples</span>
+          <span class="h1-en" dir="ltr" lang="en">Python Tuples</span>
+        </h1>
+        <p class="hero-description">كيف نحفظ بيانات مترابطة لا يجب أن تتغير، مثل إحداثيات أو سجل صغير أو إعدادات، وكيف ننشئها ونقرأها ونفككها ونتعامل معها عمليًا.</p>
+      </header>
+
+      <div class="lesson-parts">
+        <section class="lesson-part-card" id="complete-lesson" aria-labelledby="complete-lesson-title">
+          <header class="part-header">
+            <div class="part-number">درس متكامل</div>
+            <div class="part-heading">
+              <h2 id="complete-lesson-title">
+                <span class="part-title-en" dir="ltr" lang="en">Complete Lesson</span>
+                <span class="sep" aria-hidden="true"> - </span>
+                <span class="part-title-ar">الشرح والملخص والتطبيق</span>
+              </h2>
+              <span class="part-description">كل محتوى الدرس في ملف HTML واحد</span>
+            </div>
+          </header>
+
+          <div class="lesson-body">
+            <section class="lesson-section" id="explain">
+              <h3 class="section-title"><b>01</b>الشرح</h3>
+
+              <article class="concept">
+                <h4>إنشاء الـ tuple والوصول لعناصره</h4>
+                <p>الـ <code dir="ltr">tuple</code> مجموعة مرتبة <strong>لا تتغير بعد إنشائها</strong>. نحتاجها للبيانات التي تمثل شيئًا واحدًا بقيم ثابتة، مثل إحداثيات أو سجل خادم أو صف بيانات، لأن الثبات يمنع التعديل بالخطأ ويوضح نية الكود.</p>
+                <p><strong dir="ltr">Create Tuples:</strong> الفاصلة هي التي تصنع الـ tuple، وليست الأقواس. نكتب القيم بين أقواس مفصولة بفاصلات، وللعنصر الواحد نضيف فاصلة في النهاية <code dir="ltr">("ready",)</code>. الأقواس الفارغة <code dir="ltr">()</code> تنشئ tuple فارغًا، و<code dir="ltr">tuple(iterable)</code> تحوّل أي مجموعة قابلة للتكرار مثل list إلى tuple.</p>
+                <p><strong dir="ltr">Access Tuples:</strong> الوصول بالـ index والـ slicing يعمل كما في list، بما في ذلك الـ index السالب. الـ slice يرجع tuple جديدًا، والـ index خارج النطاق يرفع <code dir="ltr">IndexError</code>.</p>
+                <p>أهم خطأ: <code dir="ltr">("ready")</code> ليست tuple بل <code dir="ltr">str</code>، لأن الأقواس هنا للتجميع فقط.</p>
+                <figure class="code-block">
+                  <figcaption class="code-head">
+                    <span class="code-meta">
+                      <span class="code-lang" lang="en">Python</span>
+                      <span class="code-file" lang="en">create_access.py</span>
+                    </span>
+                    <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+                      <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <use href="#i-copy"></use>
+                      </svg>
+                      <span class="btn-label">نسخ</span>
+                    </button>
+                  </figcaption>
+                  <pre class="code" dir="ltr"><code>server = ("api-01", "10.0.0.5", 8080)
+single = ("ready",)
+not_a_tuple = ("ready")
+empty = ()
+from_list = tuple(["red", "green", "blue"])
+
+print(type(server), type(single), type(not_a_tuple))
+print(server[0], server[-1], server[1:])
+print(len(server), from_list[:2], empty)</code></pre>
+                  <div class="output" role="group" aria-label="مخرجات البرنامج">
+                    <div class="output-label" lang="en">Output</div>
+                    <pre dir="ltr"><code>&lt;class 'tuple'&gt; &lt;class 'tuple'&gt; &lt;class 'str'&gt;
+api-01 8080 ('10.0.0.5', 8080)
+3 ('red', 'green') ()</code></pre>
+                  </div>
+                </figure>
+              </article>
+
+              <article class="concept">
+                <h4>الثبات وكيف نتعامل معه</h4>
+                <p><strong dir="ltr">Update Tuples:</strong> لا يمكن تغيير عنصر ولا إضافته ولا حذفه، فمحاولة <code dir="ltr">config[1] = 9090</code> ترفع <code dir="ltr">TypeError</code>، وليس للـ tuple methods مثل <code dir="ltr">append()</code> أو <code dir="ltr">remove()</code>. عندما نحتاج "تعديلًا" فعليًا نحوّل إلى list، نعدّل، ثم نرجع إلى tuple، وهذا ينشئ tuple جديدًا ولا يغيّر الأصلي. والأمر <code dir="ltr">del config</code> يحذف الاسم كله وليس عنصرًا منه.</p>
+                <p>الثبات هنا <strong>سطحي</strong>: الـ tuple تثبّت الكائنات الموجودة في مواضعها، لكن إذا كان أحدها <code dir="ltr">list</code> فما زال هذا الـ list قابلًا للتعديل من الداخل.</p>
+                <figure class="code-block">
+                  <figcaption class="code-head">
+                    <span class="code-meta">
+                      <span class="code-lang" lang="en">Python</span>
+                      <span class="code-file" lang="en">update.py</span>
+                    </span>
+                    <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+                      <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <use href="#i-copy"></use>
+                      </svg>
+                      <span class="btn-label">نسخ</span>
+                    </button>
+                  </figcaption>
+                  <pre class="code" dir="ltr"><code>config = ("dev", 8080, True)
+# config[1] = 9090  # TypeError
+
+items = list(config)
+items[1] = 9090
+config = tuple(items)
+print(config)
+
+record = ("order-17", ["paid"])
+record[1].append("shipped")
+print(record)</code></pre>
+                  <div class="output" role="group" aria-label="مخرجات البرنامج">
+                    <div class="output-label" lang="en">Output</div>
+                    <pre dir="ltr"><code>('dev', 9090, True)
+('order-17', ['paid', 'shipped'])</code></pre>
+                  </div>
+                </figure>
+              </article>
+
+              <article class="concept">
+                <h4>التفكيك والتكرار</h4>
+                <p><strong dir="ltr">Unpack Tuples:</strong> نوزّع عناصر الـ tuple على متغيرات بالترتيب: <code dir="ltr">city, lat, lon = point</code>. يجب أن يتطابق عدد المتغيرات مع عدد العناصر وإلا يظهر <code dir="ltr">ValueError</code>. وعلامة <code dir="ltr">*</code> تجمع "الباقي" في متغير واحد يكون دائمًا <code dir="ltr">list</code> وليس tuple. ويفيد التفكيك أيضًا في تبديل القيم: <code dir="ltr">a, b = b, a</code>.</p>
+                <p><strong dir="ltr">Loop Tuples:</strong> نستخدم <code dir="ltr">for item in t</code> للقراءة المباشرة، و<code dir="ltr">range(len(t))</code> عندما نحتاج الـ index، و<code dir="ltr">while</code> مع عداد يدوي عند الحاجة إلى تحكم أدق. وإذا كانت العناصر نفسها tuples فيمكن تفكيكها داخل رأس الحلقة.</p>
+                <figure class="code-block">
+                  <figcaption class="code-head">
+                    <span class="code-meta">
+                      <span class="code-lang" lang="en">Python</span>
+                      <span class="code-file" lang="en">unpack_loop.py</span>
+                    </span>
+                    <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+                      <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <use href="#i-copy"></use>
+                      </svg>
+                      <span class="btn-label">نسخ</span>
+                    </button>
+                  </figcaption>
+                  <pre class="code" dir="ltr"><code>point = ("Cairo", 30.04, 31.24)
+city, lat, lon = point
+
+first, *middle, last = (10, 20, 30, 40, 50)
+print(city, lat, lon)
+print(first, middle, last)
+
+results = (("Sara", 90), ("Omar", 75))
+for name, score in results:
+    print(f"{name}: {score}")
+
+for i in range(len(results)):
+    print(i, results[i][0])</code></pre>
+                  <div class="output" role="group" aria-label="مخرجات البرنامج">
+                    <div class="output-label" lang="en">Output</div>
+                    <pre dir="ltr"><code>Cairo 30.04 31.24
+10 [20, 30, 40] 50
+Sara: 90
+Omar: 75
+0 Sara
+1 Omar</code></pre>
+                  </div>
+                </figure>
+              </article>
+
+              <article class="concept">
+                <h4>الدمج والـ methods</h4>
+                <p><strong dir="ltr">Join Tuples:</strong> الأداة <code dir="ltr">+</code> تدمج tuples في tuple جديد، و<code dir="ltr">*</code> تكرر محتوى الـ tuple. كلاهما لا يغيّر الأصل. القيد المهم أن طرفي <code dir="ltr">+</code> يجب أن يكونا tuples، لذلك نكتب <code dir="ltr">t + ("x",)</code> بالفاصلة وليس <code dir="ltr">t + ("x")</code>.</p>
+                <p><strong dir="ltr">Tuple Methods:</strong> لأن الـ tuple ثابتة، ليس لها إلا methodان: <code dir="ltr">count(x)</code> تعدّ مرات ظهور القيمة، و<code dir="ltr">index(x)</code> ترجع موضع أول ظهور لها وترفع <code dir="ltr">ValueError</code> إذا لم توجد. لذلك نتحقق أولًا بالمعامل <code dir="ltr">in</code> عندما لا نكون متأكدين.</p>
+                <figure class="code-block">
+                  <figcaption class="code-head">
+                    <span class="code-meta">
+                      <span class="code-lang" lang="en">Python</span>
+                      <span class="code-file" lang="en">join_methods.py</span>
+                    </span>
+                    <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+                      <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <use href="#i-copy"></use>
+                      </svg>
+                      <span class="btn-label">نسخ</span>
+                    </button>
+                  </figcaption>
+                  <pre class="code" dir="ltr"><code>morning = ("math", "physics")
+evening = ("history",)
+schedule = morning + evening
+divider = ("-", "=") * 2
+print(schedule, divider)
+
+grades = ("B", "A", "B", "C", "B")
+print(grades.count("B"), grades.index("A"), "C" in grades)</code></pre>
+                  <div class="output" role="group" aria-label="مخرجات البرنامج">
+                    <div class="output-label" lang="en">Output</div>
+                    <pre dir="ltr"><code>('math', 'physics', 'history') ('-', '=', '-', '=')
+3 1 True</code></pre>
+                  </div>
+                </figure>
+              </article>
+            </section>
+
+            <section class="lesson-section" id="summary">
+              <h3 class="section-title"><b>02</b>الملخص</h3>
+              <ul class="summary-list">
+                <li>الـ tuple مجموعة مرتبة وثابتة. الفاصلة هي التي تصنعها، والعنصر الواحد يحتاج فاصلة: <code dir="ltr">("x",)</code>.</li>
+                <li>الوصول بالـ index والـ slicing كما في list، والـ slice يرجع tuple جديدًا.</li>
+                <li>لا يمكن تعديل عناصرها. للتعديل نحوّلها إلى list ثم نرجعها إلى tuple، وهذا ينشئ كائنًا جديدًا، والثبات سطحي.</li>
+                <li>الـ unpacking يتطلب تطابق عدد المتغيرات مع العناصر، أو استخدام <code dir="ltr">*</code> الذي يجمع الباقي في list.</li>
+                <li>نكرر على الـ tuple بـ <code dir="ltr">for</code> مباشرة، أو <code dir="ltr">range(len(t))</code> عند الحاجة إلى الـ index، أو <code dir="ltr">while</code> بعداد.</li>
+                <li><code dir="ltr">+</code> و<code dir="ltr">*</code> تنتجان tuple جديدًا، وليس للـ tuple إلا <code dir="ltr">count()</code> و<code dir="ltr">index()</code>.</li>
+              </ul>
+            </section>
+
+            <section class="lesson-section" id="interview-questions">
+              <h3 class="section-title"><b>03</b>أسئلة المقابلات</h3>
+              <div class="qa-list">
+                <details class="qa" open>
+                  <summary>
+                    <span class="qa-q">ما الفرق الأساسي بين list و tuple، ومتى تفضّل tuple؟</span>
+                    <span class="level level-basic">أساسي</span>
+                  </summary>
+                  <div class="qa-body">
+                    <p>الـ list قابلة للتعديل بعد إنشائها، أما الـ tuple فلا تتغير. نفضّل tuple للبيانات الثابتة المرتبطة معًا، مثل الإحداثيات أو سجل صغير أو قيم إعدادات، لأن الثبات يمنع التعديل بالخطأ ويعبّر عن نية الكود.</p>
+                  </div>
+                </details>
+
+                <details class="qa">
+                  <summary>
+                    <span class="qa-q">ما نوع <code dir="ltr">("ready")</code> ولماذا؟</span>
+                    <span class="level level-basic">أساسي</span>
+                  </summary>
+                  <div class="qa-body">
+                    <p>نوعها <code dir="ltr">str</code> وليست tuple، لأن الفاصلة هي التي تصنع الـ tuple وليست الأقواس. لإنشاء tuple بعنصر واحد نكتب <code dir="ltr">("ready",)</code>.</p>
+                  </div>
+                </details>
+
+                <details class="qa">
+                  <summary>
+                    <span class="qa-q">كيف تضيف عنصرًا إلى tuple أو تحذف منها عنصرًا؟</span>
+                    <span class="level level-mid">متوسط</span>
+                  </summary>
+                  <div class="qa-body">
+                    <p>لا توجد methods للإضافة أو الحذف. نحوّل الـ tuple إلى list ونعدّل ثم نستخدم <code dir="ltr">tuple()</code>، أو نبني tuple جديدة بالـ slicing والمعامل <code dir="ltr">+</code>. في الحالتين نحصل على كائن جديد ويبقى الأصلي كما هو.</p>
+                  </div>
+                </details>
+
+                <details class="qa">
+                  <summary>
+                    <span class="qa-q">ماذا يحدث إذا لم يتطابق عدد المتغيرات مع عدد العناصر في الـ unpacking؟</span>
+                    <span class="level level-mid">متوسط</span>
+                  </summary>
+                  <div class="qa-body">
+                    <p>يظهر <code dir="ltr">ValueError</code>. عندما نريد التقاط "الباقي" نضع <code dir="ltr">*</code> قبل متغير واحد، مثل <code dir="ltr">first, *rest = t</code>، ويكون <code dir="ltr">rest</code> دائمًا من نوع <code dir="ltr">list</code>.</p>
+                  </div>
+                </details>
+
+                <details class="qa">
+                  <summary>
+                    <span class="qa-q">الـ tuple لا تتغير، فلماذا ينجح <code dir="ltr">t = (1, [2, 3]); t[1].append(4)</code>؟</span>
+                    <span class="level level-trap">فخ</span>
+                  </summary>
+                  <div class="qa-body">
+                    <p>لأن الـ tuple تثبّت أي كائن يقع في كل موضع، لكنها لا تجمّد محتوى الكائنات القابلة للتغيير بداخلها. الـ list الداخلية ما زالت mutable فيمكن تعديلها، بينما <code dir="ltr">t[1] = [9]</code> يفشل بـ <code dir="ltr">TypeError</code>.</p>
+                    <p class="qa-follow">متابعة: لو أردنا ثباتًا حقيقيًا فنجعل كل العناصر داخل الـ tuple من أنواع ثابتة، مثل الأرقام والنصوص وtuples أخرى.</p>
+                  </div>
+                </details>
+              </div>
+            </section>
+
+            <section class="lesson-section" id="practical">
+              <h3 class="section-title"><b>04</b>المسألة العملية</h3>
+              <div class="callout callout-problem">
+                <p><strong>المسألة:</strong> لدينا tuple من طلبات متجر، وكل طلب tuple بالشكل <code dir="ltr">(order_id, product, quantity, price)</code>. المطلوب: حساب إجمالي الإيراد، وتحديد أكبر طلب من حيث القيمة، وعدّ طلبات <code dir="ltr">"USB Hub"</code>، ثم إضافة طلب جديد دون تعديل المجموعة الأصلية.</p>
+              </div>
+              <ol class="solution">
+                <li class="sol-step">
+                  <h4>فهم المطلوب</h4>
+                  <p>المدخل tuple من tuples. المخرجات ثلاث نتائج مطبوعة (الإيراد، أكبر طلب، عدد طلبات USB Hub) وtuple جديدة تتضمن الطلب الإضافي. القيد: لا نعدّل الأصلية في مكانها، وهي أصلًا لا تقبل ذلك.</p>
+                </li>
+                <li class="sol-step">
+                  <h4>خطة الحل</h4>
+                  <p>حلقة واحدة تفكك كل طلب في رأس الحلقة، وتحسب قيمته وتحدّث الإجمالي وأكبر طلب وتجمع أسماء المنتجات. بعدها نستخدم <code dir="ltr">count()</code> على أسماء المنتجات، ثم <code dir="ltr">+</code> لإنشاء tuple جديدة.</p>
+                </li>
+                <li class="sol-step">
+                  <h4>الكود الكامل</h4>
+                  <figure class="code-block">
+                    <figcaption class="code-head">
+                      <span class="code-meta">
+                        <span class="code-lang" lang="en">Python</span>
+                        <span class="code-file" lang="en">orders_report.py</span>
+                      </span>
+                      <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+                        <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                          <use href="#i-copy"></use>
+                        </svg>
+                        <span class="btn-label">نسخ</span>
+                      </button>
+                    </figcaption>
+                    <pre class="code" dir="ltr"><code>orders = (
+    ("ORD-101", "Laptop Stand", 2, 450.0),
+    ("ORD-102", "USB Hub", 5, 120.0),
+    ("ORD-103", "Webcam", 1, 950.0),
+    ("ORD-104", "USB Hub", 3, 120.0),
+)
+
+total = 0.0
+top_order, top_amount = None, 0.0
+names = ()
+for order_id, product, quantity, price in orders:
+    amount = quantity * price
+    total += amount
+    names += (product,)
+    if amount &gt; top_amount:
+        top_order, top_amount = order_id, amount
+
+print(f"Revenue: {total:.2f}")
+print(f"Top order: {top_order} ({top_amount:.2f})")
+print(f"USB Hub orders: {names.count('USB Hub')}")
+
+new_order = ("ORD-105", "Keyboard", 4, 300.0)
+all_orders = orders + (new_order,)
+print(len(orders), len(all_orders))</code></pre>
+                    <div class="output" role="group" aria-label="مخرجات البرنامج">
+                      <div class="output-label" lang="en">Output</div>
+                      <pre dir="ltr"><code>Revenue: 2810.00
+Top order: ORD-103 (950.00)
+USB Hub orders: 2
+4 5</code></pre>
+                    </div>
+                  </figure>
+                </li>
+                <li class="sol-step">
+                  <h4>تفسير القرارات</h4>
+                  <p>التفكيك في رأس الحلقة يعطي أسماء مقروءة بدل <code dir="ltr">order[2]</code>. الأمر <code dir="ltr">names += (product,)</code> ينشئ tuple جديدة في كل دورة، وهذا مقبول للبيانات الصغيرة. الشرط <code dir="ltr">&gt;</code> بدل <code dir="ltr">&gt;=</code> يُبقي أول طلب عند التعادل. وكتبنا <code dir="ltr">(new_order,)</code> بفاصلة لأننا نريد إضافة الطلب كعنصر واحد.</p>
+                </li>
+                <li class="sol-step">
+                  <h4>اختبار سريع</h4>
+                  <p>غيّر كمية <code dir="ltr">ORD-104</code> إلى 10 فتصبح النتيجة <code dir="ltr">Top order: ORD-104 (1200.00)</code> والإيراد <code dir="ltr">3650.00</code>. ثم جرّب كتابة <code dir="ltr">orders + (new_order)</code> بدل <code dir="ltr">orders + (new_order,)</code>: لن يظهر خطأ، لكن <code dir="ltr">len(all_orders)</code> يصبح 8 لأن حقول الطلب انضمت كعناصر منفصلة.</p>
+                </li>
+                <li class="sol-step">
+                  <h4>تحسين أو بديل</h4>
+                  <p>يمكن جمع الأسماء في list ثم تحويلها مرة واحدة بـ <code dir="ltr">tuple(names)</code> لتجنب إنشاء tuple في كل دورة. وعندما تكثر الحقول تصبح المواضع الرقمية صعبة القراءة، وهنا تفيد لاحقًا أنواع تسمّي الحقول، لكن التفكيك يكفي في هذا الدرس.</p>
+                </li>
+              </ol>
+            </section>
+          </div>
+        </section>
+      </div>
+
+      <footer class="footer">
+        <span class="footer-note" lang="en">Python Learning Roadmap</span>
+        <span class="footer-note">المرحلة 04 - الدرس 16</span>
+      </footer>
+    </main>
+
+    <script>
+      (function () {
+        'use strict'
+
+        var live = document.getElementById('copy-status')
+        var printStates = null
+
+        function fallbackCopy(text) {
+          var textarea = document.createElement('textarea')
+          textarea.value = text
+          textarea.setAttribute('readonly', '')
+          textarea.style.cssText = 'position:fixed;top:-1000px;left:-1000px;opacity:0;'
+
+          try {
+            document.body.appendChild(textarea)
+            textarea.focus()
+            textarea.select()
+            textarea.setSelectionRange(0, textarea.value.length)
+            return document.execCommand('copy')
+          } catch (error) {
+            return false
+          } finally {
+            if (textarea.parentNode) {
+              textarea.parentNode.removeChild(textarea)
+            }
+          }
+        }
+
+        function copyText(text) {
+          if (navigator.clipboard && window.isSecureContext) {
+            return navigator.clipboard.writeText(text).then(
+              function () { return true },
+              function () { return fallbackCopy(text) },
+            ).catch(function () { return false })
+          }
+
+          return Promise.resolve().then(function () {
+            return fallbackCopy(text)
+          }).catch(function () {
+            return false
+          })
+        }
+
+        document.addEventListener('click', function (event) {
+          var target = event.target
+          var button = target && typeof target.closest === 'function'
+            ? target.closest('[data-copy-code]')
+            : null
+
+          if (!button) return
+
+          var label = button.querySelector('.btn-label')
+          var block = button.closest('.code-block')
+          var code = block ? block.querySelector('pre.code > code') : null
+          if (!label || !code) return
+
+          if (!button.dataset.label) button.dataset.label = label.textContent
+
+          copyText(code.textContent).then(function (ok) {
+            label.textContent = ok ? 'تم النسخ' : 'تعذّر النسخ'
+            button.classList.toggle('is-copied', ok)
+            button.classList.toggle('is-failed', !ok)
+
+            if (live) {
+              live.textContent = ok
+                ? 'تم نسخ الكود'
+                : 'تعذّر النسخ، حدّد الكود يدويًا ثم انسخه'
+            }
+
+            window.clearTimeout(button._timer)
+            button._timer = window.setTimeout(function () {
+              label.textContent = button.dataset.label
+              button.classList.remove('is-copied', 'is-failed')
+            }, 1800)
+          })
+        })
+
+        window.addEventListener('beforeprint', function () {
+          if (printStates !== null) return
+
+          var questions = document.querySelectorAll('details.qa')
+          printStates = Array.prototype.map.call(questions, function (item) {
+            return item.open
+          })
+          questions.forEach(function (item) {
+            item.open = true
+          })
+        })
+
+        window.addEventListener('afterprint', function () {
+          if (printStates === null) return
+
+          var questions = document.querySelectorAll('details.qa')
+          questions.forEach(function (item, index) {
+            item.open = printStates[index] === true
+          })
+          printStates = null
+        })
+      })()
+    </script>
+  </body>
+</html>

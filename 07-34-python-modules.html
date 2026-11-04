@@ -1,0 +1,470 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#fcfcfc" />
+    <title>الوحدات البرمجية | Python Modules | Python Learning Roadmap</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/style.css" />
+  </head>
+  <body>
+    <svg
+      width="0"
+      height="0"
+      style="position: absolute"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <symbol id="i-copy" viewBox="0 0 24 24">
+        <rect x="9" y="9" width="12" height="12" rx="2.5" />
+        <path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15" />
+      </symbol>
+    </svg>
+    <template id="code-block-pattern">
+      <figure class="code-block">
+        <figcaption class="code-head">
+          <span class="code-meta">
+            <span class="code-lang" lang="en">Python</span>
+            <span class="code-file" lang="en">example.py</span>
+          </span>
+          <button
+            type="button"
+            class="btn btn-ghost btn-sm"
+            data-copy-code
+            aria-label="نسخ الكود"
+          >
+            <svg
+              class="btn-icon"
+              viewBox="0 0 24 24"
+              width="14"
+              height="14"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <use href="#i-copy"></use>
+            </svg>
+            <span class="btn-label">نسخ</span>
+          </button>
+        </figcaption>
+        <pre class="code" dir="ltr"><code><!-- ضع الكود هنا كنص HTML مع تهريب الرموز الخاصة --></code></pre>
+        <!-- احذف كتلة output إذا لم يكن للمثال ناتج ثابت ومفيد. -->
+        <div class="output" role="group" aria-label="مخرجات البرنامج">
+          <div class="output-label" lang="en">Output</div>
+          <pre dir="ltr"><code><!-- ضع المخرجات المتحققة هنا --></code></pre>
+        </div>
+      </figure>
+    </template>
+
+    <div
+      class="sr-only"
+      id="copy-status"
+      role="status"
+      aria-live="polite"
+    ></div>
+
+    <main class="page">
+      <header class="hero lesson-hero">
+        <span class="eyebrow">
+          <span class="eyebrow-dot"></span>
+          المرحلة <span dir="ltr">07</span>:
+          <span dir="ltr" lang="en">Iterators, Generators &amp; Modules</span>
+        </span>
+        <h1>
+          <span class="h1-ar">الوحدات البرمجية</span>
+          <span class="h1-en" dir="ltr" lang="en">Python Modules</span>
+        </h1>
+        <p class="hero-description">كيف تقسّم برنامجك إلى ملفات قابلة لإعادة الاستخدام، وتستورد منها ما تحتاجه بوضوح وبلا تصادم أسماء، وتستفيد من modules الجاهزة في Python.</p>
+      </header>
+
+      <div class="lesson-parts">
+        <section class="lesson-part-card" id="complete-lesson" aria-labelledby="complete-lesson-title">
+          <header class="part-header">
+            <div class="part-number">درس متكامل</div>
+            <div class="part-heading">
+              <h2 id="complete-lesson-title">
+                <span class="part-title-en" dir="ltr" lang="en">Complete Lesson</span>
+                <span class="sep" aria-hidden="true"> - </span>
+                <span class="part-title-ar">الشرح والملخص والتطبيق</span>
+              </h2>
+              <span class="part-description">كل محتوى الدرس في ملف HTML واحد</span>
+            </div>
+          </header>
+
+          <div class="lesson-body">
+            <section class="lesson-section" id="explain">
+              <h3 class="section-title"><b>01</b>الشرح</h3>
+<article class="concept">
+<h4>Modules و Create Modules: ملف واحد يصبح وحدة قابلة لإعادة الاستخدام</h4>
+<p><strong>لماذا؟</strong> عندما يكبر البرنامج يصبح وضع كل شيء في ملف واحد صعب القراءة والاختبار وإعادة الاستخدام. الـ <code dir="ltr">module</code> هو ببساطة ملف <code dir="ltr">.py</code> يحتوي تعريفات (functions و constants و classes) يمكن لأي ملف آخر استيرادها، ولكل module namespace خاص به فلا تتصادم أسماؤه مع أسماء غيره.</p>
+<p><strong>Create Modules:</strong> لا يوجد شيء خاص في الإنشاء؛ احفظ الكود في ملف بامتداد <code dir="ltr">.py</code>. اسم الملف هو اسم الـ module، فاجعله حروفًا صغيرة صالحة كـ identifier مثل <code dir="ltr">shipping</code> (بلا مسافات أو شرطات ولا يبدأ برقم).</p>
+<p><strong>القيد المهم:</strong> عند أول import يُنفَّذ الملف كاملًا من أعلاه إلى أسفله، لذلك لا تضع على مستوى الملف كودًا يشغّل شيئًا. ضع الاختبار الذاتي داخل الحارس <code dir="ltr">if __name__ == "__main__":</code>. قيمة <code dir="ltr">__name__</code> تساوي <code dir="ltr">"__main__"</code> عند تشغيل الملف مباشرة، وتساوي اسم الـ module عند استيراده، فلا يعمل الحارس إلا في التشغيل المباشر. المخرج أدناه ناتج <code dir="ltr">python shipping.py</code>.</p>
+<figure class="code-block">
+  <figcaption class="code-head">
+    <span class="code-meta">
+      <span class="code-lang" lang="en">Python</span>
+      <span class="code-file" lang="en">shipping.py</span>
+    </span>
+    <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+      <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-copy"></use></svg>
+      <span class="btn-label">نسخ</span>
+    </button>
+  </figcaption>
+<pre class="code" dir="ltr"><code>BASE_FEE = 30.0
+RATE_PER_KG = 12.5
+
+
+def shipping_cost(weight_kg):
+    return BASE_FEE + weight_kg * RATE_PER_KG
+
+
+def is_free_shipping(order_total):
+    return order_total &gt;= 1000
+
+
+if __name__ == "__main__":
+    print("Self-test:", shipping_cost(2))</code></pre>
+  <div class="output" role="group" aria-label="مخرجات البرنامج">
+    <div class="output-label" lang="en">Output</div>
+    <pre dir="ltr"><code>Self-test: 55.0</code></pre>
+  </div>
+</figure>
+</article>
+<article class="concept">
+<h4>Import Modules و from ... import: كيف تصل إلى محتوى الوحدة</h4>
+<p><strong>Import Modules:</strong> <code dir="ltr">import shipping</code> يربط اسم الـ module كاملًا، وتصل لمحتوياته بالنقطة مثل <code dir="ltr">shipping.shipping_cost(2)</code>. ميزته أن مصدر كل اسم واضح في الكود ولا تتصادم الأسماء.</p>
+<p><strong>from ... import:</strong> <code dir="ltr">from shipping import shipping_cost</code> يربط الأسماء المطلوبة فقط بملفك فتستعملها مباشرة. الكود أقصر، لكن مصدر الاسم أقل وضوحًا، وإذا وُجد اسم مماثل قبله فإن آخر استيراد يستبدله بصمت. تجنّب <code dir="ltr">from shipping import *</code> لأنه يجلب كل الأسماء العامة دفعة واحدة ويلوّث الـ namespace.</p>
+<p><strong>ملاحظة:</strong> يستورد Python الـ module مرة واحدة فقط ويخزنه في <code dir="ltr">sys.modules</code>، فتكرار الاستيراد لا يعيد تنفيذ الملف. ويبحث عنه أولًا في مجلد السكربت الجاري تشغيله ثم في بقية مسارات <code dir="ltr">sys.path</code>. لاحظ أن سطر Self-test لم يظهر في المخرج لأن الحارس لم يعمل عند الاستيراد.</p>
+<figure class="code-block">
+  <figcaption class="code-head">
+    <span class="code-meta">
+      <span class="code-lang" lang="en">Python</span>
+      <span class="code-file" lang="en">main.py</span>
+    </span>
+    <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+      <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-copy"></use></svg>
+      <span class="btn-label">نسخ</span>
+    </button>
+  </figcaption>
+<pre class="code" dir="ltr"><code>import shipping
+from shipping import is_free_shipping, shipping_cost
+
+print(shipping.RATE_PER_KG)
+print(shipping_cost(1.5))
+print(is_free_shipping(1200))
+print(shipping.__name__)</code></pre>
+  <div class="output" role="group" aria-label="مخرجات البرنامج">
+    <div class="output-label" lang="en">Output</div>
+    <pre dir="ltr"><code>12.5
+48.75
+True
+shipping</code></pre>
+  </div>
+</figure>
+</article>
+<article class="concept">
+<h4>Aliases: اسم بديل محلي</h4>
+<p>الـ alias اسم بديل يُعطى عند الاستيراد: <code dir="ltr">import shipping as ship</code> أو <code dir="ltr">from math import ceil as round_up</code>. نستخدمه لاختصار اسم طويل، أو لحل تصادم بين اسمين متماثلين، أو لتوضيح المعنى. هو يغيّر الاسم في ملفك فقط ولا يغيّر الـ module، وبعد <code dir="ltr">as</code> لا يبقى الاسم الأصلي متاحًا (استخدام <code dir="ltr">shipping</code> بعد <code dir="ltr">import shipping as ship</code> يعطي NameError).</p>
+<p>في المثال عرّفنا دالة محلية باسم <code dir="ltr">shipping_cost</code> دون أن تتعارض مع دالة الـ module لأننا نصل إليها عبر <code dir="ltr">ship</code>.</p>
+<figure class="code-block">
+  <figcaption class="code-head">
+    <span class="code-meta">
+      <span class="code-lang" lang="en">Python</span>
+      <span class="code-file" lang="en">report.py</span>
+    </span>
+    <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+      <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-copy"></use></svg>
+      <span class="btn-label">نسخ</span>
+    </button>
+  </figcaption>
+<pre class="code" dir="ltr"><code>import shipping as ship
+from math import ceil as round_up
+
+
+def shipping_cost(weight_kg):
+    return round_up(weight_kg) * 10
+
+
+print(shipping_cost(2.5))
+print(ship.shipping_cost(2.5))</code></pre>
+  <div class="output" role="group" aria-label="مخرجات البرنامج">
+    <div class="output-label" lang="en">Output</div>
+    <pre dir="ltr"><code>30
+61.25</code></pre>
+  </div>
+</figure>
+</article>
+<article class="concept">
+<h4>Built-in Modules: مكتبة Python القياسية جاهزة بلا تثبيت</h4>
+<p>يأتي Python مع modules جاهزة مثل <code dir="ltr">math</code> و <code dir="ltr">statistics</code> و <code dir="ltr">random</code> و <code dir="ltr">datetime</code> و <code dir="ltr">sys</code>. نستوردها بنفس الطريقة تمامًا، فنوفّر كتابة كود جاهز ومُختبَر. (المصطلح هنا يشمل المكتبة القياسية كلها.)</p>
+<p>لاكتشاف محتوى أي module استخدم <code dir="ltr">dir(module)</code> لسرد أسمائه، و <code dir="ltr">help(module.name)</code> لعرض توثيق اسم محدد.</p>
+<p><strong>الخطأ الشائع:</strong> تسمية ملفك باسم module قياسي مثل <code dir="ltr">random.py</code> أو <code dir="ltr">math.py</code>. لأن مجلد السكربت يُبحث فيه أولًا، سيستورد Python ملفك بدل الـ module الأصلي.</p>
+<figure class="code-block">
+  <figcaption class="code-head">
+    <span class="code-meta">
+      <span class="code-lang" lang="en">Python</span>
+      <span class="code-file" lang="en">stdlib_tour.py</span>
+    </span>
+    <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+      <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-copy"></use></svg>
+      <span class="btn-label">نسخ</span>
+    </button>
+  </figcaption>
+<pre class="code" dir="ltr"><code>import math
+import statistics
+
+prices = [120, 80, 100]
+
+print(math.sqrt(144))
+print(math.ceil(7.2))
+print(statistics.mean(prices))
+print("sqrt" in dir(math))</code></pre>
+  <div class="output" role="group" aria-label="مخرجات البرنامج">
+    <div class="output-label" lang="en">Output</div>
+    <pre dir="ltr"><code>12.0
+8
+100
+True</code></pre>
+  </div>
+</figure>
+</article>
+            </section>
+
+            <section class="lesson-section" id="summary">
+              <h3 class="section-title"><b>02</b>الملخص</h3>
+              <ul class="summary-list">
+<li>الـ module هو ملف <code dir="ltr">.py</code> يحتوي تعريفات قابلة لإعادة الاستخدام، ولكل module namespace مستقل.</li>
+<li>يُنفَّذ الـ module كاملًا عند أول import فقط ثم يُخزَّن في <code dir="ltr">sys.modules</code>؛ استخدم <code dir="ltr">if __name__ == "__main__":</code> لفصل كود التشغيل المباشر عن كود الاستيراد.</li>
+<li><code dir="ltr">import module</code> يحافظ على وضوح المصدر عبر <code dir="ltr">module.name</code>، بينما <code dir="ltr">from module import name</code> يختصر الكتابة على حساب وضوح المصدر.</li>
+<li>تجنّب <code dir="ltr">from module import *</code> لأنه يلوّث الـ namespace ويُخفي من أين جاء كل اسم.</li>
+<li><code dir="ltr">as</code> ينشئ alias محليًا لاختصار الأسماء أو حل التصادم، ولا يُبقي الاسم الأصلي متاحًا في ملفك.</li>
+<li>المكتبة القياسية جاهزة بلا تثبيت، وتكتشفها بـ <code dir="ltr">dir()</code> و <code dir="ltr">help()</code>؛ وتجنّب تسمية ملفاتك بأسمائها مثل <code dir="ltr">random.py</code>.</li>
+              </ul>
+            </section>
+
+            <section class="lesson-section" id="interview-questions">
+              <h3 class="section-title"><b>03</b>أسئلة المقابلات</h3>
+              <div class="qa-list">
+<details class="qa" open>
+<summary><span class="qa-q">ما هو الـ module في Python ولماذا نستخدمه؟</span><span class="level level-basic">أساسي</span></summary>
+<div class="qa-body">
+<p>الـ module ملف <code dir="ltr">.py</code> يحتوي تعريفات (functions و constants و classes) يمكن استيرادها من ملفات أخرى. نستخدمه لتقسيم البرنامج إلى أجزاء مفهومة، ولإعادة استخدام الكود بدل نسخه، ولعزل الأسماء داخل namespace مستقل.</p>
+<p class="qa-follow">متابعة: إذا استوردت الـ module نفسه من خمسة ملفات، فكم مرة يُنفَّذ؟ مرة واحدة فقط، لأن Python يخزنه في <code dir="ltr">sys.modules</code>.</p>
+</div>
+</details>
+<details class="qa">
+<summary><span class="qa-q">ما الفرق بين <code dir="ltr">import shipping</code> و <code dir="ltr">from shipping import shipping_cost</code>؟</span><span class="level level-basic">أساسي</span></summary>
+<div class="qa-body">
+<p>الأول يربط اسم الـ module فقط فتصل لمحتوياته بالنقطة <code dir="ltr">shipping.shipping_cost()</code>، والثاني يربط اسم الدالة مباشرة في ملفك. الأول أوضح مصدرًا وأقل عرضة للتصادم، والثاني أقصر. وفي الحالتين يُنفَّذ الـ module كاملًا عند الاستيراد.</p>
+</div>
+</details>
+<details class="qa">
+<summary><span class="qa-q">ماذا يفعل <code dir="ltr">if __name__ == "__main__":</code> ولماذا نستخدمه؟</span><span class="level level-mid">متوسط</span></summary>
+<div class="qa-body">
+<p><code dir="ltr">__name__</code> يساوي <code dir="ltr">"__main__"</code> عند تشغيل الملف مباشرة، ويساوي اسم الـ module عند استيراده. فالكود داخل الحارس يعمل في التشغيل المباشر فقط، فنضع فيه الاختبار الذاتي أو التقرير دون أن يظهر أثره عند استيراد الملف من غيره.</p>
+</div>
+</details>
+<details class="qa">
+<summary><span class="qa-q">متى تستخدم alias، ولماذا يُنصح بتجنب <code dir="ltr">from module import *</code>؟</span><span class="level level-mid">متوسط</span></summary>
+<div class="qa-body">
+<p>نستخدم alias لاختصار اسم طويل أو لحل تصادم بين اسمين متماثلين، مثل <code dir="ltr">from math import ceil as round_up</code>. أما star import فيجلب أسماء كثيرة غير ظاهرة في ملفك، فقد يستبدل أسماء موجودة بصمت ويصعب معه معرفة مصدر أي اسم.</p>
+</div>
+</details>
+<details class="qa">
+<summary><span class="qa-q">سمّيتُ ملفي <code dir="ltr">random.py</code> وكتبت فيه <code dir="ltr">import random</code> ثم <code dir="ltr">random.randint(1, 6)</code> فظهر AttributeError. ما السبب؟</span><span class="level level-trap">فخ</span></summary>
+<div class="qa-body">
+<p>Python يبحث أولًا في مجلد السكربت، فوجد ملفك <code dir="ltr">random.py</code> واستورده بدل الـ module القياسي، وهو لا يحتوي <code dir="ltr">randint</code>. الحل أن تغيّر اسم ملفك إلى اسم مختلف لا يطابق أي module قياسي.</p>
+</div>
+</details>
+              </div>
+            </section>
+
+            <section class="lesson-section" id="practical">
+              <h3 class="section-title"><b>04</b>المسألة العملية</h3>
+<div class="callout callout-problem">
+<p><strong>المسألة:</strong> يريد متجر إلكتروني وحدة <code dir="ltr">parcel_pricing.py</code> تحسب تكلفة الشحن: رسم أساسي 30، و12.5 لكل كيلوغرام، مع تقريب الوزن لأعلى إلى أقرب كيلوغرام كامل. المطلوب دالة <code dir="ltr">parcel_cost</code> لطرد واحد ودالة <code dir="ltr">average_cost</code> لمتوسط تكلفة قائمة أوزان، بحيث يمكن استيراد الملف دون أن يطبع شيئًا، ويطبع تقريرًا قصيرًا عند تشغيله مباشرة.</p>
+</div>
+              <ol class="solution">
+<li class="sol-step">
+<h4>فهم المطلوب</h4>
+<p>المدخلات وزن واحد أو قائمة أوزان، والمخرجات تكلفة طرد ومتوسط تكاليف. هناك شرطان: تقريب الوزن لأعلى، وألا يطبع الملف شيئًا عند استيراده.</p>
+</li>
+<li class="sol-step">
+<h4>خطة الحل</h4>
+<p>ثوابت للرسوم في أعلى الملف، ثم <code dir="ltr">math.ceil</code> لتقريب الوزن، ثم <code dir="ltr">statistics.mean</code> للمتوسط، وأخيرًا حارس <code dir="ltr">__main__</code> للتقرير.</p>
+</li>
+<li class="sol-step">
+<h4>الكود الكامل</h4>
+<figure class="code-block">
+  <figcaption class="code-head">
+    <span class="code-meta">
+      <span class="code-lang" lang="en">Python</span>
+      <span class="code-file" lang="en">parcel_pricing.py</span>
+    </span>
+    <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+      <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-copy"></use></svg>
+      <span class="btn-label">نسخ</span>
+    </button>
+  </figcaption>
+<pre class="code" dir="ltr"><code>import math
+import statistics as stats
+
+BASE_FEE = 30.0
+RATE_PER_KG = 12.5
+
+
+def parcel_cost(weight_kg):
+    billable_kg = math.ceil(weight_kg)
+    return BASE_FEE + billable_kg * RATE_PER_KG
+
+
+def average_cost(weights):
+    return stats.mean(parcel_cost(w) for w in weights)
+
+
+if __name__ == "__main__":
+    weights = [0.4, 1.2, 2.5]
+    print(f"Costs: {[parcel_cost(w) for w in weights]}")
+    print(f"Average: {average_cost(weights):.2f}")</code></pre>
+  <div class="output" role="group" aria-label="مخرجات البرنامج">
+    <div class="output-label" lang="en">Output</div>
+    <pre dir="ltr"><code>Costs: [42.5, 55.0, 67.5]
+Average: 55.00</code></pre>
+  </div>
+</figure>
+</li>
+<li class="sol-step">
+<h4>تفسير القرارات</h4>
+<p>استوردنا <code dir="ltr">math</code> كاملًا ليبقى مصدر <code dir="ltr">ceil</code> ظاهرًا، واستخدمنا alias <code dir="ltr">stats</code> اختصارًا لـ <code dir="ltr">statistics</code> لأن الاسم يتكرر. وضعنا الرسوم في constants واحدة ليسهل تغييرها، وغلّفنا التقرير بالحارس حتى يبقى الملف آمنًا للاستيراد.</p>
+</li>
+<li class="sol-step">
+<h4>اختبار سريع</h4>
+<p>في ملف آخر بنفس المجلد اكتب <code dir="ltr">from parcel_pricing import parcel_cost</code> ثم <code dir="ltr">print(parcel_cost(0.1))</code>. يجب أن يطبع <code dir="ltr">42.5</code> فقط (وزن 0.1 يُقرَّب إلى 1 كغ) ولا يظهر سطرا التقرير، وهذا يثبت أن الحارس يعمل.</p>
+</li>
+<li class="sol-step">
+<h4>تحسين أو بديل</h4>
+<p>يمكن جعل الرسوم معاملات افتراضية: <code dir="ltr">def parcel_cost(weight_kg, base_fee=BASE_FEE, rate=RATE_PER_KG)</code> فيسهل اختبار أسعار أخرى دون تعديل الـ module. وإذا كان اسم الدالة طويلًا في ملف التقارير، فاستورده بـ <code dir="ltr">from parcel_pricing import parcel_cost as cost</code>.</p>
+</li>
+              </ol>
+            </section>
+          </div>
+        </section>
+      </div>
+
+      <footer class="footer">
+        <span class="footer-note" lang="en">Python Learning Roadmap</span>
+        <span class="footer-note">المرحلة 07 - الدرس 34</span>
+      </footer>
+    </main>
+
+    <script>
+      (function () {
+        'use strict'
+
+        var live = document.getElementById('copy-status')
+        var printStates = null
+
+        function fallbackCopy(text) {
+          var textarea = document.createElement('textarea')
+          textarea.value = text
+          textarea.setAttribute('readonly', '')
+          textarea.style.cssText = 'position:fixed;top:-1000px;left:-1000px;opacity:0;'
+
+          try {
+            document.body.appendChild(textarea)
+            textarea.focus()
+            textarea.select()
+            textarea.setSelectionRange(0, textarea.value.length)
+            return document.execCommand('copy')
+          } catch (error) {
+            return false
+          } finally {
+            if (textarea.parentNode) {
+              textarea.parentNode.removeChild(textarea)
+            }
+          }
+        }
+
+        function copyText(text) {
+          if (navigator.clipboard && window.isSecureContext) {
+            return navigator.clipboard.writeText(text).then(
+              function () { return true },
+              function () { return fallbackCopy(text) },
+            ).catch(function () { return false })
+          }
+
+          return Promise.resolve().then(function () {
+            return fallbackCopy(text)
+          }).catch(function () {
+            return false
+          })
+        }
+
+        document.addEventListener('click', function (event) {
+          var target = event.target
+          var button = target && typeof target.closest === 'function'
+            ? target.closest('[data-copy-code]')
+            : null
+
+          if (!button) return
+
+          var label = button.querySelector('.btn-label')
+          var block = button.closest('.code-block')
+          var code = block ? block.querySelector('pre.code > code') : null
+          if (!label || !code) return
+
+          if (!button.dataset.label) button.dataset.label = label.textContent
+
+          copyText(code.textContent).then(function (ok) {
+            label.textContent = ok ? 'تم النسخ' : 'تعذّر النسخ'
+            button.classList.toggle('is-copied', ok)
+            button.classList.toggle('is-failed', !ok)
+
+            if (live) {
+              live.textContent = ok
+                ? 'تم نسخ الكود'
+                : 'تعذّر النسخ، حدّد الكود يدويًا ثم انسخه'
+            }
+
+            window.clearTimeout(button._timer)
+            button._timer = window.setTimeout(function () {
+              label.textContent = button.dataset.label
+              button.classList.remove('is-copied', 'is-failed')
+            }, 1800)
+          })
+        })
+
+        window.addEventListener('beforeprint', function () {
+          if (printStates !== null) return
+
+          var questions = document.querySelectorAll('details.qa')
+          printStates = Array.prototype.map.call(questions, function (item) {
+            return item.open
+          })
+          questions.forEach(function (item) {
+            item.open = true
+          })
+        })
+
+        window.addEventListener('afterprint', function () {
+          if (printStates === null) return
+
+          var questions = document.querySelectorAll('details.qa')
+          questions.forEach(function (item, index) {
+            item.open = printStates[index] === true
+          })
+          printStates = null
+        })
+      })()
+    </script>
+  </body>
+</html>

@@ -1,0 +1,655 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#fcfcfc" />
+    <title>الأرقام وتحويل الأنواع | Python Learning Roadmap</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/style.css" />
+  </head>
+  <body>
+    <svg
+      width="0"
+      height="0"
+      style="position: absolute"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <symbol id="i-copy" viewBox="0 0 24 24">
+        <rect x="9" y="9" width="12" height="12" rx="2.5" />
+        <path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15" />
+      </symbol>
+    </svg>
+    <template id="code-block-pattern">
+      <figure class="code-block">
+        <figcaption class="code-head">
+          <span class="code-meta">
+            <span class="code-lang" lang="en">Python</span>
+            <span class="code-file" lang="en">example.py</span>
+          </span>
+          <button
+            type="button"
+            class="btn btn-ghost btn-sm"
+            data-copy-code
+            aria-label="نسخ الكود"
+          >
+            <svg
+              class="btn-icon"
+              viewBox="0 0 24 24"
+              width="14"
+              height="14"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <use href="#i-copy"></use>
+            </svg>
+            <span class="btn-label">نسخ</span>
+          </button>
+        </figcaption>
+        <pre class="code" dir="ltr"><code><!-- ضع الكود هنا كنص HTML مع تهريب الرموز الخاصة --></code></pre>
+        <!-- احذف كتلة output إذا لم يكن للمثال ناتج ثابت ومفيد. -->
+        <div class="output" role="group" aria-label="مخرجات البرنامج">
+          <div class="output-label" lang="en">Output</div>
+          <pre dir="ltr"><code><!-- ضع المخرجات المتحققة هنا --></code></pre>
+        </div>
+      </figure>
+    </template>
+
+    <div
+      class="sr-only"
+      id="copy-status"
+      role="status"
+      aria-live="polite"
+    ></div>
+
+    <main class="page">
+      <header class="hero lesson-hero">
+        <span class="eyebrow">
+          <span class="eyebrow-dot"></span>
+          المرحلة <span dir="ltr">01</span>:
+          <span dir="ltr" lang="en">Variables &amp; Data Types</span>
+        </span>
+        <h1>
+          <span class="h1-ar">الأرقام وتحويل الأنواع</span>
+          <span class="h1-en" dir="ltr" lang="en">Python Numbers &amp; Casting</span>
+        </h1>
+        <p class="hero-description">كيف تختار int أو float، وتتعامل مع الأعداد العقدية والعشوائية، وتحوّل النصوص إلى أرقام صالحة للحساب.</p>
+      </header>
+
+      <div class="lesson-parts">
+        <section class="lesson-part-card" id="complete-lesson" aria-labelledby="complete-lesson-title">
+          <header class="part-header">
+            <div class="part-number">درس متكامل</div>
+            <div class="part-heading">
+              <h2 id="complete-lesson-title">
+                <span class="part-title-en" dir="ltr" lang="en">Complete Lesson</span>
+                <span class="sep" aria-hidden="true"> - </span>
+                <span class="part-title-ar">الشرح والملخص والتطبيق</span>
+              </h2>
+              <span class="part-description">كل محتوى الدرس في ملف HTML واحد</span>
+            </div>
+          </header>
+
+          <div class="lesson-body">
+            <section class="lesson-section" id="explain">
+              <h3 class="section-title"><b>01</b>الشرح</h3>
+              <article class="concept">
+            <h4>1. Integers وFloating Point Numbers: العدّ والحساب بالكسور</h4>
+            <p>
+              نستخدم <span dir="ltr" lang="en">Integers</span> أي النوع
+              <code dir="ltr">int</code> للكميات الكاملة مثل عدد الطلبات أو القطع،
+              لأنها تخزن العدد دون كسور. أما
+              <span dir="ltr" lang="en">Floating Point Numbers</span> أي النوع
+              <code dir="ltr">float</code> فتمثل القيم العشرية مثل السعر أو الوزن،
+              وتكفي في معظم الحسابات اليومية.
+            </p>
+            <p>
+              أهم قيد في <code dir="ltr">float</code> أنه يخزن القيم تقريبًا بطريقة
+              ثنائية؛ لذلك قد يعطي <code dir="ltr">0.1 + 0.2</code> ناتجًا طويلًا لا
+              يساوي تمامًا <code dir="ltr">0.3</code>. لا تعتمد على المساواة المطلقة
+              بين القيم العشرية الناتجة عن الحساب.
+            </p>
+            <figure class="code-block">
+          <figcaption class="code-head">
+            <span class="code-meta">
+              <span class="code-lang" lang="en">Python</span>
+              <span class="code-file" lang="en">order_numbers.py</span>
+            </span>
+            <button
+              type="button"
+              class="btn btn-ghost btn-sm"
+              data-copy-code
+              aria-label="نسخ الكود"
+            >
+              <svg
+                class="btn-icon"
+                viewBox="0 0 24 24"
+                width="14"
+                height="14"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <use href="#i-copy"></use>
+              </svg>
+              <span class="btn-label">نسخ</span>
+            </button>
+          </figcaption>
+          <pre class="code" dir="ltr"><code>item_count = 12
+unit_price = 2.5
+subtotal = item_count * unit_price
+
+print(type(item_count))
+print(type(unit_price))
+print(subtotal)</code></pre>
+          <div class="output" role="group" aria-label="مخرجات البرنامج">
+            <div class="output-label" lang="en">Output</div>
+            <pre dir="ltr"><code>&lt;class 'int'&gt;
+&lt;class 'float'&gt;
+30.0</code></pre>
+          </div>
+        </figure>
+          </article>
+
+          <article class="concept">
+            <h4>2. Complex Numbers وRandom Numbers: حسابات متخصصة واختيار غير ثابت</h4>
+            <p>
+              <span dir="ltr" lang="en">Complex Numbers</span> تكتب بالصيغة
+              <code dir="ltr">a + bj</code>؛ حيث <code dir="ltr">j</code> يمثل الجذر
+              التخيلي، ويمكن قراءة الجزء الحقيقي عبر
+              <code dir="ltr">.real</code> والتخيلي عبر <code dir="ltr">.imag</code>.
+              تظهر غالبًا في الهندسة والعلوم ومعالجة الإشارات، ونادرًا في تطبيقات
+              الأعمال اليومية.
+            </p>
+            <figure class="code-block">
+          <figcaption class="code-head">
+            <span class="code-meta">
+              <span class="code-lang" lang="en">Python</span>
+              <span class="code-file" lang="en">complex_signal.py</span>
+            </span>
+            <button
+              type="button"
+              class="btn btn-ghost btn-sm"
+              data-copy-code
+              aria-label="نسخ الكود"
+            >
+              <svg
+                class="btn-icon"
+                viewBox="0 0 24 24"
+                width="14"
+                height="14"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <use href="#i-copy"></use>
+              </svg>
+              <span class="btn-label">نسخ</span>
+            </button>
+          </figcaption>
+          <pre class="code" dir="ltr"><code>signal = 3 + 4j
+
+print(signal.real)
+print(signal.imag)</code></pre>
+          <div class="output" role="group" aria-label="مخرجات البرنامج">
+            <div class="output-label" lang="en">Output</div>
+            <pre dir="ltr"><code>3.0
+4.0</code></pre>
+          </div>
+        </figure>
+            <p>
+              أما <span dir="ltr" lang="en">Random Numbers</span> فنولّدها من module
+              اسمه <code dir="ltr">random</code>. الدالة
+              <code dir="ltr">random.randint(1, 6)</code> تختار عددًا صحيحًا
+              <strong>بما في الطرفين</strong>، لذلك فالناتج غير ثابت ولا تفترض قيمة
+              محددة له في اختبار تلقائي.
+            </p>
+            <figure class="code-block">
+          <figcaption class="code-head">
+            <span class="code-meta">
+              <span class="code-lang" lang="en">Python</span>
+              <span class="code-file" lang="en">dice_roll.py</span>
+            </span>
+            <button
+              type="button"
+              class="btn btn-ghost btn-sm"
+              data-copy-code
+              aria-label="نسخ الكود"
+            >
+              <svg
+                class="btn-icon"
+                viewBox="0 0 24 24"
+                width="14"
+                height="14"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <use href="#i-copy"></use>
+              </svg>
+              <span class="btn-label">نسخ</span>
+            </button>
+          </figcaption>
+          <pre class="code" dir="ltr"><code>import random
+
+dice_roll = random.randint(1, 6)
+print(dice_roll)</code></pre>
+        </figure>
+          </article>
+
+          <article class="concept">
+            <h4>3. Type Conversion مع int() وfloat(): من النص إلى قيمة قابلة للحساب</h4>
+            <p>
+              <span dir="ltr" lang="en">Type Conversion</span> يعني تحويل قيمة من نوع
+              إلى آخر. نحتاجه كثيرًا عندما تصل البيانات نصوصًا، مثل ما يكتبه المستخدم
+              أو ما يقرؤه البرنامج من ملف.
+            </p>
+            <p>
+              يحوّل <code dir="ltr">int("25")</code> النص إلى عدد صحيح، بينما يحوّل
+              <code dir="ltr">float("3.50")</code> النص إلى عدد عشري. أهم خطأ هنا هو
+              استدعاء <code dir="ltr">int()</code> على نص لا يمثل عددًا صحيحًا؛ فالصيغة
+              <code dir="ltr">int("3.5")</code> ترمي <code dir="ltr">ValueError</code>.
+              كما تذكر أن <code dir="ltr">int(7.9)</code> يقتطع الكسر نحو الصفر ولا
+              يقرّبه إلى 8.
+            </p>
+            <figure class="code-block">
+          <figcaption class="code-head">
+            <span class="code-meta">
+              <span class="code-lang" lang="en">Python</span>
+              <span class="code-file" lang="en">parse_order.py</span>
+            </span>
+            <button
+              type="button"
+              class="btn btn-ghost btn-sm"
+              data-copy-code
+              aria-label="نسخ الكود"
+            >
+              <svg
+                class="btn-icon"
+                viewBox="0 0 24 24"
+                width="14"
+                height="14"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <use href="#i-copy"></use>
+              </svg>
+              <span class="btn-label">نسخ</span>
+            </button>
+          </figcaption>
+          <pre class="code" dir="ltr"><code>quantity_text = "25"
+unit_price_text = "3.50"
+
+quantity = int(quantity_text)
+unit_price = float(unit_price_text)
+cart_value = quantity * unit_price
+
+print(cart_value)</code></pre>
+          <div class="output" role="group" aria-label="مخرجات البرنامج">
+            <div class="output-label" lang="en">Output</div>
+            <pre dir="ltr"><code>87.5</code></pre>
+          </div>
+        </figure>
+          </article>
+
+          <article class="concept">
+            <h4>4. str() وType Casting: تحويل صريح لبناء رسائل صحيحة</h4>
+            <p>
+              تحوّل <code dir="ltr">str()</code> القيمة إلى تمثيلها النصي، فتصبح
+              الأرقام جزءًا من رسالة أو تقرير. وفي بايثون لا توجد صيغة Casting منفصلة؛
+              إنما يتم <span dir="ltr" lang="en">Type Casting</span> صراحةً عبر constructor
+              النوع الهدف مثل <code dir="ltr">int()</code> و
+              <code dir="ltr">float()</code> و<code dir="ltr">str()</code>.
+            </p>
+            <p>
+              الخطأ الشائع هو محاولة جمع نص مع عدد باستخدام
+              <code dir="ltr">+</code>، لأن بايثون يرمي
+              <code dir="ltr">TypeError</code>. عند إنشاء التقرير، حوّل الأرقام بـ
+              <code dir="ltr">str()</code> أولًا كما في المثال.
+            </p>
+            <figure class="code-block">
+          <figcaption class="code-head">
+            <span class="code-meta">
+              <span class="code-lang" lang="en">Python</span>
+              <span class="code-file" lang="en">score_report.py</span>
+            </span>
+            <button
+              type="button"
+              class="btn btn-ghost btn-sm"
+              data-copy-code
+              aria-label="نسخ الكود"
+            >
+              <svg
+                class="btn-icon"
+                viewBox="0 0 24 24"
+                width="14"
+                height="14"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <use href="#i-copy"></use>
+              </svg>
+              <span class="btn-label">نسخ</span>
+            </button>
+          </figcaption>
+          <pre class="code" dir="ltr"><code>score = 91
+message = "Score: " + str(score)
+
+print(message)
+print(type(message))</code></pre>
+          <div class="output" role="group" aria-label="مخرجات البرنامج">
+            <div class="output-label" lang="en">Output</div>
+            <pre dir="ltr"><code>Score: 91
+&lt;class 'str'&gt;</code></pre>
+          </div>
+        </figure>
+          </article>
+            </section>
+
+            <section class="lesson-section" id="summary">
+              <h3 class="section-title"><b>02</b>الملخص</h3>
+              <ul class="summary-list">
+                <li>استخدم <code dir="ltr">int</code> للكميات الكاملة و<code dir="ltr">float</code> للقيم العشرية؛ فالقيمة <code dir="ltr">5</code> نوعها مختلف عن <code dir="ltr">5.0</code>.</li>
+                <li>القيم العشرية قد تحمل خطأً تقريبًا بسيطًا، لذلك لا تعتمد على المساواة المطلقة في مقارنتها.</li>
+                <li>العدد العقدي يكتب <code dir="ltr">a + bj</code>، ويمكن قراءة جزأيه عبر <code dir="ltr">.real</code> و<code dir="ltr">.imag</code>.</li>
+                <li><code dir="ltr">random.randint(a, b)</code> يشمل الطرفين معًا، وناتجه متغير وغير مناسب لتوقع قيمة ثابتة.</li>
+                <li><code dir="ltr">int()</code> و<code dir="ltr">float()</code> يحوّلان النصوص الرقمية إلى أرقام، وأي نص غير صالح يسبب <code dir="ltr">ValueError</code>.</li>
+                <li><code dir="ltr">str()</code> يبني تمثيلًا نصيًا للقيمة، وهو تحويل صريح ضروري عند دمج الأرقام في رسالة نصية.</li>
+              </ul>
+            </section>
+
+            <section class="lesson-section" id="interview-questions">
+              <h3 class="section-title"><b>03</b>أسئلة المقابلات</h3>
+              <div class="qa-list">
+                <details class="qa" open>
+                <summary>
+                  <span class="qa-q">ما الفرق بين int وfloat ومتى تستخدم كل نوع؟</span>
+                  <span class="level level-basic">أساسي</span>
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    نستخدم <code dir="ltr">int</code> للأعداد الصحيحة التي لا تحتاج كسورًا مثل عدد المنتجات، ونستخدم
+                    <code dir="ltr">float</code> للقيم العشرية مثل الأسعار والأوزان. عند الجمع أو الضرب بينهما غالبًا يكون الناتج
+                    <code dir="ltr">float</code> للحفاظ على الجزء العشري.
+                  </p>
+                </div>
+              </details>
+
+              <details class="qa">
+                <summary>
+                  <span class="qa-q">ماذا يحدث عند تنفيذ int("7.9")؟</span>
+                  <span class="level level-basic">أساسي</span>
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    يرمي بايثون <code dir="ltr">ValueError</code> لأن النص يمثل عددًا عشريًا وليس عددًا صحيحًا صالحًا. إذا كان
+                    اقتطاع الكسر مقبولًا، فحوّل أولًا بـ <code dir="ltr">float("7.9")</code> ثم إلى
+                    <code dir="ltr">int</code> لتحصل على 7.
+                  </p>
+                </div>
+              </details>
+
+              <details class="qa">
+                <summary>
+                  <span class="qa-q">أين الخطأ في السطر message = "Total: " + total إذا كانت total = 42؟</span>
+                  <span class="level level-mid">متوسط</span>
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    العامل <code dir="ltr">+</code> هنا يعني دمج نصوص، لكن <code dir="ltr">total</code> عدد وليس نصًا، فيرمي
+                    بايثون <code dir="ltr">TypeError</code>. الحل المباشر هو كتابة
+                    <code dir="ltr">"Total: " + str(total)</code>.
+                  </p>
+                </div>
+              </details>
+
+              <details class="qa">
+                <summary>
+                  <span class="qa-q">هل 6 ناتج ممكن من random.randint(1, 6)، وهل يمكن توقع ناتج الاستدعاء؟</span>
+                  <span class="level level-mid">متوسط</span>
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    نعم، الطرفان مدرجان في النطاق، لذلك قد تكون النتيجة 6. لا يمكن توقع قيمة استدعاء واحد بدقة لأن الدالة تنتج
+                    قيمة عشوائية، لذلك يجب اختبار خصائص الناتج مثل كونه ضمن النطاق بدل الاعتماد على رقم ثابت.
+                  </p>
+                </div>
+              </details>
+
+              <details class="qa">
+                <summary>
+                  <span class="qa-q">لماذا لا يُفضل اختبار 1.1 + 2.2 == 3.3 مباشرة؟</span>
+                  <span class="level level-trap">فخ</span>
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    لأن الأعداد العشرية تُخزن تقريبًا بطريقة ثنائية، وقد يكون مجموع
+                    <code dir="ltr">1.1 + 2.2</code> قريبًا من 3.3 لكنه غير مساوٍ لها تمامًا. استخدم حد فرق صغيرًا عند
+                    المقارنة، أو نظّم عرض الناتج بعدد محدد من الخانات عند الحاجة.
+                  </p>
+                </div>
+              </details>
+              </div>
+            </section>
+
+            <section class="lesson-section" id="practical">
+              <h3 class="section-title"><b>04</b>المسألة العملية</h3>
+              <div class="callout callout-problem">
+              <p>
+                يصل سجل مبيعات يومي كنصوص: الكمية والسعر لكل سلعة. المطلوب تحويل
+                القيم إلى أنواعها العددية الصحيحة، وحساب إجمالي القطع المباعة
+                وإجمالي الإيرادات، ثم إخراج تقرير نصي باستخدام <code dir="ltr">str()</code>.
+              </p>
+            </div>
+              <ol class="solution">
+                <li class="sol-step">
+                <p><strong>فهم المطلوب:</strong> لدينا ثلاث سلع، ولكل منها كمية صحيحة وسعر عشري مكتوبان كنصوص. الناتج المطلوب سطران: عدد القطع وإجمالي الإيرادات.</p>
+              </li>
+              <li class="sol-step">
+                <p><strong>خطة الحل:</strong> حوّل كل كمية بـ <code dir="ltr">int()</code> وكل سعر بـ <code dir="ltr">float()</code>، ثم اجمع الكميات واحسب مجموع حاصل ضرب كل كمية في سعرها، وأخيرًا ابنِ النصوص بـ <code dir="ltr">str()</code>.</p>
+              </li>
+              <li class="sol-step">
+                <figure class="code-block">
+          <figcaption class="code-head">
+            <span class="code-meta">
+              <span class="code-lang" lang="en">Python</span>
+              <span class="code-file" lang="en">daily_sales_report.py</span>
+            </span>
+            <button
+              type="button"
+              class="btn btn-ghost btn-sm"
+              data-copy-code
+              aria-label="نسخ الكود"
+            >
+              <svg
+                class="btn-icon"
+                viewBox="0 0 24 24"
+                width="14"
+                height="14"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <use href="#i-copy"></use>
+              </svg>
+              <span class="btn-label">نسخ</span>
+            </button>
+          </figcaption>
+          <pre class="code" dir="ltr"><code>quantity_coffee = int("12")
+price_coffee = float("3.50")
+quantity_tea = int("8")
+price_tea = float("2.50")
+quantity_juice = int("5")
+price_juice = float("4.00")
+
+total_items = quantity_coffee + quantity_tea + quantity_juice
+total_revenue = (
+    quantity_coffee * price_coffee
+    + quantity_tea * price_tea
+    + quantity_juice * price_juice
+)
+
+items_line = "Items sold: " + str(total_items)
+revenue_line = "Total revenue: " + str(total_revenue)
+print(items_line)
+print(revenue_line)</code></pre>
+          <div class="output" role="group" aria-label="مخرجات البرنامج">
+            <div class="output-label" lang="en">Output</div>
+            <pre dir="ltr"><code>Items sold: 25
+Total revenue: 82.0</code></pre>
+          </div>
+        </figure>
+              </li>
+              <li class="sol-step">
+                <p><strong>تفسير القرارات:</strong> اخترنا <code dir="ltr">int</code> للكميات لأنها أعداد كاملة، و<code dir="ltr">float</code> للأسعار لأنها قد تحتوي كسورًا. أما <code dir="ltr">str()</code> فهو الذي يجعل الأرقام قابلة للدمج في سطور التقرير.</p>
+              </li>
+              <li class="sol-step">
+                <p><strong>اختبار سريع:</strong> الناتج الثابت للبيانات التجريبية هو <code dir="ltr">Items sold: 25</code> ثم <code dir="ltr">Total revenue: 82.0</code>. إذا تغير نص الكمية إلى قيمة غير رقمية فسيظهر <code dir="ltr">ValueError</code>.</p>
+              </li>
+              <li class="sol-step">
+                <p><strong>تحسين أو بديل:</strong> عندما تأتي البيانات من المستخدم أو ملف خارجي، تأكد أولًا من أن نص الكمية يصلح لـ <code dir="ltr">int()</code> ونص السعر يصلح لـ <code dir="ltr">float()</code>، لأن أي نص غير رقمي سيوقف التحويل مباشرة.</p>
+              </li>
+              </ol>
+            </section>
+          </div>
+        </section>
+      </div>
+
+      <footer class="footer">
+        <span class="footer-note" lang="en">Python Learning Roadmap</span>
+        <span class="footer-note">المرحلة 01 - الدرس 03</span>
+      </footer>
+    </main>
+
+    <script>
+      (function () {
+        'use strict'
+
+        var live = document.getElementById('copy-status')
+        var printStates = null
+
+        function fallbackCopy(text) {
+          var textarea = document.createElement('textarea')
+          textarea.value = text
+          textarea.setAttribute('readonly', '')
+          textarea.style.cssText = 'position:fixed;top:-1000px;left:-1000px;opacity:0;'
+
+          try {
+            document.body.appendChild(textarea)
+            textarea.focus()
+            textarea.select()
+            textarea.setSelectionRange(0, textarea.value.length)
+            return document.execCommand('copy')
+          } catch (error) {
+            return false
+          } finally {
+            if (textarea.parentNode) {
+              textarea.parentNode.removeChild(textarea)
+            }
+          }
+        }
+
+        function copyText(text) {
+          if (navigator.clipboard && window.isSecureContext) {
+            return navigator.clipboard.writeText(text).then(
+              function () { return true },
+              function () { return fallbackCopy(text) },
+            ).catch(function () { return false })
+          }
+
+          return Promise.resolve().then(function () {
+            return fallbackCopy(text)
+          }).catch(function () {
+            return false
+          })
+        }
+
+        document.addEventListener('click', function (event) {
+          var target = event.target
+          var button = target && typeof target.closest === 'function'
+            ? target.closest('[data-copy-code]')
+            : null
+
+          if (!button) return
+
+          var label = button.querySelector('.btn-label')
+          var block = button.closest('.code-block')
+          var code = block ? block.querySelector('pre.code > code') : null
+          if (!label || !code) return
+
+          if (!button.dataset.label) button.dataset.label = label.textContent
+
+          copyText(code.textContent).then(function (ok) {
+            label.textContent = ok ? 'تم النسخ' : 'تعذّر النسخ'
+            button.classList.toggle('is-copied', ok)
+            button.classList.toggle('is-failed', !ok)
+
+            if (live) {
+              live.textContent = ok
+                ? 'تم نسخ الكود'
+                : 'تعذّر النسخ، حدّد الكود يدويًا ثم انسخه'
+            }
+
+            window.clearTimeout(button._timer)
+            button._timer = window.setTimeout(function () {
+              label.textContent = button.dataset.label
+              button.classList.remove('is-copied', 'is-failed')
+            }, 1800)
+          })
+        })
+
+        window.addEventListener('beforeprint', function () {
+          if (printStates !== null) return
+
+          var questions = document.querySelectorAll('details.qa')
+          printStates = Array.prototype.map.call(questions, function (item) {
+            return item.open
+          })
+          questions.forEach(function (item) {
+            item.open = true
+          })
+        })
+
+        window.addEventListener('afterprint', function () {
+          if (printStates === null) return
+
+          var questions = document.querySelectorAll('details.qa')
+          questions.forEach(function (item, index) {
+            item.open = printStates[index] === true
+          })
+          printStates = null
+        })
+      })()
+    </script>
+  </body>
+</html>

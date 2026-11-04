@@ -1,0 +1,469 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#fcfcfc" />
+    <title>التعبيرات النمطية | Python Learning Roadmap</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/style.css" />
+  </head>
+  <body>
+    <svg
+      width="0"
+      height="0"
+      style="position: absolute"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <symbol id="i-copy" viewBox="0 0 24 24">
+        <rect x="9" y="9" width="12" height="12" rx="2.5" />
+        <path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15" />
+      </symbol>
+    </svg>
+    <template id="code-block-pattern">
+      <figure class="code-block">
+        <figcaption class="code-head">
+          <span class="code-meta">
+            <span class="code-lang" lang="en">Python</span>
+            <span class="code-file" lang="en">example.py</span>
+          </span>
+          <button
+            type="button"
+            class="btn btn-ghost btn-sm"
+            data-copy-code
+            aria-label="نسخ الكود"
+          >
+            <svg
+              class="btn-icon"
+              viewBox="0 0 24 24"
+              width="14"
+              height="14"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <use href="#i-copy"></use>
+            </svg>
+            <span class="btn-label">نسخ</span>
+          </button>
+        </figcaption>
+        <pre class="code" dir="ltr"><code><!-- ضع الكود هنا كنص HTML مع تهريب الرموز الخاصة --></code></pre>
+        <!-- احذف كتلة output إذا لم يكن للمثال ناتج ثابت ومفيد. -->
+        <div class="output" role="group" aria-label="مخرجات البرنامج">
+          <div class="output-label" lang="en">Output</div>
+          <pre dir="ltr"><code><!-- ضع المخرجات المتحققة هنا --></code></pre>
+        </div>
+      </figure>
+    </template>
+
+    <div
+      class="sr-only"
+      id="copy-status"
+      role="status"
+      aria-live="polite"
+    ></div>
+
+    <main class="page">
+      <header class="hero lesson-hero">
+        <span class="eyebrow">
+          <span class="eyebrow-dot"></span>
+          المرحلة <span dir="ltr">09</span>:
+          <span dir="ltr" lang="en">Packages &amp; Standard Library</span>
+        </span>
+        <h1>
+          <span class="h1-ar">التعبيرات النمطية</span>
+          <span class="h1-en" dir="ltr" lang="en">Python RegEx</span>
+        </h1>
+        <p class="hero-description">كيف تبحث في النص عن «شكل» معين لا عن كلمة ثابتة؟ ستتعلم كتابة الأنماط واستخدام وحدة re لاستخراج التطابقات وتقسيم النص واستبدال أجزائه.</p>
+      </header>
+
+      <div class="lesson-parts">
+        <section class="lesson-part-card" id="complete-lesson" aria-labelledby="complete-lesson-title">
+          <header class="part-header">
+            <div class="part-number">درس متكامل</div>
+            <div class="part-heading">
+              <h2 id="complete-lesson-title">
+                <span class="part-title-en" dir="ltr" lang="en">Complete Lesson</span>
+                <span class="sep" aria-hidden="true"> - </span>
+                <span class="part-title-ar">الشرح والملخص والتطبيق</span>
+              </h2>
+              <span class="part-description">كل محتوى الدرس في ملف HTML واحد</span>
+            </div>
+          </header>
+
+          <div class="lesson-body">
+            <section class="lesson-section" id="explain">
+              <h3 class="section-title"><b>01</b>الشرح</h3>
+                            <article class="concept">
+                <h4>Regular Expressions و Regex Patterns: وصف «شكل» النص</h4>
+                <p><strong>لماذا؟</strong> <code>in</code> و<code>startswith()</code> و<code>find()</code> تبحث عن نص ثابت فقط، لكن كثيرًا من المشكلات تبحث عن شكل: أربعة أرقام، بريد إلكتروني، تاريخ. الـ <strong>Regular Expression</strong> (اختصارًا regex) وصف مختصر لشكل النص، والـ <strong>pattern</strong> هو النص الذي تكتب به هذا الوصف.</p>
+                <p><strong>كيف يعمل؟</strong> يمرّ محرك الـ regex على النص من اليسار إلى اليمين ويجرّب مطابقة الـ pattern عند كل موضع، ثم يعيد أول تطابق ناجح. لغة الأنماط متقاربة جدًا بين لغات البرمجة، فما تتعلمه هنا ينفعك خارج Python أيضًا.</p>
+                <p><strong>أهم مكوّنات Regex Patterns:</strong></p>
+                <ul>
+                  <li>حروف عادية: <code>ERROR</code> تطابق نفسها حرفيًا.</li>
+                  <li>أصناف المحارف: <code>\d</code> رقم، <code>\w</code> حرف أو رقم أو <code>_</code>، <code>\s</code> مسافة بيضاء، <code>.</code> أي محرف عدا السطر الجديد، <code>[A-Z]</code> أي محرف من المجموعة، <code>[^0-9]</code> أي محرف خارجها.</li>
+                  <li>المكرِّرات (quantifiers): <code>+</code> مرة أو أكثر، <code>*</code> صفر أو أكثر، <code>?</code> صفر أو مرة، <code>{4}</code> أربع مرات بالضبط، <code>{2,4}</code> من اثنتين إلى أربع.</li>
+                  <li>المراسي (anchors): <code>^</code> بداية النص، <code>$</code> نهايته، <code>\b</code> حدّ الكلمة.</li>
+                  <li>التجميع والاختيار: <code>( )</code> لتجميع جزء واستخراجه لاحقًا، و<code>|</code> بمعنى «أو».</li>
+                  <li>الهروب (escape): <code>\.</code> تطابق نقطة حقيقية، بينما <code>.</code> وحدها تطابق أي محرف.</li>
+                </ul>
+                <p><strong>القيد المهم:</strong> المكرِّرات «جشعة» (greedy) افتراضيًا؛ تأخذ أطول تطابق ممكن. أضف <code>?</code> بعدها (<code>.+?</code>) لتأخذ أقصر تطابق.</p>
+              </article>
+
+              <article class="concept">
+                <h4>re Module و search(): البحث عن أول تطابق</h4>
+                <p><strong>re Module</strong> جزء من المكتبة القياسية، فيكفي <code>import re</code> دون PIP. دوال الوحدة تأخذ الـ pattern أولًا ثم النص: <code>re.search(pattern, string)</code>.</p>
+                <p>اكتب الـ pattern دائمًا كـ <strong>raw string</strong> (<code>r"..."</code>). في string عادية يفسّر Python الشرطة العكسية قبل أن يراها <code>re</code>؛ فـ <code>"\b"</code> تصبح محرف backspace لا حدّ كلمة، و<code>"\d"</code> تعطي تحذيرًا.</p>
+                <p><strong>search()</strong> تفحص النص كله وتعيد أول تطابق في أي موضع كـ Match object، أو <code>None</code> إن لم تجد شيئًا. من الـ Match object تستخرج: <code>group()</code> التطابق الكامل، <code>group(1)</code> أول مجموعة بين أقواس، <code>span()</code> موضع البداية والنهاية.</p>
+                <p><strong>الخطأ الشائع:</strong> استدعاء <code>.group()</code> مباشرة على النتيجة؛ إن عادت <code>None</code> ستحصل على <code>AttributeError</code>. افحص النتيجة بـ <code>if match:</code> أولًا.</p>
+      <figure class="code-block">
+        <figcaption class="code-head">
+          <span class="code-meta">
+            <span class="code-lang" lang="en">Python</span>
+            <span class="code-file" lang="en">regex_search.py</span>
+          </span>
+          <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+            <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <use href="#i-copy"></use>
+            </svg>
+            <span class="btn-label">نسخ</span>
+          </button>
+        </figcaption>
+        <pre class="code" dir="ltr"><code>import re
+
+log_line = "2025-03-14 ERROR payment failed for order #A-1042"
+
+match = re.search(r"#([A-Z])-(\d+)", log_line)
+if match:
+    print(match.group())
+    print(match.group(2))
+    print(match.span())
+
+print(re.search(r"WARNING", log_line))</code></pre>
+        <div class="output" role="group" aria-label="مخرجات البرنامج">
+          <div class="output-label" lang="en">Output</div>
+          <pre dir="ltr"><code>#A-1042
+1042
+(42, 49)
+None</code></pre>
+        </div>
+      </figure>
+              </article>
+
+              <article class="concept">
+                <h4>findall(): استخراج كل التطابقات</h4>
+                <p><strong>لماذا؟</strong> <code>search()</code> تعطيك أول تطابق فقط. عندما تريد كل التطابقات (كل البريد في نص، كل الأرقام) استخدم <code>findall()</code>.</p>
+                <p><strong>كيف تعمل؟</strong> تعيد list بكل التطابقات غير المتداخلة، وقائمة فارغة <code>[]</code> إن لم تجد شيئًا (لا <code>None</code>). وشكل العناصر يتبع الأقواس: بلا مجموعات تعيد strings للتطابق كاملًا، ومع مجموعة واحدة تعيد محتواها فقط، ومع أكثر من مجموعة تعيد tuples.</p>
+                <p><strong>الفخ:</strong> إضافة أقواس للتجميع فقط تغيّر ما تعيده الدالة دون أن تنتبه. إن أردت التجميع بلا استخراج فاستخدم <code>(?:...)</code>.</p>
+      <figure class="code-block">
+        <figcaption class="code-head">
+          <span class="code-meta">
+            <span class="code-lang" lang="en">Python</span>
+            <span class="code-file" lang="en">regex_findall.py</span>
+          </span>
+          <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+            <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <use href="#i-copy"></use>
+            </svg>
+            <span class="btn-label">نسخ</span>
+          </button>
+        </figcaption>
+        <pre class="code" dir="ltr"><code>import re
+
+text = "Contact: sara@example.com, omar.k@mail.org; phone 0100-555-0199"
+
+print(re.findall(r"[\w.]+@[\w.]+\.\w+", text))
+print(re.findall(r"(\w+)@(\w+)", text))
+print(re.findall(r"\d{4}-\d{3}-\d{4}", "no phone here"))</code></pre>
+        <div class="output" role="group" aria-label="مخرجات البرنامج">
+          <div class="output-label" lang="en">Output</div>
+          <pre dir="ltr"><code>['sara@example.com', 'omar.k@mail.org']
+[('sara', 'example'), ('k', 'mail')]
+[]</code></pre>
+        </div>
+      </figure>
+              </article>
+
+              <article class="concept">
+                <h4>split() و sub(): التقسيم والاستبدال بالأنماط</h4>
+                <p><strong>split()</strong> مثل <code>str.split()</code> لكن الفاصل فيها pattern لا نص ثابت؛ مناسبة لنص بفواصل مختلطة وفراغات غير منتظمة، والمعامل <code>maxsplit</code> يحدّد عدد مرات التقسيم. تنبيه: لو وضعت الفاصل بين أقواس تُلتقط الفواصل وتظهر في النتيجة أيضًا.</p>
+                <p><strong>sub()</strong> بصيغة <code>re.sub(pattern, repl, string)</code> تستبدل كل التطابقات (أو عددًا محددًا عبر <code>count</code>) وتعيد string جديدة. لأن الـ strings immutable فالنص الأصلي لا يتغير، وإن لم تحفظ الناتج في متغير ضاع. ويجوز أن يكون <code>repl</code> دالة (مثل lambda) تستقبل Match object وتعيد النص البديل.</p>
+      <figure class="code-block">
+        <figcaption class="code-head">
+          <span class="code-meta">
+            <span class="code-lang" lang="en">Python</span>
+            <span class="code-file" lang="en">regex_split_sub.py</span>
+          </span>
+          <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+            <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <use href="#i-copy"></use>
+            </svg>
+            <span class="btn-label">نسخ</span>
+          </button>
+        </figcaption>
+        <pre class="code" dir="ltr"><code>import re
+
+raw_tags = "python; regex ,  re-module|tutorial"
+print(re.split(r"\s*[;,|]\s*", raw_tags))
+print(re.split(r"\s*[;,|]\s*", raw_tags, maxsplit=1))
+
+phone = "Call 0100-555-0199 or 0122 555 0123"
+print(re.sub(r"\d{4}[- ]\d{3}[- ]\d{4}", "XXXX-XXX-XXXX", phone))
+print(re.sub(r"\d+", lambda m: str(int(m.group()) * 2), "3 apples, 10 pears"))</code></pre>
+        <div class="output" role="group" aria-label="مخرجات البرنامج">
+          <div class="output-label" lang="en">Output</div>
+          <pre dir="ltr"><code>['python', 'regex', 're-module', 'tutorial']
+['python', 'regex ,  re-module|tutorial']
+Call XXXX-XXX-XXXX or XXXX-XXX-XXXX
+6 apples, 20 pears</code></pre>
+        </div>
+      </figure>
+              </article>
+            </section>
+
+            <section class="lesson-section" id="summary">
+              <h3 class="section-title"><b>02</b>الملخص</h3>
+              <ul class="summary-list">
+                                <li>الـ Regular Expression وصف لشكل النص، والـ pattern هو نص الوصف؛ تستخدمه حين لا يكفي البحث عن نص ثابت.</li>
+                <li>أهم مكوّنات الأنماط: <code>\d</code> و<code>\w</code> و<code>\s</code> و<code>[...]</code>، والمكرِّرات <code>+ * ? {n}</code>، والمراسي <code>^ $ \b</code>، والأقواس <code>( )</code> للتجميع.</li>
+                <li>المكرِّرات greedy افتراضيًا؛ استخدم <code>?</code> بعدها (<code>.+?</code>) للحصول على أقصر تطابق.</li>
+                <li>وحدة <code>re</code> قياسية (<code>import re</code>)، وتُكتب الأنماط دائمًا كـ raw string: <code>r"..."</code>.</li>
+                <li><code>search()</code> تعيد أول Match object أو <code>None</code>، فافحصها بـ <code>if match:</code> قبل <code>group()</code>؛ و<code>findall()</code> تعيد list (فارغة عند عدم التطابق) وشكل عناصرها يتبع عدد المجموعات.</li>
+                <li><code>split()</code> تقسّم بفاصل pattern، و<code>sub()</code> تعيد string جديدة ولا تعدّل الأصل، ويجوز أن يكون بديلها دالة.</li>
+              </ul>
+            </section>
+
+            <section class="lesson-section" id="interview-questions">
+              <h3 class="section-title"><b>03</b>أسئلة المقابلات</h3>
+              <div class="qa-list">
+                                <details class="qa" open>
+                  <summary><span class="qa-q">ما الـ Regular Expression، ومتى أفضّلها على string methods؟</span><span class="level level-basic">أساسي</span></summary>
+                  <div class="qa-body">
+                    <p>هي لغة لوصف شكل النص ثم البحث عنه أو استخراجه أو استبداله. أستخدمها حين يكون المطلوب نمطًا (أرقام بصيغة معينة، بريد إلكتروني، تاريخ). أما للنص الثابت فـ <code>in</code> أو <code>startswith()</code> أبسط وأسرع في القراءة.</p>
+                  </div>
+                </details>
+                <details class="qa">
+                  <summary><span class="qa-q">لماذا نكتب الـ pattern كـ raw string؟</span><span class="level level-basic">أساسي</span></summary>
+                  <div class="qa-body">
+                    <p>لأن Python يعالج الشرطة العكسية في الـ string العادية قبل وصولها إلى <code>re</code>. فمثلًا <code>"\b"</code> تصبح backspace لا حدّ كلمة. الصيغة <code>r"\b"</code> تمرّر الشرطة كما هي إلى محرك الـ regex.</p>
+                  </div>
+                </details>
+                <details class="qa">
+                  <summary><span class="qa-q">ما الفرق بين <code>search()</code> و<code>findall()</code>؟</span><span class="level level-mid">متوسط</span></summary>
+                  <div class="qa-body">
+                    <p><code>search()</code> تتوقف عند أول تطابق وتعيد Match object أو <code>None</code>، فتفيدك حين تحتاج الموضع أو المجموعات. <code>findall()</code> تعيد list بكل التطابقات، وقائمة فارغة إن لم تجد شيئًا، فتناسب الاستخراج الجماعي.</p>
+                  </div>
+                </details>
+                <details class="qa">
+                  <summary><span class="qa-q">ماذا تعيد <code>findall()</code> إذا احتوى الـ pattern على مجموعات؟</span><span class="level level-mid">متوسط</span></summary>
+                  <div class="qa-body">
+                    <p>مع مجموعة واحدة تعيد قائمة بمحتوى هذه المجموعة فقط، ومع أكثر من مجموعة تعيد قائمة tuples، عنصر لكل مجموعة. إن لم أرد هذا السلوك استبدلت الأقواس بـ <code>(?:...)</code>.</p>
+                  <p class="qa-follow">متابعة: كيف أحصل على التطابق الكامل مع وجود مجموعات؟ أستخدم <code>search()</code> وأقرأ <code>group()</code>، أو أجعل أقواس التجميع غير ملتقِطة.</p>
+                  </div>
+                </details>
+                <details class="qa">
+                  <summary><span class="qa-q">ما ناتج <code>re.findall(r"&lt;.+&gt;", "&lt;b&gt;bold&lt;/b&gt;")</code> ولماذا؟</span><span class="level level-trap">فخ</span></summary>
+                  <div class="qa-body">
+                    <p>الناتج <code>['&lt;b&gt;bold&lt;/b&gt;']</code>: تطابق واحد طويل، لأن <code>.+</code> جشعة وتمتد حتى آخر <code>&gt;</code> في النص. للحصول على <code>['&lt;b&gt;', '&lt;/b&gt;']</code> نكتب <code>&lt;.+?&gt;</code>.</p>
+                  <p class="qa-follow">متابعة: لتحليل HTML حقيقي يُفضَّل parser مخصص، فالـ regex تناسب الأنماط البسيطة فقط.</p>
+                  </div>
+                </details>
+              </div>
+            </section>
+
+            <section class="lesson-section" id="practical">
+              <h3 class="section-title"><b>04</b>المسألة العملية</h3>
+                            <div class="callout callout-problem">
+                <p>وصلتك رسالة دعم فني واحدة كنص طويل. اكتب دالة <code>analyze_ticket(text)</code> تعيد dict يحتوي: كل أرقام الطلبات بصيغة <code>ORD-</code> ثم أربعة أرقام، وتاريخ ووقت أول <code>ERROR</code>، وقائمة الـ tags (الفاصل <code>;</code> أو <code>,</code>)، ونسخة من النص بعد إخفاء البريد الإلكتروني. إذا غابت بعض البيانات فلا يجب أن ينهار البرنامج.</p>
+              </div>
+              <ol class="solution">
+                                <li class="sol-step">
+                  <h4>فهم المطلوب</h4>
+                  <p>المدخل string واحدة، والمخرج dict بأربعة استخراجات: كل أرقام الطلبات (قائمة)، وأول <code>ERROR</code> (قيمة واحدة قد تغيب)، وقائمة tags، ونص بلا بريد إلكتروني. الحالة الحدّية: نص لا يحتوي بعض هذه البيانات.</p>
+                </li>
+                <li class="sol-step">
+                  <h4>خطة الحل</h4>
+                  <p>أستخدم <code>findall()</code> للطلبات لأنها متعددة، و<code>search()</code> للخطأ ولسطر <code>Tags</code> لأن كلًّا منهما يظهر مرة واحدة، ثم <code>split()</code> لتقسيم الـ tags، و<code>sub()</code> لإخفاء البريد. كل pattern يُكتب كـ raw string.</p>
+                </li>
+                <li class="sol-step">
+                  <h4>الكود الكامل</h4>
+                  <figure class="code-block">
+        <figcaption class="code-head">
+          <span class="code-meta">
+            <span class="code-lang" lang="en">Python</span>
+            <span class="code-file" lang="en">analyze_ticket.py</span>
+          </span>
+          <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+            <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <use href="#i-copy"></use>
+            </svg>
+            <span class="btn-label">نسخ</span>
+          </button>
+        </figcaption>
+        <pre class="code" dir="ltr"><code>import re
+
+
+def analyze_ticket(text):
+    order_ids = re.findall(r"ORD-\d{4}", text)
+    error = re.search(r"ERROR (\d{4}-\d{2}-\d{2}) (\d{2}:\d{2})", text)
+    tags_line = re.search(r"Tags: (.+?) \|", text)
+    tags = re.split(r"\s*[;,]\s*", tags_line.group(1)) if tags_line else []
+    safe_text = re.sub(r"[\w.]+@[\w.]+\.\w+", "[email hidden]", text)
+    return {
+        "orders": order_ids,
+        "error_at": f"{error.group(1)} {error.group(2)}" if error else None,
+        "tags": tags,
+        "safe_text": safe_text,
+    }
+
+
+ticket = ("Tags: billing; urgent , refund | sara@example.com reported "
+          "ERROR 2025-03-14 10:42 on ORD-1042, retry ORD-1043 failed")
+for key, value in analyze_ticket(ticket).items():
+    print(f"{key}: {value}")
+print(analyze_ticket("no data"))</code></pre>
+        <div class="output" role="group" aria-label="مخرجات البرنامج">
+          <div class="output-label" lang="en">Output</div>
+          <pre dir="ltr"><code>orders: ['ORD-1042', 'ORD-1043']
+error_at: 2025-03-14 10:42
+tags: ['billing', 'urgent', 'refund']
+safe_text: Tags: billing; urgent , refund | [email hidden] reported ERROR 2025-03-14 10:42 on ORD-1042, retry ORD-1043 failed
+{'orders': [], 'error_at': None, 'tags': [], 'safe_text': 'no data'}</code></pre>
+        </div>
+      </figure>
+                </li>
+                <li class="sol-step">
+                  <h4>تفسير القرارات</h4>
+                  <p>مجموعتا <code>ERROR (\d{4}-\d{2}-\d{2}) (\d{2}:\d{2})</code> تعطيان التاريخ والوقت منفصلين. النمط <code>Tags: (.+?) \|</code> يستخدم <code>.+?</code> الكسولة ليتوقف عند أول <code>|</code>، والشرطة العمودية مهروبة لأنها تعني «أو». و<code>\s*[;,]\s*</code> يمتص الفراغات حول الفاصل فلا تبقى مسافات داخل الـ tags. الشرط <code>if error else None</code> يمنع <code>AttributeError</code> عند غياب التطابق.</p>
+                </li>
+                <li class="sol-step">
+                  <h4>اختبار سريع</h4>
+                  <p>السطر الأخير في الكود يختبر نصًا بلا بيانات: <code>analyze_ticket("no data")</code>؛ والمخرجات أعلاه تؤكد أنه يعيد قوائم فارغة و<code>None</code> دون أي خطأ، ويبقى النص كما هو.</p>
+                </li>
+                <li class="sol-step">
+                  <h4>تحسين أو بديل</h4>
+                  <p>عند تكرار الأنماط نفسها على آلاف الرسائل يمكن لاحقًا تجهيزها مرة واحدة بـ <code>re.compile()</code>، كما تجعل المجموعات المسمّاة <code>(?P&lt;date&gt;...)</code> القراءة أوضح. وتذكّر أن pattern البريد هنا مبسّط ولا يصلح للتحقق الصارم من صحة العناوين.</p>
+                </li>
+              </ol>
+            </section>
+          </div>
+        </section>
+      </div>
+
+      <footer class="footer">
+        <span class="footer-note" lang="en">Python Learning Roadmap</span>
+        <span class="footer-note">المرحلة 09 - الدرس 41</span>
+      </footer>
+    </main>
+
+    <script>
+      (function () {
+        'use strict'
+
+        var live = document.getElementById('copy-status')
+        var printStates = null
+
+        function fallbackCopy(text) {
+          var textarea = document.createElement('textarea')
+          textarea.value = text
+          textarea.setAttribute('readonly', '')
+          textarea.style.cssText = 'position:fixed;top:-1000px;left:-1000px;opacity:0;'
+
+          try {
+            document.body.appendChild(textarea)
+            textarea.focus()
+            textarea.select()
+            textarea.setSelectionRange(0, textarea.value.length)
+            return document.execCommand('copy')
+          } catch (error) {
+            return false
+          } finally {
+            if (textarea.parentNode) {
+              textarea.parentNode.removeChild(textarea)
+            }
+          }
+        }
+
+        function copyText(text) {
+          if (navigator.clipboard && window.isSecureContext) {
+            return navigator.clipboard.writeText(text).then(
+              function () { return true },
+              function () { return fallbackCopy(text) },
+            ).catch(function () { return false })
+          }
+
+          return Promise.resolve().then(function () {
+            return fallbackCopy(text)
+          }).catch(function () {
+            return false
+          })
+        }
+
+        document.addEventListener('click', function (event) {
+          var target = event.target
+          var button = target && typeof target.closest === 'function'
+            ? target.closest('[data-copy-code]')
+            : null
+
+          if (!button) return
+
+          var label = button.querySelector('.btn-label')
+          var block = button.closest('.code-block')
+          var code = block ? block.querySelector('pre.code > code') : null
+          if (!label || !code) return
+
+          if (!button.dataset.label) button.dataset.label = label.textContent
+
+          copyText(code.textContent).then(function (ok) {
+            label.textContent = ok ? 'تم النسخ' : 'تعذّر النسخ'
+            button.classList.toggle('is-copied', ok)
+            button.classList.toggle('is-failed', !ok)
+
+            if (live) {
+              live.textContent = ok
+                ? 'تم نسخ الكود'
+                : 'تعذّر النسخ، حدّد الكود يدويًا ثم انسخه'
+            }
+
+            window.clearTimeout(button._timer)
+            button._timer = window.setTimeout(function () {
+              label.textContent = button.dataset.label
+              button.classList.remove('is-copied', 'is-failed')
+            }, 1800)
+          })
+        })
+
+        window.addEventListener('beforeprint', function () {
+          if (printStates !== null) return
+
+          var questions = document.querySelectorAll('details.qa')
+          printStates = Array.prototype.map.call(questions, function (item) {
+            return item.open
+          })
+          questions.forEach(function (item) {
+            item.open = true
+          })
+        })
+
+        window.addEventListener('afterprint', function () {
+          if (printStates === null) return
+
+          var questions = document.querySelectorAll('details.qa')
+          questions.forEach(function (item, index) {
+            item.open = printStates[index] === true
+          })
+          printStates = null
+        })
+      })()
+    </script>
+  </body>
+</html>

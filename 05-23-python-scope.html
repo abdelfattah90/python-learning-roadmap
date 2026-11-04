@@ -1,0 +1,518 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#fcfcfc" />
+    <title>النطاق - Python Scope | Python Learning Roadmap</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/style.css" />
+  </head>
+  <body>
+    <svg
+      width="0"
+      height="0"
+      style="position: absolute"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <symbol id="i-copy" viewBox="0 0 24 24">
+        <rect x="9" y="9" width="12" height="12" rx="2.5" />
+        <path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15" />
+      </symbol>
+    </svg>
+    <template id="code-block-pattern">
+      <figure class="code-block">
+        <figcaption class="code-head">
+          <span class="code-meta">
+            <span class="code-lang" lang="en">Python</span>
+            <span class="code-file" lang="en">example.py</span>
+          </span>
+          <button
+            type="button"
+            class="btn btn-ghost btn-sm"
+            data-copy-code
+            aria-label="نسخ الكود"
+          >
+            <svg
+              class="btn-icon"
+              viewBox="0 0 24 24"
+              width="14"
+              height="14"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <use href="#i-copy"></use>
+            </svg>
+            <span class="btn-label">نسخ</span>
+          </button>
+        </figcaption>
+        <pre class="code" dir="ltr"><code><!-- ضع الكود هنا كنص HTML مع تهريب الرموز الخاصة --></code></pre>
+        <!-- احذف كتلة output إذا لم يكن للمثال ناتج ثابت ومفيد. -->
+        <div class="output" role="group" aria-label="مخرجات البرنامج">
+          <div class="output-label" lang="en">Output</div>
+          <pre dir="ltr"><code><!-- ضع المخرجات المتحققة هنا --></code></pre>
+        </div>
+      </figure>
+    </template>
+
+    <div
+      class="sr-only"
+      id="copy-status"
+      role="status"
+      aria-live="polite"
+    ></div>
+
+    <main class="page">
+      <header class="hero lesson-hero">
+        <span class="eyebrow">
+          <span class="eyebrow-dot"></span>
+          المرحلة <span dir="ltr">05</span>:
+          <span dir="ltr" lang="en">Functions</span>
+        </span>
+        <h1>
+          <span class="h1-ar">النطاق</span>
+          <span class="h1-en" dir="ltr" lang="en">Python Scope</span>
+        </h1>
+        <p class="hero-description">لماذا يُرى المتغير داخل دالة ولا يُرى خارجها؟ وكيف تبحث Python عن الاسم، ومتى تحتاج إلى global أو nonlocal لتعديل متغير يعيش في نطاق آخر؟</p>
+      </header>
+
+      <div class="lesson-parts">
+        <section class="lesson-part-card" id="complete-lesson" aria-labelledby="complete-lesson-title">
+          <header class="part-header">
+            <div class="part-number">درس متكامل</div>
+            <div class="part-heading">
+              <h2 id="complete-lesson-title">
+                <span class="part-title-en" dir="ltr" lang="en">Complete Lesson</span>
+                <span class="sep" aria-hidden="true"> - </span>
+                <span class="part-title-ar">الشرح والملخص والتطبيق</span>
+              </h2>
+              <span class="part-description">كل محتوى الدرس في ملف HTML واحد</span>
+            </div>
+          </header>
+
+          <div class="lesson-body">
+            <section class="lesson-section" id="explain">
+              <h3 class="section-title"><b>01</b>الشرح</h3>
+              <article class="concept">
+                <h4>Local Scope و Global Scope: أين يعيش الاسم؟</h4>
+                <p>
+                  بدون فكرة النطاق ستتصادم أسماء المتغيرات في أي برنامج كبير. <strong>Local Scope</strong> هو كل ما يُنشأ داخل الدالة (المعاملات والأسماء المُسندة فيها)، وهو يُنشأ عند الاستدعاء ويختفي عند انتهائه، فلا يراه أحد خارجها. <strong>Global Scope</strong> هو ما يُعرَّف في مستوى الملف نفسه، ويمكن لأي دالة <em>قراءته</em>. استخدم Local افتراضيًا لأنه يمنع التأثيرات الجانبية، واحتفظ بـ Global للثوابت والإعدادات.
+                </p>
+                <p>
+                  الخطأ الشائع: الإسناد داخل الدالة إلى اسم يطابق اسمًا عامًا ينشئ متغيرًا محليًا جديدًا ولا يغيّر العام.
+                </p>
+                <figure class="code-block">
+                  <figcaption class="code-head">
+                    <span class="code-meta">
+                      <span class="code-lang" lang="en">Python</span>
+                      <span class="code-file" lang="en">local_global.py</span>
+                    </span>
+                    <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+                      <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <use href="#i-copy"></use>
+                      </svg>
+                      <span class="btn-label">نسخ</span>
+                    </button>
+                  </figcaption>
+                  <pre class="code" dir="ltr"><code>tax_rate = 0.14
+
+
+def calculate_total(price):
+    total = price * (1 + tax_rate)
+    return round(total, 2)
+
+
+print(calculate_total(100))
+print(tax_rate)
+# print(total)  # NameError: total exists only inside the function</code></pre>
+                  <div class="output" role="group" aria-label="مخرجات البرنامج">
+                    <div class="output-label" lang="en">Output</div>
+                    <pre dir="ltr"><code>114.0
+0.14</code></pre>
+                  </div>
+                </figure>
+              </article>
+
+              <article class="concept">
+                <h4>Enclosing Scope و Built-in Scope: ترتيب البحث LEGB</h4>
+                <p>
+                  عند تداخل الدوال، تستطيع الدالة الداخلية رؤية متغيرات الدالة الخارجية؛ وهذا هو <strong>Enclosing Scope</strong>، ويفيد في الدوال المساعدة التي تحتاج إلى بيانات الدالة التي تحتويها. أما <strong>Built-in Scope</strong> فيحوي الأسماء الجاهزة مثل <code>len</code> و <code>print</code> و <code>max</code>، وهي متاحة في كل مكان دون تعريف.
+                </p>
+                <p>
+                  تبحث Python عن الاسم بالترتيب: Local ثم Enclosing ثم Global ثم Built-in، ويُعرف بقاعدة <strong>LEGB</strong>، وتتوقف عند أول نطاق تجد فيه الاسم. تنبيه: تسمية متغير <code>len</code> أو <code>max</code> أو <code>list</code> تُخفي الدالة الجاهزة داخل ذلك النطاق، فتجنّب هذه الأسماء.
+                </p>
+                <figure class="code-block">
+                  <figcaption class="code-head">
+                    <span class="code-meta">
+                      <span class="code-lang" lang="en">Python</span>
+                      <span class="code-file" lang="en">legb.py</span>
+                    </span>
+                    <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+                      <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <use href="#i-copy"></use>
+                      </svg>
+                      <span class="btn-label">نسخ</span>
+                    </button>
+                  </figcaption>
+                  <pre class="code" dir="ltr"><code>discount = "global"
+
+
+def outer():
+    discount = "enclosing"
+
+    def inner():
+        print(discount)   # found in Enclosing
+        print(len("abc"))  # found in Built-in
+
+    inner()
+
+
+outer()
+print(discount)</code></pre>
+                  <div class="output" role="group" aria-label="مخرجات البرنامج">
+                    <div class="output-label" lang="en">Output</div>
+                    <pre dir="ltr"><code>enclosing
+3
+global</code></pre>
+                  </div>
+                </figure>
+              </article>
+
+              <article class="concept">
+                <h4>global Keyword: تعديل متغير عام من داخل دالة</h4>
+                <p>
+                  القراءة من Global لا تحتاج إلى شيء، لكن <em>إعادة الإسناد</em> تحتاج إلى التصريح بالكلمة <code>global</code> داخل الدالة قبل استخدام الاسم. بدونها تعدّ Python الاسم محليًا في الدالة كلها، فينتج <code>UnboundLocalError</code> عند استعماله قبل إسناده. استخدمها نادرًا، مثل عدّاد عام أو حالة تطبيق مشتركة، لأن كثرتها تجعل الدوال مرتبطة بحالة خفية يصعب اختبارها.
+                </p>
+                <figure class="code-block">
+                  <figcaption class="code-head">
+                    <span class="code-meta">
+                      <span class="code-lang" lang="en">Python</span>
+                      <span class="code-file" lang="en">global_keyword.py</span>
+                    </span>
+                    <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+                      <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <use href="#i-copy"></use>
+                      </svg>
+                      <span class="btn-label">نسخ</span>
+                    </button>
+                  </figcaption>
+                  <pre class="code" dir="ltr"><code>login_attempts = 0
+
+
+def register_failed_login():
+    global login_attempts
+    login_attempts += 1
+
+
+register_failed_login()
+register_failed_login()
+print(login_attempts)</code></pre>
+                  <div class="output" role="group" aria-label="مخرجات البرنامج">
+                    <div class="output-label" lang="en">Output</div>
+                    <pre dir="ltr"><code>2</code></pre>
+                  </div>
+                </figure>
+              </article>
+
+              <article class="concept">
+                <h4>nonlocal Keyword: تعديل متغير في الدالة المحيطة</h4>
+                <p>
+                  <code>nonlocal</code> هو نظير <code>global</code> للدوال المتداخلة: يسمح للدالة الداخلية بإعادة إسناد متغير يخص الدالة الخارجية، فتحتفظ الخارجية بحالتها دون متغير عام. قيده المهم أن الاسم يجب أن يكون مُعرَّفًا فعلًا في دالة محيطة؛ فإن لم يوجد (أو كان عامًا فقط) يحدث <code>SyntaxError</code> وقت التحميل.
+                </p>
+                <figure class="code-block">
+                  <figcaption class="code-head">
+                    <span class="code-meta">
+                      <span class="code-lang" lang="en">Python</span>
+                      <span class="code-file" lang="en">nonlocal_keyword.py</span>
+                    </span>
+                    <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+                      <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <use href="#i-copy"></use>
+                      </svg>
+                      <span class="btn-label">نسخ</span>
+                    </button>
+                  </figcaption>
+                  <pre class="code" dir="ltr"><code>def process_orders(orders):
+    processed = 0
+
+    def mark_done():
+        nonlocal processed
+        processed += 1
+
+    for order in orders:
+        mark_done()
+    return processed
+
+
+print(process_orders(["A1", "A2", "A3"]))</code></pre>
+                  <div class="output" role="group" aria-label="مخرجات البرنامج">
+                    <div class="output-label" lang="en">Output</div>
+                    <pre dir="ltr"><code>3</code></pre>
+                  </div>
+                </figure>
+              </article>
+            </section>
+
+            <section class="lesson-section" id="summary">
+              <h3 class="section-title"><b>02</b>الملخص</h3>
+              <ul class="summary-list">
+                <li>الـ scope يحدد أين يكون الاسم مرئيًا، وتبحث Python عنه بترتيب <strong>LEGB</strong>: Local ثم Enclosing ثم Global ثم Built-in.</li>
+                <li><strong>Local</strong>: أسماء الدالة (المعاملات والإسنادات) تعيش أثناء الاستدعاء فقط ولا تُرى خارجها.</li>
+                <li><strong>Global</strong>: أسماء مستوى الملف، وقراءتها من داخل الدوال مسموحة دون أي كلمة مفتاحية.</li>
+                <li><strong>Enclosing</strong>: الدالة الداخلية ترى متغيرات الدالة الخارجية، و<strong>Built-in</strong> يضم أسماء جاهزة مثل <code>len</code> و <code>print</code>.</li>
+                <li><code>global</code> يعيد إسناد اسم عام، و <code>nonlocal</code> يعيد إسناد اسم في دالة محيطة؛ أما التعديل المباشر لـ list مثلًا فلا يحتاج إليهما.</li>
+                <li>أي إسناد داخل الدالة يجعل الاسم محليًا في الدالة كلها (سبب <code>UnboundLocalError</code>)؛ فضّل المعاملات و <code>return</code>، وتجنب أسماء مثل <code>len</code> أو <code>max</code>.</li>
+              </ul>
+            </section>
+
+            <section class="lesson-section" id="interview-questions">
+              <h3 class="section-title"><b>03</b>أسئلة المقابلات</h3>
+              <div class="qa-list">
+                <details class="qa" open>
+                  <summary>
+                    <span class="qa-q">ما هو الـ scope في Python، وما ترتيب البحث عن الأسماء (LEGB)؟</span>
+                    <span class="level level-basic">أساسي</span>
+                  </summary>
+                  <div class="qa-body">
+                    <p>الـ scope هو المنطقة التي يكون فيها الاسم مرئيًا وصالحًا للاستخدام. تبحث Python عن الاسم بالترتيب Local ثم Enclosing ثم Global ثم Built-in، وتتوقف عند أول نطاق تجد فيه الاسم؛ فإن لم تجده في أي منها ظهر <code>NameError</code>.</p>
+                  </div>
+                </details>
+
+                <details class="qa">
+                  <summary>
+                    <span class="qa-q">ما الفرق بين المتغير المحلي والمتغير العام؟ وماذا يحدث لو أسندنا داخل دالة قيمة لاسم عام موجود؟</span>
+                    <span class="level level-basic">أساسي</span>
+                  </summary>
+                  <div class="qa-body">
+                    <p>المحلي يُنشأ داخل الدالة ويختفي بانتهائها، والعام يعيش في مستوى الملف ويراه الجميع للقراءة. الإسناد داخل الدالة إلى اسم يطابق اسمًا عامًا ينشئ متغيرًا محليًا جديدًا يُخفي العام (shadowing) دون تغييره.</p>
+                  </div>
+                </details>
+
+                <details class="qa">
+                  <summary>
+                    <span class="qa-q">متى تستخدم <code>global</code> ومتى تستخدم <code>nonlocal</code>؟</span>
+                    <span class="level level-mid">متوسط</span>
+                  </summary>
+                  <div class="qa-body">
+                    <p>تستخدم <code>global</code> لإعادة إسناد متغير في مستوى الملف من داخل دالة، و <code>nonlocal</code> لإعادة إسناد متغير يخص دالة محيطة من دالة داخلية. <code>nonlocal</code> لا يصل إلى المتغيرات العامة، وإذا لم يجد الاسم في دالة محيطة يحدث <code>SyntaxError</code>.</p>
+                  </div>
+                </details>
+
+                <details class="qa">
+                  <summary>
+                    <span class="qa-q">هل نحتاج <code>global</code> لإضافة عنصر إلى list عامة داخل دالة باستخدام <code>append</code>؟</span>
+                    <span class="level level-mid">متوسط</span>
+                  </summary>
+                  <div class="qa-body">
+                    <p>لا؛ لأن <code>append</code> يعدّل الكائن نفسه ولا يعيد ربط الاسم بكائن آخر، والكلمتان <code>global</code> و <code>nonlocal</code> لازمتان فقط عند إعادة الإسناد مثل <code>log = []</code> أو <code>count += 1</code>.</p>
+                    <p class="qa-follow">متابعة: حتى لو عمل ذلك، فالأفضل تمرير الـ list كمعامل بدل الاعتماد على حالة عامة خفية.</p>
+                  </div>
+                </details>
+
+                <details class="qa">
+                  <summary>
+                    <span class="qa-q">لماذا يفشل هذا الكود مع أن <code>visits</code> معرّف خارج الدالة؟ <code>visits = 0</code> ثم <code>def add_visit(): visits += 1</code></span>
+                    <span class="level level-trap">فخ</span>
+                  </summary>
+                  <div class="qa-body">
+                    <p>يظهر <code>UnboundLocalError</code>؛ لأن <code>+=</code> يتضمن إسنادًا، والإسناد في أي موضع من الدالة يجعل الاسم محليًا في الدالة كلها، فتحاول Python قراءة قيمة محلية لم تُنشأ بعد. الحل: التصريح بـ <code>global visits</code> داخل الدالة، أو الأفضل تمرير القيمة وإرجاع الناتج.</p>
+                  </div>
+                </details>
+              </div>
+            </section>
+
+            <section class="lesson-section" id="practical">
+              <h3 class="section-title"><b>04</b>المسألة العملية</h3>
+              <div class="callout callout-problem">
+                <p>
+                  تدير مكتبة صغيرة ورديات بيع. اكتب دالة <code>run_shift(shift_name, amounts)</code> تجمع مبيعات وردية واحدة وتعيد نصًا مثل <code>morning: 245</code>. يجب أن تستخدم دالة داخلية <code>record_sale</code> لتسجيل كل عملية بيع، وأن تُحدّث في الوقت نفسه إجمالي ورديتها المحلي وإجمالي اليوم العام <code>total_sales</code>.
+                </p>
+              </div>
+              <ol class="solution">
+                <li class="sol-step">
+                  <h4>فهم المطلوب</h4>
+                  <p>نحتاج حالتين مختلفتين: إجمالي الوردية يخص كل استدعاء ويجب أن يبدأ من الصفر، وإجمالي اليوم يتراكم عبر كل الورديات. والدالة الداخلية هي التي تعدّل الاثنين.</p>
+                </li>
+                <li class="sol-step">
+                  <h4>خطة الحل</h4>
+                  <p>نعرّف <code>total_sales</code> في Global Scope، و <code>shift_total</code> في Local Scope للدالة الخارجية. داخل <code>record_sale</code> نصرّح بـ <code>nonlocal</code> للأول وبـ <code>global</code> للثاني ثم نستخدم <code>+=</code>.</p>
+                </li>
+                <li class="sol-step">
+                  <h4>الكود الكامل</h4>
+                  <figure class="code-block">
+                    <figcaption class="code-head">
+                      <span class="code-meta">
+                        <span class="code-lang" lang="en">Python</span>
+                        <span class="code-file" lang="en">shift_sales.py</span>
+                      </span>
+                      <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+                        <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                          <use href="#i-copy"></use>
+                        </svg>
+                        <span class="btn-label">نسخ</span>
+                      </button>
+                    </figcaption>
+                    <pre class="code" dir="ltr"><code>total_sales = 0
+
+
+def run_shift(shift_name, amounts):
+    shift_total = 0
+
+    def record_sale(amount):
+        nonlocal shift_total
+        global total_sales
+        shift_total += amount
+        total_sales += amount
+
+    for sale in amounts:
+        record_sale(sale)
+    return f"{shift_name}: {shift_total}"
+
+
+print(run_shift("morning", [120, 80, 45]))
+print(run_shift("evening", [200, 60]))
+print(total_sales)</code></pre>
+                    <div class="output" role="group" aria-label="مخرجات البرنامج">
+                      <div class="output-label" lang="en">Output</div>
+                      <pre dir="ltr"><code>morning: 245
+evening: 260
+505</code></pre>
+                    </div>
+                  </figure>
+                </li>
+                <li class="sol-step">
+                  <h4>تفسير القرارات</h4>
+                  <p>جعلنا <code>shift_total</code> محليًا حتى تبدأ كل وردية من صفر دون تداخل. واستخدمنا <code>nonlocal</code> لأن المتغير يخص دالة محيطة، و <code>global</code> لأن الإجمالي اليومي في مستوى الملف؛ فلكل كلمة نطاق مختلف.</p>
+                </li>
+                <li class="sol-step">
+                  <h4>اختبار سريع</h4>
+                  <p>القيم المتوقعة 245 و 260 ومجموعهما 505. إذا حذفت سطر <code>nonlocal shift_total</code> أو سطر <code>global total_sales</code> فسيظهر <code>UnboundLocalError</code>، لأن <code>+=</code> سيجعل الاسم محليًا في <code>record_sale</code>.</p>
+                </li>
+                <li class="sol-step">
+                  <h4>تحسين أو بديل</h4>
+                  <p>التصميم الأنظف تجنب الحالة المشتركة: تعيد <code>run_shift</code> إجمالي الوردية كرقم، ويحسب الكود الخارجي إجمالي اليوم بجمع النتائج. هكذا تصبح الدالة أسهل في الاختبار ولا تحتاج إلى <code>global</code> أصلًا.</p>
+                </li>
+              </ol>
+            </section>
+          </div>
+        </section>
+      </div>
+
+      <footer class="footer">
+        <span class="footer-note" lang="en">Python Learning Roadmap</span>
+        <span class="footer-note">المرحلة 05 - الدرس 23</span>
+      </footer>
+    </main>
+
+    <script>
+      (function () {
+        'use strict'
+
+        var live = document.getElementById('copy-status')
+        var printStates = null
+
+        function fallbackCopy(text) {
+          var textarea = document.createElement('textarea')
+          textarea.value = text
+          textarea.setAttribute('readonly', '')
+          textarea.style.cssText = 'position:fixed;top:-1000px;left:-1000px;opacity:0;'
+
+          try {
+            document.body.appendChild(textarea)
+            textarea.focus()
+            textarea.select()
+            textarea.setSelectionRange(0, textarea.value.length)
+            return document.execCommand('copy')
+          } catch (error) {
+            return false
+          } finally {
+            if (textarea.parentNode) {
+              textarea.parentNode.removeChild(textarea)
+            }
+          }
+        }
+
+        function copyText(text) {
+          if (navigator.clipboard && window.isSecureContext) {
+            return navigator.clipboard.writeText(text).then(
+              function () { return true },
+              function () { return fallbackCopy(text) },
+            ).catch(function () { return false })
+          }
+
+          return Promise.resolve().then(function () {
+            return fallbackCopy(text)
+          }).catch(function () {
+            return false
+          })
+        }
+
+        document.addEventListener('click', function (event) {
+          var target = event.target
+          var button = target && typeof target.closest === 'function'
+            ? target.closest('[data-copy-code]')
+            : null
+
+          if (!button) return
+
+          var label = button.querySelector('.btn-label')
+          var block = button.closest('.code-block')
+          var code = block ? block.querySelector('pre.code > code') : null
+          if (!label || !code) return
+
+          if (!button.dataset.label) button.dataset.label = label.textContent
+
+          copyText(code.textContent).then(function (ok) {
+            label.textContent = ok ? 'تم النسخ' : 'تعذّر النسخ'
+            button.classList.toggle('is-copied', ok)
+            button.classList.toggle('is-failed', !ok)
+
+            if (live) {
+              live.textContent = ok
+                ? 'تم نسخ الكود'
+                : 'تعذّر النسخ، حدّد الكود يدويًا ثم انسخه'
+            }
+
+            window.clearTimeout(button._timer)
+            button._timer = window.setTimeout(function () {
+              label.textContent = button.dataset.label
+              button.classList.remove('is-copied', 'is-failed')
+            }, 1800)
+          })
+        })
+
+        window.addEventListener('beforeprint', function () {
+          if (printStates !== null) return
+
+          var questions = document.querySelectorAll('details.qa')
+          printStates = Array.prototype.map.call(questions, function (item) {
+            return item.open
+          })
+          questions.forEach(function (item) {
+            item.open = true
+          })
+        })
+
+        window.addEventListener('afterprint', function () {
+          if (printStates === null) return
+
+          var questions = document.querySelectorAll('details.qa')
+          questions.forEach(function (item, index) {
+            item.open = printStates[index] === true
+          })
+          printStates = null
+        })
+      })()
+    </script>
+  </body>
+</html>

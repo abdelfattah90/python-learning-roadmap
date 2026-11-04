@@ -1,0 +1,444 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#fcfcfc" />
+    <title>Python Iterators - المكررات | Python Learning Roadmap</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/style.css" />
+  </head>
+  <body>
+    <svg
+      width="0"
+      height="0"
+      style="position: absolute"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <symbol id="i-copy" viewBox="0 0 24 24">
+        <rect x="9" y="9" width="12" height="12" rx="2.5" />
+        <path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15" />
+      </symbol>
+    </svg>
+    <template id="code-block-pattern">
+      <figure class="code-block">
+        <figcaption class="code-head">
+          <span class="code-meta">
+            <span class="code-lang" lang="en">Python</span>
+            <span class="code-file" lang="en">example.py</span>
+          </span>
+          <button
+            type="button"
+            class="btn btn-ghost btn-sm"
+            data-copy-code
+            aria-label="نسخ الكود"
+          >
+            <svg
+              class="btn-icon"
+              viewBox="0 0 24 24"
+              width="14"
+              height="14"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <use href="#i-copy"></use>
+            </svg>
+            <span class="btn-label">نسخ</span>
+          </button>
+        </figcaption>
+        <pre class="code" dir="ltr"><code><!-- ضع الكود هنا كنص HTML مع تهريب الرموز الخاصة --></code></pre>
+        <!-- احذف كتلة output إذا لم يكن للمثال ناتج ثابت ومفيد. -->
+        <div class="output" role="group" aria-label="مخرجات البرنامج">
+          <div class="output-label" lang="en">Output</div>
+          <pre dir="ltr"><code><!-- ضع المخرجات المتحققة هنا --></code></pre>
+        </div>
+      </figure>
+    </template>
+
+    <div
+      class="sr-only"
+      id="copy-status"
+      role="status"
+      aria-live="polite"
+    ></div>
+
+    <main class="page">
+      <header class="hero lesson-hero">
+        <span class="eyebrow">
+          <span class="eyebrow-dot"></span>
+          المرحلة <span dir="ltr">07</span>:
+          <span dir="ltr" lang="en">Iterators, Generators &amp; Modules</span>
+        </span>
+        <h1>
+          <span class="h1-ar">المكررات</span>
+          <span class="h1-en" dir="ltr" lang="en">Python Iterators</span>
+        </h1>
+        <p class="hero-description">كيف تعمل حلقة for داخليًا؟ تعلّم بروتوكول التكرار: الفرق بين Iterable وIterator، واستخدام iter() وnext()، وبناء مكرر مخصص.</p>
+      </header>
+
+      <div class="lesson-parts">
+        <section class="lesson-part-card" id="complete-lesson" aria-labelledby="complete-lesson-title">
+          <header class="part-header">
+            <div class="part-number">درس متكامل</div>
+            <div class="part-heading">
+              <h2 id="complete-lesson-title">
+                <span class="part-title-en" dir="ltr" lang="en">Complete Lesson</span>
+                <span class="sep" aria-hidden="true"> - </span>
+                <span class="part-title-ar">الشرح والملخص والتطبيق</span>
+              </h2>
+              <span class="part-description">كل محتوى الدرس في ملف HTML واحد</span>
+            </div>
+          </header>
+
+          <div class="lesson-body">
+            <section class="lesson-section" id="explain">
+              <h3 class="section-title"><b>01</b>الشرح</h3>
+              <article class="concept">
+<h4>Iterable Objects و Iterator Objects: من يعطي ومن يتذكر</h4>
+<p>حلقة <code>for</code> تعمل بنفس الطريقة مع list وstr وdict وملفات لأن الجميع يتبع بروتوكولًا موحدًا، فلا تحتاج الحلقة لمعرفة نوع البيانات. هذا البروتوكول يفصل دورين: الوعاء الذي يمكن المرور عليه، والمؤشر الذي يتقدم داخله.</p>
+<p><strong>Iterable Object</strong> هو أي كائن يملك <code>__iter__()</code> يُرجع iterator، مثل list وtuple وstr وdict وset وrange. أما <strong>Iterator Object</strong> فيملك <code>__next__()</code> يعطي القيمة التالية، و<code>__iter__()</code> يُرجع الكائن نفسه، ويحتفظ بموضعه الحالي. القيد المهم: الـ iterator يُستهلك مرة واحدة ثم يبقى فارغًا، وكل iterator هو iterable لكن العكس غير صحيح.</p>
+<figure class="code-block">
+        <figcaption class="code-head">
+          <span class="code-meta">
+            <span class="code-lang" lang="en">Python</span>
+            <span class="code-file" lang="en">iterable_vs_iterator.py</span>
+          </span>
+          <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+            <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-copy"></use></svg>
+            <span class="btn-label">نسخ</span>
+          </button>
+        </figcaption>
+        <pre class="code" dir="ltr"><code>tasks = ["write report", "review code", "deploy app"]
+print(hasattr(tasks, "__iter__"), hasattr(tasks, "__next__"))
+tasks_iter = iter(tasks)
+print(hasattr(tasks_iter, "__next__"))
+print(tasks_iter is iter(tasks_iter))
+print(list(tasks_iter))
+print(list(tasks_iter))</code></pre>
+        <div class="output" role="group" aria-label="مخرجات البرنامج">
+          <div class="output-label" lang="en">Output</div>
+          <pre dir="ltr"><code>True False
+True
+True
+['write report', 'review code', 'deploy app']
+[]</code></pre>
+        </div>
+      </figure>
+</article>
+<article class="concept">
+<h4>iter() و next(): ما تفعله for خلف الستار</h4>
+<p>الدالة <code>iter(obj)</code> تستدعي <code>obj.__iter__()</code> وتُرجع iterator، وترفع <code>TypeError</code> إذا لم يكن الكائن iterable. والدالة <code>next(it)</code> تستدعي <code>it.__next__()</code> وتُرجع القيمة التالية، وعند انتهاء العناصر ترفع <code>StopIteration</code>. حلقة <code>for</code> تستدعي <code>iter()</code> مرة واحدة ثم <code>next()</code> مرارًا، وتلتقط <code>StopIteration</code> بصمت لتنهي الحلقة.</p>
+<p>تستخدم <code>next()</code> يدويًا عندما تريد قراءة عنصر واحد (مثل سطر العناوين) ثم تكمل بالباقي، أو التحكم في وقت التقدم. المعامل الثاني <code>next(it, default)</code> يُرجع القيمة الافتراضية بدل رفع الاستثناء. وأشهر خطأ: استدعاء <code>next()</code> على iterable مثل list مباشرة بدل <code>iter()</code>، فينتج <code>TypeError</code>.</p>
+<figure class="code-block">
+        <figcaption class="code-head">
+          <span class="code-meta">
+            <span class="code-lang" lang="en">Python</span>
+            <span class="code-file" lang="en">manual_for.py</span>
+          </span>
+          <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+            <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-copy"></use></svg>
+            <span class="btn-label">نسخ</span>
+          </button>
+        </figcaption>
+        <pre class="code" dir="ltr"><code>temps = [21.5, 22.0, 21.8]
+it = iter(temps)              # what for does first
+while True:
+    try:
+        value = next(it)      # then next() repeatedly
+    except StopIteration:     # for stops silently here
+        break
+    print(f"Temperature: {value}")
+
+print(next(it, "exhausted"))  # default avoids StopIteration</code></pre>
+        <div class="output" role="group" aria-label="مخرجات البرنامج">
+          <div class="output-label" lang="en">Output</div>
+          <pre dir="ltr"><code>Temperature: 21.5
+Temperature: 22.0
+Temperature: 21.8
+exhausted</code></pre>
+        </div>
+      </figure>
+</article>
+<article class="concept">
+<h4>Custom Iterators: بناء مكرر خاص بك</h4>
+<p>عندما تحتاج تسلسلًا بقواعد خاصة أو يُحسب عند الطلب دون تخزينه كاملًا، تبني class يطبق <code>__iter__</code> و<code>__next__</code> (من درس Magic Methods). القواعد: <code>__init__</code> يحفظ الحالة، و<code>__next__</code> يُرجع القيمة الحالية ويحدّث الحالة، و<code>__iter__</code> يُرجع <code>self</code>، وعند النهاية ترفع <code>StopIteration</code> وإلا ستحصل على حلقة لا نهائية.</p>
+<p>القيد: عندما يُرجع <code>__iter__</code> الكائن نفسه يصبح one-shot كما في المثال التالي. ولجعل الكائن قابلًا لإعادة المرور، افصل الـ iterable عن الـ iterator بحيث يُنشئ <code>__iter__</code> iterator جديدًا في كل مرة، كما تفعل list.</p>
+<figure class="code-block">
+        <figcaption class="code-head">
+          <span class="code-meta">
+            <span class="code-lang" lang="en">Python</span>
+            <span class="code-file" lang="en">countdown_iterator.py</span>
+          </span>
+          <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+            <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-copy"></use></svg>
+            <span class="btn-label">نسخ</span>
+          </button>
+        </figcaption>
+        <pre class="code" dir="ltr"><code>class Countdown:
+    def __init__(self, start):
+        self.current = start
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        if self.current &lt;= 0:
+            raise StopIteration
+        value = self.current
+        self.current -= 1
+        return value
+
+timer = Countdown(3)
+print(list(timer))
+print(list(timer))</code></pre>
+        <div class="output" role="group" aria-label="مخرجات البرنامج">
+          <div class="output-label" lang="en">Output</div>
+          <pre dir="ltr"><code>[3, 2, 1]
+[]</code></pre>
+        </div>
+      </figure>
+</article>
+            </section>
+
+            <section class="lesson-section" id="summary">
+              <h3 class="section-title"><b>02</b>الملخص</h3>
+              <ul class="summary-list">
+                <li><strong>Iterable</strong> كائن يملك <code>__iter__()</code> ويعطي iterator، مثل list وstr وdict وset وrange.</li>
+<li><strong>Iterator</strong> كائن يملك <code>__next__()</code> و<code>__iter__()</code> يُرجع <code>self</code>، ويتذكر موضع التكرار.</li>
+<li><code>iter(obj)</code> تحصل على iterator، و<code>next(it)</code> تُرجع التالي وترفع <code>StopIteration</code> عند النهاية.</li>
+<li><code>next(it, default)</code> تُرجع القيمة الافتراضية بدل رفع الاستثناء عند انتهاء العناصر.</li>
+<li>حلقة <code>for</code> = <code>iter()</code> مرة واحدة + <code>next()</code> مرارًا + التقاط <code>StopIteration</code> بصمت.</li>
+<li>الـ iterator المخصص يحتاج حالة في <code>__init__</code> و<code>__next__</code> يرفع <code>StopIteration</code>؛ وهو one-shot ما لم يُنشئ <code>__iter__</code> iterator جديدًا.</li>
+              </ul>
+            </section>
+
+            <section class="lesson-section" id="interview-questions">
+              <h3 class="section-title"><b>03</b>أسئلة المقابلات</h3>
+              <div class="qa-list">
+                <details class="qa" open>
+<summary><span class="qa-q">ما الفرق بين Iterable وIterator؟</span><span class="level level-basic">أساسي</span></summary>
+<div class="qa-body">
+<p>الـ Iterable كائن يمكن المرور على عناصره ويملك <code>__iter__()</code> الذي يُرجع iterator، مثل list وstr. أما الـ Iterator فيملك <code>__next__()</code> ويتذكر موضعه الحالي ويُرجع <code>self</code> من <code>__iter__()</code>. الأول وعاء يمكن المرور عليه مرات، والثاني مؤشر يُستهلك مرة واحدة.</p>
+</div>
+</details>
+<details class="qa">
+<summary><span class="qa-q">ماذا تفعل حلقة for داخليًا؟</span><span class="level level-basic">أساسي</span></summary>
+<div class="qa-body">
+<p>تستدعي <code>iter()</code> على الـ iterable مرة واحدة لتحصل على iterator، ثم تستدعي <code>next()</code> عليه مرارًا وتسند كل قيمة لمتغير الحلقة. عندما يرفع الـ iterator استثناء <code>StopIteration</code> تنتهي الحلقة بصمت دون أي خطأ.</p>
+</div>
+</details>
+<details class="qa">
+<summary><span class="qa-q">ما شروط بناء custom iterator؟ ولماذا يُرجع <code>__iter__</code> الكائن نفسه؟</span><span class="level level-mid">متوسط</span></summary>
+<div class="qa-body">
+<p>يلزم <code>__next__()</code> يُرجع القيمة التالية ويرفع <code>StopIteration</code> عند النهاية، و<code>__iter__()</code> يُرجع <code>self</code>. السبب أن <code>for</code> تستدعي <code>iter()</code> على أي كائن تُمرّر له، فلو كان iterator يجب أن يعيد نفسه حتى يبقى موضع التكرار محفوظًا.</p>
+</div>
+</details>
+<details class="qa">
+<summary><span class="qa-q">لماذا <code>list(it)</code> في المرة الثانية تُرجع <code>[]</code>؟ وكيف أصنع كائنًا يمكن المرور عليه أكثر من مرة؟</span><span class="level level-mid">متوسط</span></summary>
+<div class="qa-body">
+<p>لأن الـ iterator استهلك عناصره وأصبح موضعه عند النهاية. الحل أن تفصل الـ iterable عن الـ iterator، فيُنشئ <code>__iter__</code> في الـ iterable كائن iterator جديدًا في كل استدعاء.</p>
+<p class="qa-follow">للتأكد: <code>it is iter(it)</code> تعطي <code>True</code> للـ iterator، بينما <code>iter(my_list) is iter(my_list)</code> تعطي <code>False</code>.</p>
+</div>
+</details>
+<details class="qa">
+<summary><span class="qa-q">إذا كتبت <code>numbers = [1, 2, 3]</code> ثم <code>next(numbers)</code>، ماذا يحدث؟</span><span class="level level-trap">فخ</span></summary>
+<div class="qa-body">
+<p>ينتج <code>TypeError: 'list' object is not an iterator</code>، لأن list هي iterable وليست iterator. الصحيح: <code>it = iter(numbers)</code> ثم <code>next(it)</code>.</p>
+<p class="qa-follow">ولهذا تعمل <code>for x in numbers</code> دون مشكلة: الحلقة تستدعي <code>iter()</code> نيابةً عنك.</p>
+</div>
+</details>
+              </div>
+            </section>
+
+            <section class="lesson-section" id="practical">
+              <h3 class="section-title"><b>04</b>المسألة العملية</h3>
+              <div class="callout callout-problem">
+<p>لديك قائمة طلبات كبيرة وتريد معالجتها على دفعات صغيرة. ابنِ iterator مخصصًا باسم <code>Batches(items, size)</code> يُرجع في كل مرة قائمة جزئية بحجم <code>size</code> (والدفعة الأخيرة قد تكون أصغر)، ويرفض <code>size</code> الأقل من 1.</p>
+</div>
+              <ol class="solution">
+                <li class="sol-step">
+<h4>فهم المطلوب</h4>
+<p>المدخلات: قائمة <code>items</code> وحجم <code>size</code>. المطلوب: كل <code>next()</code> يُرجع دفعة، وعند انتهاء القائمة نرفع <code>StopIteration</code>، وأي <code>size</code> أقل من 1 يُرفض فورًا.</p>
+</li>
+<li class="sol-step">
+<h4>خطة الحل</h4>
+<p>نحتفظ بمتغير <code>position</code> للموضع الحالي، و<code>__iter__</code> يُرجع <code>self</code>. في <code>__next__</code>: إن وصل <code>position</code> لنهاية القائمة نرفع <code>StopIteration</code>، وإلا نقتطع الدفعة بـ slicing ونقدّم الموضع بمقدار <code>size</code>.</p>
+</li>
+<li class="sol-step">
+<h4>الكود الكامل</h4>
+<figure class="code-block">
+        <figcaption class="code-head">
+          <span class="code-meta">
+            <span class="code-lang" lang="en">Python</span>
+            <span class="code-file" lang="en">batches.py</span>
+          </span>
+          <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+            <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-copy"></use></svg>
+            <span class="btn-label">نسخ</span>
+          </button>
+        </figcaption>
+        <pre class="code" dir="ltr"><code>class Batches:
+    def __init__(self, items, size):
+        if size &lt; 1:
+            raise ValueError("size must be at least 1")
+        self.items = items
+        self.size = size
+        self.position = 0
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        if self.position &gt;= len(self.items):
+            raise StopIteration
+        batch = self.items[self.position:self.position + self.size]
+        self.position += self.size
+        return batch
+
+orders = ["A1", "A2", "A3", "A4", "A5"]
+for batch in Batches(orders, 2):
+    print(batch)</code></pre>
+        <div class="output" role="group" aria-label="مخرجات البرنامج">
+          <div class="output-label" lang="en">Output</div>
+          <pre dir="ltr"><code>['A1', 'A2']
+['A3', 'A4']
+['A5']</code></pre>
+        </div>
+      </figure>
+</li>
+<li class="sol-step">
+<h4>تفسير القرارات</h4>
+<p>التحقق من <code>size</code> داخل <code>__init__</code> يكشف الخطأ مبكرًا قبل بدء التكرار. والـ slicing لا يتجاوز حدود القائمة، فتأتي الدفعة الأخيرة أصغر تلقائيًا دون شروط إضافية. و<code>StopIteration</code> هو الإشارة التي تفهمها <code>for</code> لإنهاء الحلقة.</p>
+</li>
+<li class="sol-step">
+<h4>اختبار سريع</h4>
+<p>جرّب: <code>list(Batches([], 3))</code> تُرجع <code>[]</code>، و<code>list(Batches(orders, 10))</code> تُرجع دفعة واحدة تحوي كل العناصر، و<code>Batches(orders, 0)</code> ترفع <code>ValueError</code>. ولاحظ أن استدعاء <code>list()</code> مرة ثانية على نفس الكائن يُرجع <code>[]</code> لأنه one-shot.</p>
+</li>
+<li class="sol-step">
+<h4>تحسين أو بديل</h4>
+<p>لجعل <code>Batches</code> قابلًا لإعادة التكرار، انقل <code>position</code> و<code>__next__</code> إلى class iterator منفصل، ويصبح <code>Batches.__iter__</code> يُنشئ منه كائنًا جديدًا في كل مرة. تنبيه: هناك أسلوب أقصر لكتابة مثل هذا المكرر سيأتي في درس لاحق، لكن فهم هذا البروتوكول هو الأساس.</p>
+</li>
+              </ol>
+            </section>
+          </div>
+        </section>
+      </div>
+
+      <footer class="footer">
+        <span class="footer-note" lang="en">Python Learning Roadmap</span>
+        <span class="footer-note">المرحلة 07 - الدرس 32</span>
+      </footer>
+    </main>
+
+    <script>
+      (function () {
+        'use strict'
+
+        var live = document.getElementById('copy-status')
+        var printStates = null
+
+        function fallbackCopy(text) {
+          var textarea = document.createElement('textarea')
+          textarea.value = text
+          textarea.setAttribute('readonly', '')
+          textarea.style.cssText = 'position:fixed;top:-1000px;left:-1000px;opacity:0;'
+
+          try {
+            document.body.appendChild(textarea)
+            textarea.focus()
+            textarea.select()
+            textarea.setSelectionRange(0, textarea.value.length)
+            return document.execCommand('copy')
+          } catch (error) {
+            return false
+          } finally {
+            if (textarea.parentNode) {
+              textarea.parentNode.removeChild(textarea)
+            }
+          }
+        }
+
+        function copyText(text) {
+          if (navigator.clipboard && window.isSecureContext) {
+            return navigator.clipboard.writeText(text).then(
+              function () { return true },
+              function () { return fallbackCopy(text) },
+            ).catch(function () { return false })
+          }
+
+          return Promise.resolve().then(function () {
+            return fallbackCopy(text)
+          }).catch(function () {
+            return false
+          })
+        }
+
+        document.addEventListener('click', function (event) {
+          var target = event.target
+          var button = target && typeof target.closest === 'function'
+            ? target.closest('[data-copy-code]')
+            : null
+
+          if (!button) return
+
+          var label = button.querySelector('.btn-label')
+          var block = button.closest('.code-block')
+          var code = block ? block.querySelector('pre.code > code') : null
+          if (!label || !code) return
+
+          if (!button.dataset.label) button.dataset.label = label.textContent
+
+          copyText(code.textContent).then(function (ok) {
+            label.textContent = ok ? 'تم النسخ' : 'تعذّر النسخ'
+            button.classList.toggle('is-copied', ok)
+            button.classList.toggle('is-failed', !ok)
+
+            if (live) {
+              live.textContent = ok
+                ? 'تم نسخ الكود'
+                : 'تعذّر النسخ، حدّد الكود يدويًا ثم انسخه'
+            }
+
+            window.clearTimeout(button._timer)
+            button._timer = window.setTimeout(function () {
+              label.textContent = button.dataset.label
+              button.classList.remove('is-copied', 'is-failed')
+            }, 1800)
+          })
+        })
+
+        window.addEventListener('beforeprint', function () {
+          if (printStates !== null) return
+
+          var questions = document.querySelectorAll('details.qa')
+          printStates = Array.prototype.map.call(questions, function (item) {
+            return item.open
+          })
+          questions.forEach(function (item) {
+            item.open = true
+          })
+        })
+
+        window.addEventListener('afterprint', function () {
+          if (printStates === null) return
+
+          var questions = document.querySelectorAll('details.qa')
+          questions.forEach(function (item, index) {
+            item.open = printStates[index] === true
+          })
+          printStates = null
+        })
+      })()
+    </script>
+  </body>
+</html>

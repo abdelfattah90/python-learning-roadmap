@@ -1,0 +1,523 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#fcfcfc" />
+    <title>معاملات الدوال بالتفصيل | Python Learning Roadmap</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/style.css" />
+  </head>
+  <body>
+    <svg
+      width="0"
+      height="0"
+      style="position: absolute"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <symbol id="i-copy" viewBox="0 0 24 24">
+        <rect x="9" y="9" width="12" height="12" rx="2.5" />
+        <path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15" />
+      </symbol>
+    </svg>
+    <template id="code-block-pattern">
+      <figure class="code-block">
+        <figcaption class="code-head">
+          <span class="code-meta">
+            <span class="code-lang" lang="en">Python</span>
+            <span class="code-file" lang="en">example.py</span>
+          </span>
+          <button
+            type="button"
+            class="btn btn-ghost btn-sm"
+            data-copy-code
+            aria-label="نسخ الكود"
+          >
+            <svg
+              class="btn-icon"
+              viewBox="0 0 24 24"
+              width="14"
+              height="14"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <use href="#i-copy"></use>
+            </svg>
+            <span class="btn-label">نسخ</span>
+          </button>
+        </figcaption>
+        <pre class="code" dir="ltr"><code><!-- ضع الكود هنا كنص HTML مع تهريب الرموز الخاصة --></code></pre>
+        <!-- احذف كتلة output إذا لم يكن للمثال ناتج ثابت ومفيد. -->
+        <div class="output" role="group" aria-label="مخرجات البرنامج">
+          <div class="output-label" lang="en">Output</div>
+          <pre dir="ltr"><code><!-- ضع المخرجات المتحققة هنا --></code></pre>
+        </div>
+      </figure>
+    </template>
+
+    <div
+      class="sr-only"
+      id="copy-status"
+      role="status"
+      aria-live="polite"
+    ></div>
+
+    <main class="page">
+      <header class="hero lesson-hero">
+        <span class="eyebrow">
+          <span class="eyebrow-dot"></span>
+          المرحلة <span dir="ltr">05</span>:
+          <span dir="ltr" lang="en">Functions</span>
+        </span>
+        <h1>
+          <span class="h1-ar">معاملات الدوال بالتفصيل</span>
+          <span class="h1-en" dir="ltr" lang="en">Python Function Arguments in Depth</span>
+        </h1>
+        <p class="hero-description">كيف تجعل الدالة مرنة وسهلة الاستدعاء: تسمية الوسائط، القيم الافتراضية، وقبول عدد غير محدد من الوسائط عبر <span dir="ltr">*args</span> و <span dir="ltr">**kwargs</span>.</p>
+      </header>
+
+      <div class="lesson-parts">
+        <section class="lesson-part-card" id="complete-lesson" aria-labelledby="complete-lesson-title">
+          <header class="part-header">
+            <div class="part-number">درس متكامل</div>
+            <div class="part-heading">
+              <h2 id="complete-lesson-title">
+                <span class="part-title-en" dir="ltr" lang="en">Complete Lesson</span>
+                <span class="sep" aria-hidden="true"> - </span>
+                <span class="part-title-ar">الشرح والملخص والتطبيق</span>
+              </h2>
+              <span class="part-description">كل محتوى الدرس في ملف HTML واحد</span>
+            </div>
+          </header>
+
+          <div class="lesson-body">
+            <section class="lesson-section" id="explain">
+              <h3 class="section-title"><b>01</b>الشرح</h3>
+
+              <article class="concept">
+                <h4><span dir="ltr" lang="en">Keyword Arguments</span> — تسمية الوسيط عند الاستدعاء</h4>
+                <p>عندما تملك الدالة ثلاثة <span dir="ltr">parameters</span> أو أكثر، يصبح استدعاء مثل <code dir="ltr">create_order("keyboard", 2, True)</code> غامضًا: عليك تذكّر الترتيب، ولا يوضح الاستدعاء ماذا تعني <code dir="ltr">True</code>. مع <span dir="ltr">keyword arguments</span> تكتب <code dir="ltr">name=value</code> فيصبح الاستدعاء مقروءًا ولا يهم ترتيب الوسائط.</p>
+                <figure class="code-block">
+                  <figcaption class="code-head">
+                    <span class="code-meta">
+                      <span class="code-lang" lang="en">Python</span>
+                      <span class="code-file" lang="en">keyword_args.py</span>
+                    </span>
+                    <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+                      <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-copy"></use></svg>
+                      <span class="btn-label">نسخ</span>
+                    </button>
+                  </figcaption>
+                  <pre class="code" dir="ltr"><code>def create_order(product, quantity, express):
+    mode = "express" if express else "standard"
+    return f"{quantity} x {product} ({mode})"
+
+
+print(create_order("keyboard", 2, True))
+print(create_order(express=False, quantity=1, product="mouse"))
+print(create_order("monitor", express=True, quantity=3))</code></pre>
+                  <div class="output" role="group" aria-label="مخرجات البرنامج">
+                    <div class="output-label" lang="en">Output</div>
+                    <pre dir="ltr"><code>2 x keyboard (express)
+1 x mouse (standard)
+3 x monitor (express)</code></pre>
+                  </div>
+                </figure>
+                <p>يمكنك المزج بين النوعين بشرط أن تأتي الـ <span dir="ltr">positional</span> أولًا ثم الـ <span dir="ltr">keyword</span>. أشهر الأخطاء: وضع <span dir="ltr">positional</span> بعد <span dir="ltr">keyword</span> يسبب <code dir="ltr">SyntaxError</code>، وتمرير الـ <span dir="ltr">parameter</span> نفسه مرتين أو استخدام اسم غير موجود يسبب <code dir="ltr">TypeError</code>.</p>
+              </article>
+
+              <article class="concept">
+                <h4><span dir="ltr" lang="en">Default Parameter Values</span> — القيم الافتراضية</h4>
+                <p>تجعل الـ <span dir="ltr">parameter</span> اختياريًا بكتابة <code dir="ltr">name=value</code> في تعريف الدالة؛ فإذا لم يمرره المستدعي تُستخدم القيمة الافتراضية. هذا مفيد للإعدادات الشائعة مثل <code dir="ltr">port</code> و <code dir="ltr">timeout</code>، ويعمل جيدًا مع الـ <span dir="ltr">keyword arguments</span> لتغيير خيار واحد وترك الباقي. القاعدة: الـ <span dir="ltr">parameters</span> الإلزامية أولًا ثم التي لها قيمة افتراضية، وإلا حصلت على <code dir="ltr">SyntaxError</code>.</p>
+                <figure class="code-block">
+                  <figcaption class="code-head">
+                    <span class="code-meta">
+                      <span class="code-lang" lang="en">Python</span>
+                      <span class="code-file" lang="en">default_values.py</span>
+                    </span>
+                    <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+                      <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-copy"></use></svg>
+                      <span class="btn-label">نسخ</span>
+                    </button>
+                  </figcaption>
+                  <pre class="code" dir="ltr"><code>def connect(host, port=5432, timeout=10):
+    return f"{host}:{port} (timeout={timeout}s)"
+
+
+print(connect("db.local"))
+print(connect("db.local", timeout=30))
+print(connect("cache.local", 6379))</code></pre>
+                  <div class="output" role="group" aria-label="مخرجات البرنامج">
+                    <div class="output-label" lang="en">Output</div>
+                    <pre dir="ltr"><code>db.local:5432 (timeout=10s)
+db.local:5432 (timeout=30s)
+cache.local:6379 (timeout=10s)</code></pre>
+                  </div>
+                </figure>
+                <p><strong>الفخ المهم:</strong> القيمة الافتراضية تُحسب مرة واحدة عند تنفيذ <code dir="ltr">def</code>، لا عند كل استدعاء. لذلك إذا كانت <span dir="ltr">list</span> أو <span dir="ltr">dict</span> فسيتشاركها كل استدعاء ويتراكم فيها التعديل. الحل المعتاد: اجعل الافتراضي <code dir="ltr">None</code> وأنشئ الكائن الجديد داخل الدالة.</p>
+                <figure class="code-block">
+                  <figcaption class="code-head">
+                    <span class="code-meta">
+                      <span class="code-lang" lang="en">Python</span>
+                      <span class="code-file" lang="en">mutable_default.py</span>
+                    </span>
+                    <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+                      <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-copy"></use></svg>
+                      <span class="btn-label">نسخ</span>
+                    </button>
+                  </figcaption>
+                  <pre class="code" dir="ltr"><code>def add_tag(tag, tags=[]):
+    tags.append(tag)
+    return tags
+
+
+def add_tag_safe(tag, tags=None):
+    if tags is None:
+        tags = []
+    tags.append(tag)
+    return tags
+
+
+print(add_tag("python"))
+print(add_tag("flutter"))
+print(add_tag_safe("python"))
+print(add_tag_safe("flutter"))</code></pre>
+                  <div class="output" role="group" aria-label="مخرجات البرنامج">
+                    <div class="output-label" lang="en">Output</div>
+                    <pre dir="ltr"><code>['python']
+['python', 'flutter']
+['python']
+['flutter']</code></pre>
+                  </div>
+                </figure>
+              </article>
+
+              <article class="concept">
+                <h4><span dir="ltr" lang="en">Variable-length Arguments</span> و <span dir="ltr" lang="en">*args</span> — عدد غير محدد من الوسائط</h4>
+                <p>أحيانًا لا تعرف مسبقًا كم قيمة سيمرر المستدعي: مجموع أسعار، متوسط درجات، رسائل سجل. بدل تحديد <span dir="ltr">parameters</span> ثابتة، تضع <code dir="ltr">*name</code> في التعريف فتجمع <span dir="ltr">Python</span> كل الوسائط الـ <span dir="ltr">positional</span> الزائدة داخل <span dir="ltr">tuple</span>. الاسم <code dir="ltr">args</code> مجرد اتفاق شائع، والمهم هو النجمة. وإذا لم يُمرَّر شيء يكون الـ <span dir="ltr">tuple</span> فارغًا، ولهذا فحصنا الحالة الفارغة في المثال.</p>
+                <figure class="code-block">
+                  <figcaption class="code-head">
+                    <span class="code-meta">
+                      <span class="code-lang" lang="en">Python</span>
+                      <span class="code-file" lang="en">args_demo.py</span>
+                    </span>
+                    <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+                      <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-copy"></use></svg>
+                      <span class="btn-label">نسخ</span>
+                    </button>
+                  </figcaption>
+                  <pre class="code" dir="ltr"><code>def average(*scores):
+    if not scores:
+        return 0
+    return sum(scores) / len(scores)
+
+
+print(average(80, 90, 100))
+print(average())
+
+grades = [70, 85]
+print(average(*grades))</code></pre>
+                  <div class="output" role="group" aria-label="مخرجات البرنامج">
+                    <div class="output-label" lang="en">Output</div>
+                    <pre dir="ltr"><code>90.0
+0
+77.5</code></pre>
+                  </div>
+                </figure>
+                <p>في الاستدعاء تعمل النجمة بالعكس: <code dir="ltr">average(*grades)</code> تفكّ الـ <span dir="ltr">list</span> إلى وسائط منفصلة. تنبيه: أي <span dir="ltr">parameter</span> يأتي بعد <code dir="ltr">*args</code> في التعريف لا يمكن تمريره إلا بالاسم.</p>
+              </article>
+
+              <article class="concept">
+                <h4><span dir="ltr" lang="en">**kwargs</span> — خيارات مسمّاة غير محددة</h4>
+                <p>هي نظير <code dir="ltr">*args</code> للوسائط المسمّاة: <code dir="ltr">**context</code> تجمع أي <span dir="ltr">keyword arguments</span> غير معرّفة كـ <span dir="ltr">parameters</span> داخل <span dir="ltr">dict</span> (الاسم هو المفتاح والقيمة هي القيمة). تناسب الدوال التي تقبل بيانات إضافية متغيرة، أو التي تمرر خياراتها إلى دالة أخرى. وفي الاستدعاء تفكّ <code dir="ltr">**data</code> الـ <span dir="ltr">dict</span> إلى <span dir="ltr">keyword arguments</span>. عند الجمع بينها وبين غيرها الترتيب ثابت: <span dir="ltr">parameters</span> عادية، ثم <code dir="ltr">*args</code>، ثم <code dir="ltr">**kwargs</code>.</p>
+                <figure class="code-block">
+                  <figcaption class="code-head">
+                    <span class="code-meta">
+                      <span class="code-lang" lang="en">Python</span>
+                      <span class="code-file" lang="en">kwargs_demo.py</span>
+                    </span>
+                    <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+                      <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-copy"></use></svg>
+                      <span class="btn-label">نسخ</span>
+                    </button>
+                  </figcaption>
+                  <pre class="code" dir="ltr"><code>def log_event(level, *messages, **context):
+    text = " ".join(messages)
+    extras = []
+    for key, value in context.items():
+        extras.append(f"{key}={value}")
+    return f"[{level}] {text} | {', '.join(extras)}"
+
+
+print(log_event("INFO", "user", "logged", "in", user_id=7, ip="10.0.0.5"))
+
+context = {"user_id": 9, "ip": "10.0.0.8"}
+print(log_event("WARN", "failed", "login", **context))</code></pre>
+                  <div class="output" role="group" aria-label="مخرجات البرنامج">
+                    <div class="output-label" lang="en">Output</div>
+                    <pre dir="ltr"><code>[INFO] user logged in | user_id=7, ip=10.0.0.5
+[WARN] failed login | user_id=9, ip=10.0.0.8</code></pre>
+                  </div>
+                </figure>
+                <p><strong>قيد مهم:</strong> <code dir="ltr">**kwargs</code> يقبل أي اسم بصمت، فخطأ إملائي في اسم الوسيط لن يُكتشف. استخدمه فقط عندما تكون المفاتيح مفتوحة فعلًا، وإلا فالأفضل <span dir="ltr">parameters</span> صريحة.</p>
+              </article>
+            </section>
+
+            <section class="lesson-section" id="summary">
+              <h3 class="section-title"><b>02</b>الملخص</h3>
+              <ul class="summary-list">
+                <li><span dir="ltr">Keyword arguments</span>: تُكتب <code dir="ltr">name=value</code> عند الاستدعاء، ولا يهم ترتيبها، لكن الـ <span dir="ltr">positional</span> تأتي أولًا.</li>
+                <li><span dir="ltr">Default values</span>: تُكتب في <code dir="ltr">def</code> وتجعل الـ <span dir="ltr">parameter</span> اختياريًا، ويجب أن تأتي بعد الـ <span dir="ltr">parameters</span> الإلزامية.</li>
+                <li>لا تستخدم <span dir="ltr">list</span> أو <span dir="ltr">dict</span> كقيمة افتراضية؛ لأنها تُحسب مرة واحدة وتُشارَك. استخدم <code dir="ltr">None</code> وأنشئ الكائن داخل الدالة.</li>
+                <li><code dir="ltr">*args</code> تجمع الـ <span dir="ltr">positional</span> الزائدة في <span dir="ltr">tuple</span>، وقد يكون فارغًا.</li>
+                <li><code dir="ltr">**kwargs</code> تجمع الـ <span dir="ltr">keyword</span> الزائدة في <span dir="ltr">dict</span>، وتُخفي الأخطاء الإملائية في الأسماء.</li>
+                <li>الترتيب في التعريف: عادية ثم <code dir="ltr">*args</code> ثم <code dir="ltr">**kwargs</code>؛ وفي الاستدعاء تفكّ <code dir="ltr">*</code> و <code dir="ltr">**</code> التسلسل والـ <span dir="ltr">dict</span> إلى وسائط.</li>
+              </ul>
+            </section>
+
+            <section class="lesson-section" id="interview-questions">
+              <h3 class="section-title"><b>03</b>أسئلة المقابلات</h3>
+              <div class="qa-list">
+                <details class="qa" open>
+                  <summary>
+                    <span class="qa-q">ما الفرق بين <span dir="ltr">positional</span> و <span dir="ltr">keyword arguments</span>، ومتى تفضّل الثاني؟</span>
+                    <span class="level level-basic">أساسي</span>
+                  </summary>
+                  <div class="qa-body">
+                    <p>الـ <span dir="ltr">positional</span> تُربط بالـ <span dir="ltr">parameters</span> حسب موضعها، والـ <span dir="ltr">keyword</span> تُربط بالاسم. أفضّل الثاني عندما تكثر الـ <span dir="ltr">parameters</span> أو تكون القيم مثل <code dir="ltr">True</code> و <code dir="ltr">None</code> غير واضحة المعنى، فيصبح الاستدعاء مقروءًا ويمكنني تخطي الاختياري منها.</p>
+                    <p class="qa-follow">متابعة: ماذا يحدث لو مررت نفس الـ <span dir="ltr">parameter</span> مرتين، مرة بالموضع ومرة بالاسم؟ يحدث <code dir="ltr">TypeError</code> لأنه حصل على أكثر من قيمة.</p>
+                  </div>
+                </details>
+
+                <details class="qa">
+                  <summary>
+                    <span class="qa-q">ما الفرق بين <code dir="ltr">*args</code> و <code dir="ltr">**kwargs</code>؟</span>
+                    <span class="level level-basic">أساسي</span>
+                  </summary>
+                  <div class="qa-body">
+                    <p><code dir="ltr">*args</code> تجمع الوسائط الـ <span dir="ltr">positional</span> الزائدة في <span dir="ltr">tuple</span>، و <code dir="ltr">**kwargs</code> تجمع الـ <span dir="ltr">keyword</span> الزائدة في <span dir="ltr">dict</span> مفاتيحه أسماء الوسائط. كلاهما يُستخدم عندما لا نعرف عدد الوسائط مسبقًا.</p>
+                    <p class="qa-follow">متابعة: هل الاسمان <code dir="ltr">args</code> و <code dir="ltr">kwargs</code> إلزاميان؟ لا، هما اتفاق فقط، والنجمة هي التي تحدد السلوك.</p>
+                  </div>
+                </details>
+
+                <details class="qa">
+                  <summary>
+                    <span class="qa-q">لماذا يرفض <span dir="ltr">Python</span> التعريف <code dir="ltr">def f(a=1, b)</code>؟ وما الترتيب الصحيح؟</span>
+                    <span class="level level-mid">متوسط</span>
+                  </summary>
+                  <div class="qa-body">
+                    <p>لأن <span dir="ltr">parameter</span> بلا قيمة افتراضية بعد آخر لها قيمة يجعل الربط الموضعي غامضًا، فتُرفض الصياغة بـ <code dir="ltr">SyntaxError</code>. الترتيب الصحيح: الإلزامية، ثم التي لها <span dir="ltr">default</span>، ثم <code dir="ltr">*args</code>، ثم <code dir="ltr">**kwargs</code>، مثل <code dir="ltr">def f(a, b=1, *args, **kwargs)</code>.</p>
+                  </div>
+                </details>
+
+                <details class="qa">
+                  <summary>
+                    <span class="qa-q">كيف تمرر كل الوسائط التي استلمتها إلى دالة أخرى دون معرفتها مسبقًا؟</span>
+                    <span class="level level-mid">متوسط</span>
+                  </summary>
+                  <div class="qa-body">
+                    <p>أعرّف دالة وسيطة بـ <code dir="ltr">def wrapper(*args, **kwargs)</code> لتلتقط كل شيء، ثم أستدعي الهدف بـ <code dir="ltr">target(*args, **kwargs)</code> فتُفكّ الوسائط كما وصلت. هذا النمط شائع في الدوال التي تغلّف غيرها دون تغيير توقيعها.</p>
+                  </div>
+                </details>
+
+                <details class="qa">
+                  <summary>
+                    <span class="qa-q">دالة <code dir="ltr">def add_item(item, items=[])</code> تضيف العنصر وتعيد القائمة. ماذا تُرجِع <code dir="ltr">add_item("a")</code> ثم <code dir="ltr">add_item("b")</code>؟</span>
+                    <span class="level level-trap">فخ</span>
+                  </summary>
+                  <div class="qa-body">
+                    <p>الأولى تعيد <code dir="ltr">['a']</code> والثانية تعيد <code dir="ltr">['a', 'b']</code>. السبب أن القائمة الافتراضية أُنشئت مرة واحدة عند تنفيذ <code dir="ltr">def</code> وتتشاركها كل الاستدعاءات التي لا تمرر <code dir="ltr">items</code>.</p>
+                    <p class="qa-follow">الحل: <code dir="ltr">items=None</code> ثم <code dir="ltr">if items is None: items = []</code> داخل الدالة.</p>
+                  </div>
+                </details>
+              </div>
+            </section>
+
+            <section class="lesson-section" id="practical">
+              <h3 class="section-title"><b>04</b>المسألة العملية</h3>
+              <div class="callout callout-problem">
+                <p><strong>المطلوب:</strong> اكتب الدالة <code dir="ltr">build_invoice</code> لمتجر صغير. تستقبل اسم العميل (إلزامي)، وأي عدد من أسعار البنود، ونسبة ضريبة اختيارية قيمتها الافتراضية 14%، وأي ملاحظات إضافية مثل رقم الطلب أو الكوبون. تُرجِع <span dir="ltr">dict</span> يحوي العميل والمجموع قبل الضريبة والإجمالي بعد الضريبة والملاحظات.</p>
+              </div>
+              <ol class="solution">
+                <li class="sol-step">
+                  <h4>فهم المطلوب</h4>
+                  <p>أربعة أنواع من المدخلات: اسم إلزامي، أسعار بعدد متغير، ضريبة اختيارية، وملاحظات مفتوحة بأسماء متغيرة. الناتج <span dir="ltr">dict</span> واحد.</p>
+                </li>
+                <li class="sol-step">
+                  <h4>خطة الحل</h4>
+                  <p>نستخدم <code dir="ltr">customer</code> كـ <span dir="ltr">parameter</span> عادي، و <code dir="ltr">*item_prices</code> للأسعار، و <code dir="ltr">tax_rate=0.14</code> بعدها، و <code dir="ltr">**notes</code> للملاحظات. نحسب المجموع والإجمالي ثم نضم الملاحظات إلى الناتج.</p>
+                </li>
+                <li class="sol-step">
+                  <h4>الكود الكامل</h4>
+                  <figure class="code-block">
+                    <figcaption class="code-head">
+                      <span class="code-meta">
+                        <span class="code-lang" lang="en">Python</span>
+                        <span class="code-file" lang="en">build_invoice.py</span>
+                      </span>
+                      <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+                        <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-copy"></use></svg>
+                        <span class="btn-label">نسخ</span>
+                      </button>
+                    </figcaption>
+                    <pre class="code" dir="ltr"><code>def build_invoice(customer, *item_prices, tax_rate=0.14, **notes):
+    subtotal = sum(item_prices)
+    total = round(subtotal * (1 + tax_rate), 2)
+    invoice = {
+        "customer": customer,
+        "subtotal": subtotal,
+        "total": total,
+    }
+    invoice.update(notes)
+    return invoice
+
+
+print(build_invoice("Mona", 100, 250, 50))
+print(
+    build_invoice(
+        "Karim", 80, 20, tax_rate=0.1, order_id="A-17", coupon="WELCOME"
+    )
+)</code></pre>
+                    <div class="output" role="group" aria-label="مخرجات البرنامج">
+                      <div class="output-label" lang="en">Output</div>
+                      <pre dir="ltr"><code>{'customer': 'Mona', 'subtotal': 400, 'total': 456.0}
+{'customer': 'Karim', 'subtotal': 100, 'total': 110.0, 'order_id': 'A-17', 'coupon': 'WELCOME'}</code></pre>
+                    </div>
+                  </figure>
+                </li>
+                <li class="sol-step">
+                  <h4>تفسير القرارات</h4>
+                  <p>وضعنا <code dir="ltr">tax_rate</code> بعد <code dir="ltr">*item_prices</code> فصار لا يُمرَّر إلا بالاسم؛ هذا يمنع خلط النسبة مع الأسعار. استخدمنا <code dir="ltr">round(..., 2)</code> لتجنب كسور عشرية طويلة، و <code dir="ltr">update</code> لضم الملاحظات دون معرفة أسمائها.</p>
+                </li>
+                <li class="sol-step">
+                  <h4>اختبار سريع</h4>
+                  <p>الاستدعاء <code dir="ltr">build_invoice("Test")</code> يعيد <code dir="ltr">subtotal</code> يساوي 0 و <code dir="ltr">total</code> يساوي 0.0 لأن <code dir="ltr">item_prices</code> فارغ. وتحقق يدويًا أن 400 × 1.14 = 456 كما في الناتج. وانتبه: <code dir="ltr">build_invoice("A", 100, 0.1)</code> تعتبر 0.1 سعرًا لا ضريبة.</p>
+                </li>
+                <li class="sol-step">
+                  <h4>تحسين أو بديل</h4>
+                  <p>إذا كانت الملاحظات محددة (مثل <code dir="ltr">order_id</code> و <code dir="ltr">coupon</code> فقط) فالأفضل <span dir="ltr">parameters</span> صريحة بقيم افتراضية <code dir="ltr">None</code> بدل <code dir="ltr">**notes</code>، لتُكتشف الأخطاء الإملائية. ويمكن أيضًا رفض الأسعار السالبة بـ <code dir="ltr">ValueError</code>.</p>
+                </li>
+              </ol>
+            </section>
+          </div>
+        </section>
+      </div>
+
+      <footer class="footer">
+        <span class="footer-note" lang="en">Python Learning Roadmap</span>
+        <span class="footer-note">المرحلة 05 - الدرس 22</span>
+      </footer>
+    </main>
+
+    <script>
+      (function () {
+        'use strict'
+
+        var live = document.getElementById('copy-status')
+        var printStates = null
+
+        function fallbackCopy(text) {
+          var textarea = document.createElement('textarea')
+          textarea.value = text
+          textarea.setAttribute('readonly', '')
+          textarea.style.cssText = 'position:fixed;top:-1000px;left:-1000px;opacity:0;'
+
+          try {
+            document.body.appendChild(textarea)
+            textarea.focus()
+            textarea.select()
+            textarea.setSelectionRange(0, textarea.value.length)
+            return document.execCommand('copy')
+          } catch (error) {
+            return false
+          } finally {
+            if (textarea.parentNode) {
+              textarea.parentNode.removeChild(textarea)
+            }
+          }
+        }
+
+        function copyText(text) {
+          if (navigator.clipboard && window.isSecureContext) {
+            return navigator.clipboard.writeText(text).then(
+              function () { return true },
+              function () { return fallbackCopy(text) },
+            ).catch(function () { return false })
+          }
+
+          return Promise.resolve().then(function () {
+            return fallbackCopy(text)
+          }).catch(function () {
+            return false
+          })
+        }
+
+        document.addEventListener('click', function (event) {
+          var target = event.target
+          var button = target && typeof target.closest === 'function'
+            ? target.closest('[data-copy-code]')
+            : null
+
+          if (!button) return
+
+          var label = button.querySelector('.btn-label')
+          var block = button.closest('.code-block')
+          var code = block ? block.querySelector('pre.code > code') : null
+          if (!label || !code) return
+
+          if (!button.dataset.label) button.dataset.label = label.textContent
+
+          copyText(code.textContent).then(function (ok) {
+            label.textContent = ok ? 'تم النسخ' : 'تعذّر النسخ'
+            button.classList.toggle('is-copied', ok)
+            button.classList.toggle('is-failed', !ok)
+
+            if (live) {
+              live.textContent = ok
+                ? 'تم نسخ الكود'
+                : 'تعذّر النسخ، حدّد الكود يدويًا ثم انسخه'
+            }
+
+            window.clearTimeout(button._timer)
+            button._timer = window.setTimeout(function () {
+              label.textContent = button.dataset.label
+              button.classList.remove('is-copied', 'is-failed')
+            }, 1800)
+          })
+        })
+
+        window.addEventListener('beforeprint', function () {
+          if (printStates !== null) return
+
+          var questions = document.querySelectorAll('details.qa')
+          printStates = Array.prototype.map.call(questions, function (item) {
+            return item.open
+          })
+          questions.forEach(function (item) {
+            item.open = true
+          })
+        })
+
+        window.addEventListener('afterprint', function () {
+          if (printStates === null) return
+
+          var questions = document.querySelectorAll('details.qa')
+          questions.forEach(function (item, index) {
+            item.open = printStates[index] === true
+          })
+          printStates = null
+        })
+      })()
+    </script>
+  </body>
+</html>

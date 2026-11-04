@@ -1,0 +1,463 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#fcfcfc" />
+    <title>Python For Loops &amp; range() | Python Learning Roadmap</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/style.css" />
+  </head>
+  <body>
+    <svg
+      width="0"
+      height="0"
+      style="position: absolute"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <symbol id="i-copy" viewBox="0 0 24 24">
+        <rect x="9" y="9" width="12" height="12" rx="2.5" />
+        <path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15" />
+      </symbol>
+    </svg>
+    <template id="code-block-pattern">
+      <figure class="code-block">
+        <figcaption class="code-head">
+          <span class="code-meta">
+            <span class="code-lang" lang="en">Python</span>
+            <span class="code-file" lang="en">example.py</span>
+          </span>
+          <button
+            type="button"
+            class="btn btn-ghost btn-sm"
+            data-copy-code
+            aria-label="نسخ الكود"
+          >
+            <svg
+              class="btn-icon"
+              viewBox="0 0 24 24"
+              width="14"
+              height="14"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <use href="#i-copy"></use>
+            </svg>
+            <span class="btn-label">نسخ</span>
+          </button>
+        </figcaption>
+        <pre class="code" dir="ltr"><code><!-- ضع الكود هنا كنص HTML مع تهريب الرموز الخاصة --></code></pre>
+        <!-- احذف كتلة output إذا لم يكن للمثال ناتج ثابت ومفيد. -->
+        <div class="output" role="group" aria-label="مخرجات البرنامج">
+          <div class="output-label" lang="en">Output</div>
+          <pre dir="ltr"><code><!-- ضع المخرجات المتحققة هنا --></code></pre>
+        </div>
+      </figure>
+    </template>
+
+    <div
+      class="sr-only"
+      id="copy-status"
+      role="status"
+      aria-live="polite"
+    ></div>
+
+    <main class="page">
+      <header class="hero lesson-hero">
+        <span class="eyebrow">
+          <span class="eyebrow-dot"></span>
+          المرحلة <span dir="ltr">03</span>:
+          <span dir="ltr" lang="en">Control Flow</span>
+        </span>
+        <h1>
+          <span class="h1-ar">حلقات For والنطاقات</span>
+          <span class="h1-en" dir="ltr" lang="en">Python For Loops &amp; range()</span>
+        </h1>
+        <p class="hero-description">تعلّم تكرار الأوامر على التسلسلات، والتحكم في مسار الحلقة، وإنشاء نطاقات عددية باستخدام range().</p>
+      </header>
+
+      <div class="lesson-parts">
+        <section class="lesson-part-card" id="complete-lesson" aria-labelledby="complete-lesson-title">
+          <header class="part-header">
+            <div class="part-number">درس متكامل</div>
+            <div class="part-heading">
+              <h2 id="complete-lesson-title">
+                <span class="part-title-en" dir="ltr" lang="en">Complete Lesson</span>
+                <span class="sep" aria-hidden="true"> - </span>
+                <span class="part-title-ar">الشرح والملخص والتطبيق</span>
+              </h2>
+              <span class="part-description">كل محتوى الدرس في ملف HTML واحد</span>
+            </div>
+          </header>
+
+          <div class="lesson-body">
+            <section class="lesson-section" id="explain">
+              <h3 class="section-title"><b>01</b>الشرح</h3>
+              
+<article class="concept">
+  <h4>1. For Loops — تكرار تنفيذ الأوامر</h4>
+  <p>نستخدم <code>for</code> عندما نريد تنفيذ مجموعة أوامر مرة لكل عنصر في مجموعة بيانات، أو لكل قيمة ينتجها نطاق. بدل كتابة الأمر نفسه مرات متعددة، تحدد الحلقة مصدر العناصر ويُنفَّذ جسمها تلقائيًا لكل عنصر. ينتهي التكرار عند استهلاك العناصر؛ لذلك لا نحتاج عادةً إلى عدّاد يدوي أو تحديثه.</p>
+  <p>يُنشأ متغير الحلقة ويأخذ قيمة العنصر الحالي في كل دورة. انتبه إلى أن اسم المتغير لا يعني رقم الدورة بالضرورة؛ فقد يكون نصًا أو رقمًا أو أي عنصر آخر.</p>
+  <figure class="code-block">
+  <figcaption class="code-head">
+    <span class="code-meta">
+      <span class="code-lang" lang="en">Python</span>
+      <span class="code-file" lang="en">for_items.py</span>
+    </span>
+    <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+      <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <use href="#i-copy"></use>
+      </svg>
+      <span class="btn-label">نسخ</span>
+    </button>
+  </figcaption>
+  <pre class="code" dir="ltr"><code>departments = ["Sales", "Support", "Engineering"]
+
+for department in departments:
+    print(f"Reviewing {department}")</code></pre>
+  <div class="output" role="group" aria-label="مخرجات البرنامج">
+    <div class="output-label" lang="en">Output</div>
+    <pre dir="ltr"><code>Reviewing Sales\nReviewing Support\nReviewing Engineering</code></pre>
+  </div>
+</figure>
+</article>
+<article class="concept">
+  <h4>2. Loop Through Sequences وNested Loops — المرور داخل التسلسلات والحلقات المتداخلة</h4>
+  <p>يمكن المرور على عناصر <code>list</code> أو <code>tuple</code> أو <code>string</code> مباشرةً باستخدام <code>for</code>. في النص، يكون العنصر حرفًا في كل دورة. استخدم المرور المباشر عندما تحتاج قيمة العنصر، فهو أوضح من الوصول إليها بفهرس لا تحتاجه.</p>
+  <p>أما <code>Nested Loops</code> فهي حلقة داخل جسم حلقة أخرى: تُكمل الحلقة الداخلية دوراتها كلها لكل دورة من الحلقة الخارجية. تفيد مثلًا في فحص كل زوج من مجموعتين أو المرور على صفوف وأعمدة. يزداد عدد التكرارات بسرعة؛ فحلقتان من 3 و4 عناصر تنفذان الجسم الداخلي 12 مرة.</p>
+  <figure class="code-block">
+  <figcaption class="code-head">
+    <span class="code-meta">
+      <span class="code-lang" lang="en">Python</span>
+      <span class="code-file" lang="en">sequences_nested.py</span>
+    </span>
+    <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+      <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <use href="#i-copy"></use>
+      </svg>
+      <span class="btn-label">نسخ</span>
+    </button>
+  </figcaption>
+  <pre class="code" dir="ltr"><code>user_name = "Mona"
+for character in user_name:
+    print(character)
+
+sizes = ["Small", "Large"]
+colors = ["Blue", "Green"]
+for size in sizes:
+    for color in colors:
+        print(size, color)</code></pre>
+  <div class="output" role="group" aria-label="مخرجات البرنامج">
+    <div class="output-label" lang="en">Output</div>
+    <pre dir="ltr"><code>M\no\nn\na\nSmall Blue\nSmall Green\nLarge Blue\nLarge Green</code></pre>
+  </div>
+</figure>
+</article>
+<article class="concept">
+  <h4>3. Loop Control — التحكم في سير الحلقة</h4>
+  <p>تغيّر <code>break</code> و<code>continue</code> مسار التكرار: تنهي <code>break</code> أقرب حلقة فورًا، بينما تتجاوز <code>continue</code> بقية أوامر الدورة الحالية وتنتقل إلى العنصر التالي. استخدم الأولى عند العثور على نتيجة تكفي لإنهاء البحث، والثانية عند وجود عناصر تريد تخطيها.</p>
+  <p>في الحلقات المتداخلة، يؤثر <code>break</code> على الحلقة الأقرب التي يحتويها، لا على جميع الحلقات. لا تخلط بينه وبين <code>continue</code>؛ فالأخيرة لا تنهي الحلقة.</p>
+  <figure class="code-block">
+  <figcaption class="code-head">
+    <span class="code-meta">
+      <span class="code-lang" lang="en">Python</span>
+      <span class="code-file" lang="en">loop_control.py</span>
+    </span>
+    <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+      <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <use href="#i-copy"></use>
+      </svg>
+      <span class="btn-label">نسخ</span>
+    </button>
+  </figcaption>
+  <pre class="code" dir="ltr"><code>ticket_ids = [104, 0, 208, 315]
+for ticket_id in ticket_ids:
+    if ticket_id == 0:
+        continue
+    if ticket_id == 208:
+        print("Target ticket found")
+        break
+    print(f"Checking ticket {ticket_id}")</code></pre>
+  <div class="output" role="group" aria-label="مخرجات البرنامج">
+    <div class="output-label" lang="en">Output</div>
+    <pre dir="ltr"><code>Checking ticket 104\nTarget ticket found</code></pre>
+  </div>
+</figure>
+</article>
+<article class="concept">
+  <h4>4. range() وStart, Stop, Step — إنشاء نطاق من الأعداد</h4>
+  <p>تعيد <code>range()</code> تسلسلًا من الأعداد الصحيحة يُستخدم كثيرًا لتكرار عدد معلوم من المرات أو لإنتاج فهارس. صيغتها الشائعة <code>range(stop)</code>، أو <code>range(start, stop)</code>، أو <code>range(start, stop, step)</code>.</p>
+  <ul>
+    <li><code>start</code>: أول قيمة، والافتراضي <code>0</code>.</li>
+    <li><code>stop</code>: حد التوقف، وهو غير مشمول في القيم.</li>
+    <li><code>step</code>: مقدار الزيادة أو النقصان، والافتراضي <code>1</code>.</li>
+  </ul>
+  <p>يجب أن تكون <code>step</code> غير صفرية؛ فالقيمة الموجبة تتقدم للأمام، والسالبة تتراجع. ومن أكثر الأخطاء شيوعًا توقع شمول <code>stop</code>، أو استخدام خطوة موجبة مع نطاق تنازلي فينتج نطاق فارغ.</p>
+  <figure class="code-block">
+  <figcaption class="code-head">
+    <span class="code-meta">
+      <span class="code-lang" lang="en">Python</span>
+      <span class="code-file" lang="en">range_parts.py</span>
+    </span>
+    <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+      <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <use href="#i-copy"></use>
+      </svg>
+      <span class="btn-label">نسخ</span>
+    </button>
+  </figcaption>
+  <pre class="code" dir="ltr"><code>print(list(range(4)))
+print(list(range(2, 6)))
+print(list(range(1, 10, 3)))
+print(list(range(5, 0, -2)))</code></pre>
+  <div class="output" role="group" aria-label="مخرجات البرنامج">
+    <div class="output-label" lang="en">Output</div>
+    <pre dir="ltr"><code>[0, 1, 2, 3]\n[2, 3, 4, 5]\n[1, 4, 7]\n[5, 3, 1]</code></pre>
+  </div>
+</figure>
+</article>
+<article class="concept">
+  <h4>5. Range with For Loops — دمج range() مع for</h4>
+  <p>عند دمج <code>range()</code> مع <code>for</code>، تُنفَّذ الحلقة مرة لكل عدد ينتجه النطاق. مثلًا <code>range(1, 4)</code> ينتج 1 و2 و3، أي ثلاث دورات. استخدم <code>range(len(items))</code> فقط عندما تحتاج الفهرس نفسه؛ أما إذا كنت تحتاج العناصر فقط فالأفضل المرور عليها مباشرةً.</p>
+  <p>يمكن أن تحدد الخطوة نمطًا مثل معالجة العناصر ذات الفهارس الزوجية، أو العد التنازلي. تأكد أن اتجاه الخطوة يناسب حدود النطاق، وأن الحد النهائي غير مشمول.</p>
+  <figure class="code-block">
+  <figcaption class="code-head">
+    <span class="code-meta">
+      <span class="code-lang" lang="en">Python</span>
+      <span class="code-file" lang="en">range_for.py</span>
+    </span>
+    <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+      <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <use href="#i-copy"></use>
+      </svg>
+      <span class="btn-label">نسخ</span>
+    </button>
+  </figcaption>
+  <pre class="code" dir="ltr"><code>weekly_targets = [12, 15, 11, 18]
+for index in range(len(weekly_targets)):
+    print(f"Day {index + 1}: {weekly_targets[index]} tasks")
+
+for number in range(6, 0, -2):
+    print(number)</code></pre>
+  <div class="output" role="group" aria-label="مخرجات البرنامج">
+    <div class="output-label" lang="en">Output</div>
+    <pre dir="ltr"><code>Day 1: 12 tasks\nDay 2: 15 tasks\nDay 3: 11 tasks\nDay 4: 18 tasks\n6\n4\n2</code></pre>
+  </div>
+</figure>
+</article>
+
+            </section>
+
+            <section class="lesson-section" id="summary">
+              <h3 class="section-title"><b>02</b>الملخص</h3>
+              <ul class="summary-list">
+                
+<li>تستخدم <code>for</code> لتنفيذ الأوامر مرة لكل عنصر في تسلسل أو نطاق.</li>
+<li>يمكن المرور مباشرةً على عناصر <code>list</code> و<code>tuple</code> وحروف <code>string</code> دون فهرسة.</li>
+<li>الحلقة المتداخلة تنفذ الداخلية كاملةً في كل دورة من الخارجية؛ راقب إجمالي التكرارات.</li>
+<li><code>break</code> ينهي أقرب حلقة، و<code>continue</code> يتجاوز بقية الدورة الحالية.</li>
+<li><code>range(start, stop, step)</code> لا يشمل <code>stop</code>، والقيم الافتراضية هي 0 و1 للبدء والخطوة.</li>
+<li>اجعل اتجاه <code>step</code> مناسبًا للحدود، ولا تستخدم <code>range(len(...))</code> إلا عند الحاجة إلى الفهرس.</li>
+
+              </ul>
+            </section>
+
+            <section class="lesson-section" id="interview-questions">
+              <h3 class="section-title"><b>03</b>أسئلة المقابلات</h3>
+              <div class="qa-list">
+                
+<details class="qa" open>
+  <summary><span class="qa-q">ما الفرق بين استخدام for مباشرةً على القائمة واستخدام range(len(list))؟</span><span class="level level-basic">أساسي</span></summary>
+  <div class="qa-body"><p>المرور المباشر يعطيك العنصر نفسه، وهو أبسط عندما لا تحتاج إلى موقعه. أما <code>range(len(items))</code> فيعطيك الفهرس، ويكون مناسبًا عندما تحتاج الوصول إلى العنصر باستخدام موقعه أو التعامل مع الفهرس نفسه.</p></div>
+</details>
+<details class="qa">
+  <summary><span class="qa-q">كيف تعمل الحلقة المتداخلة، وكم مرة ينفذ جسم الحلقة الداخلية؟</span><span class="level level-basic">أساسي</span></summary>
+  <div class="qa-body"><p>تبدأ الحلقة الداخلية من جديد مع كل دورة للحلقة الخارجية. إذا كان للخارجية 3 عناصر وللداخلية 4 عناصر، ينفذ الجسم الداخلي 3 × 4 = 12 مرة.</p></div>
+</details>
+<details class="qa">
+  <summary><span class="qa-q">ما القيم التي ينتجها range(2, 11, 3)، ولماذا؟</span><span class="level level-mid">متوسط</span></summary>
+  <div class="qa-body"><p>ينتج 2 و5 و8. نبدأ من 2 ونضيف 3 في كل مرة، ونتوقف قبل 11 لأن قيمة <code>stop</code> غير مشمولة.</p></div>
+</details>
+<details class="qa">
+  <summary><span class="qa-q">ما أثر break إذا وُضع داخل الحلقة الداخلية في حلقات متداخلة؟</span><span class="level level-mid">متوسط</span></summary>
+  <div class="qa-body"><p>ينهي <code>break</code> الحلقة الأقرب التي يقع بداخلها فقط. تستمر الحلقة الخارجية بعد ذلك في دوراتها، وقد تبدأ الحلقة الداخلية من جديد في الدورة الخارجية التالية.</p></div>
+</details>
+<details class="qa">
+  <summary><span class="qa-q">لماذا لا ينتج range(5, 0) أعدادًا تنازلية؟</span><span class="level level-trap">سؤال فخ</span></summary>
+  <div class="qa-body"><p>لأن الخطوة الافتراضية هي <code>1</code>، بينما البداية 5 والحد 0 يتطلبان خطوة سالبة للتناقص. استخدم <code>range(5, 0, -1)</code> لإنتاج 5 إلى 1.</p></div>
+</details>
+
+              </div>
+            </section>
+
+            <section class="lesson-section" id="practical">
+              <h3 class="section-title"><b>04</b>المسألة العملية</h3>
+              
+<div class="callout callout-problem">
+  <h4>المطلوب: تقرير تجهيز طلبات متجر صغير</h4>
+  <p>لديك قائمة بأسماء المنتجات وكمياتها المطلوبة. اطبع تقريرًا لكل منتج، وتجاهل المنتجات ذات الكمية صفر، وأوقف التقرير إذا وصلت إلى المنتج الذي اسمه <code>"Notebook"</code> بعد طباعة بياناته. استخدم <code>for</code> و<code>continue</code> و<code>break</code>، ومرّر على القائمة مع فهارسها باستخدام <code>range()</code>.</p>
+</div>
+
+              <ol class="solution">
+                
+<li class="sol-step"><h4>فهم المطلوب</h4><p>نحتاج المرور على المنتجات بترتيبها، وتجاوز الكمية الصفرية، ثم إنهاء الحلقة عند معالجة Notebook.</p></li>
+<li class="sol-step"><h4>خطة الحل</h4><p>نستخدم قائمتين متوازيتين، وننشئ فهارسها عبر <code>range(len(products))</code> للوصول إلى الاسم والكمية في الموضع نفسه.</p></li>
+<li class="sol-step"><h4>الكود الكامل</h4>
+<figure class="code-block">
+  <figcaption class="code-head">
+    <span class="code-meta">
+      <span class="code-lang" lang="en">Python</span>
+      <span class="code-file" lang="en">order_report.py</span>
+    </span>
+    <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+      <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <use href="#i-copy"></use>
+      </svg>
+      <span class="btn-label">نسخ</span>
+    </button>
+  </figcaption>
+  <pre class="code" dir="ltr"><code>products = ["Pen", "Folder", "Notebook", "Marker"]
+quantities = [8, 0, 5, 3]
+
+for index in range(len(products)):
+    quantity = quantities[index]
+    if quantity == 0:
+        continue
+    print(f"{products[index]}: {quantity} units")
+    if products[index] == "Notebook":
+        print("Report stopped at Notebook")
+        break</code></pre>
+  <div class="output" role="group" aria-label="مخرجات البرنامج">
+    <div class="output-label" lang="en">Output</div>
+    <pre dir="ltr"><code>Pen: 8 units\nNotebook: 5 units\nReport stopped at Notebook</code></pre>
+  </div>
+</figure>
+</li>
+<li class="sol-step"><h4>تفسير القرارات</h4><p>استخدمنا الفهرس لقراءة بيانات متطابقة الموضع من القائمتين. تنفذ <code>continue</code> تخطي Folder، بينما يوقف <code>break</code> التقرير بعد طباعة Notebook.</p></li>
+<li class="sol-step"><h4>اختبار سريع</h4><p>الكمية صفر لا تظهر في التقرير، ويظهر Pen ثم Notebook فقط؛ ولا يصل التنفيذ إلى Marker لأن الحلقة تنتهي عند Notebook.</p></li>
+<li class="sol-step"><h4>تحسين أو بديل</h4><p>إذا لم تكن بحاجة إلى الفهرس، يمكن المرور مباشرةً على أسماء المنتجات؛ لكن وجود قائمتين متوازيتين يجعل الفهرس مفيدًا في هذا المثال.</p></li>
+
+              </ol>
+            </section>
+          </div>
+        </section>
+      </div>
+
+      <footer class="footer">
+        <span class="footer-note" lang="en">Python Learning Roadmap</span>
+        <span class="footer-note">المرحلة 03 - الدرس 13</span>
+      </footer>
+    </main>
+
+    <script>
+      (function () {
+        'use strict'
+
+        var live = document.getElementById('copy-status')
+        var printStates = null
+
+        function fallbackCopy(text) {
+          var textarea = document.createElement('textarea')
+          textarea.value = text
+          textarea.setAttribute('readonly', '')
+          textarea.style.cssText = 'position:fixed;top:-1000px;left:-1000px;opacity:0;'
+
+          try {
+            document.body.appendChild(textarea)
+            textarea.focus()
+            textarea.select()
+            textarea.setSelectionRange(0, textarea.value.length)
+            return document.execCommand('copy')
+          } catch (error) {
+            return false
+          } finally {
+            if (textarea.parentNode) {
+              textarea.parentNode.removeChild(textarea)
+            }
+          }
+        }
+
+        function copyText(text) {
+          if (navigator.clipboard && window.isSecureContext) {
+            return navigator.clipboard.writeText(text).then(
+              function () { return true },
+              function () { return fallbackCopy(text) },
+            ).catch(function () { return false })
+          }
+
+          return Promise.resolve().then(function () {
+            return fallbackCopy(text)
+          }).catch(function () {
+            return false
+          })
+        }
+
+        document.addEventListener('click', function (event) {
+          var target = event.target
+          var button = target && typeof target.closest === 'function'
+            ? target.closest('[data-copy-code]')
+            : null
+
+          if (!button) return
+
+          var label = button.querySelector('.btn-label')
+          var block = button.closest('.code-block')
+          var code = block ? block.querySelector('pre.code > code') : null
+          if (!label || !code) return
+
+          if (!button.dataset.label) button.dataset.label = label.textContent
+
+          copyText(code.textContent).then(function (ok) {
+            label.textContent = ok ? 'تم النسخ' : 'تعذّر النسخ'
+            button.classList.toggle('is-copied', ok)
+            button.classList.toggle('is-failed', !ok)
+
+            if (live) {
+              live.textContent = ok
+                ? 'تم نسخ الكود'
+                : 'تعذّر النسخ، حدّد الكود يدويًا ثم انسخه'
+            }
+
+            window.clearTimeout(button._timer)
+            button._timer = window.setTimeout(function () {
+              label.textContent = button.dataset.label
+              button.classList.remove('is-copied', 'is-failed')
+            }, 1800)
+          })
+        })
+
+        window.addEventListener('beforeprint', function () {
+          if (printStates !== null) return
+
+          var questions = document.querySelectorAll('details.qa')
+          printStates = Array.prototype.map.call(questions, function (item) {
+            return item.open
+          })
+          questions.forEach(function (item) {
+            item.open = true
+          })
+        })
+
+        window.addEventListener('afterprint', function () {
+          if (printStates === null) return
+
+          var questions = document.querySelectorAll('details.qa')
+          questions.forEach(function (item, index) {
+            item.open = printStates[index] === true
+          })
+          printStates = null
+        })
+      })()
+    </script>
+  </body>
+</html>

@@ -1,0 +1,549 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#fcfcfc" />
+    <title>معالجة الاستثناءات | Python Learning Roadmap</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/style.css" />
+  </head>
+  <body>
+    <svg
+      width="0"
+      height="0"
+      style="position: absolute"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <symbol id="i-copy" viewBox="0 0 24 24">
+        <rect x="9" y="9" width="12" height="12" rx="2.5" />
+        <path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15" />
+      </symbol>
+    </svg>
+    <template id="code-block-pattern">
+      <figure class="code-block">
+        <figcaption class="code-head">
+          <span class="code-meta">
+            <span class="code-lang" lang="en">Python</span>
+            <span class="code-file" lang="en">example.py</span>
+          </span>
+          <button
+            type="button"
+            class="btn btn-ghost btn-sm"
+            data-copy-code
+            aria-label="نسخ الكود"
+          >
+            <svg
+              class="btn-icon"
+              viewBox="0 0 24 24"
+              width="14"
+              height="14"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <use href="#i-copy"></use>
+            </svg>
+            <span class="btn-label">نسخ</span>
+          </button>
+        </figcaption>
+        <pre class="code" dir="ltr"><code><!-- ضع الكود هنا كنص HTML مع تهريب الرموز الخاصة --></code></pre>
+        <!-- احذف كتلة output إذا لم يكن للمثال ناتج ثابت ومفيد. -->
+        <div class="output" role="group" aria-label="مخرجات البرنامج">
+          <div class="output-label" lang="en">Output</div>
+          <pre dir="ltr"><code><!-- ضع المخرجات المتحققة هنا --></code></pre>
+        </div>
+      </figure>
+    </template>
+
+    <div
+      class="sr-only"
+      id="copy-status"
+      role="status"
+      aria-live="polite"
+    ></div>
+
+    <main class="page">
+      <header class="hero lesson-hero">
+        <span class="eyebrow">
+          <span class="eyebrow-dot"></span>
+          المرحلة <span dir="ltr">08</span>:
+          <span dir="ltr" lang="en">Exceptions &amp; File Handling</span>
+        </span>
+        <h1>
+          <span class="h1-ar">معالجة الاستثناءات</span>
+          <span class="h1-en" dir="ltr" lang="en">Python Try...Except</span>
+        </h1>
+        <p class="hero-description">كيف تجعل برنامجك يتعامل مع الأخطاء المتوقعة بهدوء بدل أن ينهار: التقاط الاستثناءات بـ try وexcept، وضمان التنظيف بـ finally، ورفع الأخطاء بنفسك بـ raise.</p>
+      </header>
+
+      <div class="lesson-parts">
+        <section class="lesson-part-card" id="complete-lesson" aria-labelledby="complete-lesson-title">
+          <header class="part-header">
+            <div class="part-number">درس متكامل</div>
+            <div class="part-heading">
+              <h2 id="complete-lesson-title">
+                <span class="part-title-en" dir="ltr" lang="en">Complete Lesson</span>
+                <span class="sep" aria-hidden="true"> - </span>
+                <span class="part-title-ar">الشرح والملخص والتطبيق</span>
+              </h2>
+              <span class="part-description">كل محتوى الدرس في ملف HTML واحد</span>
+            </div>
+          </header>
+
+          <div class="lesson-body">
+            <section class="lesson-section" id="explain">
+              <h3 class="section-title"><b>01</b>الشرح</h3>
+                            <article class="concept">
+                <h4>1) Exceptions: ماذا يحدث عندما يفشل سطر؟</h4>
+                <p>الـ <code dir="ltr">Exception</code> كائن ينشئه Python عند حدوث خطأ أثناء التنفيذ (runtime)، مثل تحويل نص غير رقمي أو القسمة على صفر أو الوصول إلى مفتاح غير موجود. عند وقوعه يتوقف التنفيذ العادي فورًا، ويصعد الاستثناء من الدالة الحالية إلى من استدعاها حتى يجد من يعالجه؛ فإن لم يجد أحدًا ينتهي البرنامج ويطبع <code dir="ltr">traceback</code>. نحتاج هذا المفهوم لأن البيانات الخارجية (إدخال المستخدم، أو مصادر البيانات عمومًا) لا يمكن ضمان صحتها مسبقًا.</p>
+                <p>لكل استثناء نوع ضمن شجرة وراثة (تذكّر درس Inheritance): <code dir="ltr">BaseException</code> ثم <code dir="ltr">Exception</code> ثم أنواع مثل <code dir="ltr">ValueError</code> و<code dir="ltr">TypeError</code> و<code dir="ltr">ZeroDivisionError</code>، ويرث <code dir="ltr">KeyError</code> و<code dir="ltr">IndexError</code> من <code dir="ltr">LookupError</code>. وهذا يختلف عن <code dir="ltr">SyntaxError</code> الذي يظهر قبل بدء التنفيذ لأن الكود لا يمكن تحليله أصلًا.</p>
+      <figure class="code-block">
+        <figcaption class="code-head">
+          <span class="code-meta">
+            <span class="code-lang" lang="en">Python</span>
+            <span class="code-file" lang="en">exceptions_basics.py</span>
+          </span>
+          <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+            <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <use href="#i-copy"></use>
+            </svg>
+            <span class="btn-label">نسخ</span>
+          </button>
+        </figcaption>
+        <pre class="code" dir="ltr"><code>entries = ["42", "abc", ""]
+for text in entries:
+    try:
+        print(int(text))
+    except ValueError as error:
+        print(f"ValueError: {error}")</code></pre>
+        <div class="output" role="group" aria-label="مخرجات البرنامج">
+          <div class="output-label" lang="en">Output</div>
+          <pre dir="ltr"><code>42
+ValueError: invalid literal for int() with base 10: 'abc'
+ValueError: invalid literal for int() with base 10: ''</code></pre>
+        </div>
+      </figure>
+                <p><strong>القيد المهم:</strong> عالج الاستثناءات التي تتوقعها فقط؛ الخطأ البرمجي (bug) يجب أن يظهر ليُصلَح، لا أن يُخفى.</p>
+              </article>
+
+              <article class="concept">
+                <h4>2) try و except: التقاط الفشل المتوقع</h4>
+                <p><code dir="ltr">try</code> تحيط بالكود الذي قد يفشل، و<code dir="ltr">except</code> تحدد ما يحدث عند فشله فلا يتوقف البرنامج. عند وقوع استثناء داخل <code dir="ltr">try</code> يُترك باقي الكتلة فورًا، ويفحص Python كتل <code dir="ltr">except</code> بالترتيب وينفذ أول كتلة يطابق نوعها نوع الاستثناء أو أحد آبائه.</p>
+                <p>استخدم <code dir="ltr">as error</code> للوصول إلى رسالة الاستثناء، ويمكنك تجميع أنواع في tuple مثل <code dir="ltr">except (TypeError, ValueError)</code>. ضع الأنواع الأخص قبل الأعم، لأن النوع الأب يلتقط أبناءه ويحجب كتلة الابن بعده.</p>
+      <figure class="code-block">
+        <figcaption class="code-head">
+          <span class="code-meta">
+            <span class="code-lang" lang="en">Python</span>
+            <span class="code-file" lang="en">try_except.py</span>
+          </span>
+          <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+            <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <use href="#i-copy"></use>
+            </svg>
+            <span class="btn-label">نسخ</span>
+          </button>
+        </figcaption>
+        <pre class="code" dir="ltr"><code>def stock_per_customer(total_stock, customers_text):
+    try:
+        customers = int(customers_text)
+        return total_stock // customers
+    except ValueError:
+        return "customers must be a number"
+    except ZeroDivisionError:
+        return "customers cannot be zero"
+
+
+print(stock_per_customer(120, "8"))
+print(stock_per_customer(120, "eight"))
+print(stock_per_customer(120, "0"))</code></pre>
+        <div class="output" role="group" aria-label="مخرجات البرنامج">
+          <div class="output-label" lang="en">Output</div>
+          <pre dir="ltr"><code>15
+customers must be a number
+customers cannot be zero</code></pre>
+        </div>
+      </figure>
+                <p><strong>الخطأ الشائع:</strong> <code dir="ltr">except:</code> العارية تلتقط كل شيء حتى <code dir="ltr">KeyboardInterrupt</code>، و<code dir="ltr">except Exception:</code> على كتلة كبيرة تخفي أخطاء لم تتوقعها. حدّد النوع دائمًا.</p>
+              </article>
+
+              <article class="concept">
+                <h4>3) else و finally: ما بعد النجاح وما يجب أن يحدث دائمًا</h4>
+                <p>كتلة <code dir="ltr">else</code> تعمل فقط إذا انتهت <code dir="ltr">try</code> دون استثناء. فائدتها فصل «المحاولة الخطرة» عن «ما نفعله بنتيجتها»، فلا تلتقط <code dir="ltr">except</code> أخطاء من كود لم نقصد حمايته. أما <code dir="ltr">finally</code> فتعمل دائمًا: عند النجاح أو الفشل أو حتى عند <code dir="ltr">return</code>، وتناسب التنظيف (cleanup) مثل تحرير مورد أو إعادة حالة إلى وضعها. الترتيب: <code dir="ltr">try</code> ثم <code dir="ltr">except</code> ثم <code dir="ltr">else</code> ثم <code dir="ltr">finally</code>.</p>
+      <figure class="code-block">
+        <figcaption class="code-head">
+          <span class="code-meta">
+            <span class="code-lang" lang="en">Python</span>
+            <span class="code-file" lang="en">else_finally.py</span>
+          </span>
+          <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+            <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <use href="#i-copy"></use>
+            </svg>
+            <span class="btn-label">نسخ</span>
+          </button>
+        </figcaption>
+        <pre class="code" dir="ltr"><code>def parse_age(text):
+    try:
+        age = int(text)
+    except ValueError:
+        print("invalid age")
+        return None
+    else:
+        print("parsed successfully")
+        return age
+    finally:
+        print("validation finished")
+
+
+parse_age("29")
+parse_age("abc")</code></pre>
+        <div class="output" role="group" aria-label="مخرجات البرنامج">
+          <div class="output-label" lang="en">Output</div>
+          <pre dir="ltr"><code>parsed successfully
+validation finished
+invalid age
+validation finished</code></pre>
+        </div>
+      </figure>
+                <p><strong>الخطأ الشائع:</strong> وضع <code dir="ltr">return</code> داخل <code dir="ltr">finally</code> يلغي أي <code dir="ltr">return</code> سابق ويبتلع الاستثناء المنتشر. لن نحتاج finally لإغلاق الملفات إلا في دروس لاحقة، أما الآن فافهمها بوصفها كتلة تنظيف مضمونة.</p>
+              </article>
+
+              <article class="concept">
+                <h4>4) raise: ارفع الاستثناء بنفسك</h4>
+                <p>عندما تكتشف أن الحالة غير صالحة (قاعدة عمل منتهكة)، فارفع استثناءً بدل أن تُرجع قيمة غامضة مثل <code dir="ltr">None</code> أو <code dir="ltr">-1</code>: <code dir="ltr">raise ValueError("message")</code>. اختر النوع الأقرب لمعنى المشكلة واكتب رسالة تشرحها. داخل <code dir="ltr">except</code>، تعيد <code dir="ltr">raise</code> وحدها رفع الاستثناء الحالي كما هو بعد تنفيذ إجراء جانبي، بينما <code dir="ltr">raise NewError("...") from error</code> تحوّله إلى نوع أنسب مع حفظ سببه الأصلي.</p>
+      <figure class="code-block">
+        <figcaption class="code-head">
+          <span class="code-meta">
+            <span class="code-lang" lang="en">Python</span>
+            <span class="code-file" lang="en">raise_basics.py</span>
+          </span>
+          <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+            <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <use href="#i-copy"></use>
+            </svg>
+            <span class="btn-label">نسخ</span>
+          </button>
+        </figcaption>
+        <pre class="code" dir="ltr"><code>def checkout(balance, price):
+    if price &gt; balance:
+        raise ValueError("insufficient balance")
+    return balance - price
+
+
+try:
+    checkout(50, 80)
+except ValueError as error:
+    print(f"Payment rejected: {error}")</code></pre>
+        <div class="output" role="group" aria-label="مخرجات البرنامج">
+          <div class="output-label" lang="en">Output</div>
+          <pre dir="ltr"><code>Payment rejected: insufficient balance</code></pre>
+        </div>
+      </figure>
+                <p><strong>الخطأ الشائع:</strong> رفع <code dir="ltr">Exception</code> العام يصعّب على المستدعي التقاطه بدقة؛ وكتابة <code dir="ltr">raise</code> وحدها خارج أي <code dir="ltr">except</code> تسبب <code dir="ltr">RuntimeError</code>.</p>
+              </article>
+
+              <article class="concept">
+                <h4>5) Exception Handling: قرارات التصميم</h4>
+                <p>الـ Exception Handling ليس مجرد <code dir="ltr">try/except</code>، بل قرار: أين نعالج؟ عالج حيث تملك إجراءً مفيدًا (قيمة بديلة، إعادة محاولة، رسالة واضحة للمستخدم)، وإلا فدع الاستثناء يصعد إلى طبقة تعرف ماذا تفعل به. أسلوب Python المعتاد هو EAFP («اطلب المسامحة أسهل من الاستئذان»): جرّب ثم عالج الفشل، بدل فحص كل الشروط مسبقًا (LBYL)، لأنه أبسط ويتفادى تغيّر الحالة بين الفحص والتنفيذ.</p>
+      <figure class="code-block">
+        <figcaption class="code-head">
+          <span class="code-meta">
+            <span class="code-lang" lang="en">Python</span>
+            <span class="code-file" lang="en">eafp_example.py</span>
+          </span>
+          <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+            <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <use href="#i-copy"></use>
+            </svg>
+            <span class="btn-label">نسخ</span>
+          </button>
+        </figcaption>
+        <pre class="code" dir="ltr"><code>raw_discount = "fifteen%"
+try:
+    discount = int(raw_discount.rstrip("%"))
+except ValueError:
+    discount = 0
+print(f"Discount: {discount}%")</code></pre>
+        <div class="output" role="group" aria-label="مخرجات البرنامج">
+          <div class="output-label" lang="en">Output</div>
+          <pre dir="ltr"><code>Discount: 0%</code></pre>
+        </div>
+      </figure>
+                <p>اجعل <code dir="ltr">try</code> ضيقة (سطرًا أو سطرين)، وعالج أنواعًا محددة، ولا تكتب <code dir="ltr">except ...: pass</code> بصمت. وإن وُجدت دالة لا تحتاج استثناءً أصلًا (مثل <code dir="ltr">dict.get()</code>) فاستخدمها.</p>
+              </article>
+            </section>
+
+            <section class="lesson-section" id="summary">
+              <h3 class="section-title"><b>02</b>الملخص</h3>
+              <ul class="summary-list">
+                <li>الـ Exception كائن يرفعه Python عند فشل التنفيذ؛ وإن لم يُعالج ينهي البرنامج ويطبع <code dir="ltr">traceback</code>.</li>
+                <li>ضع داخل <code dir="ltr">try</code> الكود الخطر فقط، والتقط أنواعًا محددة مع <code dir="ltr">as error</code>، والأخص قبل الأعم.</li>
+                <li>تجنّب <code dir="ltr">except:</code> العارية و<code dir="ltr">except Exception: pass</code> لأنهما تخفيان الأخطاء الحقيقية.</li>
+                <li><code dir="ltr">else</code> لما بعد النجاح، و<code dir="ltr">finally</code> للتنظيف وتعمل دائمًا؛ والترتيب: try ثم except ثم else ثم finally.</li>
+                <li><code dir="ltr">raise</code> يرفع استثناءً عند انتهاك شرط؛ و<code dir="ltr">raise</code> وحدها داخل <code dir="ltr">except</code> تعيد الرفع، و<code dir="ltr">from</code> تحفظ السبب الأصلي.</li>
+                <li>عالج حيث تستطيع الاسترداد (EAFP)، واجعل <code dir="ltr">try</code> ضيقة، ولا تضع <code dir="ltr">return</code> داخل <code dir="ltr">finally</code>.</li>
+              </ul>
+            </section>
+
+            <section class="lesson-section" id="interview-questions">
+              <h3 class="section-title"><b>03</b>أسئلة المقابلات</h3>
+              <div class="qa-list">
+                <details class="qa" open>
+                  <summary><span class="qa-q">ماذا يحدث لو وقع Exception ولم نعالجه؟</span> <span class="level level-basic">أساسي</span></summary>
+                  <div class="qa-body">
+                    <p>يصعد الاستثناء عبر سلسلة استدعاءات الدوال (call stack) بحثًا عن <code dir="ltr">except</code> مناسبة. إن لم توجد، يتوقف البرنامج ويطبع <code dir="ltr">traceback</code> يوضح نوع الاستثناء ورسالته والأسطر التي مرّ بها. وهذا ليس دائمًا سيئًا: الخطأ البرمجي غير المتوقع يفضَّل أن يظهر بوضوح بدل أن يُخفى.</p>
+                  </div>
+                </details>
+                <details class="qa">
+                  <summary><span class="qa-q">متى تعمل else ومتى تعمل finally؟</span> <span class="level level-basic">أساسي</span></summary>
+                  <div class="qa-body">
+                    <p>تعمل <code dir="ltr">else</code> فقط إذا انتهت <code dir="ltr">try</code> دون استثناء، وتناسب الكود الذي يعتمد على نجاح المحاولة. أما <code dir="ltr">finally</code> فتعمل دائمًا سواء نجحت العملية أو فشلت، وتناسب التنظيف.</p>
+                    <p class="qa-follow">متابعة: هل يجوز استخدام <code dir="ltr">try</code> مع <code dir="ltr">finally</code> دون <code dir="ltr">except</code>؟ نعم، فيعمل التنظيف ويستمر الاستثناء في الصعود.</p>
+                  </div>
+                </details>
+                <details class="qa">
+                  <summary><span class="qa-q">لماذا تُعدّ except Exception: pass ممارسة سيئة، وما البديل؟</span> <span class="level level-mid">متوسط</span></summary>
+                  <div class="qa-body">
+                    <p>لأنها تبتلع كل الأخطاء بما فيها الأخطاء البرمجية (مثل <code dir="ltr">TypeError</code> من خطأ في الكتابة)، فيستمر البرنامج ببيانات خاطئة ويصعب تتبع السبب. البديل: التقط النوع المحدد الذي تتوقعه، وعالجه فعليًا بقيمة بديلة أو رسالة واضحة، أو دعه يصعد إلى طبقة أعلى.</p>
+                  </div>
+                </details>
+                <details class="qa">
+                  <summary><span class="qa-q">ما الفرق بين raise وraise error داخل كتلة except؟</span> <span class="level level-mid">متوسط</span></summary>
+                  <div class="qa-body">
+                    <p><code dir="ltr">raise</code> وحدها تعيد رفع الاستثناء الحالي كما هو دون تغيير. أما <code dir="ltr">raise error</code> فتعيد رفع الكائن نفسه لكنها تضيف سطر الرفع الحالي إلى <code dir="ltr">traceback</code>، فتكون أقل نظافة. وإذا أردت استبدال النوع مع حفظ السبب فاستخدم <code dir="ltr">raise NewError("...") from error</code>.</p>
+                  </div>
+                </details>
+                <details class="qa">
+                  <summary><span class="qa-q">ماذا تطبع هذه الدالة، ولماذا؟</span> <span class="level level-trap">فخ</span></summary>
+                  <div class="qa-body">
+                    <p>تطبع <code dir="ltr">finally</code>. تعمل كتلة <code dir="ltr">finally</code> قبل أن تُسلَّم قيمة <code dir="ltr">return</code> للمستدعي، ثم يحلّ <code dir="ltr">return</code> الموجود فيها محل القيمة السابقة. والأسوأ أنه لو رُفع استثناء داخل <code dir="ltr">try</code> لأُلغي وابتُلع بصمت. لذلك لا تضع <code dir="ltr">return</code> داخل <code dir="ltr">finally</code>.</p>
+      <figure class="code-block">
+        <figcaption class="code-head">
+          <span class="code-meta">
+            <span class="code-lang" lang="en">Python</span>
+            <span class="code-file" lang="en">finally_trap.py</span>
+          </span>
+          <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+            <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <use href="#i-copy"></use>
+            </svg>
+            <span class="btn-label">نسخ</span>
+          </button>
+        </figcaption>
+        <pre class="code" dir="ltr"><code>def get_status():
+    try:
+        return "try"
+    finally:
+        return "finally"
+
+
+print(get_status())</code></pre>
+        <div class="output" role="group" aria-label="مخرجات البرنامج">
+          <div class="output-label" lang="en">Output</div>
+          <pre dir="ltr"><code>finally</code></pre>
+        </div>
+      </figure>
+                  </div>
+                </details>
+              </div>
+            </section>
+
+            <section class="lesson-section" id="practical">
+              <h3 class="section-title"><b>04</b>المسألة العملية</h3>
+              <div class="callout callout-problem">
+                <p>يستقبل متجر إلكتروني كميات المنتجات من نموذج طلب على شكل نصوص. اكتب دالة <code dir="ltr">parse_quantity(text)</code> تُرجع عددًا صحيحًا موجبًا أو ترفع <code dir="ltr">ValueError</code> برسالة واضحة. ثم عالج قائمة إدخالات دون أن يتوقف البرنامج عند أول إدخال خاطئ: اجمع الكميات المقبولة والرسائل المرفوضة، واحسب عدد الإدخالات المعالجة، ثم اطبع ملخصًا.</p>
+              </div>
+              <ol class="solution">
+                <li class="sol-step">
+                  <h4>فهم المطلوب</h4>
+                  <p>مدخلات: قائمة نصوص مثل <code dir="ltr">"3"</code> و<code dir="ltr">"abc"</code> و<code dir="ltr">"0"</code>. المطلوب: قبول الأعداد الصحيحة الموجبة فقط، وإبلاغ سبب رفض كل إدخال، ومواصلة المعالجة رغم الأخطاء.</p>
+                </li>
+                <li class="sol-step">
+                  <h4>خطة الحل</h4>
+                  <p>دالة واحدة تتحقق من الإدخال وترفع <code dir="ltr">ValueError</code> عند الفشل. حلقة تستدعيها داخل <code dir="ltr">try</code> مع <code dir="ltr">except</code> لجمع الأخطاء، و<code dir="ltr">else</code> لتخزين الكمية المقبولة، و<code dir="ltr">finally</code> لعدّ كل إدخال تمت معالجته.</p>
+                </li>
+                <li class="sol-step">
+                  <h4>الكود الكامل</h4>
+
+      <figure class="code-block">
+        <figcaption class="code-head">
+          <span class="code-meta">
+            <span class="code-lang" lang="en">Python</span>
+            <span class="code-file" lang="en">quantity_validation.py</span>
+          </span>
+          <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+            <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <use href="#i-copy"></use>
+            </svg>
+            <span class="btn-label">نسخ</span>
+          </button>
+        </figcaption>
+        <pre class="code" dir="ltr"><code>def parse_quantity(text):
+    try:
+        quantity = int(text)
+    except ValueError as error:
+        raise ValueError(f"'{text}' is not a whole number") from error
+    if quantity &lt;= 0:
+        raise ValueError(f"quantity must be positive, got {quantity}")
+    return quantity
+
+
+raw_entries = ["3", "abc", "0", "7"]
+accepted, errors, processed = [], [], 0
+for entry in raw_entries:
+    try:
+        quantity = parse_quantity(entry)
+    except ValueError as error:
+        errors.append(str(error))
+    else:
+        accepted.append(quantity)
+    finally:
+        processed += 1
+
+print(f"Processed {processed}: accepted={accepted}")
+for message in errors:
+    print(f"- {message}")</code></pre>
+        <div class="output" role="group" aria-label="مخرجات البرنامج">
+          <div class="output-label" lang="en">Output</div>
+          <pre dir="ltr"><code>Processed 4: accepted=[3, 7]
+- 'abc' is not a whole number
+- quantity must be positive, got 0</code></pre>
+        </div>
+      </figure>
+                </li>
+                <li class="sol-step">
+                  <h4>تفسير القرارات</h4>
+                  <p>حوّلنا خطأ <code dir="ltr">int()</code> الخام إلى رسالة أوضح عبر <code dir="ltr">raise ... from error</code> مع حفظ السبب الأصلي. تخزين الكمية المقبولة في <code dir="ltr">else</code> يضمن ألا تلتقط <code dir="ltr">except</code> أخطاء من <code dir="ltr">append</code>. والعدّاد في <code dir="ltr">finally</code> يُحدَّث دائمًا، نجح الإدخال أو فشل. والمعالجة تلتقط <code dir="ltr">ValueError</code> فقط لأنه الفشل المتوقع.</p>
+                </li>
+                <li class="sol-step">
+                  <h4>اختبار سريع</h4>
+                  <p>جرّب <code dir="ltr">parse_quantity("  5 ")</code> فتحصل على <code dir="ltr">5</code> لأن <code dir="ltr">int()</code> يتجاهل المسافات الجانبية، وجرّب <code dir="ltr">"2.5"</code> و<code dir="ltr">"-4"</code> فيُرفض الأول لأنه ليس عددًا صحيحًا ويُرفض الثاني لأنه غير موجب. وأضف إدخالًا من نوع <code dir="ltr">None</code> لترى <code dir="ltr">TypeError</code> غير الملتقط، وهو سلوك مقصود يكشف خطأ برمجيًا لا خطأ إدخال.</p>
+                </li>
+                <li class="sol-step">
+                  <h4>تحسين أو بديل</h4>
+                  <p>بديل LBYL هو <code dir="ltr">text.isdigit()</code>، لكنه يرفض <code dir="ltr">"-3"</code> ويقبل رموزًا غير ASCII مثل <code dir="ltr">"²"</code> ثم يفشل لاحقًا في <code dir="ltr">int()</code>، لذلك تبقى المحاولة مع الاستثناء أدق. ويمكن لاحقًا تحسين الرسائل بإرجاع بيانات منظمة بدل نصوص.</p>
+                </li>
+              </ol>
+            </section>
+          </div>
+        </section>
+      </div>
+
+      <footer class="footer">
+        <span class="footer-note" lang="en">Python Learning Roadmap</span>
+        <span class="footer-note">المرحلة 08 - الدرس 35</span>
+      </footer>
+    </main>
+
+    <script>
+      (function () {
+        'use strict'
+
+        var live = document.getElementById('copy-status')
+        var printStates = null
+
+        function fallbackCopy(text) {
+          var textarea = document.createElement('textarea')
+          textarea.value = text
+          textarea.setAttribute('readonly', '')
+          textarea.style.cssText = 'position:fixed;top:-1000px;left:-1000px;opacity:0;'
+
+          try {
+            document.body.appendChild(textarea)
+            textarea.focus()
+            textarea.select()
+            textarea.setSelectionRange(0, textarea.value.length)
+            return document.execCommand('copy')
+          } catch (error) {
+            return false
+          } finally {
+            if (textarea.parentNode) {
+              textarea.parentNode.removeChild(textarea)
+            }
+          }
+        }
+
+        function copyText(text) {
+          if (navigator.clipboard && window.isSecureContext) {
+            return navigator.clipboard.writeText(text).then(
+              function () { return true },
+              function () { return fallbackCopy(text) },
+            ).catch(function () { return false })
+          }
+
+          return Promise.resolve().then(function () {
+            return fallbackCopy(text)
+          }).catch(function () {
+            return false
+          })
+        }
+
+        document.addEventListener('click', function (event) {
+          var target = event.target
+          var button = target && typeof target.closest === 'function'
+            ? target.closest('[data-copy-code]')
+            : null
+
+          if (!button) return
+
+          var label = button.querySelector('.btn-label')
+          var block = button.closest('.code-block')
+          var code = block ? block.querySelector('pre.code > code') : null
+          if (!label || !code) return
+
+          if (!button.dataset.label) button.dataset.label = label.textContent
+
+          copyText(code.textContent).then(function (ok) {
+            label.textContent = ok ? 'تم النسخ' : 'تعذّر النسخ'
+            button.classList.toggle('is-copied', ok)
+            button.classList.toggle('is-failed', !ok)
+
+            if (live) {
+              live.textContent = ok
+                ? 'تم نسخ الكود'
+                : 'تعذّر النسخ، حدّد الكود يدويًا ثم انسخه'
+            }
+
+            window.clearTimeout(button._timer)
+            button._timer = window.setTimeout(function () {
+              label.textContent = button.dataset.label
+              button.classList.remove('is-copied', 'is-failed')
+            }, 1800)
+          })
+        })
+
+        window.addEventListener('beforeprint', function () {
+          if (printStates !== null) return
+
+          var questions = document.querySelectorAll('details.qa')
+          printStates = Array.prototype.map.call(questions, function (item) {
+            return item.open
+          })
+          questions.forEach(function (item) {
+            item.open = true
+          })
+        })
+
+        window.addEventListener('afterprint', function () {
+          if (printStates === null) return
+
+          var questions = document.querySelectorAll('details.qa')
+          questions.forEach(function (item, index) {
+            item.open = printStates[index] === true
+          })
+          printStates = null
+        })
+      })()
+    </script>
+  </body>
+</html>

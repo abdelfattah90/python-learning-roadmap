@@ -1,0 +1,628 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#fcfcfc" />
+    <title>Classes وObjects في Python | Python Learning Roadmap</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/style.css" />
+  </head>
+  <body>
+    <svg
+      width="0"
+      height="0"
+      style="position: absolute"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <symbol id="i-copy" viewBox="0 0 24 24">
+        <rect x="9" y="9" width="12" height="12" rx="2.5" />
+        <path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15" />
+      </symbol>
+    </svg>
+    <template id="code-block-pattern">
+      <figure class="code-block">
+        <figcaption class="code-head">
+          <span class="code-meta">
+            <span class="code-lang" lang="en">Python</span>
+            <span class="code-file" lang="en">example.py</span>
+          </span>
+          <button
+            type="button"
+            class="btn btn-ghost btn-sm"
+            data-copy-code
+            aria-label="نسخ الكود"
+          >
+            <svg
+              class="btn-icon"
+              viewBox="0 0 24 24"
+              width="14"
+              height="14"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <use href="#i-copy"></use>
+            </svg>
+            <span class="btn-label">نسخ</span>
+          </button>
+        </figcaption>
+        <pre class="code" dir="ltr"><code><!-- ضع الكود هنا كنص HTML مع تهريب الرموز الخاصة --></code></pre>
+        <!-- احذف كتلة output إذا لم يكن للمثال ناتج ثابت ومفيد. -->
+        <div class="output" role="group" aria-label="مخرجات البرنامج">
+          <div class="output-label" lang="en">Output</div>
+          <pre dir="ltr"><code><!-- ضع المخرجات المتحققة هنا --></code></pre>
+        </div>
+      </figure>
+    </template>
+
+    <div
+      class="sr-only"
+      id="copy-status"
+      role="status"
+      aria-live="polite"
+    ></div>
+
+    <main class="page">
+      <header class="hero lesson-hero">
+        <span class="eyebrow">
+          <span class="eyebrow-dot"></span>
+          المرحلة <span dir="ltr">06</span>:
+          <span dir="ltr" lang="en">Object-Oriented Programming</span>
+        </span>
+        <h1>
+          <span class="h1-ar">Classes وObjects في Python</span>
+          <span class="h1-en" dir="ltr" lang="en">Python Classes &amp; Objects</span>
+        </h1>
+        <p class="hero-description">كيف تجمع البيانات والسلوك المرتبط بها في كيان واحد بدل بعثرتها بين متغيرات ودوال منفصلة؟ هذا هو سؤال الدرس.</p>
+      </header>
+
+      <div class="lesson-parts">
+        <section class="lesson-part-card" id="complete-lesson" aria-labelledby="complete-lesson-title">
+          <header class="part-header">
+            <div class="part-number">درس متكامل</div>
+            <div class="part-heading">
+              <h2 id="complete-lesson-title">
+                <span class="part-title-en" dir="ltr" lang="en">Complete Lesson</span>
+                <span class="sep" aria-hidden="true"> - </span>
+                <span class="part-title-ar">الشرح والملخص والتطبيق</span>
+              </h2>
+              <span class="part-description">كل محتوى الدرس في ملف HTML واحد</span>
+            </div>
+          </header>
+
+          <div class="lesson-body">
+            <section class="lesson-section" id="explain">
+              <h3 class="section-title"><b>01</b>الشرح</h3>
+
+              <article class="concept">
+                <h4>Object-Oriented Programming وClasses وObjects: الفكرة الأساسية</h4>
+                <p>عندما يكبر البرنامج تتبعثر بياناته: قاموس هنا، وقائمة هناك، ودوال تعمل عليها في مكان آخر، ويصبح من السهل أن تفقد الصلة بينها. <strong>Object-Oriented Programming (OOP)</strong> أسلوب في التنظيم يجمع البيانات والدوال التي تعمل عليها داخل وحدة واحدة، فيصبح البرنامج نموذجًا لكيانات من الواقع: طالب، حساب بنكي، طلب شراء.</p>
+                <p>تقوم الفكرة على عنصرين: <strong>Class</strong> هو القالب (blueprint) الذي يصف الشكل الذي ستكون عليه البيانات والسلوك، و<strong>Object</strong> هو نسخة فعلية من هذا القالب (تسمى instance) لها بياناتها الخاصة. class واحد يمكن أن ينتج objects كثيرة مستقلة عن بعضها. وأنت تستخدم objects منذ أول الدروس: كل <code>str</code> و<code>list</code> هي object من class مدمج في Python، وكل منها يحمل بياناته ودوالًا خاصة به.</p>
+                <figure class="code-block">
+                  <figcaption class="code-head">
+                    <span class="code-meta">
+                      <span class="code-lang" lang="en">Python</span>
+                      <span class="code-file" lang="en">objects_intro.py</span>
+                    </span>
+                    <button
+                      type="button"
+                      class="btn btn-ghost btn-sm"
+                      data-copy-code
+                      aria-label="نسخ الكود"
+                    >
+                      <svg
+                        class="btn-icon"
+                        viewBox="0 0 24 24"
+                        width="14"
+                        height="14"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                      >
+                        <use href="#i-copy"></use>
+                      </svg>
+                      <span class="btn-label">نسخ</span>
+                    </button>
+                  </figcaption>
+                  <pre class="code" dir="ltr"><code>name = "Sara"
+scores = [90, 85]
+
+print(type(name))
+print(type(scores))
+print(name.upper())</code></pre>
+                  <div class="output" role="group" aria-label="مخرجات البرنامج">
+                    <div class="output-label" lang="en">Output</div>
+                    <pre dir="ltr"><code>&lt;class 'str'&gt;
+&lt;class 'list'&gt;
+SARA</code></pre>
+                  </div>
+                </figure>
+                <p>استخدم OOP عندما يكون لديك كيان له <strong>حالة</strong> (بيانات تتغير) و<strong>سلوك</strong> (عمليات عليها)، وتحتاج إلى أكثر من نسخة منه. الخطأ الشائع هو الخلط بين المفهومين: الـ class ليس بيانات بحد ذاته، بل وصف لها، والبيانات الفعلية تعيش في الـ objects.</p>
+              </article>
+
+              <article class="concept">
+                <h4>Create Classes وCreate Objects: التعريف ثم الإنشاء</h4>
+                <p>نعرّف الـ class بالكلمة <code dir="ltr">class</code> يتبعها الاسم ثم نقطتان، والعرف في Python أن يُكتب الاسم بنمط PascalCase مثل <code>Course</code>. جسم الـ class يكون مزاحًا كما في الدوال، وإذا لم نرد وضع شيء بعد نستخدم <code>pass</code>. التعريف وحده لا ينشئ أي شيء؛ هو مجرد وصف.</p>
+                <p>لإنشاء object نستدعي الـ class كما تستدعى الدالة: <code dir="ltr">Course()</code>. كل استدعاء ينتج object جديدًا ومستقلًا، ولذلك يعطي المقارنة بـ <code>is</code> القيمة <code>False</code> حتى لو تطابق شكل الـ objects.</p>
+                <figure class="code-block">
+                  <figcaption class="code-head">
+                    <span class="code-meta">
+                      <span class="code-lang" lang="en">Python</span>
+                      <span class="code-file" lang="en">create_class.py</span>
+                    </span>
+                    <button
+                      type="button"
+                      class="btn btn-ghost btn-sm"
+                      data-copy-code
+                      aria-label="نسخ الكود"
+                    >
+                      <svg
+                        class="btn-icon"
+                        viewBox="0 0 24 24"
+                        width="14"
+                        height="14"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                      >
+                        <use href="#i-copy"></use>
+                      </svg>
+                      <span class="btn-label">نسخ</span>
+                    </button>
+                  </figcaption>
+                  <pre class="code" dir="ltr"><code>class Course:
+    pass
+
+
+python_course = Course()
+sql_course = Course()
+
+print(type(python_course))
+print(python_course is sql_course)</code></pre>
+                  <div class="output" role="group" aria-label="مخرجات البرنامج">
+                    <div class="output-label" lang="en">Output</div>
+                    <pre dir="ltr"><code>&lt;class '__main__.Course'&gt;
+False</code></pre>
+                  </div>
+                </figure>
+                <p>الخطأ المعتاد هنا هو نسيان الأقواس: <code>Course</code> وحدها تعني الـ class نفسه، أما <code dir="ltr">Course()</code> فتعني object جديدًا. (الاسم <code>__main__</code> في المخرجات يظهر عند تشغيل الملف مباشرة كسكربت.)</p>
+              </article>
+
+              <article class="concept">
+                <h4>Attributes: بيانات الـ object</h4>
+                <p>الـ <strong>Attributes</strong> هي المتغيرات التي ترتبط بالـ object أو بالـ class. نمنح كل object بياناته الأولية عبر الدالة الخاصة <code dir="ltr">__init__</code>، وتُستدعى تلقائيًا لحظة الإنشاء. أول parameter فيها يسمى <code>self</code> بالعرف، وهو الـ object الذي يجري إنشاؤه الآن؛ فالسطر <code dir="ltr">self.title = title</code> يخزّن القيمة داخل هذا الـ object تحديدًا.</p>
+                <p>هناك نوعان: <strong>instance attributes</strong> مثل <code>title</code> و<code>hours</code> وهي خاصة بكل object، و<strong>class attributes</strong> مثل <code>platform</code> وهي تُعرّف مرة داخل الـ class وتُشارَك بين كل الـ objects. نقرأ أي attribute ونعدّله بالنقطة: <code dir="ltr">course.hours = 8</code>.</p>
+                <figure class="code-block">
+                  <figcaption class="code-head">
+                    <span class="code-meta">
+                      <span class="code-lang" lang="en">Python</span>
+                      <span class="code-file" lang="en">attributes.py</span>
+                    </span>
+                    <button
+                      type="button"
+                      class="btn btn-ghost btn-sm"
+                      data-copy-code
+                      aria-label="نسخ الكود"
+                    >
+                      <svg
+                        class="btn-icon"
+                        viewBox="0 0 24 24"
+                        width="14"
+                        height="14"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                      >
+                        <use href="#i-copy"></use>
+                      </svg>
+                      <span class="btn-label">نسخ</span>
+                    </button>
+                  </figcaption>
+                  <pre class="code" dir="ltr"><code>class Course:
+    platform = "Python Roadmap"
+
+    def __init__(self, title, hours):
+        self.title = title
+        self.hours = hours
+
+
+course = Course("OOP Basics", 6)
+print(course.title, course.hours)
+course.hours = 8
+print(course.hours)
+print(course.platform)</code></pre>
+                  <div class="output" role="group" aria-label="مخرجات البرنامج">
+                    <div class="output-label" lang="en">Output</div>
+                    <pre dir="ltr"><code>OOP Basics 6
+8
+Python Roadmap</code></pre>
+                  </div>
+                </figure>
+                <p>أهم خطأ: كتابة <code dir="ltr">hours = hours</code> داخل <code dir="ltr">__init__</code> بدل <code dir="ltr">self.hours = hours</code>؛ هذا ينشئ متغيرًا محليًا يختفي بانتهاء الدالة ولا يحفظ شيئًا في الـ object. وقراءة attribute غير موجود ترفع <code>AttributeError</code>.</p>
+              </article>
+
+              <article class="concept">
+                <h4>Methods: سلوك الـ object</h4>
+                <p>الـ <strong>Method</strong> هي دالة معرّفة داخل الـ class، تعمل على بيانات الـ object الذي استدعاها. أول parameter فيها هو <code>self</code> دائمًا؛ وPython يمرّره تلقائيًا، فالاستدعاء <code dir="ltr">course.study(2)</code> يعادل <code dir="ltr">Course.study(course, 2)</code>. لذلك تستطيع الـ method قراءة attributes الـ object وتعديلها عبر <code>self</code>، وتبقى حالة كل object مستقلة عن غيره.</p>
+                <figure class="code-block">
+                  <figcaption class="code-head">
+                    <span class="code-meta">
+                      <span class="code-lang" lang="en">Python</span>
+                      <span class="code-file" lang="en">methods.py</span>
+                    </span>
+                    <button
+                      type="button"
+                      class="btn btn-ghost btn-sm"
+                      data-copy-code
+                      aria-label="نسخ الكود"
+                    >
+                      <svg
+                        class="btn-icon"
+                        viewBox="0 0 24 24"
+                        width="14"
+                        height="14"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                      >
+                        <use href="#i-copy"></use>
+                      </svg>
+                      <span class="btn-label">نسخ</span>
+                    </button>
+                  </figcaption>
+                  <pre class="code" dir="ltr"><code>class Course:
+    def __init__(self, title, hours):
+        self.title = title
+        self.hours = hours
+        self.completed = 0
+
+    def study(self, hours):
+        self.completed = min(self.hours, self.completed + hours)
+
+    def progress(self):
+        return round(self.completed / self.hours * 100)
+
+
+course = Course("OOP Basics", 8)
+other = Course("Functions", 4)
+course.study(2)
+course.study(4)
+print(course.progress(), other.progress())</code></pre>
+                  <div class="output" role="group" aria-label="مخرجات البرنامج">
+                    <div class="output-label" lang="en">Output</div>
+                    <pre dir="ltr"><code>75 0</code></pre>
+                  </div>
+                </figure>
+                <p>المثال يبيّن الاستقلال: بعد ساعتين وأربع ساعات من الدراسة وصل <code>course</code> إلى 75% بينما بقي <code>other</code> عند 0 لأن كل object يحمل <code>completed</code> الخاص به. وتفيد الـ methods في حماية قواعد الكيان: هنا <code>min</code> تمنع تجاوز عدد الساعات الكلي. أما نسيان <code>self</code> في تعريف method فيسبب <code>TypeError</code> عند الاستدعاء.</p>
+              </article>
+            </section>
+
+            <section class="lesson-section" id="summary">
+              <h3 class="section-title"><b>02</b>الملخص</h3>
+              <ul class="summary-list">
+                <li>OOP تجمع البيانات والدوال المرتبطة بها في وحدة واحدة، فتنظّم البرنامج حول كيانات لها حالة وسلوك.</li>
+                <li>الـ class قالب يصف الشكل، والـ object نسخة فعلية منه (instance)؛ class واحد ينتج objects كثيرة مستقلة.</li>
+                <li>نعرّف الـ class بالكلمة <code>class</code> وبنمط PascalCase، وننشئ object باستدعائه مع الأقواس: <code dir="ltr">Course()</code>.</li>
+                <li>الدالة <code dir="ltr">__init__</code> تُستدعى تلقائيًا عند الإنشاء، و<code>self</code> هو الـ object الجاري إنشاؤه أو استدعاء الـ method عليه.</li>
+                <li>الـ instance attributes خاصة بكل object، أما الـ class attributes فمشتركة بين الجميع؛ وتُقرأ وتُعدَّل بالنقطة.</li>
+                <li>الـ method دالة داخل الـ class أول parameter فيها <code>self</code>، تقرأ حالة الـ object وتعدّلها دون التأثير في غيره.</li>
+              </ul>
+            </section>
+
+            <section class="lesson-section" id="interview-questions">
+              <h3 class="section-title"><b>03</b>أسئلة المقابلات</h3>
+              <div class="qa-list">
+                <details class="qa" open>
+                  <summary>
+                    <span class="qa-q">ما الفرق بين الـ class والـ object؟</span>
+                    <span class="level level-basic">أساسي</span>
+                  </summary>
+                  <div class="qa-body">
+                    <p>الـ class وصف أو قالب يحدد attributes وmethods الكيان، ولا يحمل بيانات فعلية لأي حالة بعينها. الـ object نسخة (instance) أُنشئت من هذا القالب وتحمل بياناتها الخاصة، ويمكن إنشاء عدد غير محدود منها من class واحد.</p>
+                    <p class="qa-follow">متابعة: لماذا يعطي <code dir="ltr">Course() is Course()</code> القيمة <code>False</code>؟ لأن كل استدعاء ينشئ object جديدًا مستقلًا.</p>
+                  </div>
+                </details>
+
+                <details class="qa">
+                  <summary>
+                    <span class="qa-q">ما الفرق بين الـ attribute والـ method؟</span>
+                    <span class="level level-basic">أساسي</span>
+                  </summary>
+                  <div class="qa-body">
+                    <p>الـ attribute متغير يخزّن بيانات تخص الـ object أو الـ class، مثل <code>title</code>. أما الـ method فدالة معرّفة داخل الـ class تمثل سلوكًا، مثل <code>study()</code>، وتستطيع الوصول إلى attributes الـ object عبر <code>self</code>. نقرأ الأول بلا أقواس <code dir="ltr">course.title</code>، ونستدعي الثانية بأقواس <code dir="ltr">course.study(2)</code>.</p>
+                  </div>
+                </details>
+
+                <details class="qa">
+                  <summary>
+                    <span class="qa-q">ماذا تفعل <code dir="ltr">__init__</code> وما معنى <code>self</code>؟</span>
+                    <span class="level level-mid">متوسط</span>
+                  </summary>
+                  <div class="qa-body">
+                    <p><code dir="ltr">__init__</code> تُنفَّذ تلقائيًا بعد إنشاء الـ object مباشرة، وهي المكان المعتاد لإعطائه attributes أولية. أما <code>self</code> فهو مرجع إلى الـ object الحالي الذي يمرره Python كأول argument تلقائيًا؛ وبه تعرف الـ method أي object تعمل عليه. <code>self</code> اسم متعارف عليه وليس كلمة محجوزة، لكن تغييره يخالف الأسلوب المعتمد.</p>
+                  </div>
+                </details>
+
+                <details class="qa">
+                  <summary>
+                    <span class="qa-q">ما الذي يحدث إذا نسيت <code>self</code> في تعريف method ثم استدعيتها؟</span>
+                    <span class="level level-mid">متوسط</span>
+                  </summary>
+                  <div class="qa-body">
+                    <p>ترفع Python خطأ <code>TypeError</code>، لأن الاستدعاء <code dir="ltr">obj.method()</code> يمرّر الـ object تلقائيًا كأول argument، بينما التعريف لا يملك parameter لاستقباله. أي أن العدد الفعلي للـ arguments أكبر مما تتوقعه الدالة بواحد.</p>
+                  </div>
+                </details>
+
+                <details class="qa">
+                  <summary>
+                    <span class="qa-q">ما ناتج الكود التالي، ولماذا؟</span>
+                    <span class="level level-trap">فخ</span>
+                  </summary>
+                  <div class="qa-body">
+                    <figure class="code-block">
+                      <figcaption class="code-head">
+                        <span class="code-meta">
+                          <span class="code-lang" lang="en">Python</span>
+                          <span class="code-file" lang="en">shared_list_trap.py</span>
+                        </span>
+                        <button
+                          type="button"
+                          class="btn btn-ghost btn-sm"
+                          data-copy-code
+                          aria-label="نسخ الكود"
+                        >
+                          <svg
+                            class="btn-icon"
+                            viewBox="0 0 24 24"
+                            width="14"
+                            height="14"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            aria-hidden="true"
+                          >
+                            <use href="#i-copy"></use>
+                          </svg>
+                          <span class="btn-label">نسخ</span>
+                        </button>
+                      </figcaption>
+                      <pre class="code" dir="ltr"><code>class Cart:
+    items = []
+
+
+a = Cart()
+b = Cart()
+a.items.append("book")
+print(b.items)</code></pre>
+                      <div class="output" role="group" aria-label="مخرجات البرنامج">
+                        <div class="output-label" lang="en">Output</div>
+                        <pre dir="ltr"><code>['book']</code></pre>
+                      </div>
+                    </figure>
+                    <p>يظن كثيرون أن <code>b.items</code> فارغة، لكن <code>items</code> هنا class attribute، أي قائمة واحدة مشتركة بين كل الـ objects، فإضافة عنصر عبر <code>a</code> تظهر عند <code>b</code>. الحل أن تُنشأ القائمة داخل <code dir="ltr">__init__</code> بالسطر <code dir="ltr">self.items = []</code> لتصبح لكل object قائمته الخاصة.</p>
+                  </div>
+                </details>
+              </div>
+            </section>
+
+            <section class="lesson-section" id="practical">
+              <h3 class="section-title"><b>04</b>المسألة العملية</h3>
+              <div class="callout callout-problem">
+                <p>أنشئ class باسم <code>BankAccount</code> يمثل حسابًا بنكيًا بسيطًا: يحمل اسم المالك والرصيد، وله method للإيداع وأخرى للسحب. الإيداع يقبل مبلغًا موجبًا فقط، والسحب يرفض المبلغ غير الموجب أو الأكبر من الرصيد، وكلتاهما تعيد <code>True</code> عند النجاح و<code>False</code> عند الرفض.</p>
+              </div>
+              <ol class="solution">
+                <li class="sol-step">
+                  <h4>فهم المطلوب</h4>
+                  <p>الكيان هو الحساب: بياناته <code>owner</code> و<code>balance</code>، وسلوكه <code>deposit</code> و<code>withdraw</code>. كل حساب يجب أن يحتفظ برصيده الخاص، وكل عملية ترجع نتيجة نجاح أو رفض.</p>
+                </li>
+                <li class="sol-step">
+                  <h4>خطة الحل</h4>
+                  <p>نعرّف الـ class مع <code dir="ltr">__init__</code> يستقبل المالك ورصيدًا افتراضيه 0، ثم method لكل عملية تتحقق من الشرط أولًا وتعدّل <code dir="ltr">self.balance</code> فقط عند الصلاحية، ثم ننشئ object ونجربه.</p>
+                </li>
+                <li class="sol-step">
+                  <h4>الكود الكامل</h4>
+                  <figure class="code-block">
+                    <figcaption class="code-head">
+                      <span class="code-meta">
+                        <span class="code-lang" lang="en">Python</span>
+                        <span class="code-file" lang="en">bank_account.py</span>
+                      </span>
+                      <button
+                        type="button"
+                        class="btn btn-ghost btn-sm"
+                        data-copy-code
+                        aria-label="نسخ الكود"
+                      >
+                        <svg
+                          class="btn-icon"
+                          viewBox="0 0 24 24"
+                          width="14"
+                          height="14"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          aria-hidden="true"
+                        >
+                          <use href="#i-copy"></use>
+                        </svg>
+                        <span class="btn-label">نسخ</span>
+                      </button>
+                    </figcaption>
+                    <pre class="code" dir="ltr"><code>class BankAccount:
+    def __init__(self, owner, balance=0):
+        self.owner = owner
+        self.balance = balance
+
+    def deposit(self, amount):
+        if amount &lt;= 0:
+            return False
+        self.balance += amount
+        return True
+
+    def withdraw(self, amount):
+        if amount &lt;= 0 or amount &gt; self.balance:
+            return False
+        self.balance -= amount
+        return True
+
+
+account = BankAccount("Mona", 500)
+print(account.deposit(250), account.withdraw(900), account.balance)</code></pre>
+                    <div class="output" role="group" aria-label="مخرجات البرنامج">
+                      <div class="output-label" lang="en">Output</div>
+                      <pre dir="ltr"><code>True False 750</code></pre>
+                    </div>
+                  </figure>
+                </li>
+                <li class="sol-step">
+                  <h4>تفسير القرارات</h4>
+                  <p>الرصيد instance attribute لأن لكل حساب رصيده. والتحقق يتم في الـ method نفسها حتى لا يتجاوز أحد قواعد الحساب بتعديل الرصيد من الخارج بالخطأ. وإرجاع <code>True</code> أو <code>False</code> يسمح لمن يستدعي العملية أن يعرف هل نجحت دون أن نطبع داخل الـ class.</p>
+                </li>
+                <li class="sol-step">
+                  <h4>اختبار سريع</h4>
+                  <p>الناتج أعلاه يطابق المتوقع: إيداع 250 ينجح فيصبح الرصيد 750، وسحب 900 يُرفض لأنه أكبر من الرصيد فيبقى 750. وبعده يمكن أن ينجح سحب 300 فيصبح الرصيد 450، ويُرفض إيداع <code>-5</code>.</p>
+                </li>
+                <li class="sol-step">
+                  <h4>تحسين أو بديل</h4>
+                  <p>يمكن إضافة method باسم <code>history</code> تسجّل العمليات في قائمة تُنشأ داخل <code dir="ltr">__init__</code> (لا كـ class attribute، تجنبًا لفخ المشاركة). كما يمكن رفع استثناء بدل إرجاع <code>False</code> إذا أردت تفاصيل أوضح عن سبب الرفض، وهو موضوع دروس لاحقة.</p>
+                </li>
+              </ol>
+            </section>
+          </div>
+        </section>
+      </div>
+
+      <footer class="footer">
+        <span class="footer-note" lang="en">Python Learning Roadmap</span>
+        <span class="footer-note">المرحلة 06 - الدرس 26</span>
+      </footer>
+    </main>
+
+    <script>
+      (function () {
+        'use strict'
+
+        var live = document.getElementById('copy-status')
+        var printStates = null
+
+        function fallbackCopy(text) {
+          var textarea = document.createElement('textarea')
+          textarea.value = text
+          textarea.setAttribute('readonly', '')
+          textarea.style.cssText = 'position:fixed;top:-1000px;left:-1000px;opacity:0;'
+
+          try {
+            document.body.appendChild(textarea)
+            textarea.focus()
+            textarea.select()
+            textarea.setSelectionRange(0, textarea.value.length)
+            return document.execCommand('copy')
+          } catch (error) {
+            return false
+          } finally {
+            if (textarea.parentNode) {
+              textarea.parentNode.removeChild(textarea)
+            }
+          }
+        }
+
+        function copyText(text) {
+          if (navigator.clipboard && window.isSecureContext) {
+            return navigator.clipboard.writeText(text).then(
+              function () { return true },
+              function () { return fallbackCopy(text) },
+            ).catch(function () { return false })
+          }
+
+          return Promise.resolve().then(function () {
+            return fallbackCopy(text)
+          }).catch(function () {
+            return false
+          })
+        }
+
+        document.addEventListener('click', function (event) {
+          var target = event.target
+          var button = target && typeof target.closest === 'function'
+            ? target.closest('[data-copy-code]')
+            : null
+
+          if (!button) return
+
+          var label = button.querySelector('.btn-label')
+          var block = button.closest('.code-block')
+          var code = block ? block.querySelector('pre.code > code') : null
+          if (!label || !code) return
+
+          if (!button.dataset.label) button.dataset.label = label.textContent
+
+          copyText(code.textContent).then(function (ok) {
+            label.textContent = ok ? 'تم النسخ' : 'تعذّر النسخ'
+            button.classList.toggle('is-copied', ok)
+            button.classList.toggle('is-failed', !ok)
+
+            if (live) {
+              live.textContent = ok
+                ? 'تم نسخ الكود'
+                : 'تعذّر النسخ، حدّد الكود يدويًا ثم انسخه'
+            }
+
+            window.clearTimeout(button._timer)
+            button._timer = window.setTimeout(function () {
+              label.textContent = button.dataset.label
+              button.classList.remove('is-copied', 'is-failed')
+            }, 1800)
+          })
+        })
+
+        window.addEventListener('beforeprint', function () {
+          if (printStates !== null) return
+
+          var questions = document.querySelectorAll('details.qa')
+          printStates = Array.prototype.map.call(questions, function (item) {
+            return item.open
+          })
+          questions.forEach(function (item) {
+            item.open = true
+          })
+        })
+
+        window.addEventListener('afterprint', function () {
+          if (printStates === null) return
+
+          var questions = document.querySelectorAll('details.qa')
+          questions.forEach(function (item, index) {
+            item.open = printStates[index] === true
+          })
+          printStates = null
+        })
+      })()
+    </script>
+  </body>
+</html>

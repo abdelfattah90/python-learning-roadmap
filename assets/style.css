@@ -785,6 +785,7 @@ h1 {
 }
 
 @media print {
+
   /* The lesson card may span several pages; keep its small content blocks intact instead. */
   .lesson-part-card {
     overflow: visible;
@@ -951,7 +952,7 @@ h1 {
 
 /* Keep source code LTR regardless of the document's Arabic direction. */
 .code-block pre.code,
-.code-block pre.code > code {
+.code-block pre.code>code {
   direction: ltr;
   text-align: left;
   unicode-bidi: isolate;
@@ -1368,4 +1369,31 @@ h1 {
   .output-label {
     color: var(--clr-text-mute);
   }
+}
+
+/* Lesson title links */
+.topic-title-link,
+.topic-title-link:visited,
+.topic-title-link:hover,
+.topic-title-link:active {
+  color: inherit;
+  text-decoration: none !important;
+  border-bottom: none !important;
+  box-shadow: none !important;
+  background-image: none !important;
+}
+
+.topic-title-link {
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.topic-title-link:hover {
+  opacity: 0.7;
+}
+
+.topic-title-link:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+  border-radius: 3px;
 }

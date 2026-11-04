@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#fcfcfc" />
+    <title>Pandas (2): تنظيف البيانات وتحليلها | Python Learning Roadmap</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/style.css" />
+  </head>
+  <body>
+    <svg
+      width="0"
+      height="0"
+      style="position: absolute"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <symbol id="i-copy" viewBox="0 0 24 24">
+        <rect x="9" y="9" width="12" height="12" rx="2.5" />
+        <path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15" />
+      </symbol>
+    </svg>
+    <template id="code-block-pattern">
+      <figure class="code-block">
+        <figcaption class="code-head">
+          <span class="code-meta">
+            <span class="code-lang" lang="en">Python</span>
+            <span class="code-file" lang="en">example.py</span>
+          </span>
+          <button
+            type="button"
+            class="btn btn-ghost btn-sm"
+            data-copy-code
+            aria-label="نسخ الكود"
+          >
+            <svg
+              class="btn-icon"
+              viewBox="0 0 24 24"
+              width="14"
+              height="14"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <use href="#i-copy"></use>
+            </svg>
+            <span class="btn-label">نسخ</span>
+          </button>
+        </figcaption>
+        <pre class="code" dir="ltr"><code><!-- ضع الكود هنا كنص HTML مع تهريب الرموز الخاصة --></code></pre>
+        <!-- احذف كتلة output إذا لم يكن للمثال ناتج ثابت ومفيد. -->
+        <div class="output" role="group" aria-label="مخرجات البرنامج">
+          <div class="output-label" lang="en">Output</div>
+          <pre dir="ltr"><code><!-- ضع المخرجات المتحققة هنا --></code></pre>
+        </div>
+      </figure>
+    </template>
+
+    <div
+      class="sr-only"
+      id="copy-status"
+      role="status"
+      aria-live="polite"
+    ></div>
+
+    <main class="page">
+      <header class="hero lesson-hero">
+        <span class="eyebrow">
+          <span class="eyebrow-dot"></span>
+          المرحلة <span dir="ltr">10</span>:
+          <span dir="ltr" lang="en">Data Libraries</span>
+        </span>
+        <h1>
+          <span class="h1-ar">Pandas (2): تنظيف البيانات وتحليلها</span>
+          <span class="h1-en" dir="ltr" lang="en">Pandas II: Cleaning &amp; Analysis</span>
+        </h1>
+        <p class="hero-description">البيانات الحقيقية مليئة بالقيم المفقودة والصفوف المكررة؛ هنا ننظفها ثم نحلل العلاقات بين أعمدتها ونرسمها بـ Pandas.</p>
+      </header>
+
+      <div class="lesson-parts">
+        <section class="lesson-part-card" id="complete-lesson" aria-labelledby="complete-lesson-title">
+          <header class="part-header">
+            <div class="part-number">درس متكامل</div>
+            <div class="part-heading">
+              <h2 id="complete-lesson-title">
+                <span class="part-title-en" dir="ltr" lang="en">Complete Lesson</span>
+                <span class="sep" aria-hidden="true"> - </span>
+                <span class="part-title-ar">الشرح والملخص والتطبيق</span>
+              </h2>
+              <span class="part-description">كل محتوى الدرس في ملف HTML واحد</span>
+            </div>
+          </header>
+
+          <div class="lesson-body">
+            <section class="lesson-section" id="explain">
+              <h3 class="section-title"><b>01</b>الشرح</h3>
+              
+<article class="concept"><h4>Clean Data و Missing Values: تنظيف البيانات والقيم المفقودة</h4>
+<p>البيانات الحقيقية نادرًا ما تصل جاهزة: مسافات زائدة، أرقام مخزنة كنصوص، وخانات فارغة. أي تحليل فوقها يعطي نتائج مضللة، لذلك يأتي <b>Clean Data</b> أولًا: نوحّد النصوص بـ <code>str.strip()</code> ونصحح الأنواع بـ <code>pd.to_numeric()</code> أو <code>astype()</code>.</p>
+<p>أما <b>Missing Values</b> فتظهر كـ <code>NaN</code>، ونكشفها بـ <code>isna().sum()</code>. نحذفها بـ <code>dropna()</code> عندما يكون الصف غير مفيد بدونها، أو نملؤها بـ <code>fillna()</code> بقيمة مناسبة: <code>median</code> للأرقام التي فيها قيم شاذة، أو نص ثابت مثل <code>"Unknown"</code>.</p>
+<p><b>القيد المهم:</b> <code>dropna()</code> بدون <code>subset</code> يحذف أي صف فيه خانة فارغة واحدة، والملء بالمتوسط يخفي أن القيمة كانت مفقودة أصلًا. وكل هذه الدوال تعيد نسخة جديدة، فلا بد من إعادة الإسناد.</p>
+<figure class="code-block"><figcaption class="code-head"><span class="code-meta"><span class="code-lang" lang="en">Python</span><span class="code-file" lang="en">clean_orders.py</span></span><button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود"><svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-copy"></use></svg><span class="btn-label">نسخ</span></button></figcaption><pre class="code" dir="ltr"><code>import pandas as pd
+
+orders = pd.DataFrame({
+    &quot;customer&quot;: [&quot; Ali &quot;, &quot;Sara&quot;, None, &quot;Omar&quot;, &quot;Mona&quot;],
+    &quot;price&quot;: [&quot;120&quot;, &quot;85&quot;, &quot;40&quot;, None, &quot;200&quot;],
+    &quot;quantity&quot;: [2, None, 1, 3, 2],
+})
+print(orders.isna().sum())
+
+orders[&quot;customer&quot;] = orders[&quot;customer&quot;].str.strip().fillna(&quot;Unknown&quot;)
+orders[&quot;price&quot;] = pd.to_numeric(orders[&quot;price&quot;])
+orders[&quot;quantity&quot;] = orders[&quot;quantity&quot;].fillna(orders[&quot;quantity&quot;].median())
+orders = orders.dropna(subset=[&quot;price&quot;])
+print(orders)</code></pre><div class="output" role="group" aria-label="مخرجات البرنامج"><div class="output-label" lang="en">Output</div><pre dir="ltr"><code>customer    1
+price       1
+quantity    1
+dtype: int64
+  customer  price  quantity
+0      Ali  120.0       2.0
+1     Sara   85.0       2.0
+2  Unknown   40.0       1.0
+4     Mona  200.0       2.0</code></pre></div></figure></article>
+<article class="concept"><h4>Duplicates: الصفوف المكررة</h4>
+<p>التكرار يضخّم المجاميع والمتوسطات ويشوّه الارتباط. <code>duplicated()</code> تعيد قيمة <code>True</code> لكل صف مكرر (أول ظهور يبقى <code>False</code>)، و<code>drop_duplicates()</code> تحذفها. المعامل <code>subset</code> يحدد الأعمدة التي تعرّف "نفس السجل"، و<code>keep</code> يحدد أي نسخة تبقى: <code>"first"</code> أو <code>"last"</code> أو <code>False</code> لحذف الكل.</p>
+<p><b>تنبيه:</b> حدّد معنى التكرار قبل الحذف؛ فصفان متطابقان قد يكونان عمليتين حقيقيتين منفصلتين.</p>
+<figure class="code-block"><figcaption class="code-head"><span class="code-meta"><span class="code-lang" lang="en">Python</span><span class="code-file" lang="en">duplicates.py</span></span><button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود"><svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-copy"></use></svg><span class="btn-label">نسخ</span></button></figcaption><pre class="code" dir="ltr"><code>import pandas as pd
+
+logins = pd.DataFrame({
+    &quot;user&quot;: [&quot;ali&quot;, &quot;sara&quot;, &quot;ali&quot;, &quot;omar&quot;, &quot;sara&quot;],
+    &quot;city&quot;: [&quot;Cairo&quot;, &quot;Giza&quot;, &quot;Cairo&quot;, &quot;Cairo&quot;, &quot;Alex&quot;],
+})
+print(logins.duplicated().tolist())
+print(logins.drop_duplicates(subset=&quot;user&quot;, keep=&quot;last&quot;))</code></pre><div class="output" role="group" aria-label="مخرجات البرنامج"><div class="output-label" lang="en">Output</div><pre dir="ltr"><code>[False, False, True, False, False]
+   user   city
+2   ali  Cairo
+3  omar  Cairo
+4  sara   Alex</code></pre></div></figure></article>
+<article class="concept"><h4>Correlation: الارتباط بين الأعمدة</h4>
+<p>نحتاج الارتباط لنعرف هل يتحرك عمودان معًا. <code>corr()</code> تحسب معامل Pearson بين <code>-1</code> و<code>1</code>: القريب من <code>1</code> علاقة طردية قوية، والقريب من <code>-1</code> عكسية قوية، والقريب من <code>0</code> يعني غياب علاقة خطية. استخدم <code>numeric_only=True</code> إذا كان في الجدول أعمدة نصية.</p>
+<p><b>القيد:</b> الارتباط لا يعني السببية (correlation ≠ causation)، ويقيس العلاقة الخطية فقط، وقيمة شاذة واحدة قد تغيّره كثيرًا.</p>
+<figure class="code-block"><figcaption class="code-head"><span class="code-meta"><span class="code-lang" lang="en">Python</span><span class="code-file" lang="en">correlation.py</span></span><button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود"><svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-copy"></use></svg><span class="btn-label">نسخ</span></button></figcaption><pre class="code" dir="ltr"><code>import pandas as pd
+
+scores = pd.DataFrame({
+    &quot;hours&quot;: [1, 2, 3, 4, 5, 6],
+    &quot;score&quot;: [50, 58, 55, 72, 80, 78],
+    &quot;age&quot;: [20, 25, 22, 24, 21, 23],
+})
+print(scores.corr()[&quot;score&quot;].round(2))</code></pre><div class="output" role="group" aria-label="مخرجات البرنامج"><div class="output-label" lang="en">Output</div><pre dir="ltr"><code>hours    0.93
+score    1.00
+age      0.16
+Name: score, dtype: float64</code></pre></div></figure></article>
+<article class="concept"><h4>Data Visualization: رسم البيانات من DataFrame</h4>
+<p>الرقم وحده قد يخفي الشذوذ وشكل التوزيع. <code>df.plot()</code> غلاف فوق Matplotlib الذي درسته، ويقبل <code>kind</code> مثل <code>"line"</code> و<code>"bar"</code> و<code>"hist"</code> و<code>"scatter"</code>، ويعيد <code>Axes</code> يمكن تمريره عبر <code>ax=</code> للتحكم في التخطيط. الـ <code>scatter</code> هو الأنسب لرؤية الارتباط، والـ <code>hist</code> لرؤية التوزيع.</p>
+<p><b>تنبيه:</b> <code>scatter</code> يتطلب تحديد <code>x</code> و<code>y</code> صراحةً، و<code>line</code> يفترض ترتيبًا زمنيًا فلا تستخدمه لفئات. ضع دائمًا <code>title</code> وتسميات واضحة.</p>
+<figure class="code-block"><figcaption class="code-head"><span class="code-meta"><span class="code-lang" lang="en">Python</span><span class="code-file" lang="en">plots.py</span></span><button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود"><svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-copy"></use></svg><span class="btn-label">نسخ</span></button></figcaption><pre class="code" dir="ltr"><code>import matplotlib.pyplot as plt
+import pandas as pd
+
+scores = pd.DataFrame({&quot;hours&quot;: [1, 2, 3, 4, 5, 6],
+                       &quot;score&quot;: [50, 58, 55, 72, 80, 78]})
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(9, 3))
+scores[&quot;score&quot;].plot(kind=&quot;hist&quot;, bins=4, ax=ax1, title=&quot;Score distribution&quot;)
+scores.plot(kind=&quot;scatter&quot;, x=&quot;hours&quot;, y=&quot;score&quot;, ax=ax2, title=&quot;Hours vs score&quot;)
+plt.tight_layout()
+plt.show()</code></pre></figure></article>
+
+            </section>
+
+            <section class="lesson-section" id="summary">
+              <h3 class="section-title"><b>02</b>الملخص</h3>
+              <ul class="summary-list">
+                <li>نبدأ التحليل بالتنظيف: <code>str.strip()</code> للنصوص و<code>pd.to_numeric()</code> لتصحيح الأنواع.</li>
+<li><code>isna().sum()</code> تكشف القيم المفقودة؛ نختار بين <code>dropna(subset=...)</code> و<code>fillna()</code> حسب أهمية العمود.</li>
+<li>دوال التنظيف تعيد كائنًا جديدًا؛ أعد الإسناد ولا تعتمد على أن الأصل تغيّر.</li>
+<li><code>duplicated()</code> تكشف التكرار و<code>drop_duplicates(subset, keep)</code> تحذفه حسب تعريفك لـ "نفس السجل".</li>
+<li><code>corr()</code> تعطي Pearson بين <code>-1</code> و<code>1</code>، ولا تثبت السببية ولا تلتقط إلا العلاقات الخطية.</li>
+<li><code>df.plot(kind=...)</code> يرسم عبر Matplotlib: <code>hist</code> للتوزيع و<code>scatter</code> للعلاقة، ثم <code>plt.show()</code>.</li>
+              </ul>
+            </section>
+
+            <section class="lesson-section" id="interview-questions">
+              <h3 class="section-title"><b>03</b>أسئلة المقابلات</h3>
+              <div class="qa-list">
+                <details class="qa" open><summary><span class="qa-q">ما الفرق بين <code>dropna()</code> و<code>fillna()</code>، ومتى تختار كلًّا منهما؟</span><span class="level level-basic">أساسي</span></summary><div class="qa-body"><p><code>dropna()</code> تحذف الصفوف أو الأعمدة التي فيها <code>NaN</code>، و<code>fillna()</code> تستبدلها بقيمة. نحذف عندما يكون الفقد قليلًا أو العمود جوهريًا (مثل السعر)، ونملأ عندما نريد الحفاظ على حجم البيانات بقيمة معقولة كالـ <code>median</code>.</p></div></details>
+<details class="qa"><summary><span class="qa-q">كيف تعرف عدد القيم المفقودة في كل عمود ونسبتها؟</span><span class="level level-basic">أساسي</span></summary><div class="qa-body"><p><code>df.isna().sum()</code> تعطي العدد لكل عمود، و<code>df.isna().mean()</code> تعطي النسبة لأن المتوسط على قيم <code>True/False</code>. النسبة أفضل لاتخاذ قرار الحذف أو الملء.</p></div></details>
+<details class="qa"><summary><span class="qa-q">كيف تعمل <code>drop_duplicates()</code> وما دور <code>subset</code> و<code>keep</code>؟</span><span class="level level-mid">متوسط</span></summary><div class="qa-body"><p>بدون وسائط تقارن الصف كاملًا. <code>subset</code> يحدد الأعمدة المستخدمة في المقارنة، و<code>keep</code> يحدد النسخة الباقية (<code>"first"</code> افتراضيًا). مع <code>keep=False</code> تُحذف كل النسخ المكررة بما فيها الأولى.</p></div></details>
+<details class="qa"><summary><span class="qa-q">ماذا يعني أن الارتباط بين الإنفاق الإعلاني والمبيعات <code>0.9</code>؟ وهل يثبت أن الإعلان سبب الزيادة؟</span><span class="level level-mid">متوسط</span></summary><div class="qa-body"><p>يعني علاقة خطية طردية قوية: عندما يرتفع أحدهما يرتفع الآخر غالبًا. لكنه لا يثبت السببية، فقد يكون هناك عامل ثالث كالموسم يرفع الاثنين معًا، ونحتاج تجربة أو تحليلًا إضافيًا للحكم على السبب.</p></div></details>
+<details class="qa"><summary><span class="qa-q">كتبت <code>df.drop_duplicates()</code> ثم <code>df.fillna(0)</code> ولم يتغير <code>df</code>. لماذا؟</span><span class="level level-trap">فخ</span></summary><div class="qa-body"><p>لأن الدالتين تعيدان DataFrame جديدًا ولا تعدّلان الأصل. الحل: <code>df = df.drop_duplicates()</code> وإعادة الإسناد بنفس الطريقة للباقي، وهو أفضل من <code>inplace=True</code> لأنه يسهّل ربط العمليات ببعضها.</p></div></details>
+              </div>
+            </section>
+
+            <section class="lesson-section" id="practical">
+              <h3 class="section-title"><b>04</b>المسألة العملية</h3>
+              <div class="callout callout-problem"><p>لدى فريق تسويق بيانات إنفاق إعلاني ومبيعات، وفيها صف مكرر وقيمتان مفقودتان. المطلوب: نظّف البيانات، احسب الارتباط بين <code>ad_spend</code> و<code>sales</code>، ثم ارسم العلاقة بينهما.</p></div>
+              <ol class="solution">
+                <li class="sol-step"><h4>فهم المطلوب</h4><p>ثلاث مراحل بالترتيب: تنظيف (تكرار ثم فقد)، تحليل (ارتباط)، عرض (رسم). الأعمدة الرقمية هي <code>ad_spend</code> و<code>sales</code>.</p></li>
+<li class="sol-step"><h4>خطة الحل</h4><p>نحذف التكرار أولًا حتى لا يؤثر على المتوسط، ثم نملأ الفقد بمتوسط كل عمود، ثم نحسب <code>corr</code> ونرسم <code>scatter</code>.</p></li>
+<li class="sol-step"><h4>الكود الكامل</h4><figure class="code-block"><figcaption class="code-head"><span class="code-meta"><span class="code-lang" lang="en">Python</span><span class="code-file" lang="en">ad_sales_analysis.py</span></span><button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود"><svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-copy"></use></svg><span class="btn-label">نسخ</span></button></figcaption><pre class="code" dir="ltr"><code>import matplotlib.pyplot as plt
+import pandas as pd
+
+data = pd.DataFrame({
+    &quot;ad_spend&quot;: [100, 150, 150, 200, 250, 300, None],
+    &quot;sales&quot;: [1000, 1400, 1400, 1900, None, 2900, 3200],
+    &quot;region&quot;: [&quot;N&quot;, &quot;S&quot;, &quot;S&quot;, &quot;N&quot;, &quot;S&quot;, &quot;N&quot;, &quot;S&quot;],
+})
+data = data.drop_duplicates()
+data = data.fillna(data.mean(numeric_only=True))
+print(data[&quot;ad_spend&quot;].corr(data[&quot;sales&quot;]).round(2))
+
+data.plot(kind=&quot;scatter&quot;, x=&quot;ad_spend&quot;, y=&quot;sales&quot;, title=&quot;Ad spend vs sales&quot;)
+plt.show()</code></pre><div class="output" role="group" aria-label="مخرجات البرنامج"><div class="output-label" lang="en">Output</div><pre dir="ltr"><code>0.75</code></pre></div></figure></li>
+<li class="sol-step"><h4>تفسير القرارات</h4><p>ترتيب الحذف قبل الملء مهم لأن الصف المكرر كان سيرفع وزن قيمه في المتوسط. استخدمنا <code>numeric_only=True</code> لأن عمود <code>region</code> نصي. والنتيجة <code>0.75</code> تعني علاقة طردية قوية نسبيًا.</p></li>
+<li class="sol-step"><h4>اختبار سريع</h4><p>أضف بعد التنظيف: <code>assert len(data) == 6</code> و<code>assert data.isna().sum().sum() == 0</code>. إن نجحا فالتكرار حُذف ولا توجد قيم مفقودة.</p></li>
+<li class="sol-step"><h4>تحسين أو بديل</h4><p>لو كان الفقد كبيرًا فالأفضل <code>data.dropna()</code> بدل الملء بالمتوسط، لأن الملء بقيمة ثابتة يقلل التباين ويضخّم الارتباط ظاهريًا. ويمكن حساب <code>data.corr(numeric_only=True)</code> لرؤية كل العلاقات دفعة واحدة.</p></li>
+              </ol>
+            </section>
+          </div>
+        </section>
+      </div>
+
+      <footer class="footer">
+        <span class="footer-note" lang="en">Python Learning Roadmap</span>
+        <span class="footer-note">المرحلة 10 - الدرس 47</span>
+      </footer>
+    </main>
+
+    <script>
+      (function () {
+        'use strict'
+
+        var live = document.getElementById('copy-status')
+        var printStates = null
+
+        function fallbackCopy(text) {
+          var textarea = document.createElement('textarea')
+          textarea.value = text
+          textarea.setAttribute('readonly', '')
+          textarea.style.cssText = 'position:fixed;top:-1000px;left:-1000px;opacity:0;'
+
+          try {
+            document.body.appendChild(textarea)
+            textarea.focus()
+            textarea.select()
+            textarea.setSelectionRange(0, textarea.value.length)
+            return document.execCommand('copy')
+          } catch (error) {
+            return false
+          } finally {
+            if (textarea.parentNode) {
+              textarea.parentNode.removeChild(textarea)
+            }
+          }
+        }
+
+        function copyText(text) {
+          if (navigator.clipboard && window.isSecureContext) {
+            return navigator.clipboard.writeText(text).then(
+              function () { return true },
+              function () { return fallbackCopy(text) },
+            ).catch(function () { return false })
+          }
+
+          return Promise.resolve().then(function () {
+            return fallbackCopy(text)
+          }).catch(function () {
+            return false
+          })
+        }
+
+        document.addEventListener('click', function (event) {
+          var target = event.target
+          var button = target && typeof target.closest === 'function'
+            ? target.closest('[data-copy-code]')
+            : null
+
+          if (!button) return
+
+          var label = button.querySelector('.btn-label')
+          var block = button.closest('.code-block')
+          var code = block ? block.querySelector('pre.code > code') : null
+          if (!label || !code) return
+
+          if (!button.dataset.label) button.dataset.label = label.textContent
+
+          copyText(code.textContent).then(function (ok) {
+            label.textContent = ok ? 'تم النسخ' : 'تعذّر النسخ'
+            button.classList.toggle('is-copied', ok)
+            button.classList.toggle('is-failed', !ok)
+
+            if (live) {
+              live.textContent = ok
+                ? 'تم نسخ الكود'
+                : 'تعذّر النسخ، حدّد الكود يدويًا ثم انسخه'
+            }
+
+            window.clearTimeout(button._timer)
+            button._timer = window.setTimeout(function () {
+              label.textContent = button.dataset.label
+              button.classList.remove('is-copied', 'is-failed')
+            }, 1800)
+          })
+        })
+
+        window.addEventListener('beforeprint', function () {
+          if (printStates !== null) return
+
+          var questions = document.querySelectorAll('details.qa')
+          printStates = Array.prototype.map.call(questions, function (item) {
+            return item.open
+          })
+          questions.forEach(function (item) {
+            item.open = true
+          })
+        })
+
+        window.addEventListener('afterprint', function () {
+          if (printStates === null) return
+
+          var questions = document.querySelectorAll('details.qa')
+          questions.forEach(function (item, index) {
+            item.open = printStates[index] === true
+          })
+          printStates = null
+        })
+      })()
+    </script>
+  </body>
+</html>

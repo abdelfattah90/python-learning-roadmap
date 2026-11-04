@@ -1,0 +1,667 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#fcfcfc" />
+    <title>Python Variables - المتغيرات | Python Learning Roadmap</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/style.css" />
+  </head>
+  <body>
+    <svg
+      width="0"
+      height="0"
+      style="position: absolute"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <symbol id="i-copy" viewBox="0 0 24 24">
+        <rect x="9" y="9" width="12" height="12" rx="2.5" />
+        <path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15" />
+      </symbol>
+    </svg>
+    <template id="code-block-pattern">
+      <figure class="code-block">
+        <figcaption class="code-head">
+          <span class="code-meta">
+            <span class="code-lang" lang="en">Python</span>
+            <span class="code-file" lang="en">example.py</span>
+          </span>
+          <button
+            type="button"
+            class="btn btn-ghost btn-sm"
+            data-copy-code
+            aria-label="نسخ الكود"
+          >
+            <svg
+              class="btn-icon"
+              viewBox="0 0 24 24"
+              width="14"
+              height="14"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <use href="#i-copy"></use>
+            </svg>
+            <span class="btn-label">نسخ</span>
+          </button>
+        </figcaption>
+        <pre class="code" dir="ltr"><code><!-- ضع الكود هنا كنص HTML مع تهريب الرموز الخاصة --></code></pre>
+        <div class="output" role="group" aria-label="مخرجات البرنامج">
+          <div class="output-label" lang="en">Output</div>
+          <pre dir="ltr"><code><!-- ضع المخرجات المتحققة هنا --></code></pre>
+        </div>
+      </figure>
+    </template>
+
+    <div
+      class="sr-only"
+      id="copy-status"
+      role="status"
+      aria-live="polite"
+    ></div>
+
+    <main class="page">
+      <header class="hero lesson-hero">
+        <span class="eyebrow">
+          <span class="eyebrow-dot"></span>
+          المرحلة <span dir="ltr">01</span>:
+          <span dir="ltr" lang="en">Variables & Data Types</span>
+        </span>
+        <h1>
+          <span class="h1-ar">المتغيرات</span>
+          <span class="h1-en" dir="ltr" lang="en">Python Variables</span>
+        </h1>
+        <p class="hero-description">فهم كيفية إنشاء المتغيرات في Python كمرتسمات لربط الأسماء بالقيم في الذاكرة، وقواعد تسميتها، وطرق إسنادها وإخراجها وإدارتها.</p>
+      </header>
+
+      <div class="lesson-parts">
+        <section class="lesson-part-card" id="part-1" aria-labelledby="part-1-title">
+          <header class="part-header">
+            <div class="part-number">الجزء 01</div>
+            <div class="part-heading">
+              <h2 id="part-1-title">
+                <span class="part-title-en" dir="ltr" lang="en">Explanation &amp; Summary</span>
+                <span class="sep" aria-hidden="true"> - </span>
+                <span class="part-title-ar">الشرح والملخص</span>
+              </h2>
+              <span class="part-description">المفاهيم الأساسية والملخص</span>
+            </div>
+          </header>
+
+          <div class="lesson-body">
+            <section class="lesson-section" id="explain">
+              <h3 class="section-title"><b>01</b>الشرح</h3>
+
+              <!-- Concept 1: Create Variables -->
+              <article class="concept" id="concept-create-variables">
+                <h4>1. إنشاء المتغيرات (Create Variables)</h4>
+                <div class="callout callout-why" role="note">
+                  <div class="callout-title">لماذا نحتاج للمتغيرات وكيف تعمل؟</div>
+                  <p>في لغات برمجية أخرى، يلزمك التصريح بنوع البيانات وحجز الذاكرة مسبقًا (مثل <code>int x;</code>). أما في Python، فلا توجد كلمات مفتاحية للتصريح عن المتغيرات؛ بل يتم إنشاء المتغير تلقائيًا بمجرد إسناد قيمة إليه باستخدام علامة التساوي (<code>=</code>). من منظور CPython الداخلي، المتغير ليس صندوقًا تُخزن فيه القيمة، بل هو <strong>اسم (Identifier) يُشير إلى كائن (Object)</strong> موجود في الذاكرة.</p>
+                </div>
+
+                <p>يُستخدم الإسناد لتخزين حالة البرنامج المؤقتة (مثل بيانات الطلبات أو المعاملات). إليك مثال واقعي لإنشاء متغيرات لنظام طلبات:</p>
+
+                <figure class="code-block">
+                  <figcaption class="code-head">
+                    <span class="code-meta">
+                      <span class="code-lang" lang="en">Python</span>
+                      <span class="code-file" lang="en">create_variables.py</span>
+                    </span>
+                    <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+                      <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-copy"></use></svg>
+                      <span class="btn-label">نسخ</span>
+                    </button>
+                  </figcaption>
+                  <pre class="code" dir="ltr"><code># إنشاء متغيرات لأنظمة الطلبات التجارية
+item_price: float = 49.99
+quantity: int = 3
+order_status: str = "pending"
+is_express_shipping: bool = True
+
+print(order_status)
+print(item_price * quantity)</code></pre>
+                  <div class="output" role="group" aria-label="مخرجات البرنامج">
+                    <div class="output-label" lang="en">Output</div>
+                    <pre dir="ltr"><code>pending
+149.97</code></pre>
+                  </div>
+                </figure>
+
+                <div class="callout callout-internals" role="note">
+                  <div class="callout-title">التفاصيل الداخلية (CPython Internals)</div>
+                  <p>عند تنفيذ <code>item_price = 49.99</code>، يقوم CPython بإنشاء كائن من نوع <code>float</code> في الذاكرة، ثم يربط اسم المتغير <code>item_price</code> بعنوان ذلك الكائن. إذا أسندت قيمة جديدة لنفس المتغير، فإن الاسم سيفك ارتباطه بالكائن القديم ويُرتبط بالكائن الجديد.</p>
+                </div>
+              </article>
+
+              <!-- Concept 2: Variable Names -->
+              <article class="concept" id="concept-variable-names">
+                <h4>2. أسماء المتغيرات وقواعدها (Variable Names)</h4>
+                <div class="callout callout-why" role="note">
+                  <div class="callout-title">لماذا توجد قواعد تسمية صارمة؟</div>
+                  <p>أسماء المتغيرات تخبر المفسر أين يجد البيانات وتساعد المبرمجين على فهم نية الكود. تفرض Python قواعد تركيبية صارمة، بينما يُلزم معيار PEP 8 باتفاقيات نمطية تضمن اتساق الشيفرة البرمجية عبر الفرق المختلفة.</p>
+                </div>
+
+                <p>قواعد التسمية الأساسية:</p>
+                <ul>
+                  <li>يجب أن يبدأ اسم المتغير بحرف أو شرطة سفلية (<code>_</code>)، ولا يجوز أن يبدأ برقم.</li>
+                  <li>حساس لحالة الأحرف (Case-sensitive): <code>order_total</code> يختلف عن <code>Order_Total</code>.</li>
+                  <li>لا يمكن استخدام الكلمات المحجوزة في Python (مثل <code>if</code>, <code>class</code>, <code>def</code>).</li>
+                </ul>
+
+                <figure class="code-block">
+                  <figcaption class="code-head">
+                    <span class="code-meta">
+                      <span class="code-lang" lang="en">Python</span>
+                      <span class="code-file" lang="en">variable_naming.py</span>
+                    </span>
+                    <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+                      <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-copy"></use></svg>
+                      <span class="btn-label">نسخ</span>
+                    </button>
+                  </figcaption>
+                  <pre class="code" dir="ltr"><code># أسماء صالحة باتفاقية PEP 8 (snake_case)
+customer_name = "Ahmed"
+_retry_limit = 3
+api_timeout_sec = 30
+
+# أخطاء شائعة تؤدي إلى SyntaxError
+# 2nd_item = "box"  # خطأ: يبدأ برقم
+# class = "test"    # خطأ: كلمة محجوزة
+
+print(customer_name)
+print(_retry_limit)</code></pre>
+                  <div class="output" role="group" aria-label="مخرجات البرنامج">
+                    <div class="output-label" lang="en">Output</div>
+                    <pre dir="ltr"><code>Ahmed
+3</code></pre>
+                  </div>
+                </figure>
+
+                <div class="callout callout-pitfall" role="note">
+                  <div class="callout-title">خطأ شائع (Pitfall)</div>
+                  <p>تجنب استخدام أسماء غامضة مثل <code>l</code> أو <code>O</code> أو الأحرف الفردية عدا العدادات البسيطة، لتفادي الالتباس البصري مع الأرقام (مثل 1 و0).</p>
+                </div>
+              </article>
+
+              <!-- Concept 3: Assign Multiple Values -->
+              <article class="concept" id="concept-assign-multiple-values">
+                <h4>3. إسناد قيم متعددة (Assign Multiple Values)</h4>
+                <div class="callout callout-why" role="note">
+                  <div class="callout-title">لماذا نحتاج للإسناد المتعدد؟</div>
+                  <p>عند معالجة نتائج دوال تُرجع عدة قيم (مثل إحداثيات أو إعدادات أو تفاصيل فاتورة)، يتيح الإسناد المتعدد فك حزم القيم (Unpacking) في سطر واحد بوضوح وبدون تكرار.</p>
+                </div>
+
+                <p>تسمح Python بإسناد عدة قيم لعدة متغيرات، أو إسناد قيمة واحدة لعدة متغيرات دفعة واحدة:</p>
+
+                <figure class="code-block">
+                  <figcaption class="code-head">
+                    <span class="code-meta">
+                      <span class="code-lang" lang="en">Python</span>
+                      <span class="code-file" lang="en">multiple_assignment.py</span>
+                    </span>
+                    <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+                      <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-copy"></use></svg>
+                      <span class="btn-label">نسخ</span>
+                    </button>
+                  </figcaption>
+                  <pre class="code" dir="ltr"><code># فك الحزم (Unpacking) لبيانات معاملة
+tax_rate, shipping_fee, discount = 0.05, 15.0, 10.0
+
+# إسناد نفس القيمة لعدة متغيرات
+subtotal_1 = subtotal_2 = 100.0
+
+print(f"Tax: {tax_rate}, Shipping: {shipping_fee}")
+print(f"Subtotals: {subtotal_1}, {subtotal_2}")</code></pre>
+                  <div class="output" role="group" aria-label="مخرجات البرنامج">
+                    <div class="output-label" lang="en">Output</div>
+                    <pre dir="ltr"><code>Tax: 0.05, Shipping: 15.0
+Subtotals: 100.0, 100.0</code></pre>
+                  </div>
+                </figure>
+              </article>
+
+              <!-- Concept 4: Output Variables -->
+              <article class="concept" id="concept-output-variables">
+                <h4>4. إخراج المتغيرات (Output Variables)</h4>
+                <div class="callout callout-why" role="note">
+                  <div class="callout-title">لماذا نحتاج لإخراج المتغيرات؟</div>
+                  <p>لعرض حالة النظام، أو طباعة سجلات التصحيح (Debugging)، أو توليد نصوص تقارير للمستخدمين باستخدام دالة الطباعة المدمجة <code>print()</code>.</p>
+                </div>
+
+                <p>يمكن تمرير عدة متغيرات أو تعبيرات لـ <code>print()</code> مَفصولة بفواصل، أو استخدام التنسيق الحديث (f-strings) الذي يُعد الطريقة الأكثر كفاءة وقراءة في Python.</p>
+
+                <figure class="code-block">
+                  <figcaption class="code-head">
+                    <span class="code-meta">
+                      <span class="code-lang" lang="en">Python</span>
+                      <span class="code-file" lang="en">output_variables.py</span>
+                    </span>
+                    <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+                      <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-copy"></use></svg>
+                      <span class="btn-label">نسخ</span>
+                    </button>
+                  </figcaption>
+                  <pre class="code" dir="ltr"><code>customer_name = "Youssef"
+cart_total = 125.50
+
+# استخدام f-string للتنسيق المهني
+print(f"Client: {customer_name} | Total Amount: ${cart_total:.2f}")
+
+# تمرير عناصر متعددة لـ print
+print("Status:", "Approved", "Code:", 200)</code></pre>
+                  <div class="output" role="group" aria-label="مخرجات البرنامج">
+                    <div class="output-label" lang="en">Output</div>
+                    <pre dir="ltr"><code>Client: Youssef | Total Amount: $125.50
+Status: Approved Code: 200</code></pre>
+                  </div>
+                </figure>
+              </article>
+
+              <!-- Concept 5: Global Variables -->
+              <article class="concept" id="concept-global-variables">
+                <h4>5. المتغيرات العامة (Global Variables)</h4>
+                <div class="callout callout-why" role="note">
+                  <div class="callout-title">لماذا ومتى تستخدم المتغيرات العامة؟</div>
+                  <p>المتغيرات المعرفة خارج الدوال تكون "عامة" (Global) ويمكن الوصول إليها من داخل أي دالة في نفس الملف. تُستخدم لحفظ إعدادات النظام الثابتة (مثل حدود الاتصال أو إعدادات التطبيق)، ولكن يُفضل تجنب تعديلها داخل الدوال لتفادي الآثار الجانبية (Side Effects).</p>
+                </div>
+
+                <p>إذا أردت تعديل متغير عام من داخل دالة، يلزم استخدام الكلمة المفتاحية <code>global</code> صراحة.</p>
+
+                <figure class="code-block">
+                  <figcaption class="code-head">
+                    <span class="code-meta">
+                      <span class="code-lang" lang="en">Python</span>
+                      <span class="code-file" lang="en">global_variables.py</span>
+                    </span>
+                    <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+                      <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-copy"></use></svg>
+                      <span class="btn-label">نسخ</span>
+                    </button>
+                  </figcaption>
+                  <pre class="code" dir="ltr"><code># متغير عام للإعدادات
+session_timeout = 300
+
+def update_timeout(new_limit: int) -&gt; None:
+    global session_timeout
+    session_timeout = new_limit
+
+print("Before:", session_timeout)
+update_timeout(600)
+print("After:", session_timeout)</code></pre>
+                  <div class="output" role="group" aria-label="مخرجات البرنامج">
+                    <div class="output-label" lang="en">Output</div>
+                    <pre dir="ltr"><code>Before: 300
+After: 600</code></pre>
+                  </div>
+                </figure>
+
+                <div class="callout callout-tip" role="note">
+                  <div class="callout-title">نصيحة هندسية (Best Practice)</div>
+                  <p>الاعتماد المفرط على الكلمة <code>global</code> يجعل تتبع أخطاء البرامج وتستيفها أمرًا صعبًا. استخدم تمرير المعاملات (Arguments) وإرجاع القيم عوضًا عن تعديل الحالة العامة مباشرة متى ما أمكن.</p>
+                </div>
+              </article>
+
+            </section>
+
+            <section class="lesson-section" id="summary">
+              <h3 class="section-title"><b>02</b>الملخص</h3>
+              <ul class="summary-list">
+                <li>المتغير في Python هو اسم يُشير إلى كائن في الذاكرة وليس صندوق تخزين ثابت النوع.</li>
+                <li>لا توجد حاجة للتصريح المسبق عن نوع البيانات؛ فالمتغير يُنشأ فور إسناد قيمة إليه بـ <code>=</code>.</li>
+                <li>يجب أن تبدأ أسماء المتغيرات بحرف أو شرطة سفلية <code>_</code> وتتبع نمط <code>snake_case</code> حسب معيار PEP 8.</li>
+                <li>أسماء المتغيرات حساسة لحالة الأحرف (Case-sensitive) ولا يجوز أن تكون كلمات محجوزة.</li>
+                <li>يتيح الإسناد المتعدد وفك الحزم (Unpacking) تعيين قيم متعددة في سطر برمجي واحد بكفاءة.</li>
+                <li>تتيح دالة <code>print()</code> وتنسيق <code>f-strings</code> إخراج المتغيرات بمرونة ووضوح للمستخدم والسجلات.</li>
+                <li>المتغيرات العامة (Global) معرفة خارج الدوال وتُستخدم لإعدادات النظام، ويتم تعديلها داخل الدوال باستخدام <code>global</code>.</li>
+                <li>يُعد الاستخدام المفرط لتعديل الحالة العامة عبر <code>global</code> نمطًا سيئًا (Anti-pattern) يجب تقليله لصالح تمرير المعاملات.</li>
+              </ul>
+            </section>
+          </div>
+        </section>
+
+        <section class="lesson-part-card" id="part-2" aria-labelledby="part-2-title">
+          <header class="part-header">
+            <div class="part-number">الجزء 02</div>
+            <div class="part-heading">
+              <h2 id="part-2-title">
+                <span class="part-title-en" dir="ltr" lang="en">Questions & Application</span>
+                <span class="sep" aria-hidden="true"> - </span>
+                <span class="part-title-ar">الأسئلة والتطبيق</span>
+              </h2>
+              <span class="part-description">أسئلة المقابلات والمسألة العملية</span>
+            </div>
+          </header>
+
+          <div class="lesson-body">
+            <section class="lesson-section" id="qa">
+              <h3 class="section-title"><b>03</b>أسئلة المقابلات</h3>
+              <div class="qa-list">
+
+                <!-- Question 1: Basic -->
+                <details class="qa level-basic" open>
+                  <summary class="qa-head">
+                    <span class="qa-badge">أساسي</span>
+                    <span class="qa-title">ما الذي يحدث في الذاكرة عند تنفيذ <code>x = 10</code> ثم <code>x = "hello"</code> في Python؟</span>
+                  </summary>
+                  <div class="qa-body">
+                    <p>في Python، لا تحتوي المتغيرات على أنواع بيانات محددة؛ بل الكائنات هي التي تملك الأنواع. عند تنفيذ <code>x = 10</code>، يُنشئ المفسر كائنًا جديدًا من نوع integer بقيمة 10 ويجعل الاسم <code>x</code> يُشير إليه. وعند تنفيذ <code>x = "hello"</code>، يُنشئ المفسر كائنًا جديدًا من نوع string بقيمة "hello" ويُعيد ربط الاسم <code>x</code> بهذا الكائن الجديد. يُصبح الكائن الأول (10) بلا مراجع تشير إليه، مما يجعله مرشحًا للتنظيف بواسطة جامع القمامة (Garbage Collector) إذا لم تكن هناك مراجع أخرى تتبع له.</p>
+                    <p class="qa-follow">سؤال متابعة: كيف يختلف هذا السلوك عن اللغات المترجمة ذات الأنواع الثابتة مثل C++ أو Java؟</p>
+                  </div>
+                </details>
+
+                <!-- Question 2: Basic -->
+                <details class="qa level-basic">
+                  <summary class="qa-head">
+                    <span class="qa-badge">أساسي</span>
+                    <span class="qa-title">ما الفرق بين أسماء المتغيرات المقبولة تركيبياً (Syntax) والتسمية الموصى بها في PEP 8؟</span>
+                  </summary>
+                  <div class="qa-body">
+                    <p>الأسماء المقبولة تركيبياً هي تلك التي يتطلبها المفسر كي لا يعطي خطأ <code>SyntaxError</code>، مثل ألا يبدأ الاسم برقم وألا يحتوي على رموز خاصة وألا يكون كلمة محجوزة. أما معيار PEP 8 فهو دليل نمطي غير إلزامي تقنياً ولكنه موصى به هندسياً، وينص على استخدام نمط <code>snake_case</code> للمتغيرات والدوال (أحرف صغيرة تفصل بينها شرطة سفلية)، واستخدام الأحرف الكبيرة <code>CAPITAL_LOOKUP</code> للثوابت. تضمن هذه الاتفاقية توحيد قراءة الشيفرات البرمجية بين أعضاء الفريق.</p>
+                  </div>
+                </details>
+
+                <!-- Question 3: Mid -->
+                <details class="qa level-basic">
+                  <summary class="qa-head">
+                    <span class="qa-badge">متوسط</span>
+                    <span class="qa-title">ما الناتج المتوقع للرمز <code>a = b = [1, 2]</code> ثم <code>a.append(3)</code> ولماذا؟</span>
+                  </summary>
+                  <div class="qa-body">
+                    <p>النتيجة هي أن كلاً من المتغيرين <code>a</code> و <code>b</code> سيعرضان القائمة <code>[1, 2, 3]</code>. يحدث ذلك لأن الإسناد المتسلسل يُنشئ كائن قائمة واحداً فقط في الذاكرة، ثم يربط الاسمين <code>a</code> و <code>b</code> بنفس المرجع (Reference) لهذا الكائن. تعديل القائمة عبر <code>a</code> هو تعديل للكائن المشترك نفسه، وبالتالي يظهر التغيير عند قراءة <code>b</code>.</p>
+                    <figure class="code-block">
+                      <figcaption class="code-head">
+                        <span class="code-meta">
+                          <span class="code-lang" lang="en">Python</span>
+                          <span class="code-file" lang="en">chained_assignment.py</span>
+                        </span>
+                        <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+                          <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-copy"></use></svg>
+                          <span class="btn-label">نسخ</span>
+                        </button>
+                      </figcaption>
+                      <pre class="code" dir="ltr"><code>a = b = [1, 2]
+a.append(3)
+print(b)</code></pre>
+                      <div class="output" role="group" aria-label="مخرجات البرنامج">
+                        <div class="output-label" lang="en">Output</div>
+                        <pre dir="ltr"><code>[1, 2, 3]</code></pre>
+                      </div>
+                    </figure>
+                    <p class="qa-follow">سؤال متابعة: كيف يمكنك إسناد القيمة نفسها لمتغيرين بحيث يكون كل منهما في كائن منفصل تماماً؟</p>
+                  </div>
+                </details>
+
+                <!-- Question 4: Mid -->
+                <details class="qa level-mid">
+                  <summary class="qa-head">
+                    <span class="qa-badge">متوسط</span>
+                    <span class="qa-title">كيف يتم تبادل قيمتي متغيرين في Python بدون استخدام متغير ثالث مؤقت؟</span>
+                  </summary>
+                  <div class="qa-body">
+                    <p>يمكن تبادل القيم بسطر واحد باستخدام الإسناد المتعدد وفك الحزم: <code>x, y = y, x</code>. يقوم المفسر أولاً بتقييم الطرف الأيمن بالكامل، فينشئ تجميعة مؤقتة (Tuple) تحتوي على قيم <code>(y, x)</code>، ثم يفك حزم القيم ويسندها بالتتابع للمتغيرات في الطرف الأيسر <code>x, y</code>. هذا السلوك حتمي، ويُغني عن الحاجة لمتغير مؤقت مثل <code>temp</code>.</p>
+                  </div>
+                </details>
+
+                <!-- Question 5: Mid -->
+                <details class="qa level-mid">
+                  <summary class="qa-head">
+                    <span class="qa-badge">متوسط</span>
+                    <span class="qa-title">ما المشكلة البرمجية الناتجة عن محاولة قراءة متغير عام وتعديله داخل دالة دون استخدام <code>global</code>؟</span>
+                  </summary>
+                  <div class="qa-body">
+                    <p>عند محاولة تعديل متغير عام داخل دالة بإسناد قيمة جديدة له بدون استخدام الكلمة المفتاحية <code>global</code>، يعتبر المفسر ذلك المتغير متغيراً محلياً جديداً (Local Variable) خاصاً بالدالة. إذا حاول الكود قراءة قيمة المتغير قبل سطر الإسناد داخل الدالة نفسها، سيؤدي ذلك إلى الخطأ <code>UnboundLocalError</code> لأن المفسر يعرف أن الاسم محلي ولكنه لم يُسند بقيمة بعد في ذلك النطاق.</p>
+                  </div>
+                </details>
+
+                <!-- Question 6: Trap -->
+                <details class="qa level-trap">
+                  <summary class="qa-head">
+                    <span class="qa-badge">فخ</span>
+                    <span class="qa-title">ما نتيجة تنفيذ الكود التالي: <code>x = 5</code> ثم داخل دالة <code>print(x)</code> يليه <code>x = 10</code>؟</span>
+                  </summary>
+                  <div class="qa-body">
+                    <p>سيرمي المفسر استثناء من نوع <code>UnboundLocalError: cannot access local variable 'x' where it is not associated with a value</code>. يعود السبب إلى أن مفسر Python يحدد نطاقات المتغيرات عند تحليل الكود (Parse time). وجود السطر <code>x = 10</code> داخل الدالة يجعل المفسر يصنف <code>x</code> كمتغير محلي في كامل نطاق الدالة، وبالتالي تفشل محاولة طباعته في السطر الذي يسبق الإسناد.</p>
+                    <figure class="code-block">
+                      <figcaption class="code-head">
+                        <span class="code-meta">
+                          <span class="code-lang" lang="en">Python</span>
+                          <span class="code-file" lang="en">trap_scope.py</span>
+                        </span>
+                        <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+                          <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-copy"></use></svg>
+                          <span class="btn-label">نسخ</span>
+                        </button>
+                      </figcaption>
+                      <pre class="code" dir="ltr"><code>count = 5
+
+def increment():
+    print(count)
+    count = 10
+
+# increment()  # سيعطي UnboundLocalError عند الاستدعاء</code></pre>
+                    </figure>
+                  </div>
+                </details>
+
+                <!-- Question 7: Trap -->
+                <details class="qa level-trap">
+                  <summary class="qa-head">
+                    <span class="qa-badge">فخ</span>
+                    <span class="qa-title">هل عبارات التلميح بالأنواع (Type Hints) مثل <code>status: str = 200</code> تمنع تشغيل الكود في Python؟</span>
+                  </summary>
+                  <div class="qa-body">
+                    <p>لا، عبارات التلميح بالأنواع لا تمنع تشغيل الكود ولا تفرض فحصاً للأنواع أثناء وقت التشغيل (Runtime). المفسر يفي بكون Python لغة ذات نمط ديناميكي ويتجاهل التلميحات تماماً أثناء التنفيذ. تكمن فائدة Type Hints في فحص الكود ساكناً بواسطة أدوات خارجية مثل <code>mypy</code> أو المساعدات الذكية في بيئات التطوير (IDEs) لاكتشاف الأخطاء مبكراً.</p>
+                  </div>
+                </details>
+
+              </div>
+            </section>
+
+            <section class="lesson-section" id="practice">
+              <h3 class="section-title"><b>04</b>المسألة العملية</h3>
+              <div class="callout callout-problem" role="note">
+                <div class="callout-title">المشكلة العملية: نظام حساب إجمالي طلب وتحديث الإحصائيات العامة</div>
+                <p>مطلوب بناء وحدة معالجة طلبات لمتجر إلكتروني تضمن تطبيق نسبة الضريبة ورسوم الشحن، وحساب الخصم وتنسيق مخرجات الفاتورة نهائياً مع إمكانية تحديث العداد العام للطلبات المعالجة في النظام بدون تكرار الكود أو الوقوع في أخطاء النطاقات.</p>
+              </div>
+
+              <ol class="solution">
+                <li>
+                  <strong>فهم المشكلة:</strong>
+                  <p>يحتاج النظام إلى إدارة متغيرات خاصة بتفاصيل الطلب (سعر المنتج، الكمية، الخصم)، ومتغيرات ثابتة لإعدادات النظام (نسبة الضريبة، رسوم الشحن)، وإيقاف الأخطاء الناتجة عن تداخل المتغيرات المحلية والعامة مع حساب إجمالي الفاتورة بدقة.</p>
+                </li>
+                <li>
+                  <strong>خطة الحل:</strong>
+                  <ul>
+                    <li>تعريف متغيرات عامة ثابتة للإعدادات (<code>TAX_RATE</code>, <code>SHIPPING_FEE</code>) وعداد عام (<code>total_orders_processed</code>).</li>
+                    <li>استخدام الإسناد المتعدد لتهيئة بيانات المعاملة في سطر واحد.</li>
+                    <li>تطبيق عملية التحديث الصريح للعداد العام داخل دالة المعالجة باستخدام الكلمة المفتاحية <code>global</code>.</li>
+                    <li>طباعة النتيجة بطريقة منظمة ومحددة باستخدام <code>f-strings</code>.</li>
+                  </ul>
+                </li>
+                <li>
+                  <strong>الكود الكامل القابل للتشغيل:</strong>
+                  <figure class="code-block">
+                    <figcaption class="code-head">
+                      <span class="code-meta">
+                        <span class="code-lang" lang="en">Python</span>
+                        <span class="code-file" lang="en">order_processor.py</span>
+                      </span>
+                      <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+                        <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-copy"></use></svg>
+                        <span class="btn-label">نسخ</span>
+                      </button>
+                    </figcaption>
+                    <pre class="code" dir="ltr"><code># إعدادات النظام وتتبع الإحصائيات
+TAX_RATE: float = 0.15
+SHIPPING_FEE: float = 20.0
+total_orders_processed: int = 0
+
+
+def process_checkout(customer: str, price: float, qty: int) -&gt; float:
+    global total_orders_processed
+
+    # حساب المجاميع المحلية
+    subtotal: float = price * qty
+    tax_amount: float = subtotal * TAX_RATE
+    grand_total: float = subtotal + tax_amount + SHIPPING_FEE
+
+    # تحديث العداد العام
+    total_orders_processed += 1
+
+    print(f"Customer: {customer}")
+    print(f"Subtotal: ${subtotal:.2f} | Tax: ${tax_amount:.2f}")
+    print(f"Total Amount Due: ${grand_total:.2f}")
+
+    return grand_total
+
+
+# تنفيذ اختبار المعاملة
+final_bill = process_checkout("Omar", 50.0, 2)
+print(f"Processed Orders Count: {total_orders_processed}")</code></pre>
+                    <div class="output" role="group" aria-label="مخرجات البرنامج">
+                      <div class="output-label" lang="en">Output</div>
+                      <pre dir="ltr"><code>Customer: Omar
+Subtotal: $100.00 | Tax: $15.00
+Total Amount Due: $135.00
+Processed Orders Count: 1</code></pre>
+                    </div>
+                  </figure>
+                </li>
+                <li>
+                  <strong>شرح القرارات البرمجية:</strong>
+                  <p>تم استخدام تسميات واضحة باتفاقية PEP 8 (مثل <code>TAX_RATE</code> بالأحرف الكبيرة للتعبير عن الثوابت). اس تُخدمت الكلمة المفتاحية <code>global</code> فقط لـ <code>total_orders_processed</code> لأن الدالة تقوم بتعديل قيمته مباشرة، بينما تمت قراءة الثوابت <code>TAX_RATE</code> دون الحاجة للتصريح عنها كـ <code>global</code> لأن القراءة لا تتطلب ذلك.</p>
+                </li>
+                <li>
+                  <strong>اختبار سريع:</strong>
+                  <p>عند استدعاء الدالة بقيم <code>price = 50.0</code> و <code>qty = 2</code>، يكون المجموع الفرعي 100.0، وتكون الضريبة 15.0 (15%)، ورسوم الشحن 20.0، فيصبح الإجمالي 135.00$ ويزداد العداد بمقدار 1 ليكون الناتح مطابقاً للمخرجات المتحققة.</p>
+                </li>
+                <li>
+                  <strong>تحسين أو بديل هندسي:</strong>
+                  <p>في الأنظمة الضخمة، يُفضل تجنب المتغير العام <code>total_orders_processed</code> وإعادة القيمة المحسوبة أو إدارتها داخل كائن (Class) أو قاعدة بيانات لتسهيل الاختبارات البرمجية المعتمدة (Unit Testing) وتجنب مشاكل التزامن (Concurrency).</p>
+                </li>
+              </ol>
+            </section>
+          </div>
+        </section>
+      </div>
+
+      <footer class="footer">
+        <span class="footer-note" lang="en">Python Learning Roadmap</span>
+        <span class="footer-note">المرحلة 01 - الدرس 01</span>
+      </footer>
+    </main>
+
+    <script>
+      (function () {
+        'use strict'
+
+        var live = document.getElementById('copy-status')
+        var printStates = null
+
+        function fallbackCopy(text) {
+          var textarea = document.createElement('textarea')
+          textarea.value = text
+          textarea.setAttribute('readonly', '')
+          textarea.style.cssText = 'position:fixed;top:-1000px;left:-1000px;opacity:0;'
+
+          try {
+            document.body.appendChild(textarea)
+            textarea.focus()
+            textarea.select()
+            textarea.setSelectionRange(0, textarea.value.length)
+            return document.execCommand('copy')
+          } catch (error) {
+            return false
+          } finally {
+            if (textarea.parentNode) {
+              textarea.parentNode.removeChild(textarea)
+            }
+          }
+        }
+
+        function copyText(text) {
+          if (navigator.clipboard && window.isSecureContext) {
+            return navigator.clipboard.writeText(text).then(
+              function () { return true },
+              function () { return fallbackCopy(text) },
+            ).catch(function () { return false })
+          }
+
+          return Promise.resolve().then(function () {
+            return fallbackCopy(text)
+          }).catch(function () {
+            return false
+          })
+        }
+
+        document.addEventListener('click', function (event) {
+          var target = event.target
+          var button = target && typeof target.closest === 'function'
+            ? target.closest('[data-copy-code]')
+            : null
+
+          if (!button) return
+
+          var label = button.querySelector('.btn-label')
+          var block = button.closest('.code-block')
+          var code = block ? block.querySelector('pre.code > code') : null
+          if (!label || !code) return
+
+          if (!button.dataset.label) button.dataset.label = label.textContent
+
+          copyText(code.textContent).then(function (ok) {
+            label.textContent = ok ? 'تم النسخ' : 'تعذّر النسخ'
+            button.classList.toggle('is-copied', ok)
+            button.classList.toggle('is-failed', !ok)
+
+            if (live) {
+              live.textContent = ok
+                ? 'تم نسخ الكود'
+                : 'تعذّر النسخ، حدّد الكود يدويًا ثم انسخه'
+            }
+
+            window.clearTimeout(button._timer)
+            button._timer = window.setTimeout(function () {
+              label.textContent = button.dataset.label
+              button.classList.remove('is-copied', 'is-failed')
+            }, 1800)
+          })
+        })
+
+        window.addEventListener('beforeprint', function () {
+          if (printStates !== null) return
+
+          var questions = document.querySelectorAll('details.qa')
+          printStates = Array.prototype.map.call(questions, function (item) {
+            return item.open
+          })
+          questions.forEach(function (item) {
+            item.open = true
+          })
+        })
+
+        window.addEventListener('afterprint', function () {
+          if (printStates === null) return
+
+          var questions = document.querySelectorAll('details.qa')
+          questions.forEach(function (item, index) {
+            item.open = printStates[index] === true
+          })
+          printStates = null
+        })
+      })()
+    </script>
+  </body>
+</html>

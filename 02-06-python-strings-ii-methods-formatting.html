@@ -1,0 +1,564 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#fcfcfc" />
+    <title>Python Strings II: Methods &amp; Formatting | Python Learning Roadmap</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/style.css" />
+  </head>
+  <body>
+    <svg
+      width="0"
+      height="0"
+      style="position: absolute"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <symbol id="i-copy" viewBox="0 0 24 24">
+        <rect x="9" y="9" width="12" height="12" rx="2.5" />
+        <path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15" />
+      </symbol>
+    </svg>
+    <template id="code-block-pattern">
+      <figure class="code-block">
+        <figcaption class="code-head">
+          <span class="code-meta">
+            <span class="code-lang" lang="en">Python</span>
+            <span class="code-file" lang="en">example.py</span>
+          </span>
+          <button
+            type="button"
+            class="btn btn-ghost btn-sm"
+            data-copy-code
+            aria-label="نسخ الكود"
+          >
+            <svg
+              class="btn-icon"
+              viewBox="0 0 24 24"
+              width="14"
+              height="14"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <use href="#i-copy"></use>
+            </svg>
+            <span class="btn-label">نسخ</span>
+          </button>
+        </figcaption>
+        <pre class="code" dir="ltr"><code><!-- ضع الكود هنا كنص HTML مع تهريب الرموز الخاصة --></code></pre>
+        <!-- احذف كتلة output إذا لم يكن للمثال ناتج ثابت ومفيد. -->
+        <div class="output" role="group" aria-label="مخرجات البرنامج">
+          <div class="output-label" lang="en">Output</div>
+          <pre dir="ltr"><code><!-- ضع المخرجات المتحققة هنا --></code></pre>
+        </div>
+      </figure>
+    </template>
+
+    <div
+      class="sr-only"
+      id="copy-status"
+      role="status"
+      aria-live="polite"
+    ></div>
+
+    <main class="page">
+      <header class="hero lesson-hero">
+        <span class="eyebrow">
+          <span class="eyebrow-dot"></span>
+          المرحلة <span dir="ltr">02</span>:
+          <span dir="ltr" lang="en">Strings, Operators &amp; Input</span>
+        </span>
+        <h1>
+          <span class="h1-ar">النصوص (2): الدوال والتنسيق</span>
+          <span class="h1-en" dir="ltr" lang="en">Python Strings II: Methods &amp; Formatting</span>
+        </h1>
+        <p class="hero-description">تعلّم تنظيف النصوص والبحث فيها، ثم بناء رسائل واضحة باستخدام قوالب التنسيق وF-Strings ومحددات عرض الأرقام.</p>
+      </header>
+
+      <div class="lesson-parts">
+        <section class="lesson-part-card" id="complete-lesson" aria-labelledby="complete-lesson-title">
+          <header class="part-header">
+            <div class="part-number">درس متكامل</div>
+            <div class="part-heading">
+              <h2 id="complete-lesson-title">
+                <span class="part-title-en" dir="ltr" lang="en">Complete Lesson</span>
+                <span class="sep" aria-hidden="true"> - </span>
+                <span class="part-title-ar">الشرح والملخص والتطبيق</span>
+              </h2>
+              <span class="part-description">كل محتوى الدرس في ملف HTML واحد</span>
+            </div>
+          </header>
+
+          <div class="lesson-body">
+            <section class="lesson-section" id="explain">
+              <h3 class="section-title"><b>01</b>الشرح</h3>
+              <article class="concept">
+  <h4>1. String Methods — دوال النصوص</h4>
+  <p>نحتاج <code>String Methods</code> لتنظيف النص وتغيير شكله والبحث داخله أو تقسيمه دون كتابة خطوات يدوية لكل حالة. من أكثر الدوال استخدامًا: <code>lower()</code> و<code>upper()</code> و<code>title()</code> لتغيير حالة الأحرف، و<code>strip()</code> لإزالة المسافات البيضاء من الطرفين، و<code>replace(old, new)</code> للاستبدال.</p>
+  <p>تساعد <code>split()</code> على تقسيم النص إلى قائمة من النصوص، بينما تجمع <code>join()</code> النصوص باستخدام الفاصل الذي تستدعيه عليه. ويمكن استخدام <code>find()</code> لمعرفة موضع أول ظهور (ويعيد <code>-1</code> عند عدم العثور)، و<code>startswith()</code> أو <code>endswith()</code> للتحقق من بداية النص أو نهايته.</p>
+  <p><strong>قيد مهم:</strong> النصوص في Python غير قابلة للتغيير؛ الدوال لا تعدّل النص الأصلي، بل تعيد نصًا جديدًا. احتفظ بالقيمة الجديدة في متغير عند الحاجة، وانتبه إلى أن <code>strip()</code> يعالج الأطراف فقط، لا كل ظهور للمسافات داخل النص.</p>
+  <figure class="code-block">
+  <figcaption class="code-head">
+    <span class="code-meta">
+      <span class="code-lang" lang="en">Python</span>
+      <span class="code-file" lang="en">string_methods.py</span>
+    </span>
+    <button
+      type="button"
+      class="btn btn-ghost btn-sm"
+      data-copy-code
+      aria-label="نسخ الكود"
+    >
+      <svg
+        class="btn-icon"
+        viewBox="0 0 24 24"
+        width="14"
+        height="14"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <use href="#i-copy"></use>
+      </svg>
+      <span class="btn-label">نسخ</span>
+    </button>
+  </figcaption>
+  <pre class="code" dir="ltr"><code>raw_title = "  python STRING methods  "
+clean_title = raw_title.strip().title()
+topics = "python,formatting,strings"
+topic_parts = topics.split(",")
+print(clean_title)
+print(" | ".join(topic_parts))
+print(clean_title.replace("Methods", "Tools"))
+print(clean_title.startswith("Python"))
+print(topics.find("formatting"))</code></pre>
+  <div class="output" role="group" aria-label="مخرجات البرنامج">
+    <div class="output-label" lang="en">Output</div>
+    <pre dir="ltr"><code>Python String Methods
+python | formatting | strings
+Python String Tools
+True
+7</code></pre>
+  </div>
+</figure>
+</article>
+
+<article class="concept">
+  <h4>2. Format Strings و <code>format()</code></h4>
+  <p>تُستخدم <code>Format Strings</code> لبناء رسالة تحتوي قيمًا متغيرة مع الحفاظ على ترتيب واضح، بدل دمج النصوص والقيم يدويًا. مع طريقة السلسلة <code>str.format()</code> نضع حقولًا بين الأقواس <code>{}</code>، ثم نمرر القيم بترتيبها أو بأسماء حقول واضحة؛ وتُرجع الطريقة نصًا جديدًا.</p>
+  <p>يمكن كتابة تنسيق القيمة داخل الحقل بعد النقطتين، مثل <code>{price:,.2f}</code>. ولعرض الأقواس المعقوفة نفسها نكتبها مزدوجة <code>{{</code> و<code>}}</code>. لا تخلط بين <code>str.format()</code> التي تملأ قالبًا كاملًا، والدالة المدمجة <code>format(value, spec)</code> التي تنسّق قيمة واحدة وتعيدها كنص؛ سنستخدم صيغة التنسيق نفسها مع F-Strings أيضًا.</p>
+  <p><strong>متى تستخدمها؟</strong> تفيد <code>str.format()</code> عندما يكون لديك قالب نصي محفوظ أو تريد تمرير قيم مسماة إليه. احرص على تطابق أسماء الحقول مع الوسائط الممررة، وإلا سيظهر خطأ مثل <code>KeyError</code>.</p>
+  <figure class="code-block">
+  <figcaption class="code-head">
+    <span class="code-meta">
+      <span class="code-lang" lang="en">Python</span>
+      <span class="code-file" lang="en">format_strings.py</span>
+    </span>
+    <button
+      type="button"
+      class="btn btn-ghost btn-sm"
+      data-copy-code
+      aria-label="نسخ الكود"
+    >
+      <svg
+        class="btn-icon"
+        viewBox="0 0 24 24"
+        width="14"
+        height="14"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <use href="#i-copy"></use>
+      </svg>
+      <span class="btn-label">نسخ</span>
+    </button>
+  </figcaption>
+  <pre class="code" dir="ltr"><code>template = "Order #{order_id}: {item} costs {price:,.2f} EGP"
+message = template.format(
+    order_id=731,
+    item="Wireless Mouse",
+    price=749.5,
+)
+print(message)
+print("Progress: {{complete}}".format())
+print(format(0.876, ".1%"))</code></pre>
+  <div class="output" role="group" aria-label="مخرجات البرنامج">
+    <div class="output-label" lang="en">Output</div>
+    <pre dir="ltr"><code>Order #731: Wireless Mouse costs 749.50 EGP
+Progress: {complete}
+87.6%</code></pre>
+  </div>
+</figure>
+</article>
+
+<article class="concept">
+  <h4>3. F-Strings — التنسيق باستخدام <code>f</code></h4>
+  <p>تُعد <code>F-Strings</code> طريقة مباشرة لكتابة النصوص التي تتضمن قيمًا أو تعبيرات: نضع الحرف <code>f</code> قبل علامات الاقتباس، ثم نكتب التعبير داخل <code>{}</code>. تُقيّم Python التعبير عند إنشاء النص، لذلك يمكن إدراج متغير أو عملية حسابية مباشرة، كما يمكن إضافة محدد تنسيق بعد النقطتين.</p>
+  <p>غالبًا تكون F-Strings أوضح عند إنشاء رسالة في موضع استخدامها، وتقلل الحاجة إلى ترقيم الحقول. استخدم الأقواس المزدوجة <code>{{</code> و<code>}}</code> إذا أردت إظهار أقواس حرفية؛ ولا تضع علامات اقتباس حول اسم المتغير داخل الحقل، لأن ذلك سيحوّله إلى نص ثابت.</p>
+  <figure class="code-block">
+  <figcaption class="code-head">
+    <span class="code-meta">
+      <span class="code-lang" lang="en">Python</span>
+      <span class="code-file" lang="en">f_strings.py</span>
+    </span>
+    <button
+      type="button"
+      class="btn btn-ghost btn-sm"
+      data-copy-code
+      aria-label="نسخ الكود"
+    >
+      <svg
+        class="btn-icon"
+        viewBox="0 0 24 24"
+        width="14"
+        height="14"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <use href="#i-copy"></use>
+      </svg>
+      <span class="btn-label">نسخ</span>
+    </button>
+  </figcaption>
+  <pre class="code" dir="ltr"><code>customer_name = "Mona"
+item_count = 3
+subtotal = 1250.5
+print(f"{customer_name} selected {item_count} items.")
+print(f"Average: {subtotal / item_count:.2f} EGP")
+print(f"Literal braces: {{ready}}")</code></pre>
+  <div class="output" role="group" aria-label="مخرجات البرنامج">
+    <div class="output-label" lang="en">Output</div>
+    <pre dir="ltr"><code>Mona selected 3 items.
+Average: 416.83 EGP
+Literal braces: {ready}</code></pre>
+  </div>
+</figure>
+</article>
+
+<article class="concept">
+  <h4>4. Formatting Specifiers — محددات التنسيق</h4>
+  <p>تحدد <code>Formatting Specifiers</code> شكل القيمة داخل حقل التنسيق، وتأتي بعد <code>:</code> في <code>str.format()</code> أو F-Strings، كما تُمرر إلى الدالة المدمجة <code>format()</code>. من الأنماط الشائعة: <code>.2f</code> لرقمين بعد الفاصلة، و<code>,</code> لفصل الآلاف، و<code>&lt;</code> للمحاذاة إلى اليسار، و<code>&gt;</code> لليمين، و<code>^</code> للتوسيط.</p>
+  <p>يمكن تحديد عرض أدنى مثل <code>&gt;10</code>، أو إضافة أصفار بادئة مثل <code>04d</code> لعدد صحيح من أربع خانات، أو استخدام <code>.1%</code> لعرض النسبة المئوية بضرب القيمة في 100 وإضافة علامة النسبة. العرض هو حد أدنى لا أقصى؛ فإذا كانت القيمة أطول فلن تُقصّ. اختر النوع المناسب، مثل <code>d</code> للأعداد الصحيحة و<code>f</code> للأعداد العشرية، لتجنب أخطاء التنسيق.</p>
+  <figure class="code-block">
+  <figcaption class="code-head">
+    <span class="code-meta">
+      <span class="code-lang" lang="en">Python</span>
+      <span class="code-file" lang="en">formatting_specifiers.py</span>
+    </span>
+    <button
+      type="button"
+      class="btn btn-ghost btn-sm"
+      data-copy-code
+      aria-label="نسخ الكود"
+    >
+      <svg
+        class="btn-icon"
+        viewBox="0 0 24 24"
+        width="14"
+        height="14"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <use href="#i-copy"></use>
+      </svg>
+      <span class="btn-label">نسخ</span>
+    </button>
+  </figcaption>
+  <pre class="code" dir="ltr"><code>item = "Monitor"
+price = 12999.5
+discount = 0.125
+code = 42
+print(f"{item:&lt;12}|{price:&gt;10,.2f}")
+print(f"Discount: {discount:.1%}")
+print(f"Code: {code:04d}")</code></pre>
+  <div class="output" role="group" aria-label="مخرجات البرنامج">
+    <div class="output-label" lang="en">Output</div>
+    <pre dir="ltr"><code>Monitor     | 12,999.50
+Discount: 12.5%
+Code: 0042</code></pre>
+  </div>
+</figure>
+</article>
+            </section>
+
+            <section class="lesson-section" id="summary">
+              <h3 class="section-title"><b>02</b>الملخص</h3>
+              <ul class="summary-list">
+                <li>دوال النصوص مثل <code>strip()</code> و<code>replace()</code> و<code>title()</code> تعيد نصًا جديدًا؛ فالنصوص غير قابلة للتغيير.</li>
+<li><code>split()</code> تقسّم النص إلى عناصر، و<code>separator.join()</code> تجمع النصوص باستخدام فاصل محدد.</li>
+<li>تساعد <code>find()</code> و<code>startswith()</code> و<code>endswith()</code> على البحث والتحقق من مواضع النص وحدوده.</li>
+<li><code>str.format()</code> تملأ حقول قالب، أما <code>format(value, spec)</code> فتنسّق قيمة واحدة؛ وتُكتب الأقواس الحرفية مزدوجة.</li>
+<li><code>F-Strings</code> تبدأ بالحرف <code>f</code> وتسمح بإدراج المتغيرات والتعبيرات داخل <code>{}</code>.</li>
+<li>تضبط محددات التنسيق الدقة والمحاذاة والعرض وفواصل الآلاف والنسب المئوية، مثل <code>:,.2f</code> و<code>:04d</code>.</li>
+              </ul>
+            </section>
+
+            <section class="lesson-section" id="interview-questions">
+              <h3 class="section-title"><b>03</b>أسئلة المقابلات</h3>
+              <div class="qa-list">
+                <details class="qa" open>
+  <summary>
+    <span class="qa-q">لماذا لا يتغير النص الأصلي عند استدعاء <code>upper()</code> أو <code>strip()</code>؟</span>
+    <span class="level level-basic">أساسي</span>
+  </summary>
+  <div class="qa-body">
+    <p>لأن كائنات النصوص في Python غير قابلة للتغيير، ودوال النصوص تعيد قيمة نصية جديدة بدل تعديل الأصل. احتفظ بالنتيجة مثل <code>clean_name = name.strip()</code> إذا كنت تريد استخدامها لاحقًا.</p>
+  </div>
+</details>
+
+<details class="qa">
+  <summary>
+    <span class="qa-q">ما الفرق بين <code>split()</code> و<code>join()</code>؟</span>
+    <span class="level level-basic">أساسي</span>
+  </summary>
+  <div class="qa-body">
+    <p><code>split()</code> تقسم نصًا إلى قائمة من النصوص، بينما <code>join()</code> تجمع عناصر نصية باستخدام الفاصل الذي تستدعيه عليه. لذلك نكتب مثلًا <code>", ".join(parts)</code>، ويجب أن تكون العناصر نصوصًا.</p>
+  </div>
+</details>
+
+<details class="qa">
+  <summary>
+    <span class="qa-q">ما الفرق بين <code>str.format()</code> والدالة المدمجة <code>format()</code> وF-Strings؟</span>
+    <span class="level level-mid">متوسط</span>
+  </summary>
+  <div class="qa-body">
+    <p><code>str.format()</code> تملأ حقول قالب نصي، أما <code>format(value, spec)</code> فتنسّق قيمة واحدة وفق محدد معين. تتيح F-Strings كتابة المتغيرات والتعبيرات مباشرة داخل النص، وغالبًا تكون أقصر عند إنشاء الرسالة في موضعها.</p>
+  </div>
+</details>
+
+<details class="qa">
+  <summary>
+    <span class="qa-q">ماذا يعني محدد التنسيق <code>:&gt;10,.2f</code>؟</span>
+    <span class="level level-mid">متوسط</span>
+  </summary>
+  <div class="qa-body">
+    <p>يعني محاذاة القيمة إلى اليمين داخل عرض أدنى مقداره 10 خانات، مع استخدام فواصل الآلاف. ويعني <code>.2f</code> عرض العدد بصيغة عشرية ثابتة مع رقمين بعد الفاصلة.</p>
+  </div>
+</details>
+
+<details class="qa">
+  <summary>
+    <span class="qa-q">هل يستدعي <code>text.strip("ab")</code> حذف الكلمة <code>"ab"</code> من بداية النص ونهايته؟</span>
+    <span class="level level-trap">سؤال فخ</span>
+  </summary>
+  <div class="qa-body">
+    <p>لا؛ الوسيط هنا مجموعة أحرف، ولذلك يزيل أي تكرار للحرف <code>a</code> أو <code>b</code> من الطرفين فقط حتى يصادف حرفًا آخر. لا يتعامل مع <code>"ab"</code> بوصفها مقطعًا واحدًا، ولا يزيل هذه الأحرف من وسط النص.</p>
+  </div>
+</details>
+              </div>
+            </section>
+
+            <section class="lesson-section" id="practical">
+              <h3 class="section-title"><b>04</b>المسألة العملية</h3>
+              <div class="callout callout-problem">
+  <p><strong>المسألة:</strong> لديك بيانات منتج خام من ملف طلبات: اسم يحتوي مسافات وشرطة سفلية، وتصنيف يحتاج إلى تنسيق، وكمية وسعر وحدة. أنشئ ملخصًا واضحًا للطلب؛ نظّف الاسم والتصنيف، واعرض الكمية والسعر والإجمالي بتنسيق مناسب للعملة.</p>
+</div>
+              <ol class="solution">
+                <li class="sol-step">
+  <strong>فهم المطلوب:</strong> تحويل الاسم الخام إلى اسم مقروء، ثم عرض التصنيف والكمية وسعر الوحدة والإجمالي بصورة مرتبة.
+</li>
+<li class="sol-step">
+  <strong>خطة الحل:</strong> نستخدم <code>strip()</code> لإزالة المسافات الطرفية، و<code>replace()</code> لاستبدال الشرطة السفلية، و<code>title()</code> لتحسين شكل الكلمات. نحسب الإجمالي بالضرب، ثم ننسق القيم باستخدام <code>str.format()</code> وF-Strings ومحددات التنسيق.
+</li>
+<li class="sol-step">
+  <strong>الكود الكامل:</strong>
+  <figure class="code-block">
+  <figcaption class="code-head">
+    <span class="code-meta">
+      <span class="code-lang" lang="en">Python</span>
+      <span class="code-file" lang="en">order_summary.py</span>
+    </span>
+    <button
+      type="button"
+      class="btn btn-ghost btn-sm"
+      data-copy-code
+      aria-label="نسخ الكود"
+    >
+      <svg
+        class="btn-icon"
+        viewBox="0 0 24 24"
+        width="14"
+        height="14"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <use href="#i-copy"></use>
+      </svg>
+      <span class="btn-label">نسخ</span>
+    </button>
+  </figcaption>
+  <pre class="code" dir="ltr"><code>raw_item = "  wireless_mouse  "
+item_name = raw_item.strip().replace("_", " ").title()
+category = "computer_accessories".replace("_", " ").title()
+quantity = 2
+unit_price = 749.5
+total = quantity * unit_price
+
+print(f"Item: {item_name}")
+print("Category: {}".format(category))
+print(f"Quantity: {quantity:02d}")
+print(f"Unit price: {unit_price:,.2f} EGP")
+print(f"Total: {total:,.2f} EGP")</code></pre>
+  <div class="output" role="group" aria-label="مخرجات البرنامج">
+    <div class="output-label" lang="en">Output</div>
+    <pre dir="ltr"><code>Item: Wireless Mouse
+Category: Computer Accessories
+Quantity: 02
+Unit price: 749.50 EGP
+Total: 1,499.00 EGP</code></pre>
+  </div>
+</figure>
+</li>
+<li class="sol-step">
+  <strong>تفسير القرارات:</strong> عالجنا النص قبل طباعته، ولم نغيّر قيمته الأصلية. استخدمنا <code>:02d</code> لإظهار الكمية بخانتين، و<code>:,.2f</code> لإظهار الأسعار بمنزلتين عشريتين وفواصل الآلاف.
+</li>
+<li class="sol-step">
+  <strong>اختبار سريع:</strong> عند البيانات الموضحة في الكود، يجب أن يظهر الاسم <code>Wireless Mouse</code> والكمية <code>02</code>، وأن يكون الإجمالي <code>1,499.00 EGP</code>. طابق هذه القيم مع المخرجات المعروضة أسفل الكود.
+</li>
+<li class="sol-step">
+  <strong>تحسين أو بديل:</strong> عند الحاجة إلى تنسيق قيمة واحدة قبل دمجها في رسالة، يمكن استخدام <code>format(total, ",.2f")</code> بدل كتابة محدد التنسيق داخل F-String؛ اختر الأسلوب الذي يجعل القالب أوضح.
+</li>
+              </ol>
+            </section>
+          </div>
+        </section>
+      </div>
+
+      <footer class="footer">
+        <span class="footer-note" lang="en">Python Learning Roadmap</span>
+        <span class="footer-note">المرحلة 02 - الدرس 06</span>
+      </footer>
+    </main>
+
+    <script>
+      (function () {
+        'use strict'
+
+        var live = document.getElementById('copy-status')
+        var printStates = null
+
+        function fallbackCopy(text) {
+          var textarea = document.createElement('textarea')
+          textarea.value = text
+          textarea.setAttribute('readonly', '')
+          textarea.style.cssText = 'position:fixed;top:-1000px;left:-1000px;opacity:0;'
+
+          try {
+            document.body.appendChild(textarea)
+            textarea.focus()
+            textarea.select()
+            textarea.setSelectionRange(0, textarea.value.length)
+            return document.execCommand('copy')
+          } catch (error) {
+            return false
+          } finally {
+            if (textarea.parentNode) {
+              textarea.parentNode.removeChild(textarea)
+            }
+          }
+        }
+
+        function copyText(text) {
+          if (navigator.clipboard && window.isSecureContext) {
+            return navigator.clipboard.writeText(text).then(
+              function () { return true },
+              function () { return fallbackCopy(text) },
+            ).catch(function () { return false })
+          }
+
+          return Promise.resolve().then(function () {
+            return fallbackCopy(text)
+          }).catch(function () {
+            return false
+          })
+        }
+
+        document.addEventListener('click', function (event) {
+          var target = event.target
+          var button = target && typeof target.closest === 'function'
+            ? target.closest('[data-copy-code]')
+            : null
+
+          if (!button) return
+
+          var label = button.querySelector('.btn-label')
+          var block = button.closest('.code-block')
+          var code = block ? block.querySelector('pre.code > code') : null
+          if (!label || !code) return
+
+          if (!button.dataset.label) button.dataset.label = label.textContent
+
+          copyText(code.textContent).then(function (ok) {
+            label.textContent = ok ? 'تم النسخ' : 'تعذّر النسخ'
+            button.classList.toggle('is-copied', ok)
+            button.classList.toggle('is-failed', !ok)
+
+            if (live) {
+              live.textContent = ok
+                ? 'تم نسخ الكود'
+                : 'تعذّر النسخ، حدّد الكود يدويًا ثم انسخه'
+            }
+
+            window.clearTimeout(button._timer)
+            button._timer = window.setTimeout(function () {
+              label.textContent = button.dataset.label
+              button.classList.remove('is-copied', 'is-failed')
+            }, 1800)
+          })
+        })
+
+        window.addEventListener('beforeprint', function () {
+          if (printStates !== null) return
+
+          var questions = document.querySelectorAll('details.qa')
+          printStates = Array.prototype.map.call(questions, function (item) {
+            return item.open
+          })
+          questions.forEach(function (item) {
+            item.open = true
+          })
+        })
+
+        window.addEventListener('afterprint', function () {
+          if (printStates === null) return
+
+          var questions = document.querySelectorAll('details.qa')
+          questions.forEach(function (item, index) {
+            item.open = printStates[index] === true
+          })
+          printStates = null
+        })
+      })()
+    </script>
+  </body>
+</html>

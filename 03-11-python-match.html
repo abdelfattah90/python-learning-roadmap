@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#fcfcfc" />
+    <title>Python Match - مطابقة الأنماط | Python Learning Roadmap</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/style.css" />
+  </head>
+  <body>
+    <svg
+      width="0"
+      height="0"
+      style="position: absolute"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <symbol id="i-copy" viewBox="0 0 24 24">
+        <rect x="9" y="9" width="12" height="12" rx="2.5" />
+        <path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15" />
+      </symbol>
+    </svg>
+    <template id="code-block-pattern">
+      <figure class="code-block">
+        <figcaption class="code-head">
+          <span class="code-meta">
+            <span class="code-lang" lang="en">Python</span>
+            <span class="code-file" lang="en">example.py</span>
+          </span>
+          <button
+            type="button"
+            class="btn btn-ghost btn-sm"
+            data-copy-code
+            aria-label="نسخ الكود"
+          >
+            <svg
+              class="btn-icon"
+              viewBox="0 0 24 24"
+              width="14"
+              height="14"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <use href="#i-copy"></use>
+            </svg>
+            <span class="btn-label">نسخ</span>
+          </button>
+        </figcaption>
+        <pre class="code" dir="ltr"><code><!-- ضع الكود هنا كنص HTML مع تهريب الرموز الخاصة --></code></pre>
+        <!-- احذف كتلة output إذا لم يكن للمثال ناتج ثابت ومفيد. -->
+        <div class="output" role="group" aria-label="مخرجات البرنامج">
+          <div class="output-label" lang="en">Output</div>
+          <pre dir="ltr"><code><!-- ضع المخرجات المتحققة هنا --></code></pre>
+        </div>
+      </figure>
+    </template>
+
+    <div
+      class="sr-only"
+      id="copy-status"
+      role="status"
+      aria-live="polite"
+    ></div>
+
+    <main class="page">
+      <header class="hero lesson-hero">
+        <span class="eyebrow">
+          <span class="eyebrow-dot"></span>
+          المرحلة <span dir="ltr">03</span>:
+          <span dir="ltr" lang="en">Control Flow</span>
+        </span>
+        <h1>
+          <span class="h1-ar">مطابقة الأنماط في Python</span>
+          <span class="h1-en" dir="ltr" lang="en">Python Match</span>
+        </h1>
+        <p class="hero-description">تعلّم كيف تختار مسار التنفيذ باستخدام match وcase، وتفهم الأنماط المختلفة ومتى تكون أوضح من if...elif.</p>
+      </header>
+
+      <div class="lesson-parts">
+        <section class="lesson-part-card" id="complete-lesson" aria-labelledby="complete-lesson-title">
+          <header class="part-header">
+            <div class="part-number">درس متكامل</div>
+            <div class="part-heading">
+              <h2 id="complete-lesson-title">
+                <span class="part-title-en" dir="ltr" lang="en">Complete Lesson</span>
+                <span class="sep" aria-hidden="true"> - </span>
+                <span class="part-title-ar">الشرح والملخص والتطبيق</span>
+              </h2>
+              <span class="part-description">كل محتوى الدرس في ملف HTML واحد</span>
+            </div>
+          </header>
+
+          <div class="lesson-body">
+            <section class="lesson-section" id="explain">
+              <h3 class="section-title"><b>01</b>الشرح</h3>
+              
+              <article class="concept">
+                <h4><span dir="ltr" lang="en">Match Statement</span> — اختيار مسار بناءً على قيمة</h4>
+                <p>عندما تقارن قيمة واحدة بعدة احتمالات منفصلة، قد تصبح سلسلة <code>if...elif</code> طويلة ومتكررة. توفر <code>match</code> بنية واضحة لاختيار أول <code>case</code> يطابق القيمة، ثم تنفّذ كتلته وتتوقف عن فحص بقية الحالات.</p>
+                <p>تكتب القيمة المراد فحصها بعد <code>match</code>، وتبدأ كل حالة بكلمة <code>case</code> متبوعة بنمط ونقطتين. يجب أن تكون هناك كتلة مزاحة أسفل كل حالة. تتوفر <code>match</code> ابتداءً من Python 3.10، وهي مناسبة مثلًا لتوجيه أوامر المستخدم أو تصنيف رموز الحالة.</p>
+                <figure class="code-block">
+                  <figcaption class="code-head">
+                    <span class="code-meta"><span class="code-lang" lang="en">Python</span><span class="code-file" lang="en">ticket_status.py</span></span>
+                    <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود"><svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-copy"></use></svg><span class="btn-label">نسخ</span></button>
+                  </figcaption>
+                  <pre class="code" dir="ltr"><code>status_code = 202
+
+match status_code:
+    case 200:
+        message = "Request completed"
+    case 202:
+        message = "Request accepted"
+    case 404:
+        message = "Ticket not found"
+    case _:
+        message = "Unknown status"
+
+print(message)</code></pre>
+                  <div class="output" role="group" aria-label="مخرجات البرنامج"><div class="output-label" lang="en">Output</div><pre dir="ltr"><code>Request accepted</code></pre></div>
+                </figure>
+                <p class="note">مهم: لا يوجد سقوط تلقائي من حالة إلى التالية؛ بعد تنفيذ أول حالة مطابقة ينتهي هذا الـ <code>match</code>. وإذا لم تطابق أي حالة ولم تكتب حالة افتراضية، فلن تُنفّذ أي كتلة.</p>
+              </article>
+
+              <article class="concept">
+                <h4><span dir="ltr" lang="en">Case Patterns</span> — أشكال الأنماط</h4>
+                <p>النمط ليس دائمًا قيمة حرفية فقط. يمكن أن يكون قيمة مثل <code>"open"</code> أو <code>3</code>، أو بدائل مفصولة بعامل <code>|</code>، أو <code>_</code> لمطابقة أي قيمة. كما يمكنه التقاط القيمة في اسم متغير لاستخدامها داخل الحالة. وتدعم الأنماط التسلسلات مثل <code>(x, y)</code> لفحص بنية tuple أو list وعدد عناصرها.</p>
+                <p>هذا المثال يجمع الأنماط الشائعة: قيمًا حرفية، وبدائل، والتقاطًا، ونمط تسلسل. انتبه إلى أن الاسم العاري مثل <code>pending</code> ليس ثابتًا للمقارنة؛ بل يُعد نمط التقاط يطابق أي قيمة ويربطها بهذا الاسم. استخدم قيمة حرفية أو ثابتًا مؤهلًا عند الحاجة إلى مقارنة ثابت معروف.</p>
+                <figure class="code-block">
+                  <figcaption class="code-head">
+                    <span class="code-meta"><span class="code-lang" lang="en">Python</span><span class="code-file" lang="en">command_patterns.py</span></span>
+                    <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود"><svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-copy"></use></svg><span class="btn-label">نسخ</span></button>
+                  </figcaption>
+                  <pre class="code" dir="ltr"><code>command = ("resize", 800, 600)
+
+match command:
+    case ("quit" | "exit",):
+        print("Closing")
+    case ("resize", width, height):
+        print(f"Size: {width} x {height}")
+    case "help":
+        print("Available commands: help, quit")
+    case _:
+        print("Unsupported command")</code></pre>
+                  <div class="output" role="group" aria-label="مخرجات البرنامج"><div class="output-label" lang="en">Output</div><pre dir="ltr"><code>Size: 800 x 600</code></pre></div>
+                </figure>
+                <p>في نمط التسلسل، يجب أن يطابق شكل البيانات النمط؛ يلتقط <code>width</code> و<code>height</code> العنصرين الثاني والثالث. أما <code>_</code> فلا ينشئ متغيرًا. ضع الحالة العامة في النهاية حتى لا تحجب الحالات الأكثر تحديدًا.</p>
+              </article>
+
+              <article class="concept">
+                <h4><span dir="ltr" lang="en">Match vs. If...Elif</span> — متى تختار كل أسلوب؟</h4>
+                <p>استخدم <code>match</code> عندما تختبر قيمة أو بنية بيانات واحدة مقابل مجموعة أنماط واضحة، مثل نوع أمر أو حالة طلب أو tuple. ويكون ترتيب الحالات مهمًا لأن أول نمط مطابق هو الذي يُنفّذ.</p>
+                <p>استخدم <code>if...elif</code> عندما تعتمد القرارات على شروط منطقية عامة أو نطاقات ومقارنات مركبة، مثل <code>temperature &gt; 30</code> أو الجمع بين أكثر من متغير بشرط منطقي. لا تجعل <code>match</code> بديلًا إجباريًا لكل سلسلة شروط؛ اختر الصيغة الأوضح للمقصود.</p>
+                <p class="note">قيد شائع: <code>match</code> لا يضمن أن كل الاحتمالات مغطاة، ولا يقيّم الحالات كأنها شروط <code>if</code> عادية. كما أن ترتيب الحالة الافتراضية <code>case _</code> مبكرًا يجعل الحالات اللاحقة غير قابلة للوصول عمليًا.</p>
+              </article>
+
+            </section>
+
+            <section class="lesson-section" id="summary">
+              <h3 class="section-title"><b>02</b>الملخص</h3>
+              <ul class="summary-list">
+                
+                <li>تُستخدم <code>match</code> لمقارنة قيمة بأنماط متعددة، وتعمل في Python 3.10+.</li>
+                <li>تبدأ كل فرع بـ <code>case</code>، ويُنفّذ أول نمط مطابق فقط.</li>
+                <li>يمكن أن تكون الأنماط قيمًا حرفية أو بدائل باستخدام <code>|</code>.</li>
+                <li>النمط <code>_</code> يطابق أي قيمة دون التقاطها في متغير.</li>
+                <li>أسماء الالتقاط تربط القيمة بمتغير؛ الاسم العاري ليس مقارنة بثابت.</li>
+                <li>اختر <code>match</code> للأنماط الواضحة، و<code>if...elif</code> للشروط والنطاقات العامة.</li>
+
+              </ul>
+            </section>
+
+            <section class="lesson-section" id="interview-questions">
+              <h3 class="section-title"><b>03</b>أسئلة المقابلات</h3>
+              <div class="qa-list">
+                
+                <details class="qa" open>
+                  <summary><span class="qa-q">ما وظيفة <code>match</code> ومتى أصبحت متاحة في Python؟</span><span class="level level-basic">أساسي</span></summary>
+                  <div class="qa-body"><p>تفحص قيمة أو بنية بيانات مقابل مجموعة من الأنماط المكتوبة في فروع <code>case</code>. نُفّذت في Python 3.10، وتفيد عندما تكون هناك بدائل محددة وواضحة لقيمة واحدة.</p></div>
+                </details>
+                <details class="qa">
+                  <summary><span class="qa-q">ماذا يحدث عند تطابق أكثر من نمط؟</span><span class="level level-basic">أساسي</span></summary>
+                  <div class="qa-body"><p>يُنفّذ أول <code>case</code> مطابق بحسب ترتيب ظهوره، ثم ينتهي تنفيذ عبارة <code>match</code>. لذلك يجب وضع الحالات الأكثر تحديدًا قبل الحالة العامة.</p></div>
+                </details>
+                <details class="qa">
+                  <summary><span class="qa-q">ما الفرق بين <code>case _</code> ونمط التقاط مثل <code>case result</code>؟</span><span class="level level-mid">متوسط</span></summary>
+                  <div class="qa-body"><p>كلاهما يمكنه مطابقة أي قيمة، لكن <code>_</code> يتجاهل القيمة ولا ينشئ متغيرًا. أما <code>result</code> فيلتقط القيمة ويربطها بالاسم لاستخدامها داخل كتلة الحالة.</p></div>
+                </details>
+                <details class="qa">
+                  <summary><span class="qa-q">كيف تعبّر عن أكثر من قيمة مقبولة داخل <code>case</code> واحد؟</span><span class="level level-mid">متوسط</span></summary>
+                  <div class="qa-body"><p>استخدم نمط البدائل بعامل <code>|</code>، مثل <code>case "yes" | "y":</code>. يكفي أن يطابق أحد البدائل حتى تُنفّذ كتلة الحالة.</p></div>
+                </details>
+                <details class="qa">
+                  <summary><span class="qa-q">هل <code>case READY:</code> يقارن القيمة بالثابت <code>READY</code>؟</span><span class="level level-trap">سؤال فخ</span></summary>
+                  <div class="qa-body"><p>لا؛ الاسم العاري في النمط يُفسّر عادةً على أنه نمط التقاط، فيطابق القيمة ويربطها بالاسم، وقد يجعل الحالات التالية غير قابلة للوصول. استخدم قيمة حرفية أو اسم ثابت مؤهلًا مثل <code>Status.READY</code> عند توفره.</p></div>
+                </details>
+
+              </div>
+            </section>
+
+            <section class="lesson-section" id="practical">
+              <h3 class="section-title"><b>04</b>المسألة العملية</h3>
+              
+              <div class="callout callout-problem">
+                <p><strong>المسألة:</strong> اكتب موجّهًا بسيطًا لطلبات الدعم. يستقبل البرنامج أمرًا على هيئة tuple: إما <code>("assign", agent)</code> لإسناد الطلب، أو <code>("close",)</code> لإغلاقه، أو <code>("priority", level)</code> لتحديد الأولوية. اطبع رسالة مناسبة، وتعامل مع أي أمر آخر برسالة افتراضية.</p>
+              </div>
+
+              <ol class="solution">
+                
+                <li class="sol-step"><strong>فهم المطلوب:</strong> لدينا أمر واحد وبنية tuple تختلف عناصرها حسب نوع العملية.</li>
+                <li class="sol-step"><strong>خطة الحل:</strong> نفحص tuple باستخدام <code>match</code>، ونلتقط البيانات المطلوبة داخل كل نمط، ثم نضيف حالة افتراضية.</li>
+                <li class="sol-step"><strong>الكود الكامل:</strong>
+                  <figure class="code-block">
+                    <figcaption class="code-head">
+                      <span class="code-meta"><span class="code-lang" lang="en">Python</span><span class="code-file" lang="en">support_router.py</span></span>
+                      <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود"><svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-copy"></use></svg><span class="btn-label">نسخ</span></button>
+                    </figcaption>
+                    <pre class="code" dir="ltr"><code>request = ("assign", "Mona")
+
+match request:
+    case ("assign", agent):
+        print(f"Ticket assigned to {agent}")
+    case ("close",):
+        print("Ticket closed")
+    case ("priority", level):
+        print(f"Priority set to {level}")
+    case _:
+        print("Unknown support command")</code></pre>
+                    <div class="output" role="group" aria-label="مخرجات البرنامج"><div class="output-label" lang="en">Output</div><pre dir="ltr"><code>Ticket assigned to Mona</code></pre></div>
+                  </figure>
+                </li>
+                <li class="sol-step"><strong>تفسير القرارات:</strong> يطابق كل نمط نوع العملية وشكل tuple، بينما يلتقط <code>agent</code> أو <code>level</code> القيمة المتغيرة لاستخدامها في الرسالة.</li>
+                <li class="sol-step"><strong>اختبار سريع:</strong> غيّر قيمة <code>request</code> إلى <code>("close",)</code> أو <code>("priority", "high")</code> للتحقق من الفرعين، ثم جرّب أمرًا غير معروف للحالة الافتراضية.</li>
+                <li class="sol-step"><strong>تحسين أو بديل:</strong> إذا أصبحت القرارات مبنية على شروط مثل مستوى أولوية أكبر من حد معين، فقد تكون <code>if...elif</code> أوضح من مطابقة الأنماط.</li>
+
+              </ol>
+            </section>
+          </div>
+        </section>
+      </div>
+
+      <footer class="footer">
+        <span class="footer-note" lang="en">Python Learning Roadmap</span>
+        <span class="footer-note">المرحلة 03 - الدرس 11</span>
+      </footer>
+    </main>
+
+    <script>
+      (function () {
+        'use strict'
+
+        var live = document.getElementById('copy-status')
+        var printStates = null
+
+        function fallbackCopy(text) {
+          var textarea = document.createElement('textarea')
+          textarea.value = text
+          textarea.setAttribute('readonly', '')
+          textarea.style.cssText = 'position:fixed;top:-1000px;left:-1000px;opacity:0;'
+
+          try {
+            document.body.appendChild(textarea)
+            textarea.focus()
+            textarea.select()
+            textarea.setSelectionRange(0, textarea.value.length)
+            return document.execCommand('copy')
+          } catch (error) {
+            return false
+          } finally {
+            if (textarea.parentNode) {
+              textarea.parentNode.removeChild(textarea)
+            }
+          }
+        }
+
+        function copyText(text) {
+          if (navigator.clipboard && window.isSecureContext) {
+            return navigator.clipboard.writeText(text).then(
+              function () { return true },
+              function () { return fallbackCopy(text) },
+            ).catch(function () { return false })
+          }
+
+          return Promise.resolve().then(function () {
+            return fallbackCopy(text)
+          }).catch(function () {
+            return false
+          })
+        }
+
+        document.addEventListener('click', function (event) {
+          var target = event.target
+          var button = target && typeof target.closest === 'function'
+            ? target.closest('[data-copy-code]')
+            : null
+
+          if (!button) return
+
+          var label = button.querySelector('.btn-label')
+          var block = button.closest('.code-block')
+          var code = block ? block.querySelector('pre.code > code') : null
+          if (!label || !code) return
+
+          if (!button.dataset.label) button.dataset.label = label.textContent
+
+          copyText(code.textContent).then(function (ok) {
+            label.textContent = ok ? 'تم النسخ' : 'تعذّر النسخ'
+            button.classList.toggle('is-copied', ok)
+            button.classList.toggle('is-failed', !ok)
+
+            if (live) {
+              live.textContent = ok
+                ? 'تم نسخ الكود'
+                : 'تعذّر النسخ، حدّد الكود يدويًا ثم انسخه'
+            }
+
+            window.clearTimeout(button._timer)
+            button._timer = window.setTimeout(function () {
+              label.textContent = button.dataset.label
+              button.classList.remove('is-copied', 'is-failed')
+            }, 1800)
+          })
+        })
+
+        window.addEventListener('beforeprint', function () {
+          if (printStates !== null) return
+
+          var questions = document.querySelectorAll('details.qa')
+          printStates = Array.prototype.map.call(questions, function (item) {
+            return item.open
+          })
+          questions.forEach(function (item) {
+            item.open = true
+          })
+        })
+
+        window.addEventListener('afterprint', function () {
+          if (printStates === null) return
+
+          var questions = document.querySelectorAll('details.qa')
+          questions.forEach(function (item, index) {
+            item.open = printStates[index] === true
+          })
+          printStates = null
+        })
+      })()
+    </script>
+  </body>
+</html>

@@ -1,0 +1,419 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#fcfcfc" />
+    <title>إدخال المستخدم (Python User Input) | Python Learning Roadmap</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/style.css" />
+  </head>
+  <body>
+    <svg
+      width="0"
+      height="0"
+      style="position: absolute"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <symbol id="i-copy" viewBox="0 0 24 24">
+        <rect x="9" y="9" width="12" height="12" rx="2.5" />
+        <path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15" />
+      </symbol>
+    </svg>
+    <template id="code-block-pattern">
+      <figure class="code-block">
+        <figcaption class="code-head">
+          <span class="code-meta">
+            <span class="code-lang" lang="en">Python</span>
+            <span class="code-file" lang="en">example.py</span>
+          </span>
+          <button
+            type="button"
+            class="btn btn-ghost btn-sm"
+            data-copy-code
+            aria-label="نسخ الكود"
+          >
+            <svg
+              class="btn-icon"
+              viewBox="0 0 24 24"
+              width="14"
+              height="14"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <use href="#i-copy"></use>
+            </svg>
+            <span class="btn-label">نسخ</span>
+          </button>
+        </figcaption>
+        <pre class="code" dir="ltr"><code><!-- ضع الكود هنا كنص HTML مع تهريب الرموز الخاصة --></code></pre>
+        <div class="output" role="group" aria-label="مخرجات البرنامج">
+          <div class="output-label" lang="en">Output</div>
+          <pre dir="ltr"><code><!-- ضع المخرجات المتحققة هنا --></code></pre>
+        </div>
+      </figure>
+    </template>
+
+    <div
+      class="sr-only"
+      id="copy-status"
+      role="status"
+      aria-live="polite"
+    ></div>
+
+    <main class="page">
+      <header class="hero lesson-hero">
+        <span class="eyebrow">
+          <span class="eyebrow-dot"></span>
+          المرحلة <span dir="ltr">02</span>:
+          <span dir="ltr" lang="en">Strings, Operators & Input - النصوص والمعاملات والإدخال</span>
+        </span>
+        <h1>
+          <span class="h1-ar">إدخال المستخدم</span>
+          <span class="h1-en" dir="ltr" lang="en">Python User Input</span>
+        </h1>
+        <p class="hero-description">كيفية تفاعل البرامج مع مستخدميها عبر قراءة البيانات النصية من لوحة المفاتيح ومعالجتها برمجياً باستخدام دالة input() وتحويل أنواع البيانات.</p>
+      </header>
+
+      <div class="lesson-parts">
+        <section class="lesson-part-card" id="complete-lesson" aria-labelledby="complete-lesson-title">
+          <header class="part-header">
+            <div class="part-number">درس متكامل</div>
+            <div class="part-heading">
+              <h2 id="complete-lesson-title">
+                <span class="part-title-en" dir="ltr" lang="en">Complete Lesson</span>
+                <span class="sep" aria-hidden="true"> - </span>
+                <span class="part-title-ar">الشرح والملخص والتطبيق</span>
+              </h2>
+              <span class="part-description">كل محتوى الدرس في ملف HTML واحد</span>
+            </div>
+          </header>
+
+          <div class="lesson-body">
+            <section class="lesson-section" id="explain">
+              <h3 class="section-title"><b>01</b>الشرح</h3>
+              
+              <article class="concept">
+                <h4>1. استقبال البيانات الأساسية عبر دالة <code>input()</code></h4>
+                <p>نحتاج إلى دالة <code>input()</code> عندما نريد أن يتفاعل البرنامج مع المستخدم ويطلب منه إدخال بيانات أثناء وقت التشغيل (Runtime). تعمل الدالة على إيقاف تنفيذ البرنامج مؤقتاً في انتظار كتابة المستخدم للنص وضغط مفتاح الإدخال (Enter)، ثم تعيد ما كتبه المستخدم على شكل سلسلة نصية (<code>str</code>). يفضل تمرير رسالة إرشادية (Prompt) داخل الأقواس لتوضيح المطلوب للمستخدم.</p>
+                <figure class="code-block">
+                  <figcaption class="code-head">
+                    <span class="code-meta">
+                      <span class="code-lang" lang="en">Python</span>
+                      <span class="code-file" lang="en">user_input.py</span>
+                    </span>
+                    <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+                      <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-copy"></use></svg>
+                      <span class="btn-label">نسخ</span>
+                    </button>
+                  </figcaption>
+                  <pre class="code" dir="ltr"><code>username = input("أدخل اسم المستخدم: ")
+print("أهلاً بك يا " + username)</code></pre>
+                  <div class="output" role="group" aria-label="مخرجات البرنامج">
+                    <div class="output-label" lang="en">Output</div>
+                    <pre dir="ltr"><code>أدخل اسم المستخدم: أحمد
+أهلاً بك يا أحمد</code></pre>
+                  </div>
+                </figure>
+              </article>
+
+              <article class="concept">
+                <h4>2. قراءة مدخلات المستخدم وطبيعتها النصية</h4>
+                <p>من أهم القواعد في لغة بايثون أن دالة <code>input()</code> تُرجع القيمة دائماً كـ <code>str</code> بغض النظر عما إذا كتب المستخدم أرقاماً أو رموزاً. هذا يعني أن محاولة جمع رقم مدخل مع رقم آخر مباشرة ستؤدي إلى دمج نصوص (Concatenation) وليس جمعاً رياضياً، مما يستوجب الانتباه لطبيعة البيانات المستلمة قبل إجراء أي عمليات منطقية أو حسابية.</p>
+                <figure class="code-block">
+                  <figcaption class="code-head">
+                    <span class="code-meta">
+                      <span class="code-lang" lang="en">Python</span>
+                      <span class="code-file" lang="en">input_type.py</span>
+                    </span>
+                    <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+                      <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-copy"></use></svg>
+                      <span class="btn-label">نسخ</span>
+                    </button>
+                  </figcaption>
+                  <pre class="code" dir="ltr"><code>user_input = input("أدخل رقماً: ")
+print(type(user_input))</code></pre>
+                  <div class="output" role="group" aria-label="مخرجات البرنامج">
+                    <div class="output-label" lang="en">Output</div>
+                    <pre dir="ltr"><code>أدخل رقماً: 25
+&lt;class 'str'&gt;</code></pre>
+                  </div>
+                </figure>
+              </article>
+
+              <article class="concept">
+                <h4>3. تحويل أنواع البيانات المستلمة (Convert Input Types)</h4>
+                <p>لكي نتمكن من إجراء العمليات الحسابية (مثل الجمع أو المقارنة العددية) على المدخلات الرقمية، يجب تحويل نوع البيانات المستلمة باستخدام دوال التحويل التي تعلمناها سابقاً مثل <code>int()</code> للأعداد الصحيحة أو <code>float()</code> للأعداد العشرية. نضع دالة الإدخال بالكامل داخل دالة التحويل لضمان معالجة القيمة فور استلامها.</p>
+                <figure class="code-block">
+                  <figcaption class="code-head">
+                    <span class="code-meta">
+                      <span class="code-lang" lang="en">Python</span>
+                      <span class="code-file" lang="en">casting_input.py</span>
+                    </span>
+                    <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+                      <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-copy"></use></svg>
+                      <span class="btn-label">نسخ</span>
+                    </button>
+                  </figcaption>
+                  <pre class="code" dir="ltr"><code>age_str = input("أدخل عمرك الحالي: ")
+age_next = int(age_str) + 1
+print("عمرك في العام القادم سيكون:", age_next)</code></pre>
+                  <div class="output" role="group" aria-label="مخرجات البرنامج">
+                    <div class="output-label" lang="en">Output</div>
+                    <pre dir="ltr"><code>أدخل عمرك الحالي: 20
+عمرك في العام القادم سيكون: 21</code></pre>
+                  </div>
+                </figure>
+              </article>
+
+            </section>
+
+            <section class="lesson-section" id="summary">
+              <h3 class="section-title"><b>02</b>الملخص</h3>
+              <ul class="summary-list">
+                <li>تُستخدم دالة <code>input()</code> لقراءة مدخلات المستخدم النصية من لوحة المفاتيح أثناء تشغيل البرنامج.</li>
+                <li>تُرجع دالة <code>input()</code> دائماً قيمة من نوع سلسلة نصية (<code>str</code>) مهما كانت طبيعة المدخل.</li>
+                <li>يمكن تمرير رسالة توجيهية (Prompt) اختيارية داخل أقواس <code>input()</code> لتوضيح المطلوب للمستخدم.</li>
+                <li>لإجراء عمليات حسابية على المدخلات الرقمية، يجب تحويل نوع البيانات باستخدام دوال مثل <code>int()</code> أو <code>float()</code>.</li>
+                <li>إدخال قيم غير صالحة للتحويل (مثل حروف داخل دالة <code>int()</code>) يسبب خطأ في وقت التشغيل من نوع <code>ValueError</code>.</li>
+                <li>من الشائع تغليف دالة الإدخال مباشرة داخل دالة التحويل (مثل <code>int(input())</code>) لكتابة كود أكثر اختصاراً.</li>
+              </ul>
+            </section>
+
+            <section class="lesson-section" id="interview-questions">
+              <h3 class="section-title"><b>03</b>أسئلة المقابلات</h3>
+              <div class="qa-list">
+                
+                <details class="qa" open>
+                  <summary>
+                    <span class="qa-q">ما نوع البيانات الذي تعيده دالة <code>input()</code> افتراضيًا في Python؟</span>
+                    <span class="level level-basic">أساسي</span>
+                  </summary>
+                  <div class="qa-body">
+                    <p>تعيد دالة <code>input()</code> دائمًا قيمة من نوع سلسلة نصية (<code>str</code>)، حتى لو أدخل المستخدم أرقامًا صحيحة أو عشرية.</p>
+                    <p class="qa-follow">لذلك يتطلب الأمر استخدام دوال التحويل مثل <code>int()</code> أو <code>float()</code> إذا أردنا استخدام المدخلات في عمليات حسابية.</p>
+                  </div>
+                </details>
+
+                <details class="qa">
+                  <summary>
+                    <span class="qa-q">كيف يمكنك توجيه المستخدم برسالة واضحة قبل استقبال المدخلات؟</span>
+                    <span class="level level-basic">أساسي</span>
+                  </summary>
+                  <div class="qa-body">
+                    <p>عن طريق تمرير النص التوضيحي كمعامل (Argument) داخل أقواس دالة <code>input("الرسالة: ")</code>.</p>
+                  </div>
+                </details>
+
+                <details class="qa">
+                  <summary>
+                    <span class="qa-q">ماذا يحدث إذا حاول المستخدم إدخال نص (مثل "abc") وقمت بتحويله مباشرة باستخدام <code>int(input())</code>؟</span>
+                    <span class="level level-mid">متوسط</span>
+                  </summary>
+                  <div class="qa-body">
+                    <p>سيؤدي ذلك إلى انهيار البرنامج وتوقف التنفيذ مع ظهور خطأ من نوع <code>ValueError</code>.</p>
+                    <p class="qa-follow">يحدث هذا لأن دالة <code>int()</code> لا يمكنها تفسير الحروف الأبجدية كأعداد صحيحة.</p>
+                  </div>
+                </details>
+
+                <details class="qa">
+                  <summary>
+                    <span class="qa-q">كيف يمكنك دمج رسالة ترحيبية مع قيمة تم إدخالها بواسطة المستخدم في سطر واحد؟</span>
+                    <span class="level level-mid">متوسط</span>
+                  </summary>
+                  <div class="qa-body">
+                    <p>عن طريق استخدام دمج النصوص بالرمز <code>+</code> أو استخدام التنسيق <code>f-strings</code> مع النتيجة المخزنة في المتغير.</p>
+                  </div>
+                </details>
+
+                <details class="qa">
+                  <summary>
+                    <span class="qa-q">هل التعبير <code>x = int(input("أدخل رقماً: ")) + 5</code> آمن تمامًا في جميع الظروف؟</span>
+                    <span class="level level-trap">سؤال فخ</span>
+                  </summary>
+                  <div class="qa-body">
+                    <p>لا، ليس آمنًا تمامًا لأنه عرضة للانهيار الفوري إذا أدخل المستخدم قيمة غير رقمية أو ترك الحقل فارغاً، مما يؤدي إلى <code>ValueError</code>.</p>
+                  </div>
+                </details>
+
+              </div>
+            </section>
+
+            <section class="lesson-section" id="practical">
+              <h3 class="section-title"><b>04</b>المسألة العملية</h3>
+              
+              <div class="callout callout-problem">
+                <p><b>السؤال العملي:</b> اكتب برنامجاً بايثون لحساب نصيب الفرد من إجمالي فاتورة مطعم، بحيث يستقبل البرنامج سعر الوجبة الإجمالي وعدد الأفراد كمدخلات من المستخدم، ثم يضيف نسبة خدمة ثابتة (10%) ويحسب حصة كل فرد بدقة.</p>
+              </div>
+
+              <ol class="solution">
+                <li class="sol-step">
+                  <strong>فهم المطلوب:</strong> نحتاج إلى قراءة قيمتين من المستخدم: الأولى تمثل سعر الوجبة (عشري <code>float</code>)، والثانية تمثل عدد الأفراد (صحيح <code>int</code>)، ثم تطبيق معادلة رياضية لحساب الإجمالي بعد الخدمة وتقسيمه على الأفراد.
+                </li>
+                <li class="sol-step">
+                  <strong>خطة الحل:</strong> استخدام دالة <code>input()</code> مع التحويل الفوري عبر <code>float()</code> و <code>int()</code>، ثم ضرب السعر في معامل الزيادة <code>1.10</code> وقسمة الناتج على عدد الأفراد وطباعة النتيجة.
+                </li>
+                <li class="sol-step">
+                  <strong>الكود الكامل:</strong>
+                  <figure class="code-block">
+                    <figcaption class="code-head">
+                      <span class="code-meta">
+                        <span class="code-lang" lang="en">Python</span>
+                        <span class="code-file" lang="en">restaurant_bill.py</span>
+                      </span>
+                      <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+                        <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-copy"></use></svg>
+                        <span class="btn-label">نسخ</span>
+                      </button>
+                    </figcaption>
+                    <pre class="code" dir="ltr"><code>meal_price = float(input("أدخل سعر الوجبة الإجمالي: "))
+people_count = int(input("أدخل عدد الأفراد: "))
+
+total_with_service = meal_price * 1.10
+share_per_person = total_with_service / people_count
+
+print("إجمالي الفاتورة مع الخدمة:", total_with_service)
+print("نصيب الفرد الشامل للخدمة:", share_per_person)</code></pre>
+                    <div class="output" role="group" aria-label="مخرجات البرنامج">
+                      <div class="output-label" lang="en">Output</div>
+                      <pre dir="ltr"><code>أدخل سعر الوجبة الإجمالي: 200.0
+أدخل عدد الأفراد: 4
+إجمالي الفاتورة مع الخدمة: 220.0
+نصيب الفرد الشامل للخدمة: 55.0</code></pre>
+                    </div>
+                  </figure>
+                </li>
+                <li class="sol-step">
+                  <strong>تفسير القرارات:</strong> استخدمنا <code>float</code> لسعر الوجبة لاحتمال وجود كسور عشرية، واستخدمنا <code>int</code> لعدد الأفراد لأنه عدد أفراد صحيح لا يمكن تجزيئه، واستخدمنا المعامل <code>1.10</code> لإضافة 10% خدمة دفعة واحدة.
+                </li>
+                <li class="sol-step">
+                  <strong>اختبار سريع:</strong> عند إدخال 200.0 و 4 أفراد، يكون إجمالي الخدمة 220.0 ونصيب الفرد 55.0، وهو حساب رياضي صحيح تماماً ومطابق للمتطلبات.
+                </li>
+                <li class="sol-step">
+                  <strong>تحسين أو بديل:</strong> يمكن استخدام دوال تنسيق النصوص أو التقريب (التي تمت دراستها في الدروس السابقة) لتقليص عرض الخانات العشرية إلى منزلتين عشريتين لتبدو النتيجة أكثر احترافية.
+                </li>
+              </ol>
+
+            </section>
+          </div>
+        </section>
+      </div>
+
+      <footer class="footer">
+        <span class="footer-note" lang="en">Python Learning Roadmap</span>
+        <span class="footer-note">المرحلة 02 - الدرس 09</span>
+      </footer>
+    </main>
+
+    <script>
+      (function () {
+        'use strict'
+
+        var live = document.getElementById('copy-status')
+        var printStates = null
+
+        function fallbackCopy(text) {
+          var textarea = document.createElement('textarea')
+          textarea.value = text
+          textarea.setAttribute('readonly', '')
+          textarea.style.cssText = 'position:fixed;top:-1000px;left:-1000px;opacity:0;'
+
+          try {
+            document.body.appendChild(textarea)
+            textarea.focus()
+            textarea.select()
+            textarea.setSelectionRange(0, textarea.value.length)
+            return document.execCommand('copy')
+          } catch (error) {
+            return false
+          } finally {
+            if (textarea.parentNode) {
+              textarea.parentNode.removeChild(textarea)
+            }
+          }
+        }
+
+        function copyText(text) {
+          if (navigator.clipboard && window.isSecureContext) {
+            return navigator.clipboard.writeText(text).then(
+              function () { return true },
+              function () { return fallbackCopy(text) },
+            ).catch(function () { return false })
+          }
+
+          return Promise.resolve().then(function () {
+            return fallbackCopy(text)
+          }).catch(function () {
+            return false
+          })
+        }
+
+        document.addEventListener('click', function (event) {
+          var target = event.target
+          var button = target && typeof target.closest === 'function'
+            ? target.closest('[data-copy-code]')
+            : null
+
+          if (!button) return
+
+          var label = button.querySelector('.btn-label')
+          var block = button.closest('.code-block')
+          var code = block ? block.querySelector('pre.code > code') : null
+          if (!label || !code) return
+
+          if (!button.dataset.label) button.dataset.label = label.textContent
+
+          copyText(code.textContent).then(function (ok) {
+            label.textContent = ok ? 'تم النسخ' : 'تعذّر النسخ'
+            button.classList.toggle('is-copied', ok)
+            button.classList.toggle('is-failed', !ok)
+
+            if (live) {
+              live.textContent = ok
+                ? 'تم نسخ الكود'
+                : 'تعذّر النسخ، حدّد الكود يدويًا ثم انسخه'
+            }
+
+            window.clearTimeout(button._timer)
+            button._timer = window.setTimeout(function () {
+              label.textContent = button.dataset.label
+              button.classList.remove('is-copied', 'is-failed')
+            }, 1800)
+          })
+        })
+
+        window.addEventListener('beforeprint', function () {
+          if (printStates !== null) return
+
+          var questions = document.querySelectorAll('details.qa')
+          printStates = Array.prototype.map.call(questions, function (item) {
+            return item.open
+          })
+          questions.forEach(function (item) {
+            item.open = true
+          })
+        })
+
+        window.addEventListener('afterprint', function () {
+          if (printStates === null) return
+
+          var questions = document.querySelectorAll('details.qa')
+          questions.forEach(function (item, index) {
+            item.open = printStates[index] === true
+          })
+          printStates = null
+        })
+      })()
+    </script>
+  </body>
+</html>

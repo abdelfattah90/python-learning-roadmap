@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#fcfcfc" />
+    <title>التغليف والفئات الداخلية | Python Learning Roadmap</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/style.css" />
+  </head>
+  <body>
+    <svg
+      width="0"
+      height="0"
+      style="position: absolute"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <symbol id="i-copy" viewBox="0 0 24 24">
+        <rect x="9" y="9" width="12" height="12" rx="2.5" />
+        <path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15" />
+      </symbol>
+    </svg>
+    <template id="code-block-pattern">
+      <figure class="code-block">
+        <figcaption class="code-head">
+          <span class="code-meta">
+            <span class="code-lang" lang="en">Python</span>
+            <span class="code-file" lang="en">example.py</span>
+          </span>
+          <button
+            type="button"
+            class="btn btn-ghost btn-sm"
+            data-copy-code
+            aria-label="نسخ الكود"
+          >
+            <svg
+              class="btn-icon"
+              viewBox="0 0 24 24"
+              width="14"
+              height="14"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <use href="#i-copy"></use>
+            </svg>
+            <span class="btn-label">نسخ</span>
+          </button>
+        </figcaption>
+        <pre class="code" dir="ltr"><code><!-- ضع الكود هنا كنص HTML مع تهريب الرموز الخاصة --></code></pre>
+        <!-- احذف كتلة output إذا لم يكن للمثال ناتج ثابت ومفيد. -->
+        <div class="output" role="group" aria-label="مخرجات البرنامج">
+          <div class="output-label" lang="en">Output</div>
+          <pre dir="ltr"><code><!-- ضع المخرجات المتحققة هنا --></code></pre>
+        </div>
+      </figure>
+    </template>
+
+    <div
+      class="sr-only"
+      id="copy-status"
+      role="status"
+      aria-live="polite"
+    ></div>
+
+    <main class="page">
+      <header class="hero lesson-hero">
+        <span class="eyebrow">
+          <span class="eyebrow-dot"></span>
+          المرحلة <span dir="ltr">06</span>:
+          <span dir="ltr" lang="en">Object-Oriented Programming</span>
+        </span>
+        <h1>
+          <span class="h1-ar">التغليف والفئات الداخلية</span>
+          <span class="h1-en" dir="ltr" lang="en">Python Encapsulation &amp; Inner Classes</span>
+        </h1>
+        <p class="hero-description">كيف تحمي حالة الكائن من التعديل الخاطئ، وكيف تنظّم الفئات المساعدة داخل الفئة التي تخدمها.</p>
+      </header>
+
+      <div class="lesson-parts">
+        <section class="lesson-part-card" id="complete-lesson" aria-labelledby="complete-lesson-title">
+          <header class="part-header">
+            <div class="part-number">درس متكامل</div>
+            <div class="part-heading">
+              <h2 id="complete-lesson-title">
+                <span class="part-title-en" dir="ltr" lang="en">Complete Lesson</span>
+                <span class="sep" aria-hidden="true"> - </span>
+                <span class="part-title-ar">الشرح والملخص والتطبيق</span>
+              </h2>
+              <span class="part-description">كل محتوى الدرس في ملف HTML واحد</span>
+            </div>
+          </header>
+
+          <div class="lesson-body">
+            <section class="lesson-section" id="explain">
+              <h3 class="section-title"><b>01</b>الشرح</h3>
+              <article class="concept"><h4>Public وProtected وPrivate Members</h4><p>كل class له واجهة يستخدمها الآخرون وتفاصيل داخلية يجب أن تبقى حرة التغيير. Python لا يفرض الوصول بكلمات مفتاحية، بل يعتمد على اتفاقيات تسمية:</p><ul><li><b>Public</b>: مثل <code dir="ltr">owner</code> بلا شرطة سفلية؛ جزء من الواجهة الرسمية.</li><li><b>Protected</b>: مثل <code dir="ltr">_branch</code> بشرطة واحدة؛ اتفاق بأنه للـ class وأبنائه (subclasses)، ولا يمنعك Python من الوصول إليه.</li><li><b>Private</b>: مثل <code dir="ltr">__balance</code> بشرطتين؛ يعيد Python تسميته إلى <code dir="ltr">_BankAccount__balance</code> (name mangling) لتفادي التعارض والوصول العرضي.</li></ul><figure class="code-block"><figcaption class="code-head"><span class="code-meta"><span class="code-lang" lang="en">Python</span><span class="code-file" lang="en">access_levels.py</span></span><button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود"><svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-copy"></use></svg><span class="btn-label">نسخ</span></button></figcaption><pre class="code" dir="ltr"><code>class BankAccount:
+    def __init__(self, owner, balance):
+        self.owner = owner           # public
+        self._branch = "Cairo"       # protected (convention)
+        self.__balance = balance     # private (name mangling)
+
+account = BankAccount("Mona", 1500)
+print(account.owner)
+print(account._branch)
+try:
+    print(account.__balance)
+except AttributeError:
+    print("AttributeError")
+print(account._BankAccount__balance)</code></pre><div class="output" role="group" aria-label="مخرجات البرنامج"><div class="output-label" lang="en">Output</div><pre dir="ltr"><code>Mona
+Cairo
+AttributeError
+1500</code></pre></div></figure><p>الخطأ الشائع: اعتبار <code dir="ltr">__x</code> حماية حقيقية. هو يمنع الوصول العرضي والتعارض في الوراثة فقط، ويمكن الوصول إليه بالاسم المعدّل.</p></article><article class="concept"><h4>Data Encapsulation</h4><p>التغليف هو جمع البيانات والدوال التي تعالجها في class واحد، وإخفاء الحالة الداخلية خلف واجهة تتحقق من القيم. بدونه يستطيع أي كود كتابة <code dir="ltr">account.balance = -999</code> وكسر منطق البرنامج.</p><p>الأسلوب المعتاد: attribute خاص، مع <code dir="ltr">@property</code> للقراءة، ودوال مثل <code dir="ltr">deposit</code> تعدّل الحالة بعد التحقق. استخدمه كلما وُجدت قاعدة (invariant) يجب حفظها. القيد: property بلا setter يرفع <code dir="ltr">AttributeError</code> عند الإسناد.</p><figure class="code-block"><figcaption class="code-head"><span class="code-meta"><span class="code-lang" lang="en">Python</span><span class="code-file" lang="en">encapsulation.py</span></span><button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود"><svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-copy"></use></svg><span class="btn-label">نسخ</span></button></figcaption><pre class="code" dir="ltr"><code>class Account:
+    def __init__(self, owner):
+        self.owner = owner
+        self.__balance = 0
+
+    @property
+    def balance(self):
+        return self.__balance
+
+    def deposit(self, amount):
+        if amount &lt;= 0:
+            raise ValueError("amount must be positive")
+        self.__balance += amount
+
+account = Account("Omar")
+account.deposit(200)
+print(account.balance)
+try:
+    account.balance = 5
+except AttributeError:
+    print("balance is read-only")</code></pre><div class="output" role="group" aria-label="مخرجات البرنامج"><div class="output-label" lang="en">Output</div><pre dir="ltr"><code>200
+balance is read-only</code></pre></div></figure></article><article class="concept"><h4>Nested Classes وInner Classes</h4><p>Nested class هو class معرَّف داخل جسم class آخر. نستعمله لتجميع class مساعد لا معنى له إلا مع الـ outer، فلا نلوّث الـ namespace العام. ونسمّيه عادةً Inner class عندما يُنشئه الـ outer ويستخدمه داخليًا.</p><p>في Python هو ببساطة class attribute للـ outer، فنصل إليه بـ <code dir="ltr">self.Battery(...)</code> من الداخل أو <code dir="ltr">Laptop.Battery(...)</code> من الخارج. تنبيه: لا يوجد ربط تلقائي بين كائن inner وكائن outer.</p><figure class="code-block"><figcaption class="code-head"><span class="code-meta"><span class="code-lang" lang="en">Python</span><span class="code-file" lang="en">nested_classes.py</span></span><button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود"><svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-copy"></use></svg><span class="btn-label">نسخ</span></button></figcaption><pre class="code" dir="ltr"><code>class Laptop:
+    class Battery:
+        def __init__(self, capacity):
+            self.capacity = capacity
+
+    def __init__(self, model):
+        self.model = model
+        self.battery = self.Battery(5000)
+
+laptop = Laptop("ProBook")
+print(laptop.battery.capacity)
+spare = Laptop.Battery(3000)
+print(spare.capacity)</code></pre><div class="output" role="group" aria-label="مخرجات البرنامج"><div class="output-label" lang="en">Output</div><pre dir="ltr"><code>5000
+3000</code></pre></div></figure></article><article class="concept"><h4>Outer Class Access</h4><p>الاتجاه Outer → Inner سهل عبر <code dir="ltr">self.Inner</code> أو <code dir="ltr">Outer.Inner</code>. أما Inner → Outer فلا يرى الـ inner كائن الـ outer ولا أسماءه، لأن جسم الـ class لا يكوّن scope تراه الدوال المتداخلة (كما في درس Scope). الحل: تمرير مرجع الـ outer instance صراحةً وتخزينه.</p><p>يمكن للـ inner قراءة class attributes للـ outer عبر اسم الـ outer وقت التنفيذ، مثل <code dir="ltr">Course.platform</code>. الخطأ الشائع: استخدام <code dir="ltr">name</code> داخل الـ inner مباشرة فيحدث <code dir="ltr">NameError</code>.</p><figure class="code-block"><figcaption class="code-head"><span class="code-meta"><span class="code-lang" lang="en">Python</span><span class="code-file" lang="en">outer_access.py</span></span><button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود"><svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-copy"></use></svg><span class="btn-label">نسخ</span></button></figcaption><pre class="code" dir="ltr"><code>class Course:
+    platform = "LearnHub"
+
+    class Lesson:
+        def __init__(self, course, title):
+            self.course = course
+            self.title = title
+
+        def label(self):
+            return f"{Course.platform} | {self.course.name}: {self.title}"
+
+    def __init__(self, name):
+        self.name = name
+
+    def new_lesson(self, title):
+        return self.Lesson(self, title)
+
+lesson = Course("Python OOP").new_lesson("Encapsulation")
+print(lesson.label())</code></pre><div class="output" role="group" aria-label="مخرجات البرنامج"><div class="output-label" lang="en">Output</div><pre dir="ltr"><code>LearnHub | Python OOP: Encapsulation</code></pre></div></figure></article>
+            </section>
+
+            <section class="lesson-section" id="summary">
+              <h3 class="section-title"><b>02</b>الملخص</h3>
+              <ul class="summary-list">
+                <li>Python يعتمد على الاتفاقيات: Public بلا شرطة، Protected بشرطة <code dir="ltr">_</code>، Private بشرطتين <code dir="ltr">__</code>.</li><li>Private يخضع لـ name mangling إلى <code dir="ltr">_ClassName__name</code>؛ هدفه تفادي التعارض لا الأمان.</li><li>Data Encapsulation يعني إخفاء الحالة خلف واجهة تتحقق من القيم قبل تعديلها.</li><li>استخدم <code dir="ltr">@property</code> للقراءة المحكومة، ودوال مثل <code dir="ltr">deposit</code> للتعديل مع validation.</li><li>Nested/Inner class هو class attribute للـ outer، ويُستخدم لتجميع الفئات المساعدة.</li><li>الـ inner لا يرى كائن الـ outer تلقائيًا؛ مرّر المرجع صراحةً مثل <code dir="ltr">self.Lesson(self, title)</code>.</li>
+              </ul>
+            </section>
+
+            <section class="lesson-section" id="interview-questions">
+              <h3 class="section-title"><b>03</b>أسئلة المقابلات</h3>
+              <div class="qa-list">
+                <details class="qa" open><summary><span class="qa-q">ما الفرق بين Public وProtected وPrivate members في Python؟</span><span class="level level-basic">أساسي</span></summary><div class="qa-body"><p>Public يُكتب بلا شرطة ويمثل الواجهة المعتمدة. Protected يبدأ بـ <code dir="ltr">_</code> وهو اتفاق على الاستخدام الداخلي وللـ subclasses، ولا يمنعه Python. Private يبدأ بـ <code dir="ltr">__</code> ويخضع لـ name mangling فيصبح <code dir="ltr">_ClassName__name</code>، لكنه يبقى قابلًا للوصول إن عُرف الاسم المعدّل.</p></div></details><details class="qa"><summary><span class="qa-q">ما هو Data Encapsulation ولماذا نحتاجه؟</span><span class="level level-basic">أساسي</span></summary><div class="qa-body"><p>هو ربط البيانات بالدوال التي تعالجها داخل class واحد وإخفاء الحالة الداخلية خلف واجهة محكومة. فائدته حماية الـ invariants (مثل منع الرصيد السالب) وتغيير التنفيذ الداخلي دون كسر من يستخدم الـ class.</p><p class="qa-follow">متابعة: لا تكتب setter لكل attribute؛ استخدمه فقط عند وجود validation أو قاعدة تستحق الحماية.</p></div></details><details class="qa"><summary><span class="qa-q">ما هو name mangling، وماذا يحدث لـ <code dir="ltr">__x</code> عند الوراثة؟</span><span class="level level-mid">متوسط</span></summary><div class="qa-body"><p>داخل جسم الـ class يعيد Python كتابة <code dir="ltr">__x</code> إلى <code dir="ltr">_ClassName__x</code>. فإذا عرّف الـ parent والـ child الاسم نفسه صار لكل منهما attribute مستقل ولا يطغى أحدهما على الآخر. الغرض منع التعارض غير المقصود لا إخفاء البيانات أمنيًا.</p></div></details><details class="qa"><summary><span class="qa-q">كيف يصل inner class إلى بيانات كائن الـ outer class؟</span><span class="level level-mid">متوسط</span></summary><div class="qa-body"><p>لا يوجد ربط تلقائي؛ الـ inner مجرد class attribute للـ outer. نمرّر مرجع الـ outer instance صراحةً عند الإنشاء مثل <code dir="ltr">self.Lesson(self, title)</code> ونحفظه في attribute مثل <code dir="ltr">self.course</code>، ثم يقرأ الـ inner بيانات الـ outer عبره.</p></div></details><details class="qa"><summary><span class="qa-q">ماذا يحدث عند تنفيذ <code dir="ltr">account.__balance = 5</code> من خارج الـ class؟ هل يغيّر الرصيد الحقيقي؟</span><span class="level level-trap">فخ</span></summary><div class="qa-body"><p>لا. name mangling يُطبَّق فقط على الكود المكتوب داخل جسم الـ class، فالإسناد من الخارج ينشئ attribute جديدًا اسمه الحرفي <code dir="ltr">__balance</code> ولا يلمس <code dir="ltr">_Account__balance</code>. يعمل الكود بلا خطأ ويعطي إحساسًا زائفًا بالتعديل بينما الرصيد الحقيقي لم يتغير.</p></div></details>
+              </div>
+            </section>
+
+            <section class="lesson-section" id="practical">
+              <h3 class="section-title"><b>04</b>المسألة العملية</h3>
+              <div class="callout callout-problem"><p>المطلوب محفظة إلكترونية <code dir="ltr">Wallet</code> لطالب: الرصيد يبدأ من صفر ولا يمكن تعديله من الخارج مباشرة. العمليتان المسموحتان إيداع وسحب بمبلغ موجب، ولا يُسمح بسحب أكبر من الرصيد. كل عملية ناجحة تُسجَّل ككائن <code dir="ltr">Transaction</code> ويمكن طباعة تقرير بها.</p></div>
+              <ol class="solution">
+                <li class="sol-step"><h4>فهم المطلوب</h4><p>بناء <code dir="ltr">Wallet</code> لا يُعدَّل رصيدها إلا عبر عمليات صالحة، مع سجل عمليات يستخدم inner class باسم <code dir="ltr">Transaction</code>.</p></li><li class="sol-step"><h4>خطة الحل</h4><p>الرصيد في <code dir="ltr">__balance</code> مع <code dir="ltr">@property</code> للقراءة؛ دالة واحدة <code dir="ltr">apply_change</code> تتحقق ثم تعدّل وتسجّل؛ <code dir="ltr">Transaction</code> تستقبل الـ wallet لتصل إلى اسم المالك؛ و<code dir="ltr">report()</code> تعيد نصوصًا بدل كشف <code dir="ltr">_history</code>.</p></li><li class="sol-step"><h4>الكود الكامل</h4><figure class="code-block"><figcaption class="code-head"><span class="code-meta"><span class="code-lang" lang="en">Python</span><span class="code-file" lang="en">wallet.py</span></span><button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود"><svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-copy"></use></svg><span class="btn-label">نسخ</span></button></figcaption><pre class="code" dir="ltr"><code>class Wallet:
+    class Transaction:
+        def __init__(self, wallet, kind, amount):
+            self.wallet, self.kind, self.amount = wallet, kind, amount
+
+        def describe(self):
+            return f"{self.wallet.owner}: {self.kind} {self.amount}"
+
+    def __init__(self, owner):
+        self.owner, self.__balance, self._history = owner, 0, []
+
+    @property
+    def balance(self):
+        return self.__balance
+
+    def apply_change(self, kind, amount):
+        delta = amount if kind == "deposit" else -amount
+        if amount &lt;= 0 or self.__balance + delta &lt; 0:
+            raise ValueError("invalid amount")
+        self.__balance += delta
+        self._history.append(self.Transaction(self, kind, amount))
+
+    def report(self):
+        return [item.describe() for item in self._history]</code></pre></figure></li><li class="sol-step"><h4>تفسير القرارات</h4><p>الرصيد private لأن كل تعديل يجب أن يمر بالتحقق. السجل <code dir="ltr">_history</code> protected لأنه تفصيل داخلي. <code dir="ltr">Transaction</code> nested لأنها لا تُستخدم خارج <code dir="ltr">Wallet</code>. و<code dir="ltr">self</code> يُمرَّر صراحةً لأن الـ inner لا يرى كائن الـ outer.</p></li><li class="sol-step"><h4>اختبار سريع</h4><p>أضف هذا أسفل كود <code dir="ltr">wallet.py</code> ثم شغّله:</p><figure class="code-block"><figcaption class="code-head"><span class="code-meta"><span class="code-lang" lang="en">Python</span><span class="code-file" lang="en">wallet_demo.py</span></span><button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود"><svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-copy"></use></svg><span class="btn-label">نسخ</span></button></figcaption><pre class="code" dir="ltr"><code>wallet = Wallet("Mona")
+wallet.apply_change("deposit", 500)
+wallet.apply_change("withdraw", 120)
+print(wallet.balance)
+for line in wallet.report():
+    print(line)
+try:
+    wallet.apply_change("withdraw", 900)
+except ValueError:
+    print("rejected")</code></pre><div class="output" role="group" aria-label="مخرجات البرنامج"><div class="output-label" lang="en">Output</div><pre dir="ltr"><code>380
+Mona: deposit 500
+Mona: withdraw 120
+rejected</code></pre></div></figure></li><li class="sol-step"><h4>تحسين أو بديل</h4><p><code dir="ltr">report()</code> تنشئ list جديدة فلا يمكن العبث بالسجل من الخارج. وإذا احتاجت <code dir="ltr">Transaction</code> فقط إلى اسم المالك فمرّر <code dir="ltr">owner</code> بدل الـ wallet لتقليل الاعتماد المتبادل، وإذا صارت تُستخدم مستقلةً فاجعلها class عاديًا على مستوى الملف.</p></li>
+              </ol>
+            </section>
+          </div>
+        </section>
+      </div>
+
+      <footer class="footer">
+        <span class="footer-note" lang="en">Python Learning Roadmap</span>
+        <span class="footer-note">المرحلة 06 - الدرس 31</span>
+      </footer>
+    </main>
+
+    <script>
+      (function () {
+        'use strict'
+
+        var live = document.getElementById('copy-status')
+        var printStates = null
+
+        function fallbackCopy(text) {
+          var textarea = document.createElement('textarea')
+          textarea.value = text
+          textarea.setAttribute('readonly', '')
+          textarea.style.cssText = 'position:fixed;top:-1000px;left:-1000px;opacity:0;'
+
+          try {
+            document.body.appendChild(textarea)
+            textarea.focus()
+            textarea.select()
+            textarea.setSelectionRange(0, textarea.value.length)
+            return document.execCommand('copy')
+          } catch (error) {
+            return false
+          } finally {
+            if (textarea.parentNode) {
+              textarea.parentNode.removeChild(textarea)
+            }
+          }
+        }
+
+        function copyText(text) {
+          if (navigator.clipboard && window.isSecureContext) {
+            return navigator.clipboard.writeText(text).then(
+              function () { return true },
+              function () { return fallbackCopy(text) },
+            ).catch(function () { return false })
+          }
+
+          return Promise.resolve().then(function () {
+            return fallbackCopy(text)
+          }).catch(function () {
+            return false
+          })
+        }
+
+        document.addEventListener('click', function (event) {
+          var target = event.target
+          var button = target && typeof target.closest === 'function'
+            ? target.closest('[data-copy-code]')
+            : null
+
+          if (!button) return
+
+          var label = button.querySelector('.btn-label')
+          var block = button.closest('.code-block')
+          var code = block ? block.querySelector('pre.code > code') : null
+          if (!label || !code) return
+
+          if (!button.dataset.label) button.dataset.label = label.textContent
+
+          copyText(code.textContent).then(function (ok) {
+            label.textContent = ok ? 'تم النسخ' : 'تعذّر النسخ'
+            button.classList.toggle('is-copied', ok)
+            button.classList.toggle('is-failed', !ok)
+
+            if (live) {
+              live.textContent = ok
+                ? 'تم نسخ الكود'
+                : 'تعذّر النسخ، حدّد الكود يدويًا ثم انسخه'
+            }
+
+            window.clearTimeout(button._timer)
+            button._timer = window.setTimeout(function () {
+              label.textContent = button.dataset.label
+              button.classList.remove('is-copied', 'is-failed')
+            }, 1800)
+          })
+        })
+
+        window.addEventListener('beforeprint', function () {
+          if (printStates !== null) return
+
+          var questions = document.querySelectorAll('details.qa')
+          printStates = Array.prototype.map.call(questions, function (item) {
+            return item.open
+          })
+          questions.forEach(function (item) {
+            item.open = true
+          })
+        })
+
+        window.addEventListener('afterprint', function () {
+          if (printStates === null) return
+
+          var questions = document.querySelectorAll('details.qa')
+          questions.forEach(function (item, index) {
+            item.open = printStates[index] === true
+          })
+          printStates = null
+        })
+      })()
+    </script>
+  </body>
+</html>

@@ -1,0 +1,418 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#fcfcfc" />
+    <title>إدارة الحزم والبيئات الافتراضية | Python Learning Roadmap</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/style.css" />
+  </head>
+  <body>
+    <svg
+      width="0"
+      height="0"
+      style="position: absolute"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <symbol id="i-copy" viewBox="0 0 24 24">
+        <rect x="9" y="9" width="12" height="12" rx="2.5" />
+        <path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15" />
+      </symbol>
+    </svg>
+    <template id="code-block-pattern">
+      <figure class="code-block">
+        <figcaption class="code-head">
+          <span class="code-meta">
+            <span class="code-lang" lang="en">Python</span>
+            <span class="code-file" lang="en">example.py</span>
+          </span>
+          <button
+            type="button"
+            class="btn btn-ghost btn-sm"
+            data-copy-code
+            aria-label="نسخ الكود"
+          >
+            <svg
+              class="btn-icon"
+              viewBox="0 0 24 24"
+              width="14"
+              height="14"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <use href="#i-copy"></use>
+            </svg>
+            <span class="btn-label">نسخ</span>
+          </button>
+        </figcaption>
+        <pre class="code" dir="ltr"><code><!-- ضع الكود هنا كنص HTML مع تهريب الرموز الخاصة --></code></pre>
+        <!-- احذف كتلة output إذا لم يكن للمثال ناتج ثابت ومفيد. -->
+        <div class="output" role="group" aria-label="مخرجات البرنامج">
+          <div class="output-label" lang="en">Output</div>
+          <pre dir="ltr"><code><!-- ضع المخرجات المتحققة هنا --></code></pre>
+        </div>
+      </figure>
+    </template>
+
+    <div
+      class="sr-only"
+      id="copy-status"
+      role="status"
+      aria-live="polite"
+    ></div>
+
+    <main class="page">
+      <header class="hero lesson-hero">
+        <span class="eyebrow">
+          <span class="eyebrow-dot"></span>
+          المرحلة <span dir="ltr">09</span>:
+          <span dir="ltr" lang="en">Packages &amp; Standard Library</span>
+        </span>
+        <h1>
+          <span class="h1-ar">إدارة الحزم والبيئات الافتراضية</span>
+          <span class="h1-en" dir="ltr" lang="en">Python PIP &amp; VirtualEnv</span>
+        </h1>
+        <p class="hero-description">كيف تثبّت مكتبات الآخرين وتحذفها وتعرضها، وكيف تعزل اعتماديات كل مشروع في بيئة افتراضية خاصة وتسجّلها في requirements.txt ليعمل مشروعك على أي جهاز.</p>
+      </header>
+
+      <div class="lesson-parts">
+        <section class="lesson-part-card" id="complete-lesson" aria-labelledby="complete-lesson-title">
+          <header class="part-header">
+            <div class="part-number">درس متكامل</div>
+            <div class="part-heading">
+              <h2 id="complete-lesson-title">
+                <span class="part-title-en" dir="ltr" lang="en">Complete Lesson</span>
+                <span class="sep" aria-hidden="true"> - </span>
+                <span class="part-title-ar">الشرح والملخص والتطبيق</span>
+              </h2>
+              <span class="part-description">كل محتوى الدرس في ملف HTML واحد</span>
+            </div>
+          </header>
+
+          <div class="lesson-body">
+            <section class="lesson-section" id="explain">
+              <h3 class="section-title"><b>01</b>الشرح</h3>
+              
+<article class="concept">
+        <h4>إدارة الحزم و <span dir="ltr" lang="en">PyPI</span></h4>
+        <p>بدل أن تكتب كل شيء بنفسك، تستخدم Package جاهزًا (مثل <code dir="ltr">requests</code> للتعامل مع HTTP). <strong>Package Management</strong> هو تثبيت هذه الحزم وتحديثها وحذفها وتتبّع إصداراتها، وأداتها الرسمية هي <code dir="ltr">pip</code>.</p>
+        <p>يجلب pip الحزم افتراضيًا من <strong>PyPI</strong> (Python Package Index)، وهو المستودع المركزي العام. الفرق: PyPI هو «المخزن»، وpip هو «أداة التحميل». عند التثبيت تُنسخ الحزمة إلى مجلد <code dir="ltr">site-packages</code> الخاص بالـ interpreter الذي يشغّل pip.</p>
+        <p><strong>تنبيه:</strong> اكتب <code dir="ltr">python -m pip</code> بدل <code dir="ltr">pip</code> وحده، لتضمن أن الحزمة تُثبَّت للمفسّر نفسه الذي ستشغّل به كودك. وراجع تهجئة اسم الحزمة، فالنشر على PyPI مفتوح وقد توجد أسماء مقلَّدة خبيثة.</p>
+      </article>
+      <article class="concept">
+        <h4>التثبيت والحذف وعرض الحزم</h4>
+        <p><strong>Install Packages:</strong> <code dir="ltr">install</code> يجلب أحدث إصدار متوافق مع نسخة Python لديك مع كل ما تعتمد عليه الحزمة (dependencies). تحدّد إصدارًا معيّنًا بـ <code dir="ltr">==</code> وتُرقّي بـ <code dir="ltr">--upgrade</code>. <strong>Uninstall Packages:</strong> <code dir="ltr">uninstall</code> يحذف الحزمة بعد طلب تأكيد (يتخطاه <code dir="ltr">-y</code>). <strong>List Installed Packages:</strong> <code dir="ltr">list</code> يعرض كل ما هو مثبّت بإصداراته، و<code dir="ltr">show</code> يعرض تفاصيل حزمة واحدة (الإصدار، الموقع، وما تعتمد عليه).</p>
+        <figure class="code-block">
+        <figcaption class="code-head">
+          <span class="code-meta">
+            <span class="code-lang" lang="en">Shell</span>
+            <span class="code-file" lang="en">pip-basics.sh</span>
+          </span>
+          <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+            <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-copy"></use></svg>
+            <span class="btn-label">نسخ</span>
+          </button>
+        </figcaption>
+        <pre class="code" dir="ltr"><code># install
+python -m pip install requests
+python -m pip install requests==2.31.0
+python -m pip install --upgrade requests
+# list
+python -m pip list
+python -m pip show requests
+# uninstall
+python -m pip uninstall requests</code></pre>
+      </figure>
+        <p><strong>قيد مهم:</strong> <code dir="ltr">uninstall</code> يحذف الحزمة المطلوبة فقط، ولا يحذف الحزم التي جُلبت معها تلقائيًا.</p>
+      </article>
+      <article class="concept">
+        <h4>البيئات الافتراضية: الإنشاء والتفعيل</h4>
+        <p>لو ثبّتّ كل شيء في المفسّر العام فسيتعارض مشروع يحتاج <code dir="ltr">requests==2.28</code> مع آخر يحتاج <code dir="ltr">2.31</code>. <strong>Virtual Environment</strong> مجلد معزول يحوي مفسّرًا و<code dir="ltr">site-packages</code> خاصين بالمشروع، فلكل مشروع حزمه وإصداراته.</p>
+        <p><strong>Create Environment:</strong> الأمر <code dir="ltr">python -m venv .venv</code> (وحدة venv مدمجة) ينشئ المجلد. <strong>Activate Environment:</strong> التفعيل يضع مجلد البيئة أول <code dir="ltr">PATH</code> في الطرفية، فيشير <code dir="ltr">python</code> و<code dir="ltr">pip</code> إلى البيئة ويظهر <code dir="ltr">(.venv)</code> قبل الـ prompt؛ و<code dir="ltr">deactivate</code> يعيد الوضع السابق.</p>
+        <figure class="code-block">
+        <figcaption class="code-head">
+          <span class="code-meta">
+            <span class="code-lang" lang="en">Shell</span>
+            <span class="code-file" lang="en">venv-commands.sh</span>
+          </span>
+          <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+            <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-copy"></use></svg>
+            <span class="btn-label">نسخ</span>
+          </button>
+        </figcaption>
+        <pre class="code" dir="ltr"><code># Linux / macOS
+python3 -m venv .venv
+source .venv/bin/activate
+
+# Windows (PowerShell)
+python -m venv .venv
+.venv\Scripts\Activate.ps1
+
+# Windows (cmd)
+.venv\Scripts\activate.bat
+
+# leave the environment
+deactivate</code></pre>
+      </figure>
+        <p><strong>قيد مهم:</strong> البيئة غير قابلة للنقل؛ لا تنسخ مجلدها إلى جهاز آخر ولا ترفعه إلى Git، بل أعد إنشاءه من ملف الاعتماديات. وفي PowerShell قد تمنع Execution Policy سكربت التفعيل.</p>
+      </article>
+      <article class="concept">
+        <h4>إدارة الاعتماديات (Manage Dependencies)</h4>
+        <p>لكي يعمل مشروعك عند زميلك أو على الخادم تحتاج قائمة بالحزم وإصداراتها. الملف المعتاد هو <code dir="ltr">requirements.txt</code>: سطر لكل حزمة. <code dir="ltr">pip freeze</code> يكتب المثبّت بصيغة <code dir="ltr">name==version</code>، و<code dir="ltr">install -r</code> يثبّت القائمة كلها.</p>
+        <p>المحدّدات: <code dir="ltr">==</code> إصدار ثابت (أنسب لتكرار النتائج)، <code dir="ltr">&gt;=</code> حدّ أدنى، <code dir="ltr">~=2.31</code> تحديثات متوافقة (تعني <code dir="ltr">&gt;=2.31, ==2.*</code>)، والفاصلة تجمع الشروط.</p>
+        <figure class="code-block">
+        <figcaption class="code-head">
+          <span class="code-meta">
+            <span class="code-lang" lang="en">Shell</span>
+            <span class="code-file" lang="en">dependencies.sh</span>
+          </span>
+          <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+            <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-copy"></use></svg>
+            <span class="btn-label">نسخ</span>
+          </button>
+        </figcaption>
+        <pre class="code" dir="ltr"><code># inside the activated environment
+python -m pip freeze &gt; requirements.txt
+python -m pip install -r requirements.txt
+python -m pip install "flask&gt;=3.0,&lt;4.0"</code></pre>
+      </figure>
+        <p><strong>تنبيه:</strong> نفّذ freeze داخل البيئة المفعّلة وإلا ستسجّل حزم المفسّر العام. وهو يسجّل أيضًا الاعتماديات غير المباشرة (transitive dependencies) وليس ما ثبّتّه بنفسك فقط.</p>
+      </article>
+            </section>
+
+            <section class="lesson-section" id="summary">
+              <h3 class="section-title"><b>02</b>الملخص</h3>
+              <ul class="summary-list">
+                                <li>pip هو أداة التثبيت، وPyPI هو المستودع الذي تأتي منه الحزم؛ واستخدم <code dir="ltr">python -m pip</code> لربط pip بالمفسّر الصحيح.</li>
+                <li><code dir="ltr">install</code> يجلب الحزمة مع dependencies؛ ويمكن تحديد إصدار بـ <code dir="ltr">==</code> أو الترقية بـ <code dir="ltr">--upgrade</code>.</li>
+                <li><code dir="ltr">list</code> و<code dir="ltr">show</code> يكشفان ما هو مثبّت، و<code dir="ltr">uninstall</code> يحذف الحزمة المطلوبة فقط دون dependencies.</li>
+                <li>الـ Virtual Environment يعزل حزم كل مشروع عن غيره ويمنع تعارض الإصدارات.</li>
+                <li>أنشئ البيئة بـ <code dir="ltr">python -m venv .venv</code> وفعّلها حسب نظامك؛ ولا تنسخها ولا ترفعها إلى Git.</li>
+                <li>سجّل الاعتماديات في <code dir="ltr">requirements.txt</code> بـ <code dir="ltr">pip freeze</code> وأعد بناءها بـ <code dir="ltr">pip install -r</code>.</li>
+              </ul>
+            </section>
+
+            <section class="lesson-section" id="interview-questions">
+              <h3 class="section-title"><b>03</b>أسئلة المقابلات</h3>
+              <div class="qa-list">
+                <details class="qa" open>
+                  <summary><span class="qa-q">ما الفرق بين pip وPyPI؟</span><span class="level level-basic">أساسي</span></summary>
+                  <div class="qa-body"><p>PyPI مستودع مركزي على الإنترنت يحوي آلاف الحزم، أما pip فهو أداة سطر الأوامر التي تبحث فيه وتنزّل الحزمة وتثبّتها في المفسّر. يمكن لـ pip أيضًا التثبيت من مصادر أخرى مثل ملف محلي أو مستودع Git.</p></div>
+                </details>
+                <details class="qa">
+                  <summary><span class="qa-q">لماذا نستخدم Virtual Environment لكل مشروع؟</span><span class="level level-basic">أساسي</span></summary>
+                  <div class="qa-body"><p>لأن المشاريع تحتاج إصدارات مختلفة من الحزمة نفسها، والمفسّر العام لا يحمل إلا إصدارًا واحدًا منها. العزل يمنع التعارض، ويحمي حزم النظام من العبث، ويجعل قائمة اعتماديات المشروع دقيقة.</p></div>
+                </details>
+                <details class="qa">
+                  <summary><span class="qa-q">ماذا يفعل activate فعليًا؟ وهل هو ضروري؟</span><span class="level level-mid">متوسط</span></summary>
+                  <div class="qa-body"><p>يضيف مجلد <code dir="ltr">.venv/bin</code> (أو <code dir="ltr">Scripts</code> في Windows) إلى بداية <code dir="ltr">PATH</code> في الطرفية الحالية فقط، فيصبح <code dir="ltr">python</code> و<code dir="ltr">pip</code> هما نسختا البيئة. ليس ضروريًا؛ يمكنك استدعاء <code dir="ltr">.venv/bin/python</code> مباشرة، وهذا شائع في السكربتات الآلية.</p></div>
+                </details>
+                <details class="qa">
+                  <summary><span class="qa-q">ما الفرق بين كتابة requirements.txt يدويًا وإنشائه بـ pip freeze؟</span><span class="level level-mid">متوسط</span></summary>
+                  <div class="qa-body"><p>freeze يسجّل كل حزمة مثبّتة، بما فيها الاعتماديات غير المباشرة، بإصدارات دقيقة بـ ==، فيعطي بناءً قابلًا للتكرار لكن قائمة طويلة يصعب فهمها. الكتابة اليدوية تسجّل ما تحتاجه مباشرة بنطاقات مثل >=، فهي أوضح وأقصر لكنها أقل تكرارًا للنتائج.</p></div>
+                </details>
+                <details class="qa">
+                  <summary><span class="qa-q">بعد pip uninstall requests هل تُحذف الحزم التي ثُبّتت معها تلقائيًا؟</span><span class="level level-trap">فخ</span></summary>
+                  <div class="qa-body"><p>لا. pip يحذف الحزمة المحددة فقط، فتبقى اعتمادياتها (مثل urllib3) مثبّتة وتظهر في pip list وفي freeze. للتنظيف الكامل أعد إنشاء البيئة من requirements.txt نظيف، وهذا أحد أسباب تفضيل البيئات الافتراضية.</p></div>
+                </details>
+              </div>
+            </section>
+
+            <section class="lesson-section" id="practical">
+              <h3 class="section-title"><b>04</b>المسألة العملية</h3>
+              <div class="callout callout-problem">
+                <p><strong>المسألة:</strong> فريقك يحتفظ بقائمة اعتماديات بصيغة <code dir="ltr">requirements.txt</code>، وتريد فحصها آليًا قبل التسليم. اكتب دالة <code dir="ltr">audit()</code> تتجاهل الأسطر الفارغة والتعليقات، وتبلّغ عن (1) الحزم المكررة، و(2) الحزم غير المثبّتة بإصدار دقيق <code dir="ltr">==</code>، ثم تطبع عدد الحزم الفريدة.</p>
+              </div>
+              <ol class="solution">
+                <li class="sol-step">
+                  <h4>فهم المطلوب</h4>
+                  <p>المدخل قائمة أسطر نصية، والمخرج قائمة مشاكل وعدد الحزم الفريدة. التعليق يبدأ بـ <code dir="ltr">#</code>، واسم الحزمة هو ما قبل أول محدِّد.</p>
+                </li>
+                <li class="sol-step">
+                  <h4>خطة الحل</h4>
+                  <p>نمرّ على الأسطر ونتخطى الفارغ والتعليق، ونقصّ السطر عند أول <code dir="ltr">=</code> أو <code dir="ltr">&lt;</code> أو <code dir="ltr">&gt;</code> أو <code dir="ltr">~</code> أو <code dir="ltr">!</code> لنحصل على الاسم. نكشف التكرار بـ set للأسماء التي رأيناها، ونكشف غير المثبّت بغياب <code dir="ltr">==</code>.</p>
+                </li>
+                <li class="sol-step">
+                  <h4>الكود الكامل</h4>
+                  <figure class="code-block">
+        <figcaption class="code-head">
+          <span class="code-meta">
+            <span class="code-lang" lang="en">Python</span>
+            <span class="code-file" lang="en">audit_requirements.py</span>
+          </span>
+          <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+            <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-copy"></use></svg>
+            <span class="btn-label">نسخ</span>
+          </button>
+        </figcaption>
+        <pre class="code" dir="ltr"><code>LINES = [
+    "requests==2.31.0", "flask&gt;=3.0", "# dev tools",
+    "pytest", "requests==2.32.0",
+]
+
+
+def audit(lines):
+    seen, problems = set(), []
+    for line in lines:
+        if not line or line.startswith("#"):
+            continue
+        name = line
+        for ch in "=&lt;&gt;~!":
+            name = name.split(ch)[0]
+        if name in seen:
+            problems.append(f"duplicate: {name}")
+        if "==" not in line:
+            problems.append(f"not pinned: {name}")
+        seen.add(name)
+    return seen, problems
+
+
+seen, problems = audit(LINES)
+print(*problems, sep="\n")
+print(f"{len(seen)} packages checked")</code></pre>
+        <div class="output" role="group" aria-label="مخرجات البرنامج">
+          <div class="output-label" lang="en">Output</div>
+          <pre dir="ltr"><code>not pinned: flask
+not pinned: pytest
+duplicate: requests
+3 packages checked</code></pre>
+        </div>
+      </figure>
+                </li>
+                <li class="sol-step">
+                  <h4>تفسير القرارات</h4>
+                  <p>استخدمنا set لأن الفحص بـ in سريع ولا يهمنا الترتيب، وlist للمشاكل لنحافظ على ترتيب ظهورها. الدالة تُرجِع القيم ولا تطبع، فيسهل اختبارها وإعادة استخدامها، والطباعة تتم خارجها.</p>
+                </li>
+                <li class="sol-step">
+                  <h4>اختبار سريع</h4>
+                  <p>غيّر <code dir="ltr">pytest</code> إلى <code dir="ltr">pytest==8.0.0</code> وأعد التشغيل: يختفي سطر <code dir="ltr">not pinned: pytest</code> ويبقى سطر التكرار وعدد الحزم 3.</p>
+                </li>
+                <li class="sol-step">
+                  <h4>تحسين أو بديل</h4>
+                  <p>المحلّل مبسّط ولا يفهم extras مثل <code dir="ltr">requests[socks]</code> ولا أسطر <code dir="ltr">-r</code>؛ للإنتاج توجد أدوات متخصصة مثل مكتبة packaging (تنبيه فقط، ليست جزءًا من هذا الدرس). وللتحقق من توافق المثبّت فعليًا استخدم <code dir="ltr">python -m pip check</code>.</p>
+                </li>
+              </ol>
+            </section>
+          </div>
+        </section>
+      </div>
+
+      <footer class="footer">
+        <span class="footer-note" lang="en">Python Learning Roadmap</span>
+        <span class="footer-note">المرحلة 09 - الدرس 38</span>
+      </footer>
+    </main>
+
+    <script>
+      (function () {
+        'use strict'
+
+        var live = document.getElementById('copy-status')
+        var printStates = null
+
+        function fallbackCopy(text) {
+          var textarea = document.createElement('textarea')
+          textarea.value = text
+          textarea.setAttribute('readonly', '')
+          textarea.style.cssText = 'position:fixed;top:-1000px;left:-1000px;opacity:0;'
+
+          try {
+            document.body.appendChild(textarea)
+            textarea.focus()
+            textarea.select()
+            textarea.setSelectionRange(0, textarea.value.length)
+            return document.execCommand('copy')
+          } catch (error) {
+            return false
+          } finally {
+            if (textarea.parentNode) {
+              textarea.parentNode.removeChild(textarea)
+            }
+          }
+        }
+
+        function copyText(text) {
+          if (navigator.clipboard && window.isSecureContext) {
+            return navigator.clipboard.writeText(text).then(
+              function () { return true },
+              function () { return fallbackCopy(text) },
+            ).catch(function () { return false })
+          }
+
+          return Promise.resolve().then(function () {
+            return fallbackCopy(text)
+          }).catch(function () {
+            return false
+          })
+        }
+
+        document.addEventListener('click', function (event) {
+          var target = event.target
+          var button = target && typeof target.closest === 'function'
+            ? target.closest('[data-copy-code]')
+            : null
+
+          if (!button) return
+
+          var label = button.querySelector('.btn-label')
+          var block = button.closest('.code-block')
+          var code = block ? block.querySelector('pre.code > code') : null
+          if (!label || !code) return
+
+          if (!button.dataset.label) button.dataset.label = label.textContent
+
+          copyText(code.textContent).then(function (ok) {
+            label.textContent = ok ? 'تم النسخ' : 'تعذّر النسخ'
+            button.classList.toggle('is-copied', ok)
+            button.classList.toggle('is-failed', !ok)
+
+            if (live) {
+              live.textContent = ok
+                ? 'تم نسخ الكود'
+                : 'تعذّر النسخ، حدّد الكود يدويًا ثم انسخه'
+            }
+
+            window.clearTimeout(button._timer)
+            button._timer = window.setTimeout(function () {
+              label.textContent = button.dataset.label
+              button.classList.remove('is-copied', 'is-failed')
+            }, 1800)
+          })
+        })
+
+        window.addEventListener('beforeprint', function () {
+          if (printStates !== null) return
+
+          var questions = document.querySelectorAll('details.qa')
+          printStates = Array.prototype.map.call(questions, function (item) {
+            return item.open
+          })
+          questions.forEach(function (item) {
+            item.open = true
+          })
+        })
+
+        window.addEventListener('afterprint', function () {
+          if (printStates === null) return
+
+          var questions = document.querySelectorAll('details.qa')
+          questions.forEach(function (item, index) {
+            item.open = printStates[index] === true
+          })
+          printStates = null
+        })
+      })()
+    </script>
+  </body>
+</html>

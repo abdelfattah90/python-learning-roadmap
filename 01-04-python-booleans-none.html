@@ -1,0 +1,572 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#fcfcfc" />
+    <title>Python Booleans &amp; None | Python Learning Roadmap</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/style.css" />
+  </head>
+  <body>
+    <svg
+      width="0"
+      height="0"
+      style="position: absolute"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <symbol id="i-copy" viewBox="0 0 24 24">
+        <rect x="9" y="9" width="12" height="12" rx="2.5" />
+        <path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15" />
+      </symbol>
+    </svg>
+    <template id="code-block-pattern">
+      <figure class="code-block">
+        <figcaption class="code-head">
+          <span class="code-meta">
+            <span class="code-lang" lang="en">Python</span>
+            <span class="code-file" lang="en">example.py</span>
+          </span>
+          <button
+            type="button"
+            class="btn btn-ghost btn-sm"
+            data-copy-code
+            aria-label="نسخ الكود"
+          >
+            <svg
+              class="btn-icon"
+              viewBox="0 0 24 24"
+              width="14"
+              height="14"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <use href="#i-copy"></use>
+            </svg>
+            <span class="btn-label">نسخ</span>
+          </button>
+        </figcaption>
+        <pre class="code" dir="ltr"><code><!-- ضع الكود هنا كنص HTML مع تهريب الرموز الخاصة --></code></pre>
+        <!-- احذف كتلة output إذا لم يكن للمثال ناتج ثابت ومفيد. -->
+        <div class="output" role="group" aria-label="مخرجات البرنامج">
+          <div class="output-label" lang="en">Output</div>
+          <pre dir="ltr"><code><!-- ضع المخرجات المتحققة هنا --></code></pre>
+        </div>
+      </figure>
+    </template>
+
+    <div
+      class="sr-only"
+      id="copy-status"
+      role="status"
+      aria-live="polite"
+    ></div>
+
+    <main class="page">
+      <header class="hero lesson-hero">
+        <span class="eyebrow">
+          <span class="eyebrow-dot"></span>
+          المرحلة <span dir="ltr">01</span>:
+          <span dir="ltr" lang="en">Variables &amp; Data Types</span>
+        </span>
+        <h1>
+          <span class="h1-ar">القيم المنطقية وNone</span>
+          <span class="h1-en" dir="ltr" lang="en">Python Booleans &amp; None</span>
+        </h1>
+        <p class="hero-description">تعلّم تمثيل الحالات المنطقية وبناء التعبيرات الشرطية، والتمييز بين False وNone والصفر حتى تعبّر بيانات برنامجك عن المعنى الصحيح.</p>
+      </header>
+
+      <div class="lesson-parts">
+        <section class="lesson-part-card" id="complete-lesson" aria-labelledby="complete-lesson-title">
+          <header class="part-header">
+            <div class="part-number">درس متكامل</div>
+            <div class="part-heading">
+              <h2 id="complete-lesson-title">
+                <span class="part-title-en" dir="ltr" lang="en">Complete Lesson</span>
+                <span class="sep" aria-hidden="true"> - </span>
+                <span class="part-title-ar">الشرح والملخص والتطبيق</span>
+              </h2>
+              <span class="part-description">كل محتوى الدرس في ملف HTML واحد</span>
+            </div>
+          </header>
+
+          <div class="lesson-body">
+            <section class="lesson-section" id="explain">
+              <h3 class="section-title"><b>01</b>الشرح</h3>
+              
+<article class="concept">
+  <h4>1. Boolean Values وTrue وFalse</h4>
+  <p>نحتاج القيم المنطقية لتمثيل حالة لها احتمالان، مثل كون الحساب نشطًا أو غير نشط، أو اكتمال الدفع أو عدم اكتماله. نوعها في Python هو <code>bool</code>، وله قيمتان فقط: <code>True</code> وتعني صحيح، و<code>False</code> وتعني خطأ.</p>
+  <p><strong>True</strong> و<strong>False</strong> ثوابت جاهزة في اللغة، ويجب كتابة الحرف الأول كبيرًا كما هو موضح؛ فـ <code>true</code> و<code>false</code> ليستا الصياغة الصحيحة في Python. كذلك فهما قيمتان منطقيتان وليستا نصين، لذلك لا نضعهما بين علامات اقتباس.</p>
+  <figure class="code-block">
+  <figcaption class="code-head">
+    <span class="code-meta">
+      <span class="code-lang" lang="en">Python</span>
+      <span class="code-file" lang="en">boolean-values.py</span>
+    </span>
+    <button
+      type="button"
+      class="btn btn-ghost btn-sm"
+      data-copy-code
+      aria-label="نسخ الكود"
+    >
+      <svg
+        class="btn-icon"
+        viewBox="0 0 24 24"
+        width="14"
+        height="14"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <use href="#i-copy"></use>
+      </svg>
+      <span class="btn-label">نسخ</span>
+    </button>
+  </figcaption>
+  <pre class="code" dir="ltr"><code>store_is_open = True
+has_delivery_slot = False
+
+print(type(store_is_open))
+print(store_is_open, has_delivery_slot)</code></pre>
+  <div class="output" role="group" aria-label="مخرجات البرنامج">
+    <div class="output-label" lang="en">Output</div>
+    <pre dir="ltr"><code>&lt;class 'bool'&gt;
+True False</code></pre>
+  </div>
+</figure>
+</article>
+
+<article class="concept">
+  <h4>2. Boolean Expressions</h4>
+  <p><strong>Boolean Expression</strong> هو تعبير تُقيَّم نتيجته إلى قيمة منطقية. غالبًا نبنيه بمقارنة قيم باستخدام <code>==</code> و<code>!=</code> و<code>&gt;</code> و<code>&lt;</code> و<code>&gt;=</code> و<code>&lt;=</code>، ثم نربط الشروط باستخدام <code>and</code> أو <code>or</code> أو نعكس النتيجة باستخدام <code>not</code>.</p>
+  <p>نستخدم هذه التعبيرات للإجابة عن أسئلة عملية مثل: هل العمر مناسب؟ وهل يوجد حجز؟ في المثال، لا يصبح السماح بالدخول صحيحًا إلا إذا تحقق الشرطان معًا. عندما تكون أطراف <code>and</code> أو <code>or</code> مقارنات منطقية تكون النتيجة <code>bool</code>؛ لكن هذين العاملين قد يعيدان أحد القيمتين الأصليتين في تعبيرات أخرى، بينما <code>not</code> يعيد دائمًا قيمة منطقية.</p>
+  <figure class="code-block">
+  <figcaption class="code-head">
+    <span class="code-meta">
+      <span class="code-lang" lang="en">Python</span>
+      <span class="code-file" lang="en">boolean-expressions.py</span>
+    </span>
+    <button
+      type="button"
+      class="btn btn-ghost btn-sm"
+      data-copy-code
+      aria-label="نسخ الكود"
+    >
+      <svg
+        class="btn-icon"
+        viewBox="0 0 24 24"
+        width="14"
+        height="14"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <use href="#i-copy"></use>
+      </svg>
+      <span class="btn-label">نسخ</span>
+    </button>
+  </figcaption>
+  <pre class="code" dir="ltr"><code>customer_age = 24
+minimum_age = 18
+has_reservation = True
+
+age_is_allowed = customer_age &gt;= minimum_age
+can_check_in = age_is_allowed and has_reservation
+
+print(age_is_allowed)
+print(can_check_in)</code></pre>
+  <div class="output" role="group" aria-label="مخرجات البرنامج">
+    <div class="output-label" lang="en">Output</div>
+    <pre dir="ltr"><code>True
+True</code></pre>
+  </div>
+</figure>
+</article>
+
+<article class="concept">
+  <h4>3. الدالة bool()</h4>
+  <p>تُستخدم <code>bool()</code> لتحويل قيمة إلى نتيجة منطقية وفق ما إذا كانت القيمة تُعدّ «فارغة أو صفرية» أم لا. مثلًا، العدد <code>0</code> والنص الفارغ <code>""</code> يعطيان <code>False</code>، بينما العدد غير الصفري والنص غير الفارغ يعطيان <code>True</code>.</p>
+  <p>يفيد ذلك عند فحص وجود قيمة أو كونها ذات محتوى، لكن لا تخلط بين حقيقة النص ومعناه: <code>bool("False")</code> نتيجتها <code>True</code> لأن النص نفسه غير فارغ؛ فالدالة لا تفسّر الكلمة المكتوبة داخله.</p>
+  <figure class="code-block">
+  <figcaption class="code-head">
+    <span class="code-meta">
+      <span class="code-lang" lang="en">Python</span>
+      <span class="code-file" lang="en">bool-conversion.py</span>
+    </span>
+    <button
+      type="button"
+      class="btn btn-ghost btn-sm"
+      data-copy-code
+      aria-label="نسخ الكود"
+    >
+      <svg
+        class="btn-icon"
+        viewBox="0 0 24 24"
+        width="14"
+        height="14"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <use href="#i-copy"></use>
+      </svg>
+      <span class="btn-label">نسخ</span>
+    </button>
+  </figcaption>
+  <pre class="code" dir="ltr"><code>print(bool(0))
+print(bool(12))
+print(bool(""))
+print(bool("Python"))
+print(bool("False"))</code></pre>
+  <div class="output" role="group" aria-label="مخرجات البرنامج">
+    <div class="output-label" lang="en">Output</div>
+    <pre dir="ltr"><code>False
+True
+False
+True
+True</code></pre>
+  </div>
+</figure>
+</article>
+
+<article class="concept">
+  <h4>4. None وNone vs. False وNone vs. 0</h4>
+  <p><code>None</code> قيمة خاصة تعبّر عن عدم وجود قيمة حاليًا، مثل حقل لم يُحدَّد بعد. نوعها هو <code>NoneType</code>، ولفحصها نستخدم عادةً <code>is None</code> أو <code>is not None</code>؛ فهذا أوضح من مقارنتها باستخدام <code>==</code>.</p>
+  <p>لا تعني <code>None</code> الشيء نفسه الذي تعنيه <code>False</code> أو <code>0</code>: الأولى تعني أن القيمة غير موجودة أو لم تُحدَّد، والثانية تعني إجابة منطقية سلبية صريحة، أما الصفر فهو قيمة عددية حقيقية. صحيح أن <code>bool(None)</code> و<code>bool(False)</code> و<code>bool(0)</code> كلها تعطي <code>False</code>، لكن هذا لا يجعل القيم متساوية؛ فكل من <code>None == False</code> و<code>None == 0</code> نتيجته <code>False</code>. تنبيه: في Python تكون <code>False == 0</code> صحيحة، رغم اختلاف نوعيهما.</p>
+  <figure class="code-block">
+  <figcaption class="code-head">
+    <span class="code-meta">
+      <span class="code-lang" lang="en">Python</span>
+      <span class="code-file" lang="en">none-comparisons.py</span>
+    </span>
+    <button
+      type="button"
+      class="btn btn-ghost btn-sm"
+      data-copy-code
+      aria-label="نسخ الكود"
+    >
+      <svg
+        class="btn-icon"
+        viewBox="0 0 24 24"
+        width="14"
+        height="14"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <use href="#i-copy"></use>
+      </svg>
+      <span class="btn-label">نسخ</span>
+    </button>
+  </figcaption>
+  <pre class="code" dir="ltr"><code>delivery_note = None
+has_delivery_note = False
+delivery_fee = 0
+
+print(type(delivery_note).__name__)
+print(delivery_note is None)
+print(delivery_note == has_delivery_note)
+print(delivery_note == delivery_fee)
+print(bool(delivery_note), bool(has_delivery_note), bool(delivery_fee))</code></pre>
+  <div class="output" role="group" aria-label="مخرجات البرنامج">
+    <div class="output-label" lang="en">Output</div>
+    <pre dir="ltr"><code>NoneType
+True
+False
+False
+False False False</code></pre>
+  </div>
+</figure>
+</article>
+
+            </section>
+
+            <section class="lesson-section" id="summary">
+              <h3 class="section-title"><b>02</b>الملخص</h3>
+              <ul class="summary-list">
+                
+<li>القيم المنطقية من النوع <code>bool</code>، ولا توجد له إلا <code>True</code> و<code>False</code>.</li>
+<li>اكتب <code>True</code> و<code>False</code> بحالة الأحرف الصحيحة، ومن دون علامات اقتباس.</li>
+<li>ينتج <strong>Boolean Expression</strong> قيمة منطقية غالبًا عبر المقارنة، ويمكن تركيب الشروط بـ <code>and</code> و<code>or</code> و<code>not</code>.</li>
+<li>تحوّل <code>bool()</code> القيمة إلى حكم على حقيقتها المنطقية؛ فالصفر والنص الفارغ يعطيان <code>False</code>.</li>
+<li><code>None</code> تعني عدم وجود قيمة، ونوعها <code>NoneType</code>؛ افحصها باستخدام <code>is None</code>.</li>
+<li>لا تخلط بين <code>None</code> و<code>False</code> و<code>0</code>؛ تشابه نتيجة <code>bool()</code> لا يعني تشابه المعنى أو النوع.</li>
+
+              </ul>
+            </section>
+
+            <section class="lesson-section" id="interview-questions">
+              <h3 class="section-title"><b>03</b>أسئلة المقابلات</h3>
+              <div class="qa-list">
+                
+<details class="qa" open>
+  <summary>
+    <span class="qa-q">ما المقصود بـ Boolean Values، وما الفرق بين True وFalse؟</span>
+    <span class="level level-basic">أساسي</span>
+  </summary>
+  <div class="qa-body">
+    <p>هما القيمتان الوحيدتان من النوع <code>bool</code>، وتستخدمان لتمثيل نتيجة منطقية مثل تحقق شرط أو عدم تحققه. يجب كتابتهما بالصياغة الدقيقة <code>True</code> و<code>False</code>، فهما ليستا نصين.</p>
+  </div>
+</details>
+
+<details class="qa">
+  <summary>
+    <span class="qa-q">ما الذي تمثله None، وكيف نتحقق من وجودها؟</span>
+    <span class="level level-basic">أساسي</span>
+  </summary>
+  <div class="qa-body">
+    <p>تمثل <code>None</code> غياب قيمة أو عدم تحديدها بعد، ونوعها <code>NoneType</code>. نتحقق منها عادةً باستخدام <code>value is None</code>، ونستخدم <code>is not None</code> للتحقق من أن القيمة موجودة.</p>
+  </div>
+</details>
+
+<details class="qa">
+  <summary>
+    <span class="qa-q">ما الفرق بين Boolean Expression والدالة bool()؟</span>
+    <span class="level level-mid">متوسط</span>
+  </summary>
+  <div class="qa-body">
+    <p>التعبير المنطقي مثل <code>customer_age &gt;= 18</code> يبني نتيجة من مقارنة أو شروط. أما <code>bool(value)</code> فتحوّل قيمة موجودة إلى <code>True</code> أو <code>False</code> بحسب حقيقتها المنطقية، مثل كون النص فارغًا أو غير فارغ.</p>
+  </div>
+</details>
+
+<details class="qa">
+  <summary>
+    <span class="qa-q">هل None وFalse و0 قيم متكافئة؟</span>
+    <span class="level level-mid">متوسط</span>
+  </summary>
+  <div class="qa-body">
+    <p>لا؛ <code>None</code> تعني غياب القيمة، و<code>False</code> إجابة منطقية سلبية، و<code>0</code> عدد. تعطي القيم الثلاث <code>False</code> عند تمريرها إلى <code>bool()</code>، لكن <code>None == False</code> و<code>None == 0</code> نتيجتهما <code>False</code>.</p>
+  </div>
+</details>
+
+<details class="qa">
+  <summary>
+    <span class="qa-q">ما ناتج bool("False")؟ ولماذا يُعد هذا سؤالًا خادعًا؟</span>
+    <span class="level level-trap">سؤال فخ</span>
+  </summary>
+  <div class="qa-body">
+    <p>الناتج هو <code>True</code>، لأن <code>"False"</code> نص غير فارغ. الدالة <code>bool()</code> تفحص حقيقة القيمة المنطقية لا معنى الكلمة المكتوبة داخل النص.</p>
+  </div>
+</details>
+
+              </div>
+            </section>
+
+            <section class="lesson-section" id="practical">
+              <h3 class="section-title"><b>04</b>المسألة العملية</h3>
+              
+<div class="callout callout-problem">
+  <p><strong>المسألة:</strong> يدير متجر طلبات التوصيل، ويحتاج إلى تحديد ما إذا كان الطلب جاهزًا للإرسال، وهل أضاف العميل ملاحظة، وهل رسوم التوصيل مجانية. استخدم <code>True</code> و<code>False</code> للحالات المؤكدة، و<code>None</code> للملاحظة غير المدخلة، و<code>0</code> لرسوم التوصيل المجانية.</p>
+</div>
+
+              <ol class="solution">
+                
+<li class="sol-step">
+  <strong>فهم المطلوب:</strong>
+  <p>نحتاج إلى ثلاث نتائج مستقلة: جاهزية الإرسال، ووجود ملاحظة، وكون الرسوم صفرًا.</p>
+</li>
+<li class="sol-step">
+  <strong>خطة الحل:</strong>
+  <p>نخزن حالتي الدفع والعنوان كقيم منطقية، ونمثل الملاحظة غير المدخلة بـ <code>None</code>، والرسوم كعدد. بعد ذلك نستخدم <code>and</code> و<code>is not None</code> والمقارنة مع الصفر.</p>
+</li>
+<li class="sol-step">
+  <strong>الكود الكامل:</strong>
+  <figure class="code-block">
+  <figcaption class="code-head">
+    <span class="code-meta">
+      <span class="code-lang" lang="en">Python</span>
+      <span class="code-file" lang="en">delivery-check.py</span>
+    </span>
+    <button
+      type="button"
+      class="btn btn-ghost btn-sm"
+      data-copy-code
+      aria-label="نسخ الكود"
+    >
+      <svg
+        class="btn-icon"
+        viewBox="0 0 24 24"
+        width="14"
+        height="14"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <use href="#i-copy"></use>
+      </svg>
+      <span class="btn-label">نسخ</span>
+    </button>
+  </figcaption>
+  <pre class="code" dir="ltr"><code>payment_received = True
+address_confirmed = False
+delivery_fee = 0
+customer_note = None
+
+can_dispatch = payment_received and address_confirmed
+has_customer_note = customer_note is not None
+is_free_delivery = delivery_fee == 0
+
+print("Can dispatch:", can_dispatch)
+print("Has customer note:", has_customer_note)
+print("Free delivery:", is_free_delivery)</code></pre>
+  <div class="output" role="group" aria-label="مخرجات البرنامج">
+    <div class="output-label" lang="en">Output</div>
+    <pre dir="ltr"><code>Can dispatch: False
+Has customer note: False
+Free delivery: True</code></pre>
+  </div>
+</figure>
+</li>
+<li class="sol-step">
+  <strong>تفسير القرارات:</strong>
+  <p>الإرسال غير مسموح لأن تأكيد العنوان ما زال <code>False</code>، والملاحظة غير موجودة لأن قيمتها <code>None</code>. الرسوم مجانية لأن قيمتها العددية تساوي <code>0</code>.</p>
+</li>
+<li class="sol-step">
+  <strong>اختبار سريع:</strong>
+  <p>غيّر <code>address_confirmed</code> إلى <code>True</code>؛ ستصبح <code>can_dispatch</code> صحيحة لأن الدفع مؤكد أيضًا. غيّر <code>delivery_fee</code> إلى <code>5</code>؛ وستصبح <code>is_free_delivery</code> خاطئة.</p>
+</li>
+<li class="sol-step">
+  <strong>تحسين أو بديل:</strong>
+  <p>احتفظ بـ <code>None</code> عندما تكون المعلومة غير مدخلة، وبـ <code>False</code> عندما توجد إجابة سلبية مؤكدة، وبـ <code>0</code> عندما تكون القيمة العددية صفرًا. هذا يمنع دمج حالات مختلفة في معنى واحد.</p>
+</li>
+
+              </ol>
+            </section>
+          </div>
+        </section>
+      </div>
+
+      <footer class="footer">
+        <span class="footer-note" lang="en">Python Learning Roadmap</span>
+        <span class="footer-note">المرحلة 01 - الدرس 04</span>
+      </footer>
+    </main>
+
+    <script>
+      (function () {
+        'use strict'
+
+        var live = document.getElementById('copy-status')
+        var printStates = null
+
+        function fallbackCopy(text) {
+          var textarea = document.createElement('textarea')
+          textarea.value = text
+          textarea.setAttribute('readonly', '')
+          textarea.style.cssText = 'position:fixed;top:-1000px;left:-1000px;opacity:0;'
+
+          try {
+            document.body.appendChild(textarea)
+            textarea.focus()
+            textarea.select()
+            textarea.setSelectionRange(0, textarea.value.length)
+            return document.execCommand('copy')
+          } catch (error) {
+            return false
+          } finally {
+            if (textarea.parentNode) {
+              textarea.parentNode.removeChild(textarea)
+            }
+          }
+        }
+
+        function copyText(text) {
+          if (navigator.clipboard && window.isSecureContext) {
+            return navigator.clipboard.writeText(text).then(
+              function () { return true },
+              function () { return fallbackCopy(text) },
+            ).catch(function () { return false })
+          }
+
+          return Promise.resolve().then(function () {
+            return fallbackCopy(text)
+          }).catch(function () {
+            return false
+          })
+        }
+
+        document.addEventListener('click', function (event) {
+          var target = event.target
+          var button = target && typeof target.closest === 'function'
+            ? target.closest('[data-copy-code]')
+            : null
+
+          if (!button) return
+
+          var label = button.querySelector('.btn-label')
+          var block = button.closest('.code-block')
+          var code = block ? block.querySelector('pre.code > code') : null
+          if (!label || !code) return
+
+          if (!button.dataset.label) button.dataset.label = label.textContent
+
+          copyText(code.textContent).then(function (ok) {
+            label.textContent = ok ? 'تم النسخ' : 'تعذّر النسخ'
+            button.classList.toggle('is-copied', ok)
+            button.classList.toggle('is-failed', !ok)
+
+            if (live) {
+              live.textContent = ok
+                ? 'تم نسخ الكود'
+                : 'تعذّر النسخ، حدّد الكود يدويًا ثم انسخه'
+            }
+
+            window.clearTimeout(button._timer)
+            button._timer = window.setTimeout(function () {
+              label.textContent = button.dataset.label
+              button.classList.remove('is-copied', 'is-failed')
+            }, 1800)
+          })
+        })
+
+        window.addEventListener('beforeprint', function () {
+          if (printStates !== null) return
+
+          var questions = document.querySelectorAll('details.qa')
+          printStates = Array.prototype.map.call(questions, function (item) {
+            return item.open
+          })
+          questions.forEach(function (item) {
+            item.open = true
+          })
+        })
+
+        window.addEventListener('afterprint', function () {
+          if (printStates === null) return
+
+          var questions = document.querySelectorAll('details.qa')
+          questions.forEach(function (item, index) {
+            item.open = printStates[index] === true
+          })
+          printStates = null
+        })
+      })()
+    </script>
+  </body>
+</html>

@@ -1,0 +1,478 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#fcfcfc" />
+    <title>Python Strings I: Basics | Python Learning Roadmap</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/style.css" />
+  </head>
+  <body>
+    <svg
+      width="0"
+      height="0"
+      style="position: absolute"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <symbol id="i-copy" viewBox="0 0 24 24">
+        <rect x="9" y="9" width="12" height="12" rx="2.5" />
+        <path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15" />
+      </symbol>
+    </svg>
+    <template id="code-block-pattern">
+      <figure class="code-block">
+        <figcaption class="code-head">
+          <span class="code-meta">
+            <span class="code-lang" lang="en">Python</span>
+            <span class="code-file" lang="en">example.py</span>
+          </span>
+          <button
+            type="button"
+            class="btn btn-ghost btn-sm"
+            data-copy-code
+            aria-label="نسخ الكود"
+          >
+            <svg
+              class="btn-icon"
+              viewBox="0 0 24 24"
+              width="14"
+              height="14"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <use href="#i-copy"></use>
+            </svg>
+            <span class="btn-label">نسخ</span>
+          </button>
+        </figcaption>
+        <pre class="code" dir="ltr"><code><!-- ضع الكود هنا كنص HTML مع تهريب الرموز الخاصة --></code></pre>
+        <!-- احذف كتلة output إذا لم يكن للمثال ناتج ثابت ومفيد. -->
+        <div class="output" role="group" aria-label="مخرجات البرنامج">
+          <div class="output-label" lang="en">Output</div>
+          <pre dir="ltr"><code><!-- ضع المخرجات المتحققة هنا --></code></pre>
+        </div>
+      </figure>
+    </template>
+
+    <div
+      class="sr-only"
+      id="copy-status"
+      role="status"
+      aria-live="polite"
+    ></div>
+
+    <main class="page">
+      <header class="hero lesson-hero">
+        <span class="eyebrow">
+          <span class="eyebrow-dot"></span>
+          المرحلة <span dir="ltr">02</span>:
+          <span dir="ltr" lang="en">Strings, Operators &amp; Input</span>
+        </span>
+        <h1>
+          <span class="h1-ar">النصوص (1): الأساسيات</span>
+          <span class="h1-en" dir="ltr" lang="en">Python Strings I: Basics</span>
+        </h1>
+        <p class="hero-description">تعلّم إنشاء النصوص وقراءة أجزائها وتنسيقها ودمجها، مع التعامل الصحيح مع الأحرف الخاصة لبناء رسائل وبيانات نصية واضحة.</p>
+      </header>
+
+      <div class="lesson-parts">
+        <section class="lesson-part-card" id="complete-lesson" aria-labelledby="complete-lesson-title">
+          <header class="part-header">
+            <div class="part-number">درس متكامل</div>
+            <div class="part-heading">
+              <h2 id="complete-lesson-title">
+                <span class="part-title-en" dir="ltr" lang="en">Complete Lesson</span>
+                <span class="sep" aria-hidden="true"> - </span>
+                <span class="part-title-ar">الشرح والملخص والتطبيق</span>
+              </h2>
+              <span class="part-description">كل محتوى الدرس في ملف HTML واحد</span>
+            </div>
+          </header>
+
+          <div class="lesson-body">
+            <section class="lesson-section" id="explain">
+              <h3 class="section-title"><b>01</b>الشرح</h3>
+              
+<article class="concept">
+  <h4>1. إنشاء النصوص والوصول إلى أحرفها: <span dir="ltr" lang="en">Create Strings</span> و<span dir="ltr" lang="en">String Indexing</span> و<span dir="ltr" lang="en">String Slicing</span></h4>
+  <p>نستخدم <span dir="ltr" lang="en">strings</span> لتمثيل أسماء الأشخاص والمنتجات والرسائل والمعرّفات. أنشئ النص بوضعه بين علامتي اقتباس مفردتين أو مزدوجتين؛ وإذا احتوى على أسطر متعددة فاستخدم ثلاث علامات اقتباس. اختيار نوع الاقتباس لا يغيّر نوع القيمة.</p>
+  <p>كل حرف في النص له موضع رقمي يبدأ من <code>0</code>. في <span dir="ltr" lang="en">String Indexing</span>، يقرأ <code>text[0]</code> أول حرف، بينما يسمح الفهرس السالب مثل <code>text[-1]</code> بالوصول من النهاية. أما <span dir="ltr" lang="en">String Slicing</span> فيستخرج جزءًا باستخدام <code>text[start:stop]</code>؛ البداية مشمولة والنهاية غير مشمولة، ويمكن حذف أحد الحدّين أو استخدام خطوة مثل <code>text[::2]</code>.</p>
+  <p>يفيد ذلك في قراءة رمز أو استخراج بادئة منه دون تغيير النص الأصلي. انتبه إلى أن الفهرس المفرد خارج حدود النص يسبب <code>IndexError</code>، بينما الشريحة ذات الحدود الواقعة خارج النطاق لا تسبب هذا الخطأ عادةً.</p>
+  <figure class="code-block">
+  <figcaption class="code-head">
+    <span class="code-meta">
+      <span class="code-lang" lang="en">Python</span>
+      <span class="code-file" lang="en">string_access.py</span>
+    </span>
+    <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+      <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <use href="#i-copy"></use>
+      </svg>
+      <span class="btn-label">نسخ</span>
+    </button>
+  </figcaption>
+  <pre class="code" dir="ltr"><code>product_code = "BK-58291"
+product_name = 'دفتر "يومي"'
+description = """دفتر يومي
+غلاف أزرق"""
+
+print(product_name)
+print(product_code[0])
+print(product_code[-1])
+print(product_code[:2])
+print(product_code[3:6])
+print(product_code[::2])</code></pre>
+  <div class="output" role="group" aria-label="مخرجات البرنامج">
+    <div class="output-label" lang="en">Output</div>
+    <pre dir="ltr"><code>دفتر "يومي"
+B
+1
+BK
+582
+B529</code></pre>
+  </div>
+</figure>
+</article>
+
+<article class="concept">
+  <h4>2. تعديل النصوص: <span dir="ltr" lang="en">Modify Strings</span></h4>
+  <p>غالبًا تصل النصوص بصيغ غير موحّدة: مسافات زائدة، أو أحرف كبيرة وصغيرة، أو كلمة تحتاج إلى استبدال. توفر النصوص دوالًا مثل <code>upper()</code> و<code>lower()</code> لتغيير حالة الأحرف، و<code>strip()</code> لإزالة المسافات من الطرفين، و<code>replace(old, new)</code> لاستبدال جزء بنص آخر.</p>
+  <p>هذه الدوال لا تعدّل النص الأصلي؛ بل تُرجع <span dir="ltr" lang="en">string</span> جديدة. لذلك احتفظ بالنتيجة في متغير أو استخدمها مباشرةً. و<span dir="ltr" lang="en">strip()</span> لا يزيل المسافات الواقعة في منتصف النص.</p>
+  <figure class="code-block">
+  <figcaption class="code-head">
+    <span class="code-meta">
+      <span class="code-lang" lang="en">Python</span>
+      <span class="code-file" lang="en">modify_strings.py</span>
+    </span>
+    <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+      <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <use href="#i-copy"></use>
+      </svg>
+      <span class="btn-label">نسخ</span>
+    </button>
+  </figcaption>
+  <pre class="code" dir="ltr"><code>customer_name = "  salma hassan  "
+status = "payment pending"
+
+clean_name = customer_name.strip().title()
+clean_status = status.upper().replace("PENDING", "CONFIRMED")
+
+print(clean_name)
+print(clean_status)
+print(customer_name)</code></pre>
+  <div class="output" role="group" aria-label="مخرجات البرنامج">
+    <div class="output-label" lang="en">Output</div>
+    <pre dir="ltr"><code>Salma Hassan
+PAYMENT CONFIRMED
+  salma hassan  </code></pre>
+  </div>
+</figure>
+</article>
+
+<article class="concept">
+  <h4>3. ربط النصوص: <span dir="ltr" lang="en">Concatenate Strings</span></h4>
+  <p>نحتاج إلى دمج أجزاء نصية لبناء اسم كامل أو وصف أو رسالة. ينفّذ العامل <code>+</code> عملية <span dir="ltr" lang="en">concatenation</span>، ويضيف العامل <code>+=</code> نصًا إلى القيمة الحالية للمتغير. أضف المسافات أو علامات الترقيم بنفسك؛ فعملية الدمج لا تضع فواصل تلقائيًا.</p>
+  <p>يجب أن يكون الطرفان من النوع <code>str</code> عند استخدام <code>+</code>. لا تدمج رقمًا مباشرةً مع نص؛ حوّله أولًا باستخدام <code>str()</code> إذا كان المطلوب تمثيله نصيًا. لا تخلط بين الدمج والجمع الحسابي.</p>
+  <figure class="code-block">
+  <figcaption class="code-head">
+    <span class="code-meta">
+      <span class="code-lang" lang="en">Python</span>
+      <span class="code-file" lang="en">concatenate_strings.py</span>
+    </span>
+    <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+      <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <use href="#i-copy"></use>
+      </svg>
+      <span class="btn-label">نسخ</span>
+    </button>
+  </figcaption>
+  <pre class="code" dir="ltr"><code>first_name = "Mona"
+last_name = "Adel"
+order_number = 318
+
+full_name = first_name + " " + last_name
+order_label = "Order #" + str(order_number)
+order_label += " - " + full_name
+
+print(full_name)
+print(order_label)</code></pre>
+  <div class="output" role="group" aria-label="مخرجات البرنامج">
+    <div class="output-label" lang="en">Output</div>
+    <pre dir="ltr"><code>Mona Adel
+Order #318 - Mona Adel</code></pre>
+  </div>
+</figure>
+</article>
+
+<article class="concept">
+  <h4>4. أحرف الهروب: <span dir="ltr" lang="en">Escape Characters</span></h4>
+  <p>بعض الأحرف لا يمكن كتابتها داخل النص بالطريقة المعتادة لأنها تؤدي وظيفة خاصة، مثل علامة الاقتباس التي تنهي النص. نستخدم الشرطة العكسية <code>\</code> لتكوين <span dir="ltr" lang="en">escape sequence</span>: ‏<code>\n</code> لسطر جديد، و<code>\t</code> لمسافة جدولة، و<code>\'</code> أو <code>\"</code> لإظهار علامة اقتباس، و<code>\\</code> لإظهار الشرطة العكسية نفسها.</p>
+  <p>استخدمها عندما تبني رسالة متعددة الأسطر أو تعرض اقتباسًا أو مسارًا يحتوي على شرطة عكسية. تذكّر أن <code>\n</code> داخل النص هو تسلسل خاص ينتج سطرًا جديدًا عند عرضه، وليس حرفين عاديين في المخرجات.</p>
+  <figure class="code-block">
+  <figcaption class="code-head">
+    <span class="code-meta">
+      <span class="code-lang" lang="en">Python</span>
+      <span class="code-file" lang="en">escape_characters.py</span>
+    </span>
+    <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+      <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <use href="#i-copy"></use>
+      </svg>
+      <span class="btn-label">نسخ</span>
+    </button>
+  </figcaption>
+  <pre class="code" dir="ltr"><code>message = "Customer: Mona\nStatus:\tReady"
+quoted_text = "She said, \\"Order received.\\""
+folder_path = "reports\\2026"
+
+print(message)
+print(quoted_text)
+print(folder_path)</code></pre>
+  <div class="output" role="group" aria-label="مخرجات البرنامج">
+    <div class="output-label" lang="en">Output</div>
+    <pre dir="ltr"><code>Customer: Mona
+Status:	Ready
+She said, "Order received."
+reports\2026</code></pre>
+  </div>
+</figure>
+</article>
+
+            </section>
+
+            <section class="lesson-section" id="summary">
+              <h3 class="section-title"><b>02</b>الملخص</h3>
+              <ul class="summary-list">
+                
+<li>أنشئ النصوص باقتباس مفرد أو مزدوج، واستخدم ثلاث علامات اقتباس للنص متعدد الأسطر.</li>
+<li>الفهرسة تبدأ من <code>0</code>، والفهارس السالبة تبدأ من نهاية النص.</li>
+<li>الشريحة <code>[start:stop]</code> تشمل البداية ولا تشمل النهاية، ويمكن تحديد خطوة.</li>
+<li>دوال مثل <code>strip()</code> و<code>upper()</code> و<code>replace()</code> تُرجع نصًا جديدًا ولا تغيّر النص الأصلي.</li>
+<li>استخدم <code>+</code> لدمج نصوص، وحوّل القيم غير النصية إلى <code>str</code> قبل دمجها.</li>
+<li>تُستخدم تسلسلات الهروب مثل <code>\n</code> و<code>\t</code> و<code>\\</code> لتمثيل أحرف ذات معنى خاص.</li>
+
+              </ul>
+            </section>
+
+            <section class="lesson-section" id="interview-questions">
+              <h3 class="section-title"><b>03</b>أسئلة المقابلات</h3>
+              <div class="qa-list">
+                
+<details class="qa" open>
+  <summary><span class="qa-q">ما الفرق بين <code>text[0]</code> و<code>text[-1]</code>؟</span><span class="level level-basic">أساسي</span></summary>
+  <div class="qa-body"><p><code>text[0]</code> يعيد أول حرف في النص لأن الفهرسة تبدأ من الصفر. أما <code>text[-1]</code> فيعيد آخر حرف، ويكون العد فيه من نهاية النص.</p></div>
+</details>
+<details class="qa">
+  <summary><span class="qa-q">كيف تعمل الشريحة <code>text[2:6]</code>؟</span><span class="level level-basic">أساسي</span></summary>
+  <div class="qa-body"><p>تعيد الأحرف من الفهرس <code>2</code> حتى ما قبل الفهرس <code>6</code>، أي أربعة مواضع إذا كانت متاحة. حد النهاية غير مشمول في النتيجة.</p></div>
+</details>
+<details class="qa">
+  <summary><span class="qa-q">لماذا لا يتغير النص الأصلي بعد استدعاء <code>strip()</code> أو <code>replace()</code>؟</span><span class="level level-mid">متوسط</span></summary>
+  <div class="qa-body"><p>لأن قيم <code>str</code> غير قابلة للتعديل في مكانها؛ دوال النصوص تُرجع قيمة نصية جديدة. إذا أردت الاحتفاظ بالتغيير، أسند النتيجة إلى متغير، مثل <code>name = name.strip()</code>.</p></div>
+</details>
+<details class="qa">
+  <summary><span class="qa-q">ماذا يحدث عند دمج <code>"Total: "</code> مع العدد <code>25</code> باستخدام <code>+</code>؟</span><span class="level level-mid">متوسط</span></summary>
+  <div class="qa-body"><p>ينتج <code>TypeError</code> لأن <code>+</code> لا يدمج <code>str</code> مع <code>int</code> مباشرةً. حوّل العدد أولًا إلى نص باستخدام <code>str(25)</code>.</p></div>
+</details>
+<details class="qa">
+  <summary><span class="qa-q">هل <code>text[1:4]</code> تتضمن الحرف الموجود عند الفهرس <code>4</code>؟</span><span class="level level-trap">سؤال فخ</span></summary>
+  <div class="qa-body"><p>لا، حد النهاية في slicing غير مشمول؛ النتيجة تتضمن الفهارس <code>1</code> و<code>2</code> و<code>3</code> فقط. هذا السلوك هو سبب شيوع استخدام الفرق بين الحدين لحساب طول الشريحة.</p></div>
+</details>
+
+              </div>
+            </section>
+
+            <section class="lesson-section" id="practical">
+              <h3 class="section-title"><b>04</b>المسألة العملية</h3>
+              
+<div class="callout callout-problem">
+  <h4>المطلوب: تجهيز ملخص طلب لمتجر إلكتروني</h4>
+  <p>لديك اسم عميل يحتوي على مسافات زائدة، ورمز طلب مثل <code>ORD-2026-047</code>، واسم منتج يتضمن علامات اقتباس. جهّز اسم العميل، واستخرج بادئة الرمز وآخر ثلاثة أرقام، ثم كوّن رسالة متعددة الأسطر تعرض بيانات الطلب بوضوح.</p>
+</div>
+
+              <ol class="solution">
+                
+<li class="sol-step">
+  <h4>فهم المطلوب</h4>
+  <p>نحتاج إلى تنظيف اسم العميل، واستخراج أجزاء من رمز الطلب، ودمجها في رسالة مقروءة دون تغيير القيم الأصلية.</p>
+</li>
+<li class="sol-step">
+  <h4>خطة الحل</h4>
+  <p>نستخدم <code>strip()</code> و<code>title()</code> للاسم، و<span dir="ltr" lang="en">slicing</span> للرمز، ثم <code>+</code> و<code>\n</code> لبناء الرسالة.</p>
+</li>
+<li class="sol-step">
+  <h4>الكود الكامل</h4>
+  <figure class="code-block">
+  <figcaption class="code-head">
+    <span class="code-meta">
+      <span class="code-lang" lang="en">Python</span>
+      <span class="code-file" lang="en">order_summary.py</span>
+    </span>
+    <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+      <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <use href="#i-copy"></use>
+      </svg>
+      <span class="btn-label">نسخ</span>
+    </button>
+  </figcaption>
+  <pre class="code" dir="ltr"><code>customer_name = "  rana mostafa  "
+order_code = "ORD-2026-047"
+product_name = 'حافظة "أوراق"'
+
+clean_name = customer_name.strip().title()
+order_prefix = order_code[:3]
+order_suffix = order_code[-3:]
+
+summary = (
+    "Customer: " + clean_name
+    + "\\nOrder: " + order_prefix + "-" + order_suffix
+    + "\\nProduct: " + product_name
+)
+
+print(summary)</code></pre>
+  <div class="output" role="group" aria-label="مخرجات البرنامج">
+    <div class="output-label" lang="en">Output</div>
+    <pre dir="ltr"><code>Customer: Rana Mostafa
+Order: ORD-047
+Product: حافظة "أوراق"</code></pre>
+  </div>
+</figure>
+</li>
+<li class="sol-step">
+  <h4>تفسير القرارات</h4>
+  <p>أزلنا المسافات الطرفية قبل تنسيق الاسم. أخذنا أول ثلاثة أحرف وآخر ثلاثة أرقام من الرمز، واستخدمنا <code>\n</code> للفصل بين أسطر الرسالة مع إبقاء علامات الاقتباس داخل اسم المنتج.</p>
+</li>
+<li class="sol-step">
+  <h4>اختبار سريع</h4>
+  <p>تحقق من ظهور الاسم دون مسافات زائدة، ومن أن نهاية الرمز هي <code>047</code>، وأن المنتج يظهر بين علامتي اقتباس كما أُدخل.</p>
+</li>
+<li class="sol-step">
+  <h4>تحسين أو بديل</h4>
+  <p>إذا تغيّر طول رمز الطلب، فراجع مواضع الشريحة بدل افتراض أن كل الرموز لها الطول نفسه. ويمكنك الاحتفاظ بالرمز الكامل في الرسالة إذا كان عرض الرمز المختصر غير مناسب للعمل.</p>
+</li>
+
+              </ol>
+            </section>
+          </div>
+        </section>
+      </div>
+
+      <footer class="footer">
+        <span class="footer-note" lang="en">Python Learning Roadmap</span>
+        <span class="footer-note">المرحلة 02 - الدرس 05</span>
+      </footer>
+    </main>
+
+    <script>
+      (function () {
+        'use strict'
+
+        var live = document.getElementById('copy-status')
+        var printStates = null
+
+        function fallbackCopy(text) {
+          var textarea = document.createElement('textarea')
+          textarea.value = text
+          textarea.setAttribute('readonly', '')
+          textarea.style.cssText = 'position:fixed;top:-1000px;left:-1000px;opacity:0;'
+
+          try {
+            document.body.appendChild(textarea)
+            textarea.focus()
+            textarea.select()
+            textarea.setSelectionRange(0, textarea.value.length)
+            return document.execCommand('copy')
+          } catch (error) {
+            return false
+          } finally {
+            if (textarea.parentNode) {
+              textarea.parentNode.removeChild(textarea)
+            }
+          }
+        }
+
+        function copyText(text) {
+          if (navigator.clipboard && window.isSecureContext) {
+            return navigator.clipboard.writeText(text).then(
+              function () { return true },
+              function () { return fallbackCopy(text) },
+            ).catch(function () { return false })
+          }
+
+          return Promise.resolve().then(function () {
+            return fallbackCopy(text)
+          }).catch(function () {
+            return false
+          })
+        }
+
+        document.addEventListener('click', function (event) {
+          var target = event.target
+          var button = target && typeof target.closest === 'function'
+            ? target.closest('[data-copy-code]')
+            : null
+
+          if (!button) return
+
+          var label = button.querySelector('.btn-label')
+          var block = button.closest('.code-block')
+          var code = block ? block.querySelector('pre.code > code') : null
+          if (!label || !code) return
+
+          if (!button.dataset.label) button.dataset.label = label.textContent
+
+          copyText(code.textContent).then(function (ok) {
+            label.textContent = ok ? 'تم النسخ' : 'تعذّر النسخ'
+            button.classList.toggle('is-copied', ok)
+            button.classList.toggle('is-failed', !ok)
+
+            if (live) {
+              live.textContent = ok
+                ? 'تم نسخ الكود'
+                : 'تعذّر النسخ، حدّد الكود يدويًا ثم انسخه'
+            }
+
+            window.clearTimeout(button._timer)
+            button._timer = window.setTimeout(function () {
+              label.textContent = button.dataset.label
+              button.classList.remove('is-copied', 'is-failed')
+            }, 1800)
+          })
+        })
+
+        window.addEventListener('beforeprint', function () {
+          if (printStates !== null) return
+
+          var questions = document.querySelectorAll('details.qa')
+          printStates = Array.prototype.map.call(questions, function (item) {
+            return item.open
+          })
+          questions.forEach(function (item) {
+            item.open = true
+          })
+        })
+
+        window.addEventListener('afterprint', function () {
+          if (printStates === null) return
+
+          var questions = document.querySelectorAll('details.qa')
+          questions.forEach(function (item, index) {
+            item.open = printStates[index] === true
+          })
+          printStates = null
+        })
+      })()
+    </script>
+  </body>
+</html>

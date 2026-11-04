@@ -1,0 +1,636 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#fcfcfc" />
+    <title>المصفوفات - Python Arrays | Python Learning Roadmap</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/style.css" />
+  </head>
+  <body>
+    <svg
+      width="0"
+      height="0"
+      style="position: absolute"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <symbol id="i-copy" viewBox="0 0 24 24">
+        <rect x="9" y="9" width="12" height="12" rx="2.5" />
+        <path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15" />
+      </symbol>
+    </svg>
+    <template id="code-block-pattern">
+      <figure class="code-block">
+        <figcaption class="code-head">
+          <span class="code-meta">
+            <span class="code-lang" lang="en">Python</span>
+            <span class="code-file" lang="en">example.py</span>
+          </span>
+          <button
+            type="button"
+            class="btn btn-ghost btn-sm"
+            data-copy-code
+            aria-label="نسخ الكود"
+          >
+            <svg
+              class="btn-icon"
+              viewBox="0 0 24 24"
+              width="14"
+              height="14"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <use href="#i-copy"></use>
+            </svg>
+            <span class="btn-label">نسخ</span>
+          </button>
+        </figcaption>
+        <pre class="code" dir="ltr"><code><!-- ضع الكود هنا كنص HTML مع تهريب الرموز الخاصة --></code></pre>
+        <!-- احذف كتلة output إذا لم يكن للمثال ناتج ثابت ومفيد. -->
+        <div class="output" role="group" aria-label="مخرجات البرنامج">
+          <div class="output-label" lang="en">Output</div>
+          <pre dir="ltr"><code><!-- ضع المخرجات المتحققة هنا --></code></pre>
+        </div>
+      </figure>
+    </template>
+
+    <div
+      class="sr-only"
+      id="copy-status"
+      role="status"
+      aria-live="polite"
+    ></div>
+
+    <main class="page">
+      <header class="hero lesson-hero">
+        <span class="eyebrow">
+          <span class="eyebrow-dot"></span>
+          المرحلة <span dir="ltr">04</span>:
+          <span dir="ltr" lang="en">Built-in Data Structures</span> - هياكل البيانات المدمجة
+        </span>
+        <h1>
+          <span class="h1-ar">المصفوفات</span>
+          <span class="h1-en" dir="ltr" lang="en">Python Arrays</span>
+        </h1>
+        <p class="hero-description">Python لا تملك نوع مصفوفة مدمجًا بالمعنى الحرفي؛ في هذا الدرس تتعلم module اسمه <code dir="ltr">array</code> لتخزين قيم رقمية متجانسة بشكل مضغوط ومقيّد بنوع واحد، وتعرف متى تفضّله على الـ list.</p>
+      </header>
+
+      <div class="lesson-parts">
+        <section class="lesson-part-card" id="complete-lesson" aria-labelledby="complete-lesson-title">
+          <header class="part-header">
+            <div class="part-number">درس متكامل</div>
+            <div class="part-heading">
+              <h2 id="complete-lesson-title">
+                <span class="part-title-en" dir="ltr" lang="en">Complete Lesson</span>
+                <span class="sep" aria-hidden="true"> - </span>
+                <span class="part-title-ar">الشرح والملخص والتطبيق</span>
+              </h2>
+              <span class="part-description">كل محتوى الدرس في ملف HTML واحد</span>
+            </div>
+          </header>
+
+          <div class="lesson-body">
+            <section class="lesson-section" id="explain">
+              <h3 class="section-title"><b>01</b>الشرح</h3>
+
+              <article class="concept">
+                <h4>إنشاء المصفوفات — Create Arrays</h4>
+                <p>Python لا تحتوي نوع <code dir="ltr">array</code> داخل اللغة نفسها؛ ما يسميه الناس «array» غالبًا هو <code dir="ltr">list</code>. المصفوفة الحقيقية تأتي من module اسمه <code dir="ltr">array</code> في الـ standard library. نحتاجها عندما نخزّن عددًا كبيرًا من القيم الرقمية من نوع واحد (قراءات حساسات مثلًا)، لأنها تحفظ القيم نفسها بنوع C ثابت بدل مراجع لكائنات مختلفة، فتكون أكثر اقتصادًا في الذاكرة وترفض الأنواع الخاطئة.</p>
+                <p>الصيغة: <code dir="ltr">array(typecode, initializer)</code>. الـ <code dir="ltr">typecode</code> حرف واحد يحدد نوع كل العناصر: <code dir="ltr">"i"</code> عدد صحيح signed، و<code dir="ltr">"d"</code> عدد عشري double، و<code dir="ltr">"b"</code> عدد صحيح صغير (1 byte). الـ initializer يمكن أن يكون list أو range أو أي iterable.</p>
+                <figure class="code-block">
+                  <figcaption class="code-head">
+                    <span class="code-meta">
+                      <span class="code-lang" lang="en">Python</span>
+                      <span class="code-file" lang="en">create_arrays.py</span>
+                    </span>
+                    <button
+                      type="button"
+                      class="btn btn-ghost btn-sm"
+                      data-copy-code
+                      aria-label="نسخ الكود"
+                    >
+                      <svg
+                        class="btn-icon"
+                        viewBox="0 0 24 24"
+                        width="14"
+                        height="14"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                      >
+                        <use href="#i-copy"></use>
+                      </svg>
+                      <span class="btn-label">نسخ</span>
+                    </button>
+                  </figcaption>
+                  <pre class="code" dir="ltr"><code>from array import array
+
+temperatures = array("d", [21.5, 23.0, 19.8])
+scores = array("i", [90, 85, 72])
+print(temperatures)
+print(scores.typecode)
+
+try:
+    array("i", [10, "20"])
+except TypeError:
+    print("TypeError: wrong item type")</code></pre>
+                  <div class="output" role="group" aria-label="مخرجات البرنامج">
+                    <div class="output-label" lang="en">Output</div>
+                    <pre dir="ltr"><code>array('d', [21.5, 23.0, 19.8])
+i
+TypeError: wrong item type</code></pre>
+                  </div>
+                </figure>
+                <p><strong>تنبيه:</strong> كل عنصر يجب أن يطابق نوع الـ typecode؛ وإدخال قيمة خارج مدى النوع (مثل <code dir="ltr">200</code> في <code dir="ltr">"b"</code>) يرفع <code dir="ltr">OverflowError</code>.</p>
+              </article>
+
+              <article class="concept">
+                <h4>الوصول إلى العناصر — Access Array Items</h4>
+                <p>نقرأ العناصر بالـ index كما في الـ list: العد يبدأ من <code dir="ltr">0</code>، والـ index السالب يعدّ من النهاية. الـ slicing يعيد <strong>array جديدة من النوع نفسه</strong> وليس list. ونستخدم <code dir="ltr">len()</code> لمعرفة العدد، وحلقة <code dir="ltr">for</code> للمرور على القيم.</p>
+                <figure class="code-block">
+                  <figcaption class="code-head">
+                    <span class="code-meta">
+                      <span class="code-lang" lang="en">Python</span>
+                      <span class="code-file" lang="en">access_items.py</span>
+                    </span>
+                    <button
+                      type="button"
+                      class="btn btn-ghost btn-sm"
+                      data-copy-code
+                      aria-label="نسخ الكود"
+                    >
+                      <svg
+                        class="btn-icon"
+                        viewBox="0 0 24 24"
+                        width="14"
+                        height="14"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                      >
+                        <use href="#i-copy"></use>
+                      </svg>
+                      <span class="btn-label">نسخ</span>
+                    </button>
+                  </figcaption>
+                  <pre class="code" dir="ltr"><code>from array import array
+
+sensor_ids = array("i", [101, 102, 103, 104, 105])
+print(sensor_ids[0], sensor_ids[-1])
+print(sensor_ids[1:4])
+print(len(sensor_ids))
+
+for sensor_id in sensor_ids[:2]:
+    print(sensor_id)
+
+try:
+    sensor_ids[10]
+except IndexError:
+    print("IndexError: out of range")</code></pre>
+                  <div class="output" role="group" aria-label="مخرجات البرنامج">
+                    <div class="output-label" lang="en">Output</div>
+                    <pre dir="ltr"><code>101 105
+array('i', [102, 103, 104])
+5
+101
+102
+IndexError: out of range</code></pre>
+                  </div>
+                </figure>
+                <p><strong>تنبيه:</strong> أي index خارج المدى يرفع <code dir="ltr">IndexError</code>، بينما الـ slice الخارج عن المدى لا يرفع خطأً بل يعيد ما هو متاح فقط.</p>
+              </article>
+
+              <article class="concept">
+                <h4>إضافة العناصر وحذفها — Add &amp; Remove Array Items</h4>
+                <p><strong>الإضافة:</strong> <code dir="ltr">append(x)</code> تضيف عنصرًا في النهاية، و<code dir="ltr">insert(i, x)</code> تضيفه في موضع محدد وتزيح ما بعده، و<code dir="ltr">extend(iterable)</code> تضيف عدة عناصر. إذا مرّرت array أخرى إلى <code dir="ltr">extend</code> فيجب أن يتطابق الـ typecode.</p>
+                <p><strong>الحذف:</strong> <code dir="ltr">remove(x)</code> تحذف أول عنصر قيمته <code dir="ltr">x</code>، و<code dir="ltr">pop(i)</code> تحذف حسب الـ index وتعيد القيمة (الافتراضي هو العنصر الأخير)، و<code dir="ltr">del arr[i]</code> تحذف دون إرجاع وتقبل slice أيضًا.</p>
+                <figure class="code-block">
+                  <figcaption class="code-head">
+                    <span class="code-meta">
+                      <span class="code-lang" lang="en">Python</span>
+                      <span class="code-file" lang="en">add_remove_items.py</span>
+                    </span>
+                    <button
+                      type="button"
+                      class="btn btn-ghost btn-sm"
+                      data-copy-code
+                      aria-label="نسخ الكود"
+                    >
+                      <svg
+                        class="btn-icon"
+                        viewBox="0 0 24 24"
+                        width="14"
+                        height="14"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                      >
+                        <use href="#i-copy"></use>
+                      </svg>
+                      <span class="btn-label">نسخ</span>
+                    </button>
+                  </figcaption>
+                  <pre class="code" dir="ltr"><code>from array import array
+
+stock = array("i", [10, 20, 30])
+stock.append(40)
+stock.insert(1, 15)
+stock.extend(array("i", [50, 60]))
+print(stock)
+
+stock.remove(20)
+last = stock.pop()
+del stock[0]
+print(last, stock)</code></pre>
+                  <div class="output" role="group" aria-label="مخرجات البرنامج">
+                    <div class="output-label" lang="en">Output</div>
+                    <pre dir="ltr"><code>array('i', [10, 15, 20, 30, 40, 50, 60])
+60 array('i', [15, 30, 40, 50])</code></pre>
+                  </div>
+                </figure>
+                <p><strong>تنبيه:</strong> <code dir="ltr">remove(x)</code> ترفع <code dir="ltr">ValueError</code> إذا لم تجد القيمة، فاستخدم <code dir="ltr">if x in arr</code> قبلها عند عدم اليقين.</p>
+              </article>
+
+              <article class="concept">
+                <h4>تحديث العناصر — Update Array Items</h4>
+                <p>التحديث يتم بالإسناد: <code dir="ltr">arr[i] = value</code> تستبدل عنصرًا واحدًا، و<code dir="ltr">arr[a:b] = other_array</code> تستبدل شريحة كاملة. القيد المهم أن القيمة المسندة يجب أن تطابق الـ typecode، وأن الشريحة لا تقبل list عادية بل array من النوع نفسه.</p>
+                <figure class="code-block">
+                  <figcaption class="code-head">
+                    <span class="code-meta">
+                      <span class="code-lang" lang="en">Python</span>
+                      <span class="code-file" lang="en">update_items.py</span>
+                    </span>
+                    <button
+                      type="button"
+                      class="btn btn-ghost btn-sm"
+                      data-copy-code
+                      aria-label="نسخ الكود"
+                    >
+                      <svg
+                        class="btn-icon"
+                        viewBox="0 0 24 24"
+                        width="14"
+                        height="14"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                      >
+                        <use href="#i-copy"></use>
+                      </svg>
+                      <span class="btn-label">نسخ</span>
+                    </button>
+                  </figcaption>
+                  <pre class="code" dir="ltr"><code>from array import array
+
+prices = array("d", [9.5, 12.0, 7.25, 15.0])
+prices[1] = 13.5
+prices[2:4] = array("d", [8.0, 16.0])
+print(prices)
+
+try:
+    prices[0:2] = [1.0, 2.0]
+except TypeError:
+    print("TypeError: slice needs an array")</code></pre>
+                  <div class="output" role="group" aria-label="مخرجات البرنامج">
+                    <div class="output-label" lang="en">Output</div>
+                    <pre dir="ltr"><code>array('d', [9.5, 13.5, 8.0, 16.0])
+TypeError: slice needs an array</code></pre>
+                  </div>
+                </figure>
+              </article>
+
+              <article class="concept">
+                <h4>المصفوفات مقابل القوائم — Arrays vs. Lists</h4>
+                <p>الـ <code dir="ltr">list</code> مرنة: تقبل أنواعًا مختلفة وتحتوي قوائم أخرى، ولها methods غنية مثل <code dir="ltr">sort()</code>. أما الـ <code dir="ltr">array</code> فمقيّدة بنوع واحد، ومضغوطة، ولا تملك <code dir="ltr">sort()</code>. القاعدة العملية: ابدأ بـ list دائمًا، واختر array فقط عند وجود كمية كبيرة من أرقام متجانسة أو حاجة للتعامل مع بيانات binary. وللتحويل بين النوعين نستخدم <code dir="ltr">tolist()</code> و<code dir="ltr">array(typecode, my_list)</code>.</p>
+                <figure class="code-block">
+                  <figcaption class="code-head">
+                    <span class="code-meta">
+                      <span class="code-lang" lang="en">Python</span>
+                      <span class="code-file" lang="en">arrays_vs_lists.py</span>
+                    </span>
+                    <button
+                      type="button"
+                      class="btn btn-ghost btn-sm"
+                      data-copy-code
+                      aria-label="نسخ الكود"
+                    >
+                      <svg
+                        class="btn-icon"
+                        viewBox="0 0 24 24"
+                        width="14"
+                        height="14"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                      >
+                        <use href="#i-copy"></use>
+                      </svg>
+                      <span class="btn-label">نسخ</span>
+                    </button>
+                  </figcaption>
+                  <pre class="code" dir="ltr"><code>from array import array
+
+readings = array("i", [30, 10, 20])
+as_list = readings.tolist()
+as_list.sort()
+print(as_list)
+print(hasattr(readings, "sort"))
+
+mixed = [1, "two", 3.5]
+print(mixed)</code></pre>
+                  <div class="output" role="group" aria-label="مخرجات البرنامج">
+                    <div class="output-label" lang="en">Output</div>
+                    <pre dir="ltr"><code>[10, 20, 30]
+False
+[1, 'two', 3.5]</code></pre>
+                  </div>
+                </figure>
+              </article>
+            </section>
+
+            <section class="lesson-section" id="summary">
+              <h3 class="section-title"><b>02</b>الملخص</h3>
+              <ul class="summary-list">
+                <li>Python لا تملك array مدمجة في اللغة؛ المصفوفة الحقيقية تأتي من module <code dir="ltr">array</code>، وما نسميه غالبًا array هو list.</li>
+                <li>ننشئ المصفوفة بـ <code dir="ltr">array(typecode, initializer)</code>، وكل عناصرها من نوع واحد يحدده الـ typecode مثل <code dir="ltr">"i"</code> و<code dir="ltr">"d"</code>.</li>
+                <li>القراءة بالـ index والـ slicing تعمل كما في list، لكن الـ slice يعيد array من النوع نفسه، والـ index الخاطئ يرفع <code dir="ltr">IndexError</code>.</li>
+                <li>الإضافة بـ <code dir="ltr">append</code> و<code dir="ltr">insert</code> و<code dir="ltr">extend</code>، والحذف بـ <code dir="ltr">remove</code> (حسب القيمة) و<code dir="ltr">pop</code> و<code dir="ltr">del</code> (حسب الموضع).</li>
+                <li>التحديث بالإسناد يتطلب مطابقة النوع، وإسناد شريحة يتطلب array من نفس الـ typecode وليس list.</li>
+                <li>اختر list افتراضيًا، واستخدم array لبيانات رقمية متجانسة وكبيرة؛ وتذكّر أن array لا تملك <code dir="ltr">sort()</code> ولا تقبل أنواعًا مختلطة.</li>
+              </ul>
+            </section>
+
+            <section class="lesson-section" id="interview-questions">
+              <h3 class="section-title"><b>03</b>أسئلة المقابلات</h3>
+              <div class="qa-list">
+                <details class="qa" open>
+                  <summary>
+                    <span class="qa-q">هل لدى Python نوع array مدمج؟</span>
+                    <span class="level level-basic">أساسي</span>
+                  </summary>
+                  <div class="qa-body">
+                    <p>ليس كنوع في اللغة نفسها؛ ما يُستخدم عادةً بدلًا منه هو <code dir="ltr">list</code>. المصفوفة المقيّدة بنوع تأتي من module <code dir="ltr">array</code> في الـ standard library، وتُنشأ بـ <code dir="ltr">array(typecode, initializer)</code>.</p>
+                    <p class="qa-follow">انتبه للفرق: <code dir="ltr">import array</code> تستورد الـ module (فتكتب <code dir="ltr">array.array(...)</code>)، أما <code dir="ltr">from array import array</code> فتستورد الـ class مباشرة.</p>
+                  </div>
+                </details>
+
+                <details class="qa">
+                  <summary>
+                    <span class="qa-q">ما وظيفة الـ typecode، وماذا يحدث عند إدخال قيمة من نوع مختلف؟</span>
+                    <span class="level level-basic">أساسي</span>
+                  </summary>
+                  <div class="qa-body">
+                    <p>الـ typecode حرف يحدد نوع كل عناصر المصفوفة (مثل <code dir="ltr">"i"</code> لعدد صحيح و<code dir="ltr">"d"</code> لعدد عشري). إدخال قيمة من نوع غير مناسب يرفع <code dir="ltr">TypeError</code>، وقيمة خارج مدى النوع ترفع <code dir="ltr">OverflowError</code>.</p>
+                  </div>
+                </details>
+
+                <details class="qa">
+                  <summary>
+                    <span class="qa-q">ما الفرق بين <code dir="ltr">remove</code> و<code dir="ltr">pop</code> و<code dir="ltr">del</code> في array؟</span>
+                    <span class="level level-mid">متوسط</span>
+                  </summary>
+                  <div class="qa-body">
+                    <p><code dir="ltr">remove(x)</code> تحذف أول عنصر بقيمة محددة وترفع <code dir="ltr">ValueError</code> إذا لم توجد. <code dir="ltr">pop(i)</code> تحذف حسب الـ index وتعيد القيمة المحذوفة. <code dir="ltr">del arr[i]</code> تحذف حسب الـ index (أو slice) دون إرجاع شيء.</p>
+                  </div>
+                </details>
+
+                <details class="qa">
+                  <summary>
+                    <span class="qa-q">متى تختار array بدل list؟</span>
+                    <span class="level level-mid">متوسط</span>
+                  </summary>
+                  <div class="qa-body">
+                    <p>عندما تكون البيانات كثيرة وأرقامًا من نوع واحد، فتستفيد من التخزين المضغوط ومن رفض الأنواع الخاطئة تلقائيًا. وفي بقية الحالات (أنواع مختلطة، قوائم متداخلة، حاجة إلى <code dir="ltr">sort()</code>) تكون <code dir="ltr">list</code> هي الخيار الأنسب.</p>
+                  </div>
+                </details>
+
+                <details class="qa">
+                  <summary>
+                    <span class="qa-q">ماذا يحدث عند تنفيذ <code dir="ltr">numbers[1:3] = [7, 8]</code> على array من النوع <code dir="ltr">"i"</code>؟</span>
+                    <span class="level level-trap">فخ</span>
+                  </summary>
+                  <div class="qa-body">
+                    <p>يرفع <code dir="ltr">TypeError</code>، لأن إسناد شريحة في array يتطلب array من نفس الـ typecode وليس list. الصيغة الصحيحة: <code dir="ltr">numbers[1:3] = array("i", [7, 8])</code>.</p>
+                  </div>
+                </details>
+              </div>
+            </section>
+
+            <section class="lesson-section" id="practical">
+              <h3 class="section-title"><b>04</b>المسألة العملية</h3>
+              <div class="callout callout-problem">
+                <p>محطة أرصاد تسجّل درجات الحرارة بعُشر الدرجة (القيمة <code dir="ltr">215</code> تعني 21.5 درجة) في array من النوع <code dir="ltr">"i"</code>. القيمة <code dir="ltr">-999</code> تعني أن الحساس معطّل. المطلوب: أنشئ المصفوفة من <code dir="ltr">[215, 230, -999, 198, 224]</code>، واحذف القراءة المعطّلة بأمان، وأضف قراءة جديدة <code dir="ltr">241</code>، وصحّح أول قراءة إلى <code dir="ltr">218</code>، وأدخل <code dir="ltr">205</code> في الموضع <code dir="ltr">2</code>، ثم اطبع المصفوفة والمتوسط وأكبر قيمة.</p>
+              </div>
+              <ol class="solution">
+                <li class="sol-step">
+                  <h4>فهم المطلوب</h4>
+                  <p>المدخل array من أعداد صحيحة فيها قيمة معطّلة. المطلوب أربع عمليات تعديل (حذف، إضافة، تحديث، إدخال) ثم حساب المتوسط وأكبر قيمة.</p>
+                </li>
+                <li class="sol-step">
+                  <h4>خطة الحل</h4>
+                  <p>ننشئ المصفوفة، ثم نتحقق من وجود <code dir="ltr">-999</code> ونحذفها، ثم <code dir="ltr">append</code> للقراءة الجديدة، ثم الإسناد بالـ index للتصحيح، ثم <code dir="ltr">insert</code> في الموضع المطلوب، وأخيرًا نحسب المتوسط وأكبر قيمة.</p>
+                </li>
+                <li class="sol-step">
+                  <h4>الكود الكامل</h4>
+                  <figure class="code-block">
+                    <figcaption class="code-head">
+                      <span class="code-meta">
+                        <span class="code-lang" lang="en">Python</span>
+                        <span class="code-file" lang="en">sensor_cleanup.py</span>
+                      </span>
+                      <button
+                        type="button"
+                        class="btn btn-ghost btn-sm"
+                        data-copy-code
+                        aria-label="نسخ الكود"
+                      >
+                        <svg
+                          class="btn-icon"
+                          viewBox="0 0 24 24"
+                          width="14"
+                          height="14"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          aria-hidden="true"
+                        >
+                          <use href="#i-copy"></use>
+                        </svg>
+                        <span class="btn-label">نسخ</span>
+                      </button>
+                    </figcaption>
+                    <pre class="code" dir="ltr"><code>from array import array
+
+readings = array("i", [215, 230, -999, 198, 224])
+
+if -999 in readings:
+    readings.remove(-999)
+
+readings.append(241)
+readings[0] = 218
+readings.insert(2, 205)
+
+average = sum(readings) / len(readings)
+print(readings)
+print(f"average: {average:.1f}, max: {max(readings)}")</code></pre>
+                    <div class="output" role="group" aria-label="مخرجات البرنامج">
+                      <div class="output-label" lang="en">Output</div>
+                      <pre dir="ltr"><code>array('i', [218, 230, 205, 198, 224, 241])
+average: 219.3, max: 241</code></pre>
+                    </div>
+                  </figure>
+                </li>
+                <li class="sol-step">
+                  <h4>تفسير القرارات</h4>
+                  <p>اخترنا <code dir="ltr">"i"</code> لأن التخزين بعُشر الدرجة يجعل كل القيم أعدادًا صحيحة. فحص <code dir="ltr">in</code> قبل <code dir="ltr">remove</code> يمنع <code dir="ltr">ValueError</code>. وتعمل <code dir="ltr">sum</code> و<code dir="ltr">max</code> على الـ array مباشرة لأنها iterable، ونقسم على <code dir="ltr">len</code> لحساب المتوسط.</p>
+                </li>
+                <li class="sol-step">
+                  <h4>اختبار سريع</h4>
+                  <p>تأكد أن المخرجات تطابق ما فوق. ثم جرّب إزالة <code dir="ltr">-999</code> من القراءات الأولية فلا يجب أن يحدث خطأ، وجرّب <code dir="ltr">readings.append(24.1)</code> لترى <code dir="ltr">TypeError</code> يؤكد أن المصفوفة مقيّدة بنوعها.</p>
+                </li>
+                <li class="sol-step">
+                  <h4>تحسين أو بديل</h4>
+                  <p><code dir="ltr">remove</code> تحذف أول قراءة معطّلة فقط. للتنظيف الكامل أنشئ <code dir="ltr">array("i")</code> فارغة، ومرّ على القراءات الخام بحلقة <code dir="ltr">for</code>، وأضف بـ <code dir="ltr">append</code> القيم التي لا تساوي <code dir="ltr">-999</code> فقط. وإذا احتجت لاحقًا إلى ترتيب القراءات فحوّلها بـ <code dir="ltr">tolist()</code> ثم استخدم <code dir="ltr">sort()</code>.</p>
+                </li>
+              </ol>
+            </section>
+          </div>
+        </section>
+      </div>
+
+      <footer class="footer">
+        <span class="footer-note" lang="en">Python Learning Roadmap</span>
+        <span class="footer-note">المرحلة 04 - الدرس 20</span>
+      </footer>
+    </main>
+
+    <script>
+      (function () {
+        'use strict'
+
+        var live = document.getElementById('copy-status')
+        var printStates = null
+
+        function fallbackCopy(text) {
+          var textarea = document.createElement('textarea')
+          textarea.value = text
+          textarea.setAttribute('readonly', '')
+          textarea.style.cssText = 'position:fixed;top:-1000px;left:-1000px;opacity:0;'
+
+          try {
+            document.body.appendChild(textarea)
+            textarea.focus()
+            textarea.select()
+            textarea.setSelectionRange(0, textarea.value.length)
+            return document.execCommand('copy')
+          } catch (error) {
+            return false
+          } finally {
+            if (textarea.parentNode) {
+              textarea.parentNode.removeChild(textarea)
+            }
+          }
+        }
+
+        function copyText(text) {
+          if (navigator.clipboard && window.isSecureContext) {
+            return navigator.clipboard.writeText(text).then(
+              function () { return true },
+              function () { return fallbackCopy(text) },
+            ).catch(function () { return false })
+          }
+
+          return Promise.resolve().then(function () {
+            return fallbackCopy(text)
+          }).catch(function () {
+            return false
+          })
+        }
+
+        document.addEventListener('click', function (event) {
+          var target = event.target
+          var button = target && typeof target.closest === 'function'
+            ? target.closest('[data-copy-code]')
+            : null
+
+          if (!button) return
+
+          var label = button.querySelector('.btn-label')
+          var block = button.closest('.code-block')
+          var code = block ? block.querySelector('pre.code > code') : null
+          if (!label || !code) return
+
+          if (!button.dataset.label) button.dataset.label = label.textContent
+
+          copyText(code.textContent).then(function (ok) {
+            label.textContent = ok ? 'تم النسخ' : 'تعذّر النسخ'
+            button.classList.toggle('is-copied', ok)
+            button.classList.toggle('is-failed', !ok)
+
+            if (live) {
+              live.textContent = ok
+                ? 'تم نسخ الكود'
+                : 'تعذّر النسخ، حدّد الكود يدويًا ثم انسخه'
+            }
+
+            window.clearTimeout(button._timer)
+            button._timer = window.setTimeout(function () {
+              label.textContent = button.dataset.label
+              button.classList.remove('is-copied', 'is-failed')
+            }, 1800)
+          })
+        })
+
+        window.addEventListener('beforeprint', function () {
+          if (printStates !== null) return
+
+          var questions = document.querySelectorAll('details.qa')
+          printStates = Array.prototype.map.call(questions, function (item) {
+            return item.open
+          })
+          questions.forEach(function (item) {
+            item.open = true
+          })
+        })
+
+        window.addEventListener('afterprint', function () {
+          if (printStates === null) return
+
+          var questions = document.querySelectorAll('details.qa')
+          questions.forEach(function (item, index) {
+            item.open = printStates[index] === true
+          })
+          printStates = null
+        })
+      })()
+    </script>
+  </body>
+</html>

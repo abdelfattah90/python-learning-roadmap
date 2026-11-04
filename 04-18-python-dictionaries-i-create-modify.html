@@ -1,0 +1,499 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#fcfcfc" />
+    <title>القواميس (1): الإنشاء والتعديل | Python Learning Roadmap</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/style.css" />
+  </head>
+  <body>
+    <svg
+      width="0"
+      height="0"
+      style="position: absolute"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <symbol id="i-copy" viewBox="0 0 24 24">
+        <rect x="9" y="9" width="12" height="12" rx="2.5" />
+        <path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15" />
+      </symbol>
+    </svg>
+    <template id="code-block-pattern">
+      <figure class="code-block">
+        <figcaption class="code-head">
+          <span class="code-meta">
+            <span class="code-lang" lang="en">Python</span>
+            <span class="code-file" lang="en">example.py</span>
+          </span>
+          <button
+            type="button"
+            class="btn btn-ghost btn-sm"
+            data-copy-code
+            aria-label="نسخ الكود"
+          >
+            <svg
+              class="btn-icon"
+              viewBox="0 0 24 24"
+              width="14"
+              height="14"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <use href="#i-copy"></use>
+            </svg>
+            <span class="btn-label">نسخ</span>
+          </button>
+        </figcaption>
+        <pre class="code" dir="ltr"><code><!-- ضع الكود هنا كنص HTML مع تهريب الرموز الخاصة --></code></pre>
+        <!-- احذف كتلة output إذا لم يكن للمثال ناتج ثابت ومفيد. -->
+        <div class="output" role="group" aria-label="مخرجات البرنامج">
+          <div class="output-label" lang="en">Output</div>
+          <pre dir="ltr"><code><!-- ضع المخرجات المتحققة هنا --></code></pre>
+        </div>
+      </figure>
+    </template>
+
+    <div
+      class="sr-only"
+      id="copy-status"
+      role="status"
+      aria-live="polite"
+    ></div>
+
+    <main class="page">
+      <header class="hero lesson-hero">
+        <span class="eyebrow">
+          <span class="eyebrow-dot"></span>
+          المرحلة <span dir="ltr">04</span>:
+          <span dir="ltr" lang="en">Built-in Data Structures</span>
+        </span>
+        <h1>
+          <span class="h1-ar">القواميس (1): الإنشاء والتعديل</span>
+          <span class="h1-en" dir="ltr" lang="en">Python Dictionaries I: Create &amp; Modify</span>
+        </h1>
+        <p class="hero-description">كيف نخزّن بيانات مرتبطة بأسماء واضحة بدل الأرقام، ثم ننشئ القاموس ونقرأ منه ونعدّل عليه ونحذف منه بأمان.</p>
+      </header>
+
+      <div class="lesson-parts">
+        <section class="lesson-part-card" id="complete-lesson" aria-labelledby="complete-lesson-title">
+          <header class="part-header">
+            <div class="part-number">درس متكامل</div>
+            <div class="part-heading">
+              <h2 id="complete-lesson-title">
+                <span class="part-title-en" dir="ltr" lang="en">Complete Lesson</span>
+                <span class="sep" aria-hidden="true"> - </span>
+                <span class="part-title-ar">الشرح والملخص والتطبيق</span>
+              </h2>
+              <span class="part-description">كل محتوى الدرس في ملف HTML واحد</span>
+            </div>
+          </header>
+
+          <div class="lesson-body">
+            <section class="lesson-section" id="explain">
+              <h3 class="section-title"><b>01</b>الشرح</h3>
+
+              <article class="concept">
+                <h4>إنشاء القواميس <span dir="ltr" lang="en">(Create Dictionaries)</span></h4>
+                <p>في الـ <code dir="ltr">list</code> نصل للبيانات برقم الموضع، وهذا غير معبّر: ماذا يعني <code dir="ltr">item[2]</code>؟ الـ <code dir="ltr">dict</code> يربط كل <code dir="ltr">key</code> باسم واضح بـ <code dir="ltr">value</code>، فنكتب <code dir="ltr">product["price"]</code> ونفهم المقصود فورًا. ننشئه بالأقواس المعقوفة <code dir="ltr">{key: value}</code> أو بالدالة <code dir="ltr">dict()</code> مع keyword arguments (تصلح فقط عندما تكون المفاتيح نصوصًا بأسماء صالحة كمتغيرات).</p>
+                <figure class="code-block">
+                  <figcaption class="code-head">
+                    <span class="code-meta">
+                      <span class="code-lang" lang="en">Python</span>
+                      <span class="code-file" lang="en">create_dict.py</span>
+                    </span>
+                    <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+                      <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <use href="#i-copy"></use>
+                      </svg>
+                      <span class="btn-label">نسخ</span>
+                    </button>
+                  </figcaption>
+                  <pre class="code" dir="ltr"><code>product = {"name": "Keyboard", "price": 45.5, "in_stock": True}
+empty_cart = {}
+from_kwargs = dict(sku="K-100", qty=3)
+
+print(product)
+print(from_kwargs)
+print(len(product), type(empty_cart))
+
+duplicate = {"id": 1, "id": 2}
+print(duplicate)</code></pre>
+                  <div class="output" role="group" aria-label="مخرجات البرنامج">
+                    <div class="output-label" lang="en">Output</div>
+                    <pre dir="ltr"><code>{'name': 'Keyboard', 'price': 45.5, 'in_stock': True}
+{'sku': 'K-100', 'qty': 3}
+3 &lt;class 'dict'&gt;
+{'id': 2}</code></pre>
+                  </div>
+                </figure>
+                <p>القواعد المهمة: (1) <code dir="ltr">{}</code> الفارغ ينشئ <code dir="ltr">dict</code> وليس <code dir="ltr">set</code>، فالـ set الفارغ يحتاج <code dir="ltr">set()</code>. (2) المفاتيح فريدة، وتكرار المفتاح لا يرفع خطأ بل تبقى آخر قيمة فقط، كما رأينا مع <code dir="ltr">"id"</code>. (3) المفتاح يجب أن يكون <code dir="ltr">hashable</code> مثل عناصر الـ set: <code dir="ltr">str</code> و <code dir="ltr">int</code> و <code dir="ltr">tuple</code> من قيم ثابتة مسموحة، أما <code dir="ltr">list</code> فيرفع <code dir="ltr">TypeError</code>. (4) القيم يمكن أن تكون من أي نوع. (5) منذ Python 3.7 يحافظ القاموس على ترتيب الإدخال، لكن الوصول يكون بالمفتاح لا بالموضع. و <code dir="ltr">len()</code> تعيد عدد الأزواج.</p>
+              </article>
+
+              <article class="concept">
+                <h4>الوصول لعناصر القاموس <span dir="ltr" lang="en">(Access Dictionary Items)</span></h4>
+                <p>الطريقة المباشرة <code dir="ltr">d[key]</code> سريعة وواضحة، لكنها ترفع <code dir="ltr">KeyError</code> إذا كان المفتاح غير موجود. استخدم <code dir="ltr">d.get(key, default)</code> عندما يكون غياب المفتاح حالة طبيعية: تعيد <code dir="ltr">None</code> أو القيمة الافتراضية دون رفع خطأ ودون إضافة المفتاح للقاموس. للفحص المسبق استخدم <code dir="ltr">in</code>، وهو يفحص <strong>المفاتيح فقط</strong> وليس القيم. أما <code dir="ltr">keys()</code> و <code dir="ltr">values()</code> و <code dir="ltr">items()</code> فتعيد <code dir="ltr">views</code> تعكس محتوى القاموس الحالي، وتحوّلها بـ <code dir="ltr">list()</code> لرؤية عناصرها.</p>
+                <figure class="code-block">
+                  <figcaption class="code-head">
+                    <span class="code-meta">
+                      <span class="code-lang" lang="en">Python</span>
+                      <span class="code-file" lang="en">access_dict.py</span>
+                    </span>
+                    <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+                      <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <use href="#i-copy"></use>
+                      </svg>
+                      <span class="btn-label">نسخ</span>
+                    </button>
+                  </figcaption>
+                  <pre class="code" dir="ltr"><code>user = {"name": "Mona", "role": "admin"}
+
+print(user["name"])
+print(user.get("email"))
+print(user.get("email", "not set"))
+print("role" in user, "admin" in user)
+
+print(user.keys())
+print(user.values())
+print(list(user.items()))</code></pre>
+                  <div class="output" role="group" aria-label="مخرجات البرنامج">
+                    <div class="output-label" lang="en">Output</div>
+                    <pre dir="ltr"><code>Mona
+None
+not set
+True False
+dict_keys(['name', 'role'])
+dict_values(['Mona', 'admin'])
+[('name', 'Mona'), ('role', 'admin')]</code></pre>
+                  </div>
+                </figure>
+                <p>تنبيه: <code dir="ltr">user["email"]</code> هنا كان سيرفع <code dir="ltr">KeyError</code>. القاعدة العملية: استخدم <code dir="ltr">[]</code> عندما يكون وجود المفتاح شرطًا في منطق البرنامج (فالخطأ المبكر مفيد)، و <code dir="ltr">get()</code> عندما يكون المفتاح اختياريًا.</p>
+              </article>
+
+              <article class="concept">
+                <h4>تعديل وإضافة العناصر <span dir="ltr" lang="en">(Change &amp; Add Dictionary Items)</span></h4>
+                <p>التعديل والإضافة يستخدمان الصيغة نفسها <code dir="ltr">d[key] = value</code>: إذا كان المفتاح موجودًا تُستبدل قيمته (<code dir="ltr">Change</code>)، وإذا لم يكن موجودًا يُضاف زوج جديد (<code dir="ltr">Add</code>). الخطر هنا أن خطأ إملائيًا في المفتاح لا يرفع خطأ، بل ينشئ مفتاحًا جديدًا بصمت. وعندما تحتاج عدة تغييرات دفعة واحدة تستخدم <code dir="ltr">d.update(other)</code>، وتقبل قاموسًا آخر أو keyword arguments؛ الأزواج الجديدة تُضاف والموجودة تُستبدل قيمها.</p>
+                <figure class="code-block">
+                  <figcaption class="code-head">
+                    <span class="code-meta">
+                      <span class="code-lang" lang="en">Python</span>
+                      <span class="code-file" lang="en">change_add.py</span>
+                    </span>
+                    <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+                      <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <use href="#i-copy"></use>
+                      </svg>
+                      <span class="btn-label">نسخ</span>
+                    </button>
+                  </figcaption>
+                  <pre class="code" dir="ltr"><code>settings = {"theme": "light", "font_size": 14}
+
+settings["theme"] = "dark"       # key exists -> change
+settings["language"] = "ar"      # new key -> add
+settings.update({"font_size": 16, "autosave": True})
+
+print(settings)</code></pre>
+                  <div class="output" role="group" aria-label="مخرجات البرنامج">
+                    <div class="output-label" lang="en">Output</div>
+                    <pre dir="ltr"><code>{'theme': 'dark', 'font_size': 16, 'language': 'ar', 'autosave': True}</code></pre>
+                  </div>
+                </figure>
+              </article>
+
+              <article class="concept">
+                <h4>حذف العناصر <span dir="ltr" lang="en">(Remove Dictionary Items)</span></h4>
+                <p>لكل حالة أداة: <code dir="ltr">pop(key)</code> تحذف المفتاح وتعيد قيمته، ويمكنك تمرير قيمة افتراضية ثانية لتجنب <code dir="ltr">KeyError</code>. <code dir="ltr">popitem()</code> تحذف آخر زوج أُضيف وتعيده كـ <code dir="ltr">tuple</code> (سلوك LIFO منذ Python 3.7)، وترفع <code dir="ltr">KeyError</code> إذا كان القاموس فارغًا. <code dir="ltr">del d[key]</code> تحذف دون إعادة القيمة وترفع <code dir="ltr">KeyError</code> إذا غاب المفتاح. و <code dir="ltr">clear()</code> تفرّغ القاموس مع بقاء الكائن نفسه.</p>
+                <figure class="code-block">
+                  <figcaption class="code-head">
+                    <span class="code-meta">
+                      <span class="code-lang" lang="en">Python</span>
+                      <span class="code-file" lang="en">remove_items.py</span>
+                    </span>
+                    <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+                      <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <use href="#i-copy"></use>
+                      </svg>
+                      <span class="btn-label">نسخ</span>
+                    </button>
+                  </figcaption>
+                  <pre class="code" dir="ltr"><code>cart = {"apple": 3, "milk": 1, "bread": 2, "eggs": 12}
+
+removed = cart.pop("milk")
+print(removed, cart)
+print(cart.pop("tea", 0))
+
+last = cart.popitem()
+print(last, cart)
+
+del cart["apple"]
+print(cart)
+
+cart.clear()
+print(cart)</code></pre>
+                  <div class="output" role="group" aria-label="مخرجات البرنامج">
+                    <div class="output-label" lang="en">Output</div>
+                    <pre dir="ltr"><code>1 {'apple': 3, 'bread': 2, 'eggs': 12}
+0
+('eggs', 12) {'apple': 3, 'bread': 2}
+{'bread': 2}
+{}</code></pre>
+                  </div>
+                </figure>
+                <p>للاختيار: تحتاج القيمة المحذوفة؟ استخدم <code dir="ltr">pop</code>. تريد الحذف فقط وأنت متأكد من وجود المفتاح؟ <code dir="ltr">del</code>. تريد التفريغ الكامل؟ <code dir="ltr">clear</code>. وإذا كان المفتاح قد يكون غائبًا فاستخدم <code dir="ltr">pop(key, default)</code>.</p>
+              </article>
+            </section>
+
+            <section class="lesson-section" id="summary">
+              <h3 class="section-title"><b>02</b>الملخص</h3>
+              <ul class="summary-list">
+                <li>القاموس يخزّن أزواج <code dir="ltr">key: value</code>، وينشأ بـ <code dir="ltr">{}</code> أو <code dir="ltr">dict()</code>، و <code dir="ltr">{}</code> الفارغ هو <code dir="ltr">dict</code> وليس <code dir="ltr">set</code>.</li>
+                <li>المفاتيح فريدة و <code dir="ltr">hashable</code>؛ تكرار المفتاح يُبقي آخر قيمة بصمت، والقاموس يحفظ ترتيب الإدخال.</li>
+                <li><code dir="ltr">d[key]</code> يرفع <code dir="ltr">KeyError</code> عند غياب المفتاح، بينما <code dir="ltr">get()</code> تعيد <code dir="ltr">None</code> أو قيمة افتراضية دون تعديل القاموس.</li>
+                <li><code dir="ltr">in</code> يفحص المفاتيح فقط، و <code dir="ltr">keys()</code> و <code dir="ltr">values()</code> و <code dir="ltr">items()</code> تعيد views تُحوَّل بـ <code dir="ltr">list()</code>.</li>
+                <li><code dir="ltr">d[key] = value</code> يعدّل إن وُجد المفتاح ويضيف إن لم يوجد، و <code dir="ltr">update()</code> تنفّذ عدة تعديلات وإضافات دفعة واحدة.</li>
+                <li>الحذف: <code dir="ltr">pop</code> تعيد القيمة، <code dir="ltr">popitem</code> تحذف آخر زوج، <code dir="ltr">del</code> تحذف دون إعادة، و <code dir="ltr">clear</code> تفرّغ القاموس.</li>
+              </ul>
+            </section>
+
+            <section class="lesson-section" id="interview-questions">
+              <h3 class="section-title"><b>03</b>أسئلة المقابلات</h3>
+              <div class="qa-list">
+                <details class="qa" open>
+                  <summary>
+                    <span class="qa-q">ما شروط مفتاح القاموس؟ وهل القاموس مرتب؟</span>
+                    <span class="level level-basic">أساسي</span>
+                  </summary>
+                  <div class="qa-body">
+                    <p>المفتاح يجب أن يكون <code dir="ltr">hashable</code> (غير قابل للتغيير عمليًا) مثل <code dir="ltr">str</code> و <code dir="ltr">int</code> و <code dir="ltr">tuple</code> من قيم ثابتة، ويجب أن يكون فريدًا. القيم لا قيد عليها. منذ Python 3.7 يحفظ القاموس ترتيب الإدخال رسميًا، لكن الوصول يتم بالمفتاح وليس بالفهرس.</p>
+                  </div>
+                </details>
+
+                <details class="qa">
+                  <summary>
+                    <span class="qa-q">ما الفرق بين <code dir="ltr">d[key]</code> و <code dir="ltr">d.get(key)</code>؟</span>
+                    <span class="level level-basic">أساسي</span>
+                  </summary>
+                  <div class="qa-body">
+                    <p><code dir="ltr">d[key]</code> يرفع <code dir="ltr">KeyError</code> إذا غاب المفتاح، أما <code dir="ltr">get()</code> فتعيد <code dir="ltr">None</code> أو القيمة الافتراضية التي تمررها، ولا تضيف المفتاح للقاموس. نستخدم <code dir="ltr">[]</code> عندما يكون المفتاح مطلوبًا وغيابه خطأ في البرنامج، و <code dir="ltr">get()</code> عندما يكون اختياريًا.</p>
+                    <p class="qa-follow">متابعة: إذا كانت القيمة المخزنة نفسها قد تكون <code dir="ltr">None</code>، فإن <code dir="ltr">get()</code> لا تفرّق بين «غائب» و«موجود وقيمته None»، فاستخدم <code dir="ltr">key in d</code> للتفريق.</p>
+                  </div>
+                </details>
+
+                <details class="qa">
+                  <summary>
+                    <span class="qa-q">قارن بين <code dir="ltr">pop</code> و <code dir="ltr">popitem</code> و <code dir="ltr">del</code> و <code dir="ltr">clear</code>.</span>
+                    <span class="level level-mid">متوسط</span>
+                  </summary>
+                  <div class="qa-body">
+                    <p><code dir="ltr">pop(key)</code> تحذف المفتاح وتعيد قيمته، وتقبل default لتجنب الخطأ. <code dir="ltr">popitem()</code> تحذف آخر زوج مُدخل وتعيده كـ <code dir="ltr">tuple</code>. <code dir="ltr">del d[key]</code> تحذف دون إعادة شيء، و <code dir="ltr">clear()</code> تفرّغ القاموس كله. الثلاث الأولى ترفع <code dir="ltr">KeyError</code> في حالات الغياب أو الفراغ عدا <code dir="ltr">pop</code> مع default.</p>
+                  </div>
+                </details>
+
+                <details class="qa">
+                  <summary>
+                    <span class="qa-q">كيف يفرّق Python بين التعديل والإضافة في <code dir="ltr">d[key] = value</code>؟ وما سلوك <code dir="ltr">update()</code>؟</span>
+                    <span class="level level-mid">متوسط</span>
+                  </summary>
+                  <div class="qa-body">
+                    <p>لا يوجد فرق في الصيغة؛ يعتمد الأمر على وجود المفتاح: إن وُجد استُبدلت قيمته، وإن لم يوجد أُضيف زوج جديد. لذلك قد ينشئ خطأ إملائي مفتاحًا جديدًا بدل التعديل. <code dir="ltr">update()</code> تطبّق القاعدة نفسها على عدة أزواج دفعة واحدة، فتستبدل القيم الموجودة وتضيف الجديدة.</p>
+                  </div>
+                </details>
+
+                <details class="qa">
+                  <summary>
+                    <span class="qa-q">ماذا يطبع <code dir="ltr">print({1: "a", 1.0: "b", True: "c"})</code> ولماذا؟</span>
+                    <span class="level level-trap">فخ</span>
+                  </summary>
+                  <div class="qa-body">
+                    <p>يطبع <code dir="ltr">{1: 'c'}</code>. القيم <code dir="ltr">1</code> و <code dir="ltr">1.0</code> و <code dir="ltr">True</code> متساوية ولها نفس قيمة الـ hash، فيعدّها القاموس مفتاحًا واحدًا: يبقى المفتاح الأول <code dir="ltr">1</code> وتُستبدل قيمته بآخر قيمة <code dir="ltr">"c"</code>. لذلك لا تخلط الأعداد والـ booleans كمفاتيح في القاموس نفسه.</p>
+                  </div>
+                </details>
+              </div>
+            </section>
+
+            <section class="lesson-section" id="practical">
+              <h3 class="section-title"><b>04</b>المسألة العملية</h3>
+              <div class="callout callout-problem">
+                <p>مكتبة صغيرة تحتفظ بمخزون القرطاسية في قاموس: <code dir="ltr">{"pen": 40, "notebook": 15, "stapler": 3}</code>. بعد يوم العمل: بيعت كل الدباسات (<code dir="ltr">stapler</code>) فيجب حذفها من المخزون، وجاءت شحنة <code dir="ltr">marker</code> بكمية 25، وصار <code dir="ltr">notebook</code> بكمية 20، وأُضيف <code dir="ltr">eraser</code> بكمية 50. اطبع كمية الدباسات (0 إن لم تكن موجودة)، ثم المخزون النهائي، ثم عدد الأصناف.</p>
+              </div>
+              <ol class="solution">
+                <li class="sol-step">
+                  <h4>فهم المطلوب</h4>
+                  <p>لدينا قاموس مخزون يحتاج: تعديل كمية، حذف صنف نفد، إضافة صنف جديد، وتحديث عدة أصناف معًا، ثم قراءة آمنة لصنف قد لا يكون موجودًا.</p>
+                </li>
+                <li class="sol-step">
+                  <h4>خطة الحل</h4>
+                  <p>نُنقص الكمية بـ <code dir="ltr">-=</code>، ونحذف الصنف بـ <code dir="ltr">del</code> إذا وصل الصفر، ونضيف <code dir="ltr">marker</code> بالإسناد، ونستخدم <code dir="ltr">update()</code> للتعديل والإضافة معًا، ونقرأ بـ <code dir="ltr">get()</code>.</p>
+                </li>
+                <li class="sol-step">
+                  <h4>الكود الكامل</h4>
+                  <figure class="code-block">
+                    <figcaption class="code-head">
+                      <span class="code-meta">
+                        <span class="code-lang" lang="en">Python</span>
+                        <span class="code-file" lang="en">inventory.py</span>
+                      </span>
+                      <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+                        <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                          <use href="#i-copy"></use>
+                        </svg>
+                        <span class="btn-label">نسخ</span>
+                      </button>
+                    </figcaption>
+                    <pre class="code" dir="ltr"><code>inventory = {"pen": 40, "notebook": 15, "stapler": 3}
+
+inventory["stapler"] -= 3
+if inventory["stapler"] == 0:
+    del inventory["stapler"]
+
+inventory["marker"] = 25
+inventory.update({"notebook": 20, "eraser": 50})
+
+print(inventory.get("stapler", 0))
+print(inventory)
+print(len(inventory))</code></pre>
+                    <div class="output" role="group" aria-label="مخرجات البرنامج">
+                      <div class="output-label" lang="en">Output</div>
+                      <pre dir="ltr"><code>0
+{'pen': 40, 'notebook': 20, 'marker': 25, 'eraser': 50}
+4</code></pre>
+                    </div>
+                  </figure>
+                </li>
+                <li class="sol-step">
+                  <h4>تفسير القرارات</h4>
+                  <p>استخدمنا <code dir="ltr">inventory["stapler"]</code> بالأقواس لأن الصنف مطلوب وجوده في هذه اللحظة. وكان <code dir="ltr">update()</code> مناسبًا لأنه عدّل <code dir="ltr">notebook</code> وأضاف <code dir="ltr">eraser</code> في استدعاء واحد. وقرأنا الدباسات بـ <code dir="ltr">get()</code> لأنها لم تعد موجودة، فنحصل على 0 بدل <code dir="ltr">KeyError</code>.</p>
+                </li>
+                <li class="sol-step">
+                  <h4>اختبار سريع</h4>
+                  <p>غيّر الكمية الابتدائية إلى <code dir="ltr">"stapler": 5</code>: ستصبح 2 فلا يتحقق شرط الحذف، فيبقى الصنف، وتطبع <code dir="ltr">get</code> القيمة 2، ويصبح <code dir="ltr">len(inventory)</code> يساوي 5.</p>
+                </li>
+                <li class="sol-step">
+                  <h4>تحسين أو بديل</h4>
+                  <p>إذا كان الصنف قد يكون غائبًا من البداية فالسطر الأول سيرفع <code dir="ltr">KeyError</code>. بديل أكثر أمانًا: تحقق من <code dir="ltr">inventory.get("stapler", 0)</code> ثم احذف بـ <code dir="ltr">inventory.pop("stapler", None)</code> التي لا ترفع خطأ عند الغياب.</p>
+                </li>
+              </ol>
+            </section>
+          </div>
+        </section>
+      </div>
+
+      <footer class="footer">
+        <span class="footer-note" lang="en">Python Learning Roadmap</span>
+        <span class="footer-note">المرحلة 04 - الدرس 18</span>
+      </footer>
+    </main>
+
+    <script>
+      (function () {
+        'use strict'
+
+        var live = document.getElementById('copy-status')
+        var printStates = null
+
+        function fallbackCopy(text) {
+          var textarea = document.createElement('textarea')
+          textarea.value = text
+          textarea.setAttribute('readonly', '')
+          textarea.style.cssText = 'position:fixed;top:-1000px;left:-1000px;opacity:0;'
+
+          try {
+            document.body.appendChild(textarea)
+            textarea.focus()
+            textarea.select()
+            textarea.setSelectionRange(0, textarea.value.length)
+            return document.execCommand('copy')
+          } catch (error) {
+            return false
+          } finally {
+            if (textarea.parentNode) {
+              textarea.parentNode.removeChild(textarea)
+            }
+          }
+        }
+
+        function copyText(text) {
+          if (navigator.clipboard && window.isSecureContext) {
+            return navigator.clipboard.writeText(text).then(
+              function () { return true },
+              function () { return fallbackCopy(text) },
+            ).catch(function () { return false })
+          }
+
+          return Promise.resolve().then(function () {
+            return fallbackCopy(text)
+          }).catch(function () {
+            return false
+          })
+        }
+
+        document.addEventListener('click', function (event) {
+          var target = event.target
+          var button = target && typeof target.closest === 'function'
+            ? target.closest('[data-copy-code]')
+            : null
+
+          if (!button) return
+
+          var label = button.querySelector('.btn-label')
+          var block = button.closest('.code-block')
+          var code = block ? block.querySelector('pre.code > code') : null
+          if (!label || !code) return
+
+          if (!button.dataset.label) button.dataset.label = label.textContent
+
+          copyText(code.textContent).then(function (ok) {
+            label.textContent = ok ? 'تم النسخ' : 'تعذّر النسخ'
+            button.classList.toggle('is-copied', ok)
+            button.classList.toggle('is-failed', !ok)
+
+            if (live) {
+              live.textContent = ok
+                ? 'تم نسخ الكود'
+                : 'تعذّر النسخ، حدّد الكود يدويًا ثم انسخه'
+            }
+
+            window.clearTimeout(button._timer)
+            button._timer = window.setTimeout(function () {
+              label.textContent = button.dataset.label
+              button.classList.remove('is-copied', 'is-failed')
+            }, 1800)
+          })
+        })
+
+        window.addEventListener('beforeprint', function () {
+          if (printStates !== null) return
+
+          var questions = document.querySelectorAll('details.qa')
+          printStates = Array.prototype.map.call(questions, function (item) {
+            return item.open
+          })
+          questions.forEach(function (item) {
+            item.open = true
+          })
+        })
+
+        window.addEventListener('afterprint', function () {
+          if (printStates === null) return
+
+          var questions = document.querySelectorAll('details.qa')
+          questions.forEach(function (item, index) {
+            item.open = printStates[index] === true
+          })
+          printStates = null
+        })
+      })()
+    </script>
+  </body>
+</html>

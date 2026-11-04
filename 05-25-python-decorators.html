@@ -1,0 +1,606 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#fcfcfc" />
+    <title>Python Decorators - المزيّنات | Python Learning Roadmap</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/style.css" />
+  </head>
+  <body>
+    <svg
+      width="0"
+      height="0"
+      style="position: absolute"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <symbol id="i-copy" viewBox="0 0 24 24">
+        <rect x="9" y="9" width="12" height="12" rx="2.5" />
+        <path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15" />
+      </symbol>
+    </svg>
+    <template id="code-block-pattern">
+      <figure class="code-block">
+        <figcaption class="code-head">
+          <span class="code-meta">
+            <span class="code-lang" lang="en">Python</span>
+            <span class="code-file" lang="en">example.py</span>
+          </span>
+          <button
+            type="button"
+            class="btn btn-ghost btn-sm"
+            data-copy-code
+            aria-label="نسخ الكود"
+          >
+            <svg
+              class="btn-icon"
+              viewBox="0 0 24 24"
+              width="14"
+              height="14"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <use href="#i-copy"></use>
+            </svg>
+            <span class="btn-label">نسخ</span>
+          </button>
+        </figcaption>
+        <pre class="code" dir="ltr"><code><!-- ضع الكود هنا كنص HTML مع تهريب الرموز الخاصة --></code></pre>
+        <!-- احذف كتلة output إذا لم يكن للمثال ناتج ثابت ومفيد. -->
+        <div class="output" role="group" aria-label="مخرجات البرنامج">
+          <div class="output-label" lang="en">Output</div>
+          <pre dir="ltr"><code><!-- ضع المخرجات المتحققة هنا --></code></pre>
+        </div>
+      </figure>
+    </template>
+
+    <div
+      class="sr-only"
+      id="copy-status"
+      role="status"
+      aria-live="polite"
+    ></div>
+
+    <main class="page">
+      <header class="hero lesson-hero">
+        <span class="eyebrow">
+          <span class="eyebrow-dot"></span>
+          المرحلة <span dir="ltr">05</span>:
+          <span dir="ltr" lang="en">Functions</span>
+        </span>
+        <h1>
+          <span class="h1-ar">المزيّنات</span>
+          <span class="h1-en" dir="ltr" lang="en">Python Decorators</span>
+        </h1>
+        <p class="hero-description">كيف تضيف سلوكًا مشتركًا مثل التسجيل أو العدّ إلى عدة دوال دون تعديل أجسامها أو تكرار الكود، باستخدام دالة تغلّف دالة أخرى.</p>
+      </header>
+
+      <div class="lesson-parts">
+        <section class="lesson-part-card" id="complete-lesson" aria-labelledby="complete-lesson-title">
+          <header class="part-header">
+            <div class="part-number">درس متكامل</div>
+            <div class="part-heading">
+              <h2 id="complete-lesson-title">
+                <span class="part-title-en" dir="ltr" lang="en">Complete Lesson</span>
+                <span class="sep" aria-hidden="true"> - </span>
+                <span class="part-title-ar">الشرح والملخص والتطبيق</span>
+              </h2>
+              <span class="part-description">كل محتوى الدرس في ملف HTML واحد</span>
+            </div>
+          </header>
+
+          <div class="lesson-body">
+            <section class="lesson-section" id="explain">
+              <h3 class="section-title"><b>01</b>الشرح</h3>
+
+              <article class="concept">
+                <h4>Decorators: لماذا نحتاجها وعلى ماذا تقوم؟</h4>
+                <p>افترض أنك تريد تسجيل (log) كل استدعاء لعشر دوال في مشروعك. تعديل جسم كل دالة يكرر الكود ويخلط منطق الدالة بمنطق التسجيل. الحل هو الـ <span dir="ltr" lang="en">decorator</span>: دالة تستقبل دالة أخرى وتُرجع دالة جديدة تغلّفها وتضيف السلوك المطلوب، بينما تبقى الدالة الأصلية كما هي.</p>
+                <p>الفكرة تقوم على أن الدوال في Python كائنات عادية (<span dir="ltr" lang="en">first-class objects</span>): يمكن تمريرها كـ argument، وإرجاعها من دالة، وتعريف دالة داخل أخرى. ومن درس Scope نعرف أن الدالة الداخلية تبقى ترى متغيرات الدالة الخارجية حتى بعد انتهائها. المثال التالي يجمع الفكرتين.</p>
+                <figure class="code-block">
+                  <figcaption class="code-head">
+                    <span class="code-meta">
+                      <span class="code-lang" lang="en">Python</span>
+                      <span class="code-file" lang="en">functions_as_objects.py</span>
+                    </span>
+                    <button
+                      type="button"
+                      class="btn btn-ghost btn-sm"
+                      data-copy-code
+                      aria-label="نسخ الكود"
+                    >
+                      <svg
+                        class="btn-icon"
+                        viewBox="0 0 24 24"
+                        width="14"
+                        height="14"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                      >
+                        <use href="#i-copy"></use>
+                      </svg>
+                      <span class="btn-label">نسخ</span>
+                    </button>
+                  </figcaption>
+                  <pre class="code" dir="ltr"><code>def shout(text):
+    return text.upper()
+
+
+def apply(func, value):
+    return func(value)
+
+
+def make_prefixer(prefix):
+    def add_prefix(text):
+        return prefix + text
+    return add_prefix
+
+
+print(apply(shout, "saved"))
+add_info = make_prefixer("[INFO] ")
+print(add_info("saved"))</code></pre>
+                  <div class="output" role="group" aria-label="مخرجات البرنامج">
+                    <div class="output-label" lang="en">Output</div>
+                    <pre dir="ltr"><code>SAVED
+[INFO] saved</code></pre>
+                  </div>
+                </figure>
+                <p><strong>الخطأ الشائع:</strong> الخلط بين تمرير الدالة واستدعائها. <code dir="ltr">apply(shout, ...)</code> يمرر الدالة نفسها، أما <code dir="ltr">shout("x")</code> فينفذها ويمرر نتيجتها. الـ decorator يعتمد دائمًا على النوع الأول.</p>
+              </article>
+
+              <article class="concept">
+                <h4>Create Decorators: بناء decorator وصيغة @</h4>
+                <p>الـ decorator البسيط له ثلاث طبقات: دالة خارجية تستقبل <code dir="ltr">func</code>، ودالة داخلية <code dir="ltr">wrapper</code> تضيف السلوك وتستدعي <code dir="ltr">func</code>، ثم تُرجع الخارجية <code dir="ltr">wrapper</code> نفسها. وضع <code dir="ltr">@log_call</code> فوق تعريف الدالة اختصار لسطر <code dir="ltr">save_report = log_call(save_report)</code>؛ أي أن الاسم <code dir="ltr">save_report</code> صار يشير إلى الـ wrapper.</p>
+                <figure class="code-block">
+                  <figcaption class="code-head">
+                    <span class="code-meta">
+                      <span class="code-lang" lang="en">Python</span>
+                      <span class="code-file" lang="en">create_decorator.py</span>
+                    </span>
+                    <button
+                      type="button"
+                      class="btn btn-ghost btn-sm"
+                      data-copy-code
+                      aria-label="نسخ الكود"
+                    >
+                      <svg
+                        class="btn-icon"
+                        viewBox="0 0 24 24"
+                        width="14"
+                        height="14"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                      >
+                        <use href="#i-copy"></use>
+                      </svg>
+                      <span class="btn-label">نسخ</span>
+                    </button>
+                  </figcaption>
+                  <pre class="code" dir="ltr"><code>def log_call(func):
+    def wrapper():
+        print("Calling", func.__name__)
+        result = func()
+        print("Done")
+        return result
+    return wrapper
+
+
+@log_call
+def save_report():
+    print("Report saved")
+
+
+save_report()</code></pre>
+                  <div class="output" role="group" aria-label="مخرجات البرنامج">
+                    <div class="output-label" lang="en">Output</div>
+                    <pre dir="ltr"><code>Calling save_report
+Report saved
+Done</code></pre>
+                  </div>
+                </figure>
+                <p>انتبه إلى التوقيت: جسم <code dir="ltr">log_call</code> يُنفَّذ مرة واحدة فقط وقت تعريف الدالة، أما <code dir="ltr">wrapper</code> فيُنفَّذ عند كل استدعاء. <strong>الخطأ الشائع:</strong> كتابة <code dir="ltr">return wrapper()</code> بدل <code dir="ltr">return wrapper</code>؛ فتستدعي الدالة فورًا بدل إرجاعها، وتصبح الدالة المزيّنة <code dir="ltr">None</code>.</p>
+              </article>
+
+              <article class="concept">
+                <h4>Decorators with Functions (1): دوال لها arguments وقيم إرجاع</h4>
+                <p>الـ wrapper في المثال السابق لا يقبل أي argument، فيفشل مع أي دالة تحتاج معاملات. الحل المعتاد من درس Function Arguments هو <code dir="ltr">*args, **kwargs</code> لاستقبال كل شيء وتمريره كما هو إلى الدالة الأصلية. كذلك يجب حفظ نتيجة الدالة وإرجاعها من الـ wrapper، وإلا فقدت الدالة المزيّنة قيمة الإرجاع.</p>
+                <figure class="code-block">
+                  <figcaption class="code-head">
+                    <span class="code-meta">
+                      <span class="code-lang" lang="en">Python</span>
+                      <span class="code-file" lang="en">decorate_with_arguments.py</span>
+                    </span>
+                    <button
+                      type="button"
+                      class="btn btn-ghost btn-sm"
+                      data-copy-code
+                      aria-label="نسخ الكود"
+                    >
+                      <svg
+                        class="btn-icon"
+                        viewBox="0 0 24 24"
+                        width="14"
+                        height="14"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                      >
+                        <use href="#i-copy"></use>
+                      </svg>
+                      <span class="btn-label">نسخ</span>
+                    </button>
+                  </figcaption>
+                  <pre class="code" dir="ltr"><code>def log_call(func):
+    def wrapper(*args, **kwargs):
+        print(f"Calling {func.__name__} with {args} {kwargs}")
+        result = func(*args, **kwargs)
+        print(f"Returned {result}")
+        return result
+    return wrapper
+
+
+@log_call
+def calculate_total(price, quantity, tax=0.0):
+    return price * quantity * (1 + tax)
+
+
+total = calculate_total(20, 3, tax=0.25)</code></pre>
+                  <div class="output" role="group" aria-label="مخرجات البرنامج">
+                    <div class="output-label" lang="en">Output</div>
+                    <pre dir="ltr"><code>Calling calculate_total with (20, 3) {'tax': 0.25}
+Returned 75.0</code></pre>
+                  </div>
+                </figure>
+                <p><strong>الخطأ الشائع:</strong> نسيان <code dir="ltr">return result</code>؛ تعمل الدالة ويظهر أثرها، لكن <code dir="ltr">total</code> يصبح <code dir="ltr">None</code> بصمت.</p>
+              </article>
+
+              <article class="concept">
+                <h4>Decorators with Functions (2): decorator بمعاملات وتكديس عدة decorators</h4>
+                <p>إذا احتاج الـ decorator إلى إعداد خاص مثل عدد مرات التكرار، نضيف طبقة ثالثة: الدالة الخارجية تستقبل الإعداد، والوسطى <code dir="ltr">decorator</code> تستقبل <code dir="ltr">func</code>، والداخلية <code dir="ltr">wrapper</code> تنفّذ العمل. عند كتابة <code dir="ltr">@repeat(times=3)</code> تُستدعى <code dir="ltr">repeat(times=3)</code> أولًا، ثم تُطبَّق النتيجة على الدالة.</p>
+                <figure class="code-block">
+                  <figcaption class="code-head">
+                    <span class="code-meta">
+                      <span class="code-lang" lang="en">Python</span>
+                      <span class="code-file" lang="en">decorator_with_parameters.py</span>
+                    </span>
+                    <button
+                      type="button"
+                      class="btn btn-ghost btn-sm"
+                      data-copy-code
+                      aria-label="نسخ الكود"
+                    >
+                      <svg
+                        class="btn-icon"
+                        viewBox="0 0 24 24"
+                        width="14"
+                        height="14"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                      >
+                        <use href="#i-copy"></use>
+                      </svg>
+                      <span class="btn-label">نسخ</span>
+                    </button>
+                  </figcaption>
+                  <pre class="code" dir="ltr"><code>def repeat(times):
+    def decorator(func):
+        def wrapper(*args, **kwargs):
+            result = None
+            for _ in range(times):
+                result = func(*args, **kwargs)
+            return result
+        return wrapper
+    return decorator
+
+
+@repeat(times=3)
+def send_reminder(user):
+    print(f"Reminder sent to {user}")
+
+
+send_reminder("Omar")</code></pre>
+                  <div class="output" role="group" aria-label="مخرجات البرنامج">
+                    <div class="output-label" lang="en">Output</div>
+                    <pre dir="ltr"><code>Reminder sent to Omar
+Reminder sent to Omar
+Reminder sent to Omar</code></pre>
+                  </div>
+                </figure>
+                <p>يمكن وضع أكثر من decorator فوق الدالة: <code dir="ltr">@a</code> فوق <code dir="ltr">@b</code> يعني <code dir="ltr">a(b(func))</code>؛ يُطبَّق الأقرب للدالة أولًا، لكن عند الاستدعاء يعمل الخارجي <code dir="ltr">a</code> أولًا. <strong>قيد مهم:</strong> بعد التزيين يشير اسم الدالة إلى الـ wrapper، فيصبح <code dir="ltr">send_reminder.__name__</code> هو <code dir="ltr">"wrapper"</code>. يوجد حل قياسي لذلك في الـ standard library (<code dir="ltr">functools.wraps</code>) سنتعرف عليه عند دراسة الـ modules، وهنا مجرد تنبيه.</p>
+              </article>
+            </section>
+
+            <section class="lesson-section" id="summary">
+              <h3 class="section-title"><b>02</b>الملخص</h3>
+              <ul class="summary-list">
+                <li>الـ <span dir="ltr" lang="en">decorator</span> دالة تستقبل دالة وتُرجع دالة جديدة تضيف سلوكًا دون تعديل الدالة الأصلية.</li>
+                <li>يعمل لأن الدوال كائنات: تُمرَّر وتُرجَع، والدالة الداخلية تتذكر متغيرات الدالة الخارجية.</li>
+                <li>الهيكل الأساسي: دالة خارجية تستقبل <code dir="ltr">func</code>، ثم <code dir="ltr">wrapper</code> داخلية، ثم <code dir="ltr">return wrapper</code> بدون أقواس.</li>
+                <li><code dir="ltr">@name</code> فوق التعريف تساوي <code dir="ltr">func = name(func)</code>؛ يُنفَّذ الـ decorator مرة عند التعريف، والـ wrapper عند كل استدعاء.</li>
+                <li>استخدم <code dir="ltr">*args, **kwargs</code> وأعد <code dir="ltr">result</code> ليعمل الـ decorator مع أي دالة وتبقى قيمة إرجاعها سليمة.</li>
+                <li>الـ decorator بمعاملات يحتاج ثلاث طبقات مثل <code dir="ltr">@repeat(3)</code>، والتكديس يُطبَّق من الأقرب للدالة إلى الأبعد، والـ wrapper يغيّر <code dir="ltr">__name__</code>.</li>
+              </ul>
+            </section>
+
+            <section class="lesson-section" id="interview-questions">
+              <h3 class="section-title"><b>03</b>أسئلة المقابلات</h3>
+              <div class="qa-list">
+                <details class="qa" open>
+                  <summary>
+                    <span class="qa-q">ما هو الـ decorator في Python ولماذا نستخدمه؟</span>
+                    <span class="level level-basic">أساسي</span>
+                  </summary>
+                  <div class="qa-body">
+                    <p>هو دالة تستقبل دالة أخرى وتُرجع دالة جديدة تغلّفها وتضيف سلوكًا قبل التنفيذ أو بعده. نستخدمه لتطبيق منطق مشترك مثل logging أو التحقق أو العدّ على عدة دوال دون تكرار الكود ودون تعديل أجسامها.</p>
+                  </div>
+                </details>
+
+                <details class="qa">
+                  <summary>
+                    <span class="qa-q">ماذا تعني <span dir="ltr">@decorator</span> فوق تعريف الدالة؟</span>
+                    <span class="level level-basic">أساسي</span>
+                  </summary>
+                  <div class="qa-body">
+                    <p>هي صيغة مختصرة (syntactic sugar) لـ <code dir="ltr">func = decorator(func)</code> تُنفَّذ مرة واحدة بعد تعريف الدالة مباشرة. بعدها يشير اسم الدالة إلى الـ wrapper الذي أرجعه الـ decorator.</p>
+                  </div>
+                </details>
+
+                <details class="qa">
+                  <summary>
+                    <span class="qa-q">لماذا يستخدم الـ wrapper عادةً <span dir="ltr">*args, **kwargs</span> ويُرجع <span dir="ltr">result</span>؟</span>
+                    <span class="level level-mid">متوسط</span>
+                  </summary>
+                  <div class="qa-body">
+                    <p><code dir="ltr">*args, **kwargs</code> تجعل الـ decorator قابلًا للتطبيق على أي دالة مهما كان عدد معاملاتها وأنواعها، لأنها تُمرَّر كما هي. وإرجاع <code dir="ltr">result</code> يحفظ قيمة الإرجاع الأصلية؛ بدونه تُرجع الدالة المزيّنة <code dir="ltr">None</code>.</p>
+                  </div>
+                </details>
+
+                <details class="qa">
+                  <summary>
+                    <span class="qa-q">كيف تكتب decorator يستقبل معاملات مثل <span dir="ltr">@repeat(times=3)</span>؟</span>
+                    <span class="level level-mid">متوسط</span>
+                  </summary>
+                  <div class="qa-body">
+                    <p>نضيف طبقة ثالثة: دالة خارجية تستقبل المعاملات وتُرجع الـ decorator الحقيقي، وهذا بدوره يستقبل <code dir="ltr">func</code> ويُرجع <code dir="ltr">wrapper</code>. عند كتابة <code dir="ltr">@repeat(times=3)</code> تُستدعى الدالة الخارجية أولًا، ثم يُطبَّق ناتجها على الدالة.</p>
+                  </div>
+                  <p class="qa-follow">متابعة: ماذا يحدث لو كتبت <code dir="ltr">@repeat</code> بدون أقواس؟ تُمرَّر الدالة نفسها كقيمة <code dir="ltr">times</code>، فينتج decorator خاطئ ويفشل الكود عند الاستدعاء.</p>
+                </details>
+
+                <details class="qa">
+                  <summary>
+                    <span class="qa-q">هل كود الـ decorator يعمل عند تعريف الدالة أم عند استدعائها؟</span>
+                    <span class="level level-trap">فخ</span>
+                  </summary>
+                  <div class="qa-body">
+                    <p>كلاهما، لكن لأجزاء مختلفة. جسم الدالة الخارجية (<code dir="ltr">log_call</code> مثلًا) يعمل مرة واحدة وقت التعريف عند تطبيق <code dir="ltr">@</code>، أما جسم <code dir="ltr">wrapper</code> فيعمل عند كل استدعاء. لذلك أي طباعة أو إعداد وضعته خارج الـ wrapper لن يتكرر مع كل استدعاء.</p>
+                  </div>
+                </details>
+              </div>
+            </section>
+
+            <section class="lesson-section" id="practical">
+              <h3 class="section-title"><b>04</b>المسألة العملية</h3>
+              <div class="callout callout-problem">
+                <p>متجر إلكتروني صغير يريد تتبّع عمليات التسعير. اكتب decorator باسم <code dir="ltr">audit</code> يستقبل <code dir="ltr">label</code> ويطبع عند كل استدعاء: التصنيف، ورقم الاستدعاء، واسم الدالة، والنتيجة. يجب أن يحافظ على قيمة الإرجاع ويعمل مع أي arguments. طبّقه على الدالة <code dir="ltr">apply_discount(price, percent)</code> واستدعِها مرتين.</p>
+              </div>
+              <ol class="solution">
+                <li class="sol-step">
+                  <h4>فهم المطلوب</h4>
+                  <p>نحتاج decorator بمعامل (<code dir="ltr">label</code>) يغلّف أي دالة، ويعدّ استدعاءاتها، ويطبع سطرًا لكل استدعاء، ثم يُرجع النتيجة الأصلية دون تغيير.</p>
+                </li>
+                <li class="sol-step">
+                  <h4>خطة الحل</h4>
+                  <p>بما أن لدينا معاملًا، نبني ثلاث طبقات: <code dir="ltr">audit(label)</code> ثم <code dir="ltr">decorator(func)</code> ثم <code dir="ltr">wrapper(*args, **kwargs)</code>. نضع العدّاد <code dir="ltr">calls</code> في الطبقة الوسطى ونعدّله من الـ wrapper باستخدام <code dir="ltr">nonlocal</code> (درس Scope).</p>
+                </li>
+                <li class="sol-step">
+                  <h4>الكود الكامل</h4>
+                  <figure class="code-block">
+                    <figcaption class="code-head">
+                      <span class="code-meta">
+                        <span class="code-lang" lang="en">Python</span>
+                        <span class="code-file" lang="en">audit_decorator.py</span>
+                      </span>
+                      <button
+                        type="button"
+                        class="btn btn-ghost btn-sm"
+                        data-copy-code
+                        aria-label="نسخ الكود"
+                      >
+                        <svg
+                          class="btn-icon"
+                          viewBox="0 0 24 24"
+                          width="14"
+                          height="14"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          aria-hidden="true"
+                        >
+                          <use href="#i-copy"></use>
+                        </svg>
+                        <span class="btn-label">نسخ</span>
+                      </button>
+                    </figcaption>
+                    <pre class="code" dir="ltr"><code>def audit(label):
+    def decorator(func):
+        calls = 0
+
+        def wrapper(*args, **kwargs):
+            nonlocal calls
+            calls += 1
+            result = func(*args, **kwargs)
+            print(f"[{label}] #{calls} {func.__name__} -&gt; {result}")
+            return result
+        return wrapper
+    return decorator
+
+
+@audit("PRICING")
+def apply_discount(price, percent):
+    return price - price * percent / 100
+
+
+total = apply_discount(200, 10) + apply_discount(50, 20)
+print("Total:", total)</code></pre>
+                    <div class="output" role="group" aria-label="مخرجات البرنامج">
+                      <div class="output-label" lang="en">Output</div>
+                      <pre dir="ltr"><code>[PRICING] #1 apply_discount -&gt; 180.0
+[PRICING] #2 apply_discount -&gt; 40.0
+Total: 220.0</code></pre>
+                    </div>
+                  </figure>
+                </li>
+                <li class="sol-step">
+                  <h4>تفسير القرارات</h4>
+                  <p>وضعنا <code dir="ltr">calls = 0</code> داخل <code dir="ltr">decorator</code> لا داخل <code dir="ltr">wrapper</code>، فيُنشأ عدّاد مستقل لكل دالة مزيّنة ويبقى بين الاستدعاءات. استخدمنا <code dir="ltr">nonlocal</code> لأن <code dir="ltr">calls += 1</code> بدونه سيعامل <code dir="ltr">calls</code> متغيرًا محليًا ويفشل. وأعدنا <code dir="ltr">result</code> ليبقى جمع النتيجتين في <code dir="ltr">total</code> صحيحًا.</p>
+                </li>
+                <li class="sol-step">
+                  <h4>اختبار سريع</h4>
+                  <p>القيمتان 180.0 و40.0 تعطيان مجموع 220.0، وهو ما يظهر في السطر الأخير، فقيمة الإرجاع سليمة. جرّب أيضًا <code dir="ltr">apply_discount(100, percent=50)</code>؛ يعمل الاستدعاء بـ keyword argument ويُرجع 50.0، ويظهر رقم الاستدعاء #3 لأن العدّاد يستمر.</p>
+                </li>
+                <li class="sol-step">
+                  <h4>تحسين أو بديل</h4>
+                  <p>لو لم تحتج التصنيف فاكتب decorator من طبقتين دون <code dir="ltr">label</code>، واستخدمه بصيغة <code dir="ltr">@audit</code> بلا أقواس. ولاحظ أن <code dir="ltr">apply_discount.__name__</code> أصبح <code dir="ltr">"wrapper"</code>؛ سنعالج ذلك بـ <code dir="ltr">functools.wraps</code> عند دراسة الـ modules.</p>
+                </li>
+              </ol>
+            </section>
+          </div>
+        </section>
+      </div>
+
+      <footer class="footer">
+        <span class="footer-note" lang="en">Python Learning Roadmap</span>
+        <span class="footer-note">المرحلة 05 - الدرس 25</span>
+      </footer>
+    </main>
+
+    <script>
+      (function () {
+        'use strict'
+
+        var live = document.getElementById('copy-status')
+        var printStates = null
+
+        function fallbackCopy(text) {
+          var textarea = document.createElement('textarea')
+          textarea.value = text
+          textarea.setAttribute('readonly', '')
+          textarea.style.cssText = 'position:fixed;top:-1000px;left:-1000px;opacity:0;'
+
+          try {
+            document.body.appendChild(textarea)
+            textarea.focus()
+            textarea.select()
+            textarea.setSelectionRange(0, textarea.value.length)
+            return document.execCommand('copy')
+          } catch (error) {
+            return false
+          } finally {
+            if (textarea.parentNode) {
+              textarea.parentNode.removeChild(textarea)
+            }
+          }
+        }
+
+        function copyText(text) {
+          if (navigator.clipboard && window.isSecureContext) {
+            return navigator.clipboard.writeText(text).then(
+              function () { return true },
+              function () { return fallbackCopy(text) },
+            ).catch(function () { return false })
+          }
+
+          return Promise.resolve().then(function () {
+            return fallbackCopy(text)
+          }).catch(function () {
+            return false
+          })
+        }
+
+        document.addEventListener('click', function (event) {
+          var target = event.target
+          var button = target && typeof target.closest === 'function'
+            ? target.closest('[data-copy-code]')
+            : null
+
+          if (!button) return
+
+          var label = button.querySelector('.btn-label')
+          var block = button.closest('.code-block')
+          var code = block ? block.querySelector('pre.code > code') : null
+          if (!label || !code) return
+
+          if (!button.dataset.label) button.dataset.label = label.textContent
+
+          copyText(code.textContent).then(function (ok) {
+            label.textContent = ok ? 'تم النسخ' : 'تعذّر النسخ'
+            button.classList.toggle('is-copied', ok)
+            button.classList.toggle('is-failed', !ok)
+
+            if (live) {
+              live.textContent = ok
+                ? 'تم نسخ الكود'
+                : 'تعذّر النسخ، حدّد الكود يدويًا ثم انسخه'
+            }
+
+            window.clearTimeout(button._timer)
+            button._timer = window.setTimeout(function () {
+              label.textContent = button.dataset.label
+              button.classList.remove('is-copied', 'is-failed')
+            }, 1800)
+          })
+        })
+
+        window.addEventListener('beforeprint', function () {
+          if (printStates !== null) return
+
+          var questions = document.querySelectorAll('details.qa')
+          printStates = Array.prototype.map.call(questions, function (item) {
+            return item.open
+          })
+          questions.forEach(function (item) {
+            item.open = true
+          })
+        })
+
+        window.addEventListener('afterprint', function () {
+          if (printStates === null) return
+
+          var questions = document.querySelectorAll('details.qa')
+          questions.forEach(function (item, index) {
+            item.open = printStates[index] === true
+          })
+          printStates = null
+        })
+      })()
+    </script>
+  </body>
+</html>

@@ -1,0 +1,477 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#fcfcfc" />
+    <title>أساسيات الدوال | Python Learning Roadmap</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/style.css" />
+  </head>
+  <body>
+    <svg
+      width="0"
+      height="0"
+      style="position: absolute"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <symbol id="i-copy" viewBox="0 0 24 24">
+        <rect x="9" y="9" width="12" height="12" rx="2.5" />
+        <path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15" />
+      </symbol>
+    </svg>
+    <template id="code-block-pattern">
+      <figure class="code-block">
+        <figcaption class="code-head">
+          <span class="code-meta">
+            <span class="code-lang" lang="en">Python</span>
+            <span class="code-file" lang="en">example.py</span>
+          </span>
+          <button
+            type="button"
+            class="btn btn-ghost btn-sm"
+            data-copy-code
+            aria-label="نسخ الكود"
+          >
+            <svg
+              class="btn-icon"
+              viewBox="0 0 24 24"
+              width="14"
+              height="14"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <use href="#i-copy"></use>
+            </svg>
+            <span class="btn-label">نسخ</span>
+          </button>
+        </figcaption>
+        <pre class="code" dir="ltr"><code><!-- ضع الكود هنا كنص HTML مع تهريب الرموز الخاصة --></code></pre>
+        <!-- احذف كتلة output إذا لم يكن للمثال ناتج ثابت ومفيد. -->
+        <div class="output" role="group" aria-label="مخرجات البرنامج">
+          <div class="output-label" lang="en">Output</div>
+          <pre dir="ltr"><code><!-- ضع المخرجات المتحققة هنا --></code></pre>
+        </div>
+      </figure>
+    </template>
+
+    <div
+      class="sr-only"
+      id="copy-status"
+      role="status"
+      aria-live="polite"
+    ></div>
+
+    <main class="page">
+      <header class="hero lesson-hero">
+        <span class="eyebrow">
+          <span class="eyebrow-dot"></span>
+          المرحلة <span dir="ltr">05</span>:
+          <span dir="ltr" lang="en">Functions</span>
+        </span>
+        <h1>
+          <span class="h1-ar">أساسيات الدوال</span>
+          <span class="h1-en" dir="ltr" lang="en">Python Functions: Basics</span>
+        </h1>
+        <p class="hero-description">كيف نعرّف دالة ونستدعيها ونمرر لها بيانات ونستلم منها نتيجة، بدل تكرار الكود نفسه في كل مكان.</p>
+      </header>
+
+      <div class="lesson-parts">
+        <section class="lesson-part-card" id="complete-lesson" aria-labelledby="complete-lesson-title">
+          <header class="part-header">
+            <div class="part-number">درس متكامل</div>
+            <div class="part-heading">
+              <h2 id="complete-lesson-title">
+                <span class="part-title-en" dir="ltr" lang="en">Complete Lesson</span>
+                <span class="sep" aria-hidden="true"> - </span>
+                <span class="part-title-ar">الشرح والملخص والتطبيق</span>
+              </h2>
+              <span class="part-description">كل محتوى الدرس في ملف HTML واحد</span>
+            </div>
+          </header>
+
+          <div class="lesson-body">
+            <section class="lesson-section" id="explain">
+              <h3 class="section-title"><b>01</b>الشرح</h3>
+              
+<article class="concept">
+  <h4>تعريف الدالة واستدعاؤها — Define &amp; Call Functions</h4>
+  <p><strong>لماذا؟</strong> عندما يتكرر المنطق نفسه (طباعة فاصل، حساب ضريبة، تنسيق رسالة) نكتبه مرة واحدة تحت اسم واضح ثم نعيد استخدامه. هذا يقلل التكرار، ويجعل التعديل في مكان واحد، ويسهّل الاختبار.</p>
+  <p><strong>Define Functions:</strong> نعرّف الدالة بالكلمة <code>def</code> ثم اسم الدالة (بنمط snake_case وبفعل معبّر مثل <code>calculate_total</code>) ثم الأقواس والنقطتين <code>:</code>، وبعدها الجسم (body) بمسافة بادئة موحدة من 4 مسافات. التعريف وحده لا ينفّذ الجسم؛ هو فقط ينشئ الدالة ويربطها بالاسم.</p>
+  <p><strong>Call Functions:</strong> نستدعي الدالة باسمها متبوعًا بأقواس: <code>print_separator()</code>. الأقواس هي التي تنفّذ الجسم، أما كتابة الاسم وحده فتشير إلى كائن الدالة دون تشغيله. ويجب أن يسبق التعريف أول استدعاء فعلي، وإلا ظهر <code>NameError</code>. ويمكن استدعاء الدالة نفسها أي عدد من المرات.</p>
+<figure class="code-block">
+  <figcaption class="code-head">
+    <span class="code-meta">
+      <span class="code-lang" lang="en">Python</span>
+      <span class="code-file" lang="en">define_and_call.py</span>
+    </span>
+    <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+      <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-copy"></use></svg>
+      <span class="btn-label">نسخ</span>
+    </button>
+  </figcaption>
+  <pre class="code" dir="ltr"><code>def print_separator():
+    print("-" * 20)
+
+
+print("Report")
+print_separator()
+print("Total: 3 items")
+print_separator()</code></pre>
+  <div class="output" role="group" aria-label="مخرجات البرنامج">
+    <div class="output-label" lang="en">Output</div>
+    <pre dir="ltr"><code>Report
+--------------------
+Total: 3 items
+--------------------</code></pre>
+  </div>
+</figure>
+  <p><strong>الخطأ الشائع:</strong> نسيان الأقواس عند الاستدعاء. لا يظهر خطأ، لكن لا يحدث شيء، وهذا يصعّب اكتشافه.</p>
+</article>
+
+<article class="concept">
+  <h4>Function Arguments و Positional Arguments</h4>
+  <p><strong>لماذا؟</strong> الدالة التي تعمل بقيم ثابتة فائدتها محدودة. نريد تمرير بيانات مختلفة في كل استدعاء لتعمل الدالة نفسها على حالات متعددة.</p>
+  <p><strong>Function Arguments:</strong> الـ <em>parameter</em> هو الاسم الذي نكتبه بين الأقواس عند التعريف (مثل <code>item</code>)، والـ <em>argument</em> هو القيمة الفعلية التي نمررها عند الاستدعاء (مثل <code>"Notebook"</code>). الـ parameters تعمل كمتغيرات داخل جسم الدالة.</p>
+  <p><strong>Positional Arguments:</strong> أبسط طريقة للتمرير: تُربط الـ arguments بالـ parameters حسب الموضع، الأول بالأول والثاني بالثاني. ويجب أن يطابق عدد الـ arguments عدد الـ parameters، وإلا يرفع Python الخطأ <code>TypeError</code>.</p>
+<figure class="code-block">
+  <figcaption class="code-head">
+    <span class="code-meta">
+      <span class="code-lang" lang="en">Python</span>
+      <span class="code-file" lang="en">positional_arguments.py</span>
+    </span>
+    <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+      <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-copy"></use></svg>
+      <span class="btn-label">نسخ</span>
+    </button>
+  </figcaption>
+  <pre class="code" dir="ltr"><code>def describe_order(item, quantity, price):
+    print(f"{quantity} x {item} at {price} EGP each")
+
+
+describe_order("Notebook", 3, 25)
+describe_order(3, "Notebook", 25)  # wrong order: no error, wrong meaning
+# describe_order("Notebook", 3)    # TypeError: missing 1 required positional argument: 'price'</code></pre>
+  <div class="output" role="group" aria-label="مخرجات البرنامج">
+    <div class="output-label" lang="en">Output</div>
+    <pre dir="ltr"><code>3 x Notebook at 25 EGP each
+Notebook x 3 at 25 EGP each</code></pre>
+  </div>
+</figure>
+  <p><strong>القيد الأهم:</strong> إذا بدّلت الترتيب وكانت القيم صالحة للعمليات داخل الدالة، فلن يظهر خطأ بل نتيجة خاطئة بصمت. لذلك اختر أسماء parameters واضحة وراجع الترتيب عند الاستدعاء. (توجد طرق أخرى لتمرير arguments ستأتي في دروس لاحقة.)</p>
+</article>
+
+<article class="concept">
+  <h4>Return Values — إرجاع القيم</h4>
+  <p><strong>لماذا؟</strong> كثيرًا ما نريد أن تحسب الدالة قيمة وتسلّمها لمن استدعاها ليخزّنها أو يجري عليها عمليات أو يمررها لدالة أخرى، بدل أن تكتفي بعرضها على الشاشة.</p>
+  <p><strong>كيف يعمل؟</strong> <code>return</code> يرسل قيمة إلى مكان الاستدعاء ويُنهي الدالة فورًا، فأي سطر بعده في المسار نفسه لا يُنفَّذ. ويمكن استخدامه مبكرًا داخل <code>if</code> للخروج من الدالة عند حالة خاصة.</p>
+  <p>إذا لم توجد <code>return</code> فإن الدالة تعيد <code>None</code>. ومن هنا الفرق بين <code>print</code> و<code>return</code>: الأولى تعرض نصًا فقط، والثانية تعطيك قيمة قابلة للاستخدام.</p>
+  <p>لإرجاع أكثر من قيمة اكتبها مفصولة بفواصل: <code>return first, last</code>. تُرجع Python عندها tuple واحدًا، ويمكن فكّه مباشرة (unpacking) إلى متغيرات.</p>
+<figure class="code-block">
+  <figcaption class="code-head">
+    <span class="code-meta">
+      <span class="code-lang" lang="en">Python</span>
+      <span class="code-file" lang="en">return_values.py</span>
+    </span>
+    <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+      <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-copy"></use></svg>
+      <span class="btn-label">نسخ</span>
+    </button>
+  </figcaption>
+  <pre class="code" dir="ltr"><code>def calculate_total(unit_price, quantity, tax_percent):
+    subtotal = unit_price * quantity
+    return subtotal + subtotal * tax_percent / 100
+
+
+def split_name(full_name):
+    first, last = full_name.split(" ")
+    return first, last
+
+
+def log_saved():
+    print("saved")
+
+
+total = calculate_total(25, 4, 14)
+print(total)
+
+first_name, last_name = split_name("Sara Ahmed")
+print(first_name, last_name)
+
+result = log_saved()
+print(result)</code></pre>
+  <div class="output" role="group" aria-label="مخرجات البرنامج">
+    <div class="output-label" lang="en">Output</div>
+    <pre dir="ltr"><code>114.0
+Sara Ahmed
+saved
+None</code></pre>
+  </div>
+</figure>
+  <p><strong>الخطأ الشائع:</strong> استخدام <code>print</code> داخل الدالة ثم محاولة استخدام نتيجتها، فتحصل على <code>None</code>.</p>
+</article>
+
+            </section>
+
+            <section class="lesson-section" id="summary">
+              <h3 class="section-title"><b>02</b>الملخص</h3>
+              <ul class="summary-list">
+                <li><code>def name(parameters):</code> مع مسافة بادئة تعرّف دالة، والتعريف وحده لا ينفّذ الجسم.</li>
+<li>الاستدعاء يحتاج أقواسًا <code>name()</code>؛ بدونها تشير إلى الدالة ولا تشغّلها، ويجب أن يسبق التعريف الاستدعاء.</li>
+<li>الـ parameter هو الاسم في التعريف، والـ argument هو القيمة التي تمررها عند الاستدعاء.</li>
+<li>الـ positional arguments تُربط بالترتيب؛ العدد الخاطئ يعطي <code>TypeError</code>، والترتيب الخاطئ قد يمر بصمت.</li>
+<li><code>return</code> يعيد قيمة وينهي الدالة؛ وبدونه تعيد الدالة <code>None</code>، و<code>print</code> لا يغني عنه.</li>
+<li><code>return a, b</code> يعيد tuple يمكن فكّه بـ unpacking؛ ويفضّل أن تؤدي كل دالة مهمة واحدة باسم فعلي واضح.</li>
+              </ul>
+            </section>
+
+            <section class="lesson-section" id="interview-questions">
+              <h3 class="section-title"><b>03</b>أسئلة المقابلات</h3>
+              <div class="qa-list">
+                <details class="qa" open>
+  <summary><span class="qa-q">ما الفرق بين parameter و argument؟</span><span class="level level-basic">أساسي</span></summary>
+  <div class="qa-body">
+    <p>الـ parameter هو الاسم المعرَّف في توقيع الدالة ويعمل كمتغير داخلها، أما الـ argument فهو القيمة الفعلية التي تُمرَّر عند الاستدعاء. في <code>def f(x)</code> و<code>f(5)</code> يكون <code>x</code> هو parameter والقيمة <code>5</code> هي argument.</p>
+    <p class="qa-follow">متابعة: ماذا لو مرّرت argument زائدًا؟ يرفع Python الخطأ <code>TypeError</code> لأن العدد لا يطابق.</p>
+  </div>
+</details>
+<details class="qa">
+  <summary><span class="qa-q">ما الفرق بين <code>print</code> و<code>return</code> داخل الدالة؟</span><span class="level level-basic">أساسي</span></summary>
+  <div class="qa-body">
+    <p><code>print</code> تعرض القيمة على الشاشة فقط ولا تعطي المستدعي شيئًا، فتعيد الدالة <code>None</code>. أما <code>return</code> فترسل القيمة إلى مكان الاستدعاء لتُخزَّن أو تُستخدم في حسابات أخرى، وتُنهي تنفيذ الدالة.</p>
+  </div>
+</details>
+<details class="qa">
+  <summary><span class="qa-q">ماذا يحدث عند تمرير positional arguments بعدد أو ترتيب خاطئ؟</span><span class="level level-mid">متوسط</span></summary>
+  <div class="qa-body">
+    <p>العدد الخاطئ يرفع <code>TypeError</code> برسالة مثل <code>missing 1 required positional argument</code>. أما الترتيب الخاطئ فلا يرفع خطأً إن كانت القيم صالحة للعمليات داخل الدالة، فتحصل على نتيجة خاطئة بصمت. لذلك تهم أسماء الـ parameters الواضحة واختبار الدالة بقيم معروفة.</p>
+  </div>
+</details>
+<details class="qa">
+  <summary><span class="qa-q">كيف تُرجع الدالة أكثر من قيمة؟ وماذا تُرجع فعليًا؟</span><span class="level level-mid">متوسط</span></summary>
+  <div class="qa-body">
+    <p>تكتب القيم مفصولة بفواصل: <code>return first, last</code>. الفاصلة هي التي تصنع tuple، فتعيد الدالة كائنًا واحدًا. يستقبله المستدعي كما هو أو يفكّه بـ unpacking: <code>first, last = split_name(...)</code>، ويجب أن يطابق عدد المتغيرات عدد القيم وإلا ظهر <code>ValueError</code>.</p>
+  </div>
+</details>
+<details class="qa">
+  <summary><span class="qa-q">ما الذي يطبعه الكود التالي ولماذا؟</span><span class="level level-trap">فخ</span></summary>
+  <div class="qa-body">
+    <p>يبدو أن <code>new_price</code> سيحمل السعر بعد الضريبة، لكن الدالة تستخدم <code>print</code> ولا تستخدم <code>return</code>.</p>
+<figure class="code-block">
+  <figcaption class="code-head">
+    <span class="code-meta">
+      <span class="code-lang" lang="en">Python</span>
+      <span class="code-file" lang="en">trap_print_vs_return.py</span>
+    </span>
+    <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+      <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-copy"></use></svg>
+      <span class="btn-label">نسخ</span>
+    </button>
+  </figcaption>
+  <pre class="code" dir="ltr"><code>def add_tax(price):
+    total = price + price * 14 / 100
+    print(total)
+
+
+new_price = add_tax(100)
+print(new_price)</code></pre>
+  <div class="output" role="group" aria-label="مخرجات البرنامج">
+    <div class="output-label" lang="en">Output</div>
+    <pre dir="ltr"><code>114.0
+None</code></pre>
+  </div>
+</figure>
+    <p>يطبع <code>114.0</code> من داخل الدالة، ثم <code>None</code> لأن الدالة لم ترجع شيئًا. الحل أن نستبدل <code>print(total)</code> بـ <code>return total</code>.</p>
+  </div>
+</details>
+              </div>
+            </section>
+
+            <section class="lesson-section" id="practical">
+              <h3 class="section-title"><b>04</b>المسألة العملية</h3>
+              <div class="callout callout-problem">
+  <p><strong>المسألة:</strong> مقهى يريد حساب فاتورة بند واحد. اكتب دالة تحسب إجمالي البند (سعر الوحدة × الكمية)، ودالة تضيف نسبة ضريبة إلى مبلغ، ودالة ثالثة تجمع الخطوتين وتعيد اسم البند والإجمالي قبل الضريبة والإجمالي بعدها. اطبع النتيجة لطلب 3 أكواب Coffee بسعر 40 جنيهًا للكوب وضريبة 14%.</p>
+</div>
+              <ol class="solution">
+                <li class="sol-step">
+  <h4>فهم المطلوب</h4>
+  <p>المدخلات: <code>item</code> و<code>unit_price</code> و<code>quantity</code> و<code>tax_percent</code>. المخرجات: ثلاث قيم (اسم البند، الإجمالي قبل الضريبة، الإجمالي بعدها). نحتاج دوالًا تعيد قيمًا لأن نتيجة دالة تدخل في حساب دالة أخرى.</p>
+</li>
+<li class="sol-step">
+  <h4>خطة الحل</h4>
+  <p>دالتان صغيرتان لكل منهما مهمة واحدة (<code>calculate_line_total</code> و<code>add_tax</code>)، ثم <code>summarize_order</code> تستدعيهما وتعيد النتائج. الطباعة تتم خارج الدوال.</p>
+</li>
+<li class="sol-step">
+  <h4>الكود الكامل</h4>
+<figure class="code-block">
+  <figcaption class="code-head">
+    <span class="code-meta">
+      <span class="code-lang" lang="en">Python</span>
+      <span class="code-file" lang="en">order_invoice.py</span>
+    </span>
+    <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+      <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-copy"></use></svg>
+      <span class="btn-label">نسخ</span>
+    </button>
+  </figcaption>
+  <pre class="code" dir="ltr"><code>def calculate_line_total(unit_price, quantity):
+    return unit_price * quantity
+
+
+def add_tax(amount, tax_percent):
+    return amount + amount * tax_percent / 100
+
+
+def summarize_order(item, unit_price, quantity, tax_percent):
+    subtotal = calculate_line_total(unit_price, quantity)
+    total = add_tax(subtotal, tax_percent)
+    return item, subtotal, total
+
+
+item, subtotal, total = summarize_order("Coffee", 40, 3, 14)
+print(f"{item}: subtotal={subtotal}, total={total}")
+
+assert calculate_line_total(10, 0) == 0
+assert add_tax(100, 14) == 114</code></pre>
+  <div class="output" role="group" aria-label="مخرجات البرنامج">
+    <div class="output-label" lang="en">Output</div>
+    <pre dir="ltr"><code>Coffee: subtotal=120, total=136.8</code></pre>
+  </div>
+</figure>
+</li>
+<li class="sol-step">
+  <h4>تفسير القرارات</h4>
+  <p>استخدمنا <code>return</code> لا <code>print</code> حتى تُستخدم النتائج في خطوات أخرى. وفصلنا الدوال لتُختبر وتُعاد كل واحدة على حدة. وترتيب الاستدعاء <code>("Coffee", 40, 3, 14)</code> يطابق ترتيب الـ parameters تمامًا. وأعدنا tuple فكّكناه مباشرة في ثلاثة متغيرات.</p>
+</li>
+<li class="sol-step">
+  <h4>اختبار سريع</h4>
+  <p>سطرا <code>assert</code> في آخر الكود يتحققان من حالتين: كمية صفر تعطي إجمالي <code>0</code>، ونسبة 14% على 100 تعطي <code>114</code>. لا يظهر شيء عند النجاح، ويظهر <code>AssertionError</code> إذا كانت الدالة خاطئة.</p>
+</li>
+<li class="sol-step">
+  <h4>تحسين أو بديل</h4>
+  <p>إذا زاد عدد القيم المرجعة يصبح tuple صعب القراءة ويسهل فيه الخلط بين المواضع. البديل إرجاع dictionary مثل <code>{"item": item, "subtotal": subtotal}</code> للوصول بالاسم. وستأتي في دروس لاحقة طرق أكثر مرونة لتمرير arguments.</p>
+</li>
+              </ol>
+            </section>
+          </div>
+        </section>
+      </div>
+
+      <footer class="footer">
+        <span class="footer-note" lang="en">Python Learning Roadmap</span>
+        <span class="footer-note">المرحلة 05 - الدرس 21</span>
+      </footer>
+    </main>
+
+    <script>
+      (function () {
+        'use strict'
+
+        var live = document.getElementById('copy-status')
+        var printStates = null
+
+        function fallbackCopy(text) {
+          var textarea = document.createElement('textarea')
+          textarea.value = text
+          textarea.setAttribute('readonly', '')
+          textarea.style.cssText = 'position:fixed;top:-1000px;left:-1000px;opacity:0;'
+
+          try {
+            document.body.appendChild(textarea)
+            textarea.focus()
+            textarea.select()
+            textarea.setSelectionRange(0, textarea.value.length)
+            return document.execCommand('copy')
+          } catch (error) {
+            return false
+          } finally {
+            if (textarea.parentNode) {
+              textarea.parentNode.removeChild(textarea)
+            }
+          }
+        }
+
+        function copyText(text) {
+          if (navigator.clipboard && window.isSecureContext) {
+            return navigator.clipboard.writeText(text).then(
+              function () { return true },
+              function () { return fallbackCopy(text) },
+            ).catch(function () { return false })
+          }
+
+          return Promise.resolve().then(function () {
+            return fallbackCopy(text)
+          }).catch(function () {
+            return false
+          })
+        }
+
+        document.addEventListener('click', function (event) {
+          var target = event.target
+          var button = target && typeof target.closest === 'function'
+            ? target.closest('[data-copy-code]')
+            : null
+
+          if (!button) return
+
+          var label = button.querySelector('.btn-label')
+          var block = button.closest('.code-block')
+          var code = block ? block.querySelector('pre.code > code') : null
+          if (!label || !code) return
+
+          if (!button.dataset.label) button.dataset.label = label.textContent
+
+          copyText(code.textContent).then(function (ok) {
+            label.textContent = ok ? 'تم النسخ' : 'تعذّر النسخ'
+            button.classList.toggle('is-copied', ok)
+            button.classList.toggle('is-failed', !ok)
+
+            if (live) {
+              live.textContent = ok
+                ? 'تم نسخ الكود'
+                : 'تعذّر النسخ، حدّد الكود يدويًا ثم انسخه'
+            }
+
+            window.clearTimeout(button._timer)
+            button._timer = window.setTimeout(function () {
+              label.textContent = button.dataset.label
+              button.classList.remove('is-copied', 'is-failed')
+            }, 1800)
+          })
+        })
+
+        window.addEventListener('beforeprint', function () {
+          if (printStates !== null) return
+
+          var questions = document.querySelectorAll('details.qa')
+          printStates = Array.prototype.map.call(questions, function (item) {
+            return item.open
+          })
+          questions.forEach(function (item) {
+            item.open = true
+          })
+        })
+
+        window.addEventListener('afterprint', function () {
+          if (printStates === null) return
+
+          var questions = document.querySelectorAll('details.qa')
+          questions.forEach(function (item, index) {
+            item.open = printStates[index] === true
+          })
+          printStates = null
+        })
+      })()
+    </script>
+  </body>
+</html>

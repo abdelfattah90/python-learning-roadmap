@@ -1,0 +1,453 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#fcfcfc" />
+    <title>Python While Loops - حلقات While | Python Learning Roadmap</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/style.css" />
+  </head>
+  <body>
+    <svg
+      width="0"
+      height="0"
+      style="position: absolute"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <symbol id="i-copy" viewBox="0 0 24 24">
+        <rect x="9" y="9" width="12" height="12" rx="2.5" />
+        <path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15" />
+      </symbol>
+    </svg>
+    <template id="code-block-pattern">
+      <figure class="code-block">
+        <figcaption class="code-head">
+          <span class="code-meta">
+            <span class="code-lang" lang="en">Python</span>
+            <span class="code-file" lang="en">example.py</span>
+          </span>
+          <button
+            type="button"
+            class="btn btn-ghost btn-sm"
+            data-copy-code
+            aria-label="نسخ الكود"
+          >
+            <svg
+              class="btn-icon"
+              viewBox="0 0 24 24"
+              width="14"
+              height="14"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <use href="#i-copy"></use>
+            </svg>
+            <span class="btn-label">نسخ</span>
+          </button>
+        </figcaption>
+        <pre class="code" dir="ltr"><code><!-- ضع الكود هنا كنص HTML مع تهريب الرموز الخاصة --></code></pre>
+        <!-- احذف كتلة output إذا لم يكن للمثال ناتج ثابت ومفيد. -->
+        <div class="output" role="group" aria-label="مخرجات البرنامج">
+          <div class="output-label" lang="en">Output</div>
+          <pre dir="ltr"><code><!-- ضع المخرجات المتحققة هنا --></code></pre>
+        </div>
+      </figure>
+    </template>
+
+    <div
+      class="sr-only"
+      id="copy-status"
+      role="status"
+      aria-live="polite"
+    ></div>
+
+    <main class="page">
+      <header class="hero lesson-hero">
+        <span class="eyebrow">
+          <span class="eyebrow-dot"></span>
+          المرحلة <span dir="ltr">03</span>:
+          <span dir="ltr" lang="en">Control Flow</span>
+        </span>
+        <h1>
+          <span class="h1-ar">حلقات While</span>
+          <span class="h1-en" dir="ltr" lang="en">Python While Loops</span>
+        </h1>
+        <p class="hero-description">تكرار الأوامر وفق شرط، والتحكم في استمرار الحلقة أو إنهائها باستخدام <code>break</code> و<code>continue</code>.</p>
+      </header>
+
+      <div class="lesson-parts">
+        <section class="lesson-part-card" id="complete-lesson" aria-labelledby="complete-lesson-title">
+          <header class="part-header">
+            <div class="part-number">درس متكامل</div>
+            <div class="part-heading">
+              <h2 id="complete-lesson-title">
+                <span class="part-title-en" dir="ltr" lang="en">Complete Lesson</span>
+                <span class="sep" aria-hidden="true"> - </span>
+                <span class="part-title-ar">الشرح والملخص والتطبيق</span>
+              </h2>
+              <span class="part-description">كل محتوى الدرس في ملف HTML واحد</span>
+            </div>
+          </header>
+
+          <div class="lesson-body">
+            <section class="lesson-section" id="explain">
+              <h3 class="section-title"><b>01</b>الشرح</h3>
+              
+              <article class="concept">
+                <h4>1. حلقات <span dir="ltr" lang="en">While Loops</span>: التكرار ما دام الشرط صحيحًا</h4>
+                <p>نستخدم <code>while</code> عندما نريد تكرار عمل يتوقف عند تحقق حالة معينة، ولا نعرف بالضرورة عدد مرات التكرار مسبقًا؛ مثل متابعة عدد المحاولات حتى ينجح فحص أو ينفد رصيد المحاولات. تفحص Python الشرط قبل كل دورة: إذا كانت قيمته <code>True</code> ينفذ جسم الحلقة، ثم يعود لفحصه مرة أخرى، وإذا أصبحت <code>False</code> تنتهي الحلقة.</p>
+                <p>يجب أن يتغير داخل الحلقة شيء يؤثر في الشرط، وإلا قد تستمر بلا نهاية. في المثال التالي يتقدم عدّاد المخزون في كل دورة حتى يصل إلى الحد المطلوب.</p>
+<figure class="code-block">
+                  <figcaption class="code-head">
+                    <span class="code-meta">
+                      <span class="code-lang" lang="en">Python</span>
+                      <span class="code-file" lang="en">stock_count.py</span>
+                    </span>
+                    <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+                      <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <use href="#i-copy"></use>
+                      </svg>
+                      <span class="btn-label">نسخ</span>
+                    </button>
+                  </figcaption>
+                  <pre class="code" dir="ltr"><code>stock_count = 2
+target_count = 5
+
+while stock_count &lt; target_count:
+    print("Counted:", stock_count)
+    stock_count += 1
+
+print("Counting complete:", stock_count)</code></pre>
+                  <div class="output" role="group" aria-label="مخرجات البرنامج">
+                    <div class="output-label" lang="en">Output</div>
+                    <pre dir="ltr"><code>Counted: 2
+Counted: 3
+Counted: 4
+Counting complete: 5</code></pre>
+                  </div>
+                </figure>
+                <p class="note">السطر <code>stock_count += 1</code> أساسي هنا؛ حذفه يجعل الشرط يظل صحيحًا وتستمر الحلقة في طباعة القيمة نفسها.</p>
+              </article>
+
+              <article class="concept">
+                <h4>2. شروط الحلقة <span dir="ltr" lang="en">Loop Conditions</span>: الدخول والاستمرار والتوقف</h4>
+                <p>شرط <code>while</code> هو تعبير Boolean يُعاد تقييمه قبل كل دورة. تبدأ الحلقة فقط إذا كان الشرط صحيحًا من البداية؛ لذلك قد لا يُنفذ جسمها مطلقًا. اختر شرط توقف واضحًا، وحدّث المتغيرات المرتبطة به في مسار التنفيذ الذي يتكرر. يمكن أن يعتمد الشرط على مقارنة عددية أو على قيمة Boolean، مستفيدًا من المقارنات التي تعلمتها سابقًا.</p>
+                <p>هذا المثال يحاكي معالجة عناصر قائمة انتظار باستخدام رقم العناصر المتبقية؛ تتوقف الحلقة عندما يصبح العدد صفرًا.</p>
+<figure class="code-block">
+                  <figcaption class="code-head">
+                    <span class="code-meta">
+                      <span class="code-lang" lang="en">Python</span>
+                      <span class="code-file" lang="en">pending_tasks.py</span>
+                    </span>
+                    <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+                      <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <use href="#i-copy"></use>
+                      </svg>
+                      <span class="btn-label">نسخ</span>
+                    </button>
+                  </figcaption>
+                  <pre class="code" dir="ltr"><code>pending_tasks = 3
+
+while pending_tasks &gt; 0:
+    print("Processing task", pending_tasks)
+    pending_tasks -= 1
+
+print("Queue is empty")</code></pre>
+                  <div class="output" role="group" aria-label="مخرجات البرنامج">
+                    <div class="output-label" lang="en">Output</div>
+                    <pre dir="ltr"><code>Processing task 3
+Processing task 2
+Processing task 1
+Queue is empty</code></pre>
+                  </div>
+                </figure>
+                <p class="note">أهم قيد: إذا لم يصل الشرط إلى <code>False</code> فلن تنتهي الحلقة تلقائيًا. راجع دائمًا أن كل دورة تقرّب البرنامج من حالة التوقف، وأن الشرط ليس صحيحًا إلى الأبد.</p>
+              </article>
+
+              <article class="concept">
+                <h4>3. التحكم في الحلقة باستخدام <span dir="ltr" lang="en">Break and Continue Control</span></h4>
+                <p><code>break</code> ينهي أقرب حلقة فورًا، حتى لو كان شرط <code>while</code> ما زال صحيحًا؛ استخدمه عند العثور على النتيجة المطلوبة أو عند اكتشاف حالة تستوجب الإيقاف. أما <code>continue</code> فيتجاوز بقية أوامر الدورة الحالية وينتقل مباشرة إلى فحص الشرط لبدء الدورة التالية؛ يفيد عند تخطي سجل غير مناسب مع مواصلة المعالجة.</p>
+                <p>في المثال، نتخطى الرقم غير الصالح باستخدام <code>continue</code>، ونتوقف عند الوصول إلى الرقم المستهدف باستخدام <code>break</code>. نزيد العداد قبل <code>continue</code> حتى لا نعيد فحص القيمة نفسها إلى الأبد.</p>
+<figure class="code-block">
+                  <figcaption class="code-head">
+                    <span class="code-meta">
+                      <span class="code-lang" lang="en">Python</span>
+                      <span class="code-file" lang="en">scan_readings.py</span>
+                    </span>
+                    <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+                      <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <use href="#i-copy"></use>
+                      </svg>
+                      <span class="btn-label">نسخ</span>
+                    </button>
+                  </figcaption>
+                  <pre class="code" dir="ltr"><code>reading = 0
+target_reading = 4
+
+while reading &lt; 6:
+    reading += 1
+    if reading == 2:
+        continue
+    if reading == target_reading:
+        print("Target found:", reading)
+        break
+    print("Checked:", reading)</code></pre>
+                  <div class="output" role="group" aria-label="مخرجات البرنامج">
+                    <div class="output-label" lang="en">Output</div>
+                    <pre dir="ltr"><code>Checked: 1
+Checked: 3
+Target found: 4</code></pre>
+                  </div>
+                </figure>
+                <p class="note">كل من <code>break</code> و<code>continue</code> يؤثر في أقرب حلقة محيطة به. لا تضع تحديث العداد بعد <code>continue</code> إذا كان هذا التحديث ضروريًا لتقدم شرط الحلقة.</p>
+              </article>
+
+            </section>
+
+            <section class="lesson-section" id="summary">
+              <h3 class="section-title"><b>02</b>الملخص</h3>
+              <ul class="summary-list">
+                
+                  <li>تُنفّذ <code>while</code> جسم الحلقة ما دام شرطها <code>True</code>، وتفحص الشرط قبل كل دورة.</li>
+                  <li>قد لا تعمل الحلقة إطلاقًا إذا كان الشرط <code>False</code> منذ البداية.</li>
+                  <li>حدّث المتغيرات المؤثرة في الشرط حتى تصل الحلقة إلى حالة توقف.</li>
+                  <li>الحلقة التي لا يتغير شرطها إلى <code>False</code> قد تصبح حلقة لا نهائية.</li>
+                  <li><code>break</code> ينهي أقرب حلقة فورًا، بغض النظر عن بقاء شرطها صحيحًا.</li>
+                  <li><code>continue</code> يتخطى بقية الدورة الحالية ويعيد التحكم إلى فحص الشرط؛ انتبه لتحديث العداد قبله عند الحاجة.</li>
+
+              </ul>
+            </section>
+
+            <section class="lesson-section" id="interview-questions">
+              <h3 class="section-title"><b>03</b>أسئلة المقابلات</h3>
+              <div class="qa-list">
+                
+                <details class="qa" open>
+                  <summary><span class="qa-q">ما الفرق الأساسي بين <code>while</code> و<code>if</code>؟</span><span class="level level-basic">أساسي</span></summary>
+                  <div class="qa-body">
+                    <p><code>if</code> يفحص الشرط وينفذ الكتلة مرة واحدة كحد أقصى. أما <code>while</code> فيعيد فحص الشرط بعد كل دورة، ويكرر الكتلة ما دام الشرط صحيحًا.</p>
+                  </div>
+                </details>
+                <details class="qa">
+                  <summary><span class="qa-q">متى لا يُنفّذ جسم حلقة <code>while</code>؟</span><span class="level level-basic">أساسي</span></summary>
+                  <div class="qa-body">
+                    <p>عندما يكون الشرط <code>False</code> عند أول فحص. لا تنفذ Python جسم الحلقة قبل التأكد من أن الشرط صحيح.</p>
+                  </div>
+                </details>
+                <details class="qa">
+                  <summary><span class="qa-q">ما الفرق بين <code>break</code> و<code>continue</code> داخل الحلقة؟</span><span class="level level-mid">متوسط</span></summary>
+                  <div class="qa-body">
+                    <p><code>break</code> يخرج من أقرب حلقة فورًا. <code>continue</code> لا يخرج منها، بل يتجاوز بقية أوامر الدورة الحالية وينتقل إلى فحص الشرط للدورة التالية.</p>
+                  </div>
+                </details>
+                <details class="qa">
+                  <summary><span class="qa-q">كيف تمنع حلقة <code>while</code> من الاستمرار بلا نهاية؟</span><span class="level level-mid">متوسط</span></summary>
+                  <div class="qa-body">
+                    <p>حدد شرط توقف قابلًا للوصول، وغيّر في كل دورة المتغيرات التي يعتمد عليها الشرط. افحص خصوصًا مسارات <code>continue</code> كي لا تتجاوز تحديثًا ضروريًا.</p>
+                  </div>
+                </details>
+                <details class="qa">
+                  <summary><span class="qa-q">إذا كان شرط <code>while</code> صحيحًا، فهل تضمن الحلقة تنفيذ جميع أوامر جسمها في كل دورة؟</span><span class="level level-trap">سؤال فخ</span></summary>
+                  <div class="qa-body">
+                    <p>لا. قد ينفذ <code>break</code> فينهي الحلقة، أو ينفذ <code>continue</code> فيتجاوز بقية أوامر الدورة. لذلك يعتمد مسار التنفيذ على موضع أوامر التحكم داخل الجسم، وليس على الشرط وحده.</p>
+                  </div>
+                </details>
+
+              </div>
+            </section>
+
+            <section class="lesson-section" id="practical">
+              <h3 class="section-title"><b>04</b>المسألة العملية</h3>
+              
+              <div class="callout callout-problem">
+                <h4>المسألة: متابعة محاولات فحص شحنة</h4>
+                <p>لديك قائمة بأوزان شحنات تم فحصها بالترتيب. استخدم حلقة <code>while</code> لمعالجة القيم حتى تنتهي القائمة، وتجاوز الوزن غير الصالح (صفر أو أقل) باستخدام <code>continue</code>، وأوقف الفحص باستخدام <code>break</code> عند العثور على وزن يساوي الحد المستهدف. اطبع الأوزان المقبولة التي فُحصت قبل الهدف.</p>
+              </div>
+
+              <ol class="solution">
+                
+                <li class="sol-step">
+                  <h4>فهم المطلوب</h4>
+                  <p>نمر على الأوزان بترتيبها، نتجاهل القيم غير الصالحة، ونتوقف عند الوزن المستهدف أو عند انتهاء العناصر.</p>
+                </li>
+                <li class="sol-step">
+                  <h4>خطة الحل</h4>
+                  <p>نستخدم فهرسًا يبدأ من صفر، وشرط <code>while</code> يتحقق من بقاء عناصر. نزيد الفهرس قبل أي انتقال إلى الدورة التالية.</p>
+                </li>
+                <li class="sol-step">
+                  <h4>الكود الكامل</h4>
+<figure class="code-block">
+                  <figcaption class="code-head">
+                    <span class="code-meta">
+                      <span class="code-lang" lang="en">Python</span>
+                      <span class="code-file" lang="en">shipment_check.py</span>
+                    </span>
+                    <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+                      <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <use href="#i-copy"></use>
+                      </svg>
+                      <span class="btn-label">نسخ</span>
+                    </button>
+                  </figcaption>
+                  <pre class="code" dir="ltr"><code>weights = [12, 0, 18, -3, 25, 31]
+target_weight = 25
+index = 0
+
+while index &lt; len(weights):
+    weight = weights[index]
+    index += 1
+    if weight &lt;= 0:
+        continue
+    if weight == target_weight:
+        print("Target weight found:", weight)
+        break
+    print("Accepted weight:", weight)
+
+print("Inspection finished")</code></pre>
+                  <div class="output" role="group" aria-label="مخرجات البرنامج">
+                    <div class="output-label" lang="en">Output</div>
+                    <pre dir="ltr"><code>Accepted weight: 12
+Accepted weight: 18
+Target weight found: 25
+Inspection finished</code></pre>
+                  </div>
+                </figure>
+                </li>
+                <li class="sol-step">
+                  <h4>تفسير القرارات</h4>
+                  <p>فحص <code>index &lt; len(weights)</code> يمنع الوصول إلى فهرس خارج القائمة. نزيد <code>index</code> قبل <code>continue</code>، ونجعل <code>break</code> ينهي الفحص فور العثور على الهدف.</p>
+                </li>
+                <li class="sol-step">
+                  <h4>اختبار سريع</h4>
+                  <p>القيم <code>0</code> و<code>-3</code> لا تظهر في النتائج، وتظهر القيمتان <code>12</code> و<code>18</code> قبل العثور على <code>25</code>. لا تُفحص القيمة <code>31</code> لأن الحلقة توقفت عند الهدف.</p>
+                </li>
+                <li class="sol-step">
+                  <h4>تحسين أو بديل</h4>
+                  <p>إذا لم يكن هناك وزن مستهدف، تستمر الحلقة حتى نهاية القائمة. ويمكن تغيير قيمة <code>target_weight</code> لإعادة استخدام المنطق مع شحنة أخرى دون تغيير بنية الحلقة.</p>
+                </li>
+
+              </ol>
+            </section>
+          </div>
+        </section>
+      </div>
+
+      <footer class="footer">
+        <span class="footer-note" lang="en">Python Learning Roadmap</span>
+        <span class="footer-note">المرحلة 03 - الدرس 12</span>
+      </footer>
+    </main>
+
+    <script>
+      (function () {
+        'use strict'
+
+        var live = document.getElementById('copy-status')
+        var printStates = null
+
+        function fallbackCopy(text) {
+          var textarea = document.createElement('textarea')
+          textarea.value = text
+          textarea.setAttribute('readonly', '')
+          textarea.style.cssText = 'position:fixed;top:-1000px;left:-1000px;opacity:0;'
+
+          try {
+            document.body.appendChild(textarea)
+            textarea.focus()
+            textarea.select()
+            textarea.setSelectionRange(0, textarea.value.length)
+            return document.execCommand('copy')
+          } catch (error) {
+            return false
+          } finally {
+            if (textarea.parentNode) {
+              textarea.parentNode.removeChild(textarea)
+            }
+          }
+        }
+
+        function copyText(text) {
+          if (navigator.clipboard && window.isSecureContext) {
+            return navigator.clipboard.writeText(text).then(
+              function () { return true },
+              function () { return fallbackCopy(text) },
+            ).catch(function () { return false })
+          }
+
+          return Promise.resolve().then(function () {
+            return fallbackCopy(text)
+          }).catch(function () {
+            return false
+          })
+        }
+
+        document.addEventListener('click', function (event) {
+          var target = event.target
+          var button = target && typeof target.closest === 'function'
+            ? target.closest('[data-copy-code]')
+            : null
+
+          if (!button) return
+
+          var label = button.querySelector('.btn-label')
+          var block = button.closest('.code-block')
+          var code = block ? block.querySelector('pre.code > code') : null
+          if (!label || !code) return
+
+          if (!button.dataset.label) button.dataset.label = label.textContent
+
+          copyText(code.textContent).then(function (ok) {
+            label.textContent = ok ? 'تم النسخ' : 'تعذّر النسخ'
+            button.classList.toggle('is-copied', ok)
+            button.classList.toggle('is-failed', !ok)
+
+            if (live) {
+              live.textContent = ok
+                ? 'تم نسخ الكود'
+                : 'تعذّر النسخ، حدّد الكود يدويًا ثم انسخه'
+            }
+
+            window.clearTimeout(button._timer)
+            button._timer = window.setTimeout(function () {
+              label.textContent = button.dataset.label
+              button.classList.remove('is-copied', 'is-failed')
+            }, 1800)
+          })
+        })
+
+        window.addEventListener('beforeprint', function () {
+          if (printStates !== null) return
+
+          var questions = document.querySelectorAll('details.qa')
+          printStates = Array.prototype.map.call(questions, function (item) {
+            return item.open
+          })
+          questions.forEach(function (item) {
+            item.open = true
+          })
+        })
+
+        window.addEventListener('afterprint', function () {
+          if (printStates === null) return
+
+          var questions = document.querySelectorAll('details.qa')
+          questions.forEach(function (item, index) {
+            item.open = printStates[index] === true
+          })
+          printStates = null
+        })
+      })()
+    </script>
+  </body>
+</html>

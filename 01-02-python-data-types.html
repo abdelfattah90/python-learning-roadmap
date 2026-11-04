@@ -1,0 +1,494 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#fcfcfc" />
+    <title>أنواع البيانات في Python | Python Learning Roadmap</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/style.css" />
+  </head>
+  <body>
+    <svg
+      width="0"
+      height="0"
+      style="position: absolute"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <symbol id="i-copy" viewBox="0 0 24 24">
+        <rect x="9" y="9" width="12" height="12" rx="2.5" />
+        <path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15" />
+      </symbol>
+    </svg>
+    <template id="code-block-pattern">
+      <figure class="code-block">
+        <figcaption class="code-head">
+          <span class="code-meta">
+            <span class="code-lang" lang="en">Python</span>
+            <span class="code-file" lang="en">example.py</span>
+          </span>
+          <button
+            type="button"
+            class="btn btn-ghost btn-sm"
+            data-copy-code
+            aria-label="نسخ الكود"
+          >
+            <svg
+              class="btn-icon"
+              viewBox="0 0 24 24"
+              width="14"
+              height="14"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <use href="#i-copy"></use>
+            </svg>
+            <span class="btn-label">نسخ</span>
+          </button>
+        </figcaption>
+        <pre class="code" dir="ltr"><code></code></pre>
+      </figure>
+    </template>
+
+    <div
+      class="sr-only"
+      id="copy-status"
+      role="status"
+      aria-live="polite"
+    ></div>
+
+    <main class="page">
+      <header class="hero lesson-hero">
+        <span class="eyebrow">
+          <span class="eyebrow-dot"></span>
+          المرحلة <span dir="ltr">01</span>:
+          <span dir="ltr" lang="en">Variables &amp; Data Types</span>
+        </span>
+        <h1>
+          <span class="h1-ar">أنواع البيانات في Python</span>
+          <span class="h1-en" dir="ltr" lang="en">Python Data Types</span>
+        </h1>
+        <p class="hero-description">كل قيمة في Python تنتمي إلى نوع بيانات يحدد العمليات المسموح بها عليها؛ نتعرف هنا على الأنواع الخمسة عشر الأساسية وعلى أداة type() لاكتشاف النوع.</p>
+      </header>
+
+      <div class="lesson-parts">
+        <section class="lesson-part-card" id="complete-lesson" aria-labelledby="complete-lesson-title">
+          <header class="part-header">
+            <div class="part-number">درس متكامل</div>
+            <div class="part-heading">
+              <h2 id="complete-lesson-title">
+                <span class="part-title-en" dir="ltr" lang="en">Complete Lesson</span>
+                <span class="sep" aria-hidden="true"> - </span>
+                <span class="part-title-ar">الشرح والملخص والتطبيق</span>
+              </h2>
+              <span class="part-description">كل محتوى الدرس في ملف HTML واحد</span>
+            </div>
+          </header>
+
+          <div class="lesson-body">
+            <section class="lesson-section" id="explain">
+              <h3 class="section-title"><b>01</b>الشرح</h3>
+
+              <article class="concept">
+                <h4>النصوص والأعداد: <span dir="ltr" lang="en">str</span> و <span dir="ltr" lang="en">int</span> و <span dir="ltr" lang="en">float</span> و <span dir="ltr" lang="en">complex</span></h4>
+                <p>هذه هي القيم "المفردة" التي يخزّنها البرنامج في المتغيرات. <code dir="ltr">int</code> للأعداد الصحيحة (كميات، عدّادات) ولا حد أقصى عمليًا لحجمها. <code dir="ltr">float</code> للأعداد العشرية (أسعار، درجات حرارة)؛ أهم قيد فيه أن <code dir="ltr">0.1 + 0.2</code> لا يساوي تمامًا <code dir="ltr">0.3</code> بسبب التمثيل الثنائي، لذلك لا تقارن أموالًا بـ float مباشرة. <code dir="ltr">str</code> سلسلة محارف غير قابلة للتعديل بعد إنشائها. <code dir="ltr">complex</code> عدد له جزء حقيقي وجزء خيالي يُكتب بـ <code dir="ltr">j</code>، ويُستخدم في الهندسة الكهربائية والإشارات أكثر من البرمجة اليومية.</p>
+                <figure class="code-block">
+                  <figcaption class="code-head">
+                    <span class="code-meta">
+                      <span class="code-lang" lang="en">Python</span>
+                      <span class="code-file" lang="en">example.py</span>
+                    </span>
+                    <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+                      <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-copy"></use></svg>
+                      <span class="btn-label">نسخ</span>
+                    </button>
+                  </figcaption>
+                  <pre class="code" dir="ltr"><code>age = 27                # int: عدد صحيح
+temperature = 36.6      # float: عدد عشري
+name = "Sara"           # str: نص غير قابل للتعديل
+voltage = 220 + 3j      # complex: جزء حقيقي وخيالي
+
+print(age + 1, temperature * 2)
+print(name.upper(), voltage.real, voltage.imag)</code></pre>
+                  <div class="output" role="group" aria-label="مخرجات البرنامج">
+                    <div class="output-label" lang="en">Output</div>
+                    <pre dir="ltr"><code>28 73.2
+SARA 220.0 3.0</code></pre>
+                  </div>
+                </figure>
+              </article>
+
+              <article class="concept">
+                <h4>التجميعات المتسلسلة: <span dir="ltr" lang="en">list</span> و <span dir="ltr" lang="en">tuple</span> و <span dir="ltr" lang="en">range</span></h4>
+                <p>كلها تحفظ عناصر مرتبة يمكن الوصول إليها بالفهرسة. <code dir="ltr">list</code> قابلة للتعديل بعد إنشائها (إضافة وحذف وتغيير)، وهي الخيار الافتراضي للمجموعات المتغيرة؛ خطؤها الشائع أن نسخها المتغيرة (مثل <code dir="ltr">b = a</code>) تبقى مرتبطة بالأصل. <code dir="ltr">tuple</code> ثابتة، فتصلح لسجلّات ذات حقول معروفة مثل إحداثيات أو إعدادات لا يجوز تغييرها؛ انتبه أن tuple ذات عنصر واحد تحتاج فاصلة: <code dir="ltr">(5,)</code> وليست <code dir="ltr">(5)</code>. <code dir="ltr">range</code> تسلسل أرقام صحيحة "كسول" لا يخزّن كل الأرقام دفعة واحدة، مثالي للتكرار عددًا من المرات.</p>
+                <figure class="code-block">
+                  <figcaption class="code-head">
+                    <span class="code-meta">
+                      <span class="code-lang" lang="en">Python</span>
+                      <span class="code-file" lang="en">example.py</span>
+                    </span>
+                    <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+                      <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-copy"></use></svg>
+                      <span class="btn-label">نسخ</span>
+                    </button>
+                  </figcaption>
+                  <pre class="code" dir="ltr"><code>scores = [85, 92, 78]        # list: قابلة للتعديل
+scores.append(95)
+first_week = ("Mon", "Tue")  # tuple: ثابتة
+days = range(1, 8)           # range: تسلسل كسول
+
+print(scores)
+print(first_week, list(days))
+print(days[2], len(days))</code></pre>
+                  <div class="output" role="group" aria-label="مخرجات البرنامج">
+                    <div class="output-label" lang="en">Output</div>
+                    <pre dir="ltr"><code>[85, 92, 78, 95]
+('Mon', 'Tue') [1, 2, 3, 4, 5, 6, 7]
+3 7</code></pre>
+                  </div>
+                </figure>
+              </article>
+
+              <article class="concept">
+                <h4>الخرائط والمجموعات: <span dir="ltr" lang="en">dict</span> و <span dir="ltr" lang="en">set</span> و <span dir="ltr" lang="en">frozenset</span></h4>
+                <p><code dir="ltr">dict</code> تربط كل قيمة بمفتاح فريد، والبحث بالمفتاح سريع مهما كبرت الخريطة؛ أهم خطأ فيها هو الوصول بمفتاح غير موجود فيرفع <code dir="ltr">KeyError</code>. <code dir="ltr">set</code> مجموعة غير مرتبة تحفظ كل قيمة مرة واحدة فقط، لذا هي الأداة الطبيعية لإزالة التكرار وفحص العضوية، لكنها لا تدعم الفهرسة. <code dir="ltr">frozenset</code> نسخة ثابتة من set لا تقبل الإضافة ولا الحذف، وتكمن فائدتها في أنها نفسها يمكن أن تكون مفتاحًا في dict لأنها immutable.</p>
+                <figure class="code-block">
+                  <figcaption class="code-head">
+                    <span class="code-meta">
+                      <span class="code-lang" lang="en">Python</span>
+                      <span class="code-file" lang="en">example.py</span>
+                    </span>
+                    <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+                      <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-copy"></use></svg>
+                      <span class="btn-label">نسخ</span>
+                    </button>
+                  </figcaption>
+                  <pre class="code" dir="ltr"><code>inventory = {"laptop": 10, "mouse": 40}  # dict: مفتاح/قيمة
+inventory["keyboard"] = 7
+tags = {"sale", "new", "sale"}            # set: فريدة فقط
+frozen_tags = frozenset(tags)             # نسخة ثابتة
+
+print(inventory)
+print(len(tags), "sale" in tags)
+print(frozen_tags)</code></pre>
+                  <div class="output" role="group" aria-label="مخرجات البرنامج">
+                    <div class="output-label" lang="en">Output</div>
+                    <pre dir="ltr"><code>{'laptop': 10, 'mouse': 40, 'keyboard': 7}
+2 True
+frozenset({'new', 'sale'})</code></pre>
+                  </div>
+                </figure>
+              </article>
+
+              <article class="concept">
+                <h4>البيانات الثنائية: <span dir="ltr" lang="en">bytes</span> و <span dir="ltr" lang="en">bytearray</span> و <span dir="ltr" lang="en">memoryview</span></h4>
+                <p>هذه الأنواع تتعامل مع البيانات الخام على هيئة أرقام من 0 إلى 255، وتظهر عند قراءة الملفات والتعامل مع الشبكات. <code dir="ltr">bytes</code> ثابتة بعد إنشائها ويُكتب قيمها بحرف <code dir="ltr">b</code> قبل النص. <code dir="ltr">bytearray</code> نفس الفكرة لكنها قابلة للتعديل بايتًا بايت. <code dir="ltr">memoryview</code> نافذة على ذاكرة كائن بايتات دون نسخها، فهي أداة كفاءة للبيانات الكبيرة؛ الأمر المهم أن تعديلها يعدّل الكائن الأصلي مباشرة.</p>
+                <figure class="code-block">
+                  <figcaption class="code-head">
+                    <span class="code-meta">
+                      <span class="code-lang" lang="en">Python</span>
+                      <span class="code-file" lang="en">example.py</span>
+                    </span>
+                    <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+                      <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-copy"></use></svg>
+                      <span class="btn-label">نسخ</span>
+                    </button>
+                  </figcaption>
+                  <pre class="code" dir="ltr"><code>signature = b"PNG"          # bytes: ثابتة
+mutable = bytearray(b"OK")  # قابلة للتعديل
+mutable[0] = 78             # N
+view = memoryview(mutable)  # نافذة على نفس الذاكرة
+
+print(signature, mutable)
+print(view[1])
+print(bytes(view))</code></pre>
+                  <div class="output" role="group" aria-label="مخرجات البرنامج">
+                    <div class="output-label" lang="en">Output</div>
+                    <pre dir="ltr"><code>b'PNG' bytearray(b'NK')
+75
+b'NK'</code></pre>
+                  </div>
+                </figure>
+              </article>
+
+              <article class="concept">
+                <h4>القيم الخاصة والفحص: <span dir="ltr" lang="en">bool</span> و <span dir="ltr" lang="en">NoneType</span> و <span dir="ltr" lang="en">type()</span></h4>
+                <p><code dir="ltr">bool</code> له قيمتان فقط <code dir="ltr">True</code> و <code dir="ltr">False</code> ويكون ناتج المقارنات والشروط؛ لطيفة أن <code dir="ltr">bool</code> فرع من <code dir="ltr">int</code> في Python فيعمل <code dir="ltr">True + True</code> ويساوي <code dir="ltr">2</code>. <code dir="ltr">NoneType</code> نوع قيمته الوحيدة <code dir="ltr">None</code> ومعناها "لا قيمة هنا عمدًا"، فتُستخدم للمتغيرات غير المهيأة أو الحقول الناقصة، وتُقارن دائمًا بـ <code dir="ltr">is None</code>. أما <code dir="ltr">type(x)</code> فتعيد نوع أي قيمة، وهي أول أداة تلجأ إليها عندما لا تتصرف البيانات كما توقعت.</p>
+                <figure class="code-block">
+                  <figcaption class="code-head">
+                    <span class="code-meta">
+                      <span class="code-lang" lang="en">Python</span>
+                      <span class="code-file" lang="en">example.py</span>
+                    </span>
+                    <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+                      <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-copy"></use></svg>
+                      <span class="btn-label">نسخ</span>
+                    </button>
+                  </figcaption>
+                  <pre class="code" dir="ltr"><code>is_admin = True        # bool: ناتج المقارنات
+missing_email = None   # NoneType: لا قيمة عمدًا
+
+print(type(is_admin))
+print(type(missing_email))
+print(10 &gt; 5)</code></pre>
+                  <div class="output" role="group" aria-label="مخرجات البرنامج">
+                    <div class="output-label" lang="en">Output</div>
+                    <pre dir="ltr"><code>&lt;class 'bool'&gt;
+&lt;class 'NoneType'&gt;
+True</code></pre>
+                  </div>
+                </figure>
+              </article>
+
+            </section>
+
+            <section class="lesson-section" id="summary">
+              <h3 class="section-title"><b>02</b>الملخص</h3>
+              <ul class="summary-list">
+                <li><code dir="ltr">int</code> للأعداد الصحيحة و <code dir="ltr">float</code> للعشرية (انتبه لتقريب الأرقام مثل <code dir="ltr">0.1 + 0.2</code>) و <code dir="ltr">complex</code> للأعداد بجزء خيالي، و <code dir="ltr">str</code> للنصوص غير القابلة للتعديل.</li>
+                <li><code dir="ltr">list</code> مرتبة وقابلة للتعديل، <code dir="ltr">tuple</code> مرتبة وثابتة، و <code dir="ltr">range</code> تسلسل أرقام كسول لا يخزّن كل قيمه.</li>
+                <li><code dir="ltr">dict</code> تبحث بالمفتاح بسرعة لكن الوصول بمفتاح غير موجود يرفع <code dir="ltr">KeyError</code>، و <code dir="ltr">set</code> تحفظ القيم الفريدة فقط دون ترتيب أو فهرسة، و <code dir="ltr">frozenset</code> نسخة ثابتة منها.</li>
+                <li><code dir="ltr">bytes</code> ثابتة و <code dir="ltr">bytearray</code> قابلة للتعديل و <code dir="ltr">memoryview</code> نافذة على ذاكرة الأصل بلا نسخ، وتعديلها يغيّر الأصل.</li>
+                <li><code dir="ltr">None</code> تعني "لا قيمة" وتُقارن بـ <code dir="ltr">is None</code>، و <code dir="ltr">bool</code> فرع من <code dir="ltr">int</code> فـ <code dir="ltr">True + True</code> يساوي <code dir="ltr">2</code>.</li>
+                <li><code dir="ltr">type(x)</code> تعيد نوع أي قيمة وهي أول أدواتك لفهم سلوك البيانات وتصحيح الأخطاء.</li>
+              </ul>
+            </section>
+
+            <section class="lesson-section" id="interview-questions">
+              <h3 class="section-title"><b>03</b>أسئلة المقابلات</h3>
+              <div class="qa-list">
+
+                <details class="qa" open>
+                  <summary><span class="qa-q">ما الفرق بين list و tuple؟ ومتى تختار كلًا منهما؟</span><span class="level level-basic">أساسي</span></summary>
+                  <div class="qa-body">
+                    <p>كلاهما تجميعة مرتبة قابلة للفهرسة، لكن list قابلة للتعديل بينما tuple ثابتة بعد الإنشاء. اختر list للبيانات المتغيرة كقائمة المهام، واختر tuple للسجلات الثابتة كالإحداثيات أو إعدادات لا يجوز تغييرها.</p>
+                    <p class="qa-follow">تابع: الثبات يجعل tuple مفتاحًا صالحًا داخل dict على عكس list.</p>
+                  </div>
+                </details>
+
+                <details class="qa">
+                  <summary><span class="qa-q">ما الفرق بين set و list؟</span><span class="level level-basic">أساسي</span></summary>
+                  <div class="qa-body">
+                    <p>list ترتيب العناصر وتحفظ التكرار وتدعم الفهرسة، أما set فتحفظ كل قيمة مرة واحدة فقط ولا تضمن ترتيبًا ولا تدعم الفهرسة. استخدم set لإزالة التكرار وفحص العضوية السريع، وlist عندما يهمك الترتيب أو تكرار العناصر.</p>
+                  </div>
+                </details>
+
+                <details class="qa">
+                  <summary><span class="qa-q">ما الفرق بين None والقيم الفارغة "" أو 0 أو []؟</span><span class="level level-mid">متوسط</span></summary>
+                  <div class="qa-body">
+                    <p><code dir="ltr">None</code> تعني "لا قيمة أصلًا" بينما <code dir="ltr">""</code> نص فارغ موجود و <code dir="ltr">0</code> عدد صالح و <code dir="ltr">[]</code> قائمة فارغة؛ كلها كائنات حقيقية ذات نوع. لذلك تُقارن None بـ <code dir="ltr">is None</code> لا بـ <code dir="ltr">== ""</code>، لأن الحقل الفارغ في البيانات الحقيقية معناه مختلف تمامًا عن الحقل المفقود.</p>
+                  </div>
+                </details>
+
+                <details class="qa">
+                  <summary><span class="qa-q">ما الفرق بين bytes و bytearray و memoryview؟</span><span class="level level-mid">متوسط</span></summary>
+                  <div class="qa-body">
+                    <p><code dir="ltr">bytes</code> تسلسل بايتات ثابت لا يمكن تعديله، و <code dir="ltr">bytearray</code> نفس البنية لكنها قابلة للتعديل، و <code dir="ltr">memoryview</code> نافذة على ذاكرة أحدهما دون نسخ البيانات. تُستخدم الثلاثة مع الملفات والشبكات، و memoryview تحديدًا عند الحاجة لكفاءة مع بيانات كبيرة، مع انتباه أن تعديلها يغيّر الكائن الأصلي.</p>
+                  </div>
+                </details>
+
+                <details class="qa">
+                  <summary><span class="qa-q">هل True + True صالح في Python؟ وما ناتجه؟</span><span class="level level-trap">فخ</span></summary>
+                  <div class="qa-body">
+                    <p>نعم صالح وناتجه <code dir="ltr">2</code>، لأن <code dir="ltr">bool</code> في Python فرع من <code dir="ltr">int</code> حيث <code dir="ltr">True == 1</code> و <code dir="ltr">False == 0</code>. الفخ أن من يفترض أن bool نوع مستقل منفصل عن الأرقام سيفاجأ بسلوك مثل <code dir="ltr">True + True</code> أو استخدام True كعدّاد.</p>
+                    <p class="qa-follow">تابع: لهذا السبب تجنب استخدام == True واكتب الشرط المباشر بدلًا منه.</p>
+                  </div>
+                </details>
+
+              </div>
+            </section>
+
+            <section class="lesson-section" id="practical">
+              <h3 class="section-title"><b>04</b>المسألة العملية</h3>
+              <div class="callout callout-problem">
+                <p>لديك سجل طلبات متجر إلكتروني مأخوذ من نظام دفع: كل طلب dict يحوي اسم العميل <code dir="ltr">customer</code> وقيمة الطلب <code dir="ltr">amount</code>، وقد تحتوي بعض السجلات على <code dir="ltr">amount = None</code> بسبب فشل الدفع. المطلوب: احسب إجمالي المبيعات من الطلبات الصالحة فقط، وعدّ الطلبات الناقصة، وعدّ العملاء الفريدين الذين لهم طلبات صالحة.</p>
+              </div>
+              <ol class="solution">
+
+                <li class="sol-step">
+                  <b>فهم المطلوب:</b> نتجاهل أي سجل قيمته <code dir="ltr">None</code> بدل اعتباره صفرًا، ونجمع <code dir="ltr">amount</code> لباقي السجلات، ونحسب عدد السجلات المتروكة وعدد الأسماء المميزة.
+                </li>
+
+                <li class="sol-step">
+                  <b>خطة الحل:</b> نمثّل السجلات بقائمة من dict، ونستخدم set لجمع العملاء الفريدين، ونمر على القائمة فنفحص <code dir="ltr">is None</code> أولًا ثم نجمع ونضيف للمجموعة.
+                </li>
+
+                <li class="sol-step">
+                  <b>الكود الكامل:</b>
+                  <figure class="code-block">
+                    <figcaption class="code-head">
+                      <span class="code-meta">
+                        <span class="code-lang" lang="en">Python</span>
+                        <span class="code-file" lang="en">store_report.py</span>
+                      </span>
+                      <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+                        <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-copy"></use></svg>
+                        <span class="btn-label">نسخ</span>
+                      </button>
+                    </figcaption>
+                    <pre class="code" dir="ltr"><code>orders = [
+    {"customer": "ahmed", "amount": 250.5, "notes": None},
+    {"customer": "sara", "amount": 99.0, "notes": "gift wrap"},
+    {"customer": "ahmed", "amount": None, "notes": "missing"},
+    {"customer": "omar", "amount": 310.0, "notes": None},
+]
+customers = set()
+total = 0.0
+missing = 0
+for order in orders:
+    if order["amount"] is None:
+        missing += 1
+        continue
+    customers.add(order["customer"])
+    total += order["amount"]
+print(f"orders: {len(orders)}")
+print(f"valid: {len(orders) - missing} missing: {missing}")
+print(f"unique customers: {len(customers)}")
+print(f"total: {total:.2f} EGP")</code></pre>
+                  </figure>
+                </li>
+
+                <li class="sol-step">
+                  <b>تفسير القرارات:</b> اخترنا dict لكل سجل لأن حقوله معنونة بالأسماء لا بالمواضع، واخترنا set للعملاء لأن التكرار لا يهمنا والعضوية فيه فحص سريع. استخدمنا <code dir="ltr">is None</code> لأنه الفحص الصحيح لقيمة None، واستخدمنا <code dir="ltr">continue</code> لنتخطى السجل الناقص دون تشويش على الجمع.
+                </li>
+
+                <li class="sol-step">
+                  <b>اختبار سريع:</b> عند التشغيل نتوقع 4 طلبات، 3 صالحة و1 ناقص، و3 عملاء فريدين (ahmed و sara و omar) بإجمالي 659.50.
+                  <div class="output" role="group" aria-label="مخرجات البرنامج">
+                    <div class="output-label" lang="en">Output</div>
+                    <pre dir="ltr"><code>orders: 4
+valid: 3 missing: 1
+unique customers: 3
+total: 659.50 EGP</code></pre>
+                  </div>
+                </li>
+
+                <li class="sol-step">
+                  <b>تحسين أو بديل:</b> إن احتجت تفصيلًا أكثر يمكن جمع العملاء الفريدين أولًا في set ثم المرور مرة أخرى فقط على صالحها، لكن للحجم المعتاد للسجلات الحل الحالي أوضح. لاحقًا ستتعلم بناء dict تجميعي يحسب إجمالي كل عميل على حدة، وهو امتداد طبيعي لهذه الفكرة.
+                </li>
+
+              </ol>
+            </section>
+
+          </div>
+        </section>
+      </div>
+
+      <footer class="footer">
+        <span class="footer-note" lang="en">Python Learning Roadmap</span>
+        <span class="footer-note">المرحلة 01 - الدرس 02</span>
+      </footer>
+    </main>
+
+    <script>
+      (function () {
+        'use strict'
+
+        var live = document.getElementById('copy-status')
+        var printStates = null
+
+        function fallbackCopy(text) {
+          var textarea = document.createElement('textarea')
+          textarea.value = text
+          textarea.setAttribute('readonly', '')
+          textarea.style.cssText = 'position:fixed;top:-1000px;left:-1000px;opacity:0;'
+
+          try {
+            document.body.appendChild(textarea)
+            textarea.focus()
+            textarea.select()
+            textarea.setSelectionRange(0, textarea.value.length)
+            return document.execCommand('copy')
+          } catch (error) {
+            return false
+          } finally {
+            if (textarea.parentNode) {
+              textarea.parentNode.removeChild(textarea)
+            }
+          }
+        }
+
+        function copyText(text) {
+          if (navigator.clipboard && window.isSecureContext) {
+            return navigator.clipboard.writeText(text).then(
+              function () { return true },
+              function () { return fallbackCopy(text) },
+            ).catch(function () { return false })
+          }
+
+          return Promise.resolve().then(function () {
+            return fallbackCopy(text)
+          }).catch(function () {
+            return false
+          })
+        }
+
+        document.addEventListener('click', function (event) {
+          var target = event.target
+          var button = target && typeof target.closest === 'function'
+            ? target.closest('[data-copy-code]')
+            : null
+
+          if (!button) return
+
+          var label = button.querySelector('.btn-label')
+          var block = button.closest('.code-block')
+          var code = block ? block.querySelector('pre.code > code') : null
+          if (!label || !code) return
+
+          if (!button.dataset.label) button.dataset.label = label.textContent
+
+          copyText(code.textContent).then(function (ok) {
+            label.textContent = ok ? 'تم النسخ' : 'تعذّر النسخ'
+            button.classList.toggle('is-copied', ok)
+            button.classList.toggle('is-failed', !ok)
+
+            if (live) {
+              live.textContent = ok
+                ? 'تم نسخ الكود'
+                : 'تعذّر النسخ، حدّد الكود يدويًا ثم انسخه'
+            }
+
+            window.clearTimeout(button._timer)
+            button._timer = window.setTimeout(function () {
+              label.textContent = button.dataset.label
+              button.classList.remove('is-copied', 'is-failed')
+            }, 1800)
+          })
+        })
+
+        window.addEventListener('beforeprint', function () {
+          if (printStates !== null) return
+
+          var questions = document.querySelectorAll('details.qa')
+          printStates = Array.prototype.map.call(questions, function (item) {
+            return item.open
+          })
+          questions.forEach(function (item) {
+            item.open = true
+          })
+        })
+
+        window.addEventListener('afterprint', function () {
+          if (printStates === null) return
+
+          var questions = document.querySelectorAll('details.qa')
+          questions.forEach(function (item, index) {
+            item.open = printStates[index] === true
+          })
+          printStates = null
+        })
+      })()
+    </script>
+  </body>
+</html>

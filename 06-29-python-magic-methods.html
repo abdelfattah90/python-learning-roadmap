@@ -1,0 +1,459 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#fcfcfc" />
+    <title>الدوال السحرية | Python Magic Methods | Python Learning Roadmap</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/style.css" />
+  </head>
+  <body>
+    <svg
+      width="0"
+      height="0"
+      style="position: absolute"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <symbol id="i-copy" viewBox="0 0 24 24">
+        <rect x="9" y="9" width="12" height="12" rx="2.5" />
+        <path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15" />
+      </symbol>
+    </svg>
+    <template id="code-block-pattern">
+      <figure class="code-block">
+        <figcaption class="code-head">
+          <span class="code-meta">
+            <span class="code-lang" lang="en">Python</span>
+            <span class="code-file" lang="en">example.py</span>
+          </span>
+          <button
+            type="button"
+            class="btn btn-ghost btn-sm"
+            data-copy-code
+            aria-label="نسخ الكود"
+          >
+            <svg
+              class="btn-icon"
+              viewBox="0 0 24 24"
+              width="14"
+              height="14"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <use href="#i-copy"></use>
+            </svg>
+            <span class="btn-label">نسخ</span>
+          </button>
+        </figcaption>
+        <pre class="code" dir="ltr"><code><!-- ضع الكود هنا كنص HTML مع تهريب الرموز الخاصة --></code></pre>
+        <!-- احذف كتلة output إذا لم يكن للمثال ناتج ثابت ومفيد. -->
+        <div class="output" role="group" aria-label="مخرجات البرنامج">
+          <div class="output-label" lang="en">Output</div>
+          <pre dir="ltr"><code><!-- ضع المخرجات المتحققة هنا --></code></pre>
+        </div>
+      </figure>
+    </template>
+
+    <div
+      class="sr-only"
+      id="copy-status"
+      role="status"
+      aria-live="polite"
+    ></div>
+
+    <main class="page">
+      <header class="hero lesson-hero">
+        <span class="eyebrow">
+          <span class="eyebrow-dot"></span>
+          المرحلة <span dir="ltr">06</span>:
+          <span dir="ltr" lang="en">Object-Oriented Programming</span>
+        </span>
+        <h1>
+          <span class="h1-ar">الدوال السحرية</span>
+          <span class="h1-en" dir="ltr" lang="en">Python Magic Methods</span>
+        </h1>
+        <p class="hero-description">كيف تجعل كائناتك تتصرف مثل أنواع Python المدمجة: تُطبع بوضوح، وتُقارن وتُجمع، وتُقاس بـ len()، وتُستدعى كأنها دوال.</p>
+      </header>
+
+      <div class="lesson-parts">
+        <section class="lesson-part-card" id="complete-lesson" aria-labelledby="complete-lesson-title">
+          <header class="part-header">
+            <div class="part-number">درس متكامل</div>
+            <div class="part-heading">
+              <h2 id="complete-lesson-title">
+                <span class="part-title-en" dir="ltr" lang="en">Complete Lesson</span>
+                <span class="sep" aria-hidden="true"> - </span>
+                <span class="part-title-ar">الشرح والملخص والتطبيق</span>
+              </h2>
+              <span class="part-description">كل محتوى الدرس في ملف HTML واحد</span>
+            </div>
+          </header>
+
+          <div class="lesson-body">
+            <section class="lesson-section" id="explain">
+              <h3 class="section-title"><b>01</b>الشرح</h3>
+              <p>الدوال السحرية (dunder methods) هي دوال خاصة يحيط باسمها شرطتان سفليتان مزدوجتان مثل <code dir="ltr">__str__</code>. لا نستدعيها بأنفسنا عادةً؛ Python يستدعيها عندما نستخدم صيغة معينة: <code dir="ltr">print(obj)</code> تستدعي <code dir="ltr">__str__</code>، و<code dir="ltr">a + b</code> تستدعي <code dir="ltr">__add__</code>. فائدتها أن تتصرف كائنات صنفك (class) مثل الأنواع المدمجة.</p>
+<article class="concept">
+<h4>1) التمثيل النصي: <code dir="ltr">__str__()</code> و<code dir="ltr">__repr__()</code></h4>
+<p>بدون تعريفهما تُطبع الكائنات بشكل غير مفيد مثل <code dir="ltr">&lt;Product object at 0x...&gt;</code>. <code dir="ltr">__str__</code> يعطي نصًا مقروءًا للمستخدم النهائي، ويستخدمه <code dir="ltr">print()</code> و<code dir="ltr">str()</code> وf-strings. أما <code dir="ltr">__repr__</code> فتمثيل واضح للمطور (debugging)، ويظهر داخل القوائم وفي الـ REPL، والأفضل أن يشبه الكود الذي ينشئ الكائن.</p>
+<figure class="code-block">
+<figcaption class="code-head">
+<span class="code-meta"><span class="code-lang" lang="en">Python</span><span class="code-file" lang="en">product.py</span></span>
+<button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود"><svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-copy"></use></svg><span class="btn-label">نسخ</span></button>
+</figcaption>
+<pre class="code" dir="ltr"><code>class Product:
+    def __init__(self, name, price):
+        self.name = name
+        self.price = price
+
+    def __str__(self):
+        return f"{self.name}: {self.price} EGP"
+
+    def __repr__(self):
+        return f"Product(name={self.name!r}, price={self.price!r})"
+
+
+item = Product("keyboard", 850)
+print(item)
+print([item])</code></pre>
+<div class="output" role="group" aria-label="مخرجات البرنامج">
+<div class="output-label" lang="en">Output</div>
+<pre dir="ltr"><code>keyboard: 850 EGP
+[Product(name='keyboard', price=850)]</code></pre>
+</div>
+</figure>
+<p>إذا عرّفت <code dir="ltr">__repr__</code> فقط فإن <code dir="ltr">print()</code> يستخدمه بديلًا، والعكس غير صحيح؛ لذلك ابدأ دائمًا بـ <code dir="ltr">__repr__</code>. <strong>الخطأ الشائع:</strong> استخدام <code dir="ltr">print()</code> داخل <code dir="ltr">__str__</code> بدل <code dir="ltr">return</code>؛ فالدالة يجب أن ترجع قيمة من نوع <code dir="ltr">str</code>.</p>
+</article>
+<article class="concept">
+<h4>2) المقارنة والجمع: <code dir="ltr">__eq__()</code> و<code dir="ltr">__lt__()</code> و<code dir="ltr">__add__()</code></h4>
+<p>افتراضيًا <code dir="ltr">==</code> يقارن هوية الكائن (هل هما الكائن نفسه)، فيعطي <code dir="ltr">False</code> لكائنين متطابقي القيم. عرّف <code dir="ltr">__eq__</code> لمقارنة القيم، و<code dir="ltr">__lt__</code> لدعم <code dir="ltr">&lt;</code> (وهي تكفي لـ <code dir="ltr">sorted()</code> و<code dir="ltr">list.sort()</code>)، و<code dir="ltr">__add__</code> لدعم <code dir="ltr">+</code>.</p>
+<figure class="code-block">
+<figcaption class="code-head">
+<span class="code-meta"><span class="code-lang" lang="en">Python</span><span class="code-file" lang="en">money.py</span></span>
+<button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود"><svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-copy"></use></svg><span class="btn-label">نسخ</span></button>
+</figcaption>
+<pre class="code" dir="ltr"><code>class Money:
+    def __init__(self, amount):
+        self.amount = amount
+
+    def __eq__(self, other):
+        if not isinstance(other, Money):
+            return NotImplemented
+        return self.amount == other.amount
+
+    def __lt__(self, other):
+        return self.amount &lt; other.amount
+
+    def __add__(self, other):
+        return Money(self.amount + other.amount)
+
+
+a, b = Money(50), Money(75)
+print(a == Money(50), a &lt; b, (a + b).amount)</code></pre>
+<div class="output" role="group" aria-label="مخرجات البرنامج">
+<div class="output-label" lang="en">Output</div>
+<pre dir="ltr"><code>True True 125</code></pre>
+</div>
+</figure>
+<p>إذا كان النوع الآخر غير مدعوم فأرجع <code dir="ltr">NotImplemented</code> (لا <code dir="ltr">False</code>) ليجرّب Python الطرف الآخر ثم يرفع <code dir="ltr">TypeError</code> واضحًا. و<code dir="ltr">__add__</code> يجب أن ترجع كائنًا جديدًا ولا تعدّل الأصل. ولا تولّد <code dir="ltr">__lt__</code> المعاملين <code dir="ltr">&lt;=</code> و<code dir="ltr">&gt;=</code> تلقائيًا. <strong>فخ:</strong> تعريف <code dir="ltr">__eq__</code> دون <code dir="ltr">__hash__</code> يجعل Python يضبط <code dir="ltr">__hash__</code> على <code dir="ltr">None</code>، فلا يصلح الكائن مفتاحًا في dict ولا عنصرًا في set.</p>
+</article>
+<article class="concept">
+<h4>3) سلوك الحاويات: <code dir="ltr">__len__()</code> و<code dir="ltr">__contains__()</code></h4>
+<p><code dir="ltr">len(obj)</code> تستدعي <code dir="ltr">__len__</code> ويجب أن ترجع عددًا صحيحًا غير سالب، و<code dir="ltr">x in obj</code> تستدعي <code dir="ltr">__contains__</code> وترجع <code dir="ltr">True</code> أو <code dir="ltr">False</code>. بهما يصبح كائنك (مثل Playlist) مألوف الاستخدام كالقوائم والمجموعات دون كشف تفاصيل تخزينه الداخلي.</p>
+<figure class="code-block">
+<figcaption class="code-head">
+<span class="code-meta"><span class="code-lang" lang="en">Python</span><span class="code-file" lang="en">playlist.py</span></span>
+<button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود"><svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-copy"></use></svg><span class="btn-label">نسخ</span></button>
+</figcaption>
+<pre class="code" dir="ltr"><code>class Playlist:
+    def __init__(self, songs):
+        self.songs = list(songs)
+
+    def __len__(self):
+        return len(self.songs)
+
+    def __contains__(self, title):
+        return title in self.songs
+
+
+mix = Playlist(["Fur Elise", "Moonlight Sonata"])
+print(len(mix), "Fur Elise" in mix, "Bolero" in mix)
+print(bool(Playlist([])))</code></pre>
+<div class="output" role="group" aria-label="مخرجات البرنامج">
+<div class="output-label" lang="en">Output</div>
+<pre dir="ltr"><code>2 True False
+False</code></pre>
+</div>
+</figure>
+<p>إذا عرّفت <code dir="ltr">__len__</code> فإن الكائن يُعتبر <code dir="ltr">False</code> في الشروط حين يكون طوله 0 (مثل <code dir="ltr">if not playlist:</code>)، وتستخدم <code dir="ltr">not in</code> الدالة <code dir="ltr">__contains__</code> نفسها. <strong>الخطأ الشائع:</strong> إرجاع <code dir="ltr">None</code> أو رقم عشري من <code dir="ltr">__len__</code> يسبب <code dir="ltr">TypeError</code>.</p>
+</article>
+<article class="concept">
+<h4>4) الكائن القابل للاستدعاء: <code dir="ltr">__call__()</code></h4>
+<p><code dir="ltr">__call__</code> تجعل <code dir="ltr">obj(...)</code> تعمل مثل استدعاء دالة، لكن مع حالة محفوظة في attributes الكائن. تفيد عندما تحتاج «دالة» لها إعدادات (كنسبة الخصم) أو حالة تتغير بين الاستدعاءات، وهي الأساس لكتابة decorators على شكل class.</p>
+<figure class="code-block">
+<figcaption class="code-head">
+<span class="code-meta"><span class="code-lang" lang="en">Python</span><span class="code-file" lang="en">discount.py</span></span>
+<button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود"><svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-copy"></use></svg><span class="btn-label">نسخ</span></button>
+</figcaption>
+<pre class="code" dir="ltr"><code>class Discount:
+    def __init__(self, percent):
+        self.percent = percent
+
+    def __call__(self, price):
+        return price * (100 - self.percent) / 100
+
+
+weekend_sale = Discount(20)
+print(weekend_sale(500))
+print(callable(weekend_sale))</code></pre>
+<div class="output" role="group" aria-label="مخرجات البرنامج">
+<div class="output-label" lang="en">Output</div>
+<pre dir="ltr"><code>400.0
+True</code></pre>
+</div>
+</figure>
+<p><code dir="ltr">callable(obj)</code> تعطي <code dir="ltr">True</code> عند وجود <code dir="ltr">__call__</code>. <strong>تنبيه:</strong> <code dir="ltr">Discount(20)</code> ينشئ كائنًا عبر <code dir="ltr">__init__</code>، بينما <code dir="ltr">weekend_sale(500)</code> ينفّذ <code dir="ltr">__call__</code>؛ وإذا لم تُعرَّف تظهر <code dir="ltr">TypeError: object is not callable</code>.</p>
+</article>
+            </section>
+
+            <section class="lesson-section" id="summary">
+              <h3 class="section-title"><b>02</b>الملخص</h3>
+              <ul class="summary-list">
+                <li>يستدعي Python الدوال السحرية تلقائيًا عند استخدام <code dir="ltr">print()</code> و<code dir="ltr">==</code> و<code dir="ltr">+</code> و<code dir="ltr">len()</code> و<code dir="ltr">in</code> و<code dir="ltr">obj()</code>.</li>
+<li><code dir="ltr">__str__</code> للعرض الموجّه للمستخدم، و<code dir="ltr">__repr__</code> للمطور والتشخيص؛ وعند غياب <code dir="ltr">__str__</code> يستخدم Python الـ <code dir="ltr">__repr__</code>.</li>
+<li><code dir="ltr">__eq__</code> تقارن القيم لا الهوية، وترجع <code dir="ltr">NotImplemented</code> للأنواع غير المدعومة، وتعريفها وحدها يلغي قابلية الـ hash.</li>
+<li><code dir="ltr">__lt__</code> تكفي لـ <code dir="ltr">sorted()</code> لكنها لا تولّد <code dir="ltr">&lt;=</code> أو <code dir="ltr">&gt;=</code> تلقائيًا.</li>
+<li><code dir="ltr">__add__</code> ترجع كائنًا جديدًا، و<code dir="ltr">__len__</code> و<code dir="ltr">__contains__</code> تمنحان الكائن سلوك الحاويات (و<code dir="ltr">__len__</code> تؤثر في الاختبار المنطقي).</li>
+<li><code dir="ltr">__call__</code> تحوّل الكائن إلى callable يحتفظ بحالته بين الاستدعاءات.</li>
+              </ul>
+            </section>
+
+            <section class="lesson-section" id="interview-questions">
+              <h3 class="section-title"><b>03</b>أسئلة المقابلات</h3>
+              <div class="qa-list">
+                <details class="qa" open>
+<summary><span class="qa-q">ما الفرق بين <code dir="ltr">__str__</code> و<code dir="ltr">__repr__</code>، ومتى يُستدعى كل منهما؟</span><span class="level level-basic">أساسي</span></summary>
+<div class="qa-body"><p><code dir="ltr">__str__</code> يُنتج نصًا مقروءًا للمستخدم ويُستدعى من <code dir="ltr">print()</code> و<code dir="ltr">str()</code> وf-strings. <code dir="ltr">__repr__</code> يُنتج تمثيلًا دقيقًا للمطور ويُستدعى من <code dir="ltr">repr()</code> وعند عرض الكائن داخل قائمة. إذا غاب <code dir="ltr">__str__</code> يستخدم Python الـ <code dir="ltr">__repr__</code> بديلًا.</p></div>
+</details>
+<details class="qa">
+<summary><span class="qa-q">ماذا يفعل <code dir="ltr">==</code> افتراضيًا على كائنات class عادي، وكيف تغيّره؟</span><span class="level level-basic">أساسي</span></summary>
+<div class="qa-body"><p>يقارن الهوية، أي هل الطرفان الكائن نفسه، فيعطي <code dir="ltr">False</code> لكائنين متطابقي القيم. نعرّف <code dir="ltr">__eq__</code> ليقارن القيم، ويُفضَّل إرجاع <code dir="ltr">NotImplemented</code> إذا كان الكائن الآخر من نوع غير مناسب.</p></div>
+</details>
+<details class="qa">
+<summary><span class="qa-q">ماذا يحدث عند <code dir="ltr">a + b</code> إذا لم يعرّف <code dir="ltr">a</code> الدالة <code dir="ltr">__add__</code>؟</span><span class="level level-mid">متوسط</span></summary>
+<div class="qa-body"><p>يحاول Python استدعاء <code dir="ltr">__radd__</code> على <code dir="ltr">b</code>، فإن لم توجد أو أرجعت <code dir="ltr">NotImplemented</code> يرفع <code dir="ltr">TypeError</code>. لذلك ترجع <code dir="ltr">__add__</code> القيمة <code dir="ltr">NotImplemented</code> عند نوع غير مدعوم بدل أن ترفع الخطأ بنفسها.</p></div>
+</details>
+<details class="qa">
+<summary><span class="qa-q">كيف تفرّق بين إنشاء كائن واستدعائه عند استخدام <code dir="ltr">__call__</code>؟</span><span class="level level-mid">متوسط</span></summary>
+<div class="qa-body"><p><code dir="ltr">Discount(20)</code> استدعاء للـ class وينشئ كائنًا عبر <code dir="ltr">__init__</code>، بينما <code dir="ltr">offer(500)</code> استدعاء للكائن نفسه وينفّذ <code dir="ltr">__call__</code>. ويمكن التحقق بـ <code dir="ltr">callable(offer)</code>.</p></div>
+</details>
+<details class="qa">
+<summary><span class="qa-q">عرّفتَ <code dir="ltr">__eq__</code> ثم وضعت كائنات الصنف في <code dir="ltr">set</code> فظهر <code dir="ltr">TypeError: unhashable type</code>. لماذا؟</span><span class="level level-trap">فخ</span></summary>
+<div class="qa-body"><p>لأن Python يضبط <code dir="ltr">__hash__</code> على <code dir="ltr">None</code> تلقائيًا عند تعريف <code dir="ltr">__eq__</code> دون <code dir="ltr">__hash__</code>، فتصبح الكائنات غير قابلة للتجزئة. الحل تعريف <code dir="ltr">__hash__</code> متسق مع <code dir="ltr">__eq__</code> (مثل <code dir="ltr">hash(self.amount)</code>)، بشرط أن تبقى القيم المستخدمة فيه ثابتة.</p></div>
+</details>
+              </div>
+            </section>
+
+            <section class="lesson-section" id="practical">
+              <h3 class="section-title"><b>04</b>المسألة العملية</h3>
+              <div class="callout callout-problem"><p><strong>المطلوب:</strong> صمّم class باسم <code dir="ltr">Basket</code> لسلّة مشتريات تخزّن أسماء المنتجات وأسعارها (EGP). يجب أن تُعرض بوضوح للمطور، وتُدمج سلتان بـ <code dir="ltr">+</code>، ويُعرف عدد المنتجات بـ <code dir="ltr">len()</code>، ويُفحص وجود منتج بـ <code dir="ltr">in</code>، وتُقارن السلتان بإجمالي السعر بـ <code dir="ltr">&lt;</code>، وتُحسب القيمة بعد الخصم باستدعاء السلة كدالة.</p></div>
+              <ol class="solution">
+                <li class="sol-step">
+<h4>فهم المطلوب</h4>
+<p>المدخل قاموس <code dir="ltr">{name: price}</code>. المطلوب class واحد يدعم <code dir="ltr">repr</code> و<code dir="ltr">len</code> و<code dir="ltr">in</code> و<code dir="ltr">+</code> و<code dir="ltr">&lt;</code> واستدعاء السلة لحساب الإجمالي بعد خصم بنسبة مئوية.</p>
+</li>
+<li class="sol-step">
+<h4>خطة الحل</h4>
+<p>نخزّن المنتجات في attribute واحد هو <code dir="ltr">items</code>، ونجعل <code dir="ltr">__call__</code> المصدر الوحيد للإجمالي، ثم يعتمد <code dir="ltr">__lt__</code> عليه لتجنب تكرار المنطق. باقي الدوال تُكتب بسطر واحد.</p>
+</li>
+<li class="sol-step">
+<h4>الكود الكامل</h4>
+<figure class="code-block">
+<figcaption class="code-head">
+<span class="code-meta"><span class="code-lang" lang="en">Python</span><span class="code-file" lang="en">basket.py</span></span>
+<button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود"><svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-copy"></use></svg><span class="btn-label">نسخ</span></button>
+</figcaption>
+<pre class="code" dir="ltr"><code>class Basket:
+    def __init__(self, items=None):
+        self.items = dict(items or {})
+
+    def __repr__(self):
+        return f"Basket({self.items!r})"
+
+    def __len__(self):
+        return len(self.items)
+
+    def __contains__(self, name):
+        return name in self.items
+
+    def __add__(self, other):
+        return Basket(self.items | other.items)
+
+    def __lt__(self, other):
+        return self() &lt; other()
+
+    def __call__(self, discount=0):
+        return sum(self.items.values()) * (100 - discount) / 100</code></pre>
+<div class="output" role="group" aria-label="مخرجات البرنامج">
+<div class="output-label" lang="en">Output</div>
+<pre dir="ltr"><code></code></pre>
+</div>
+</figure>
+</li>
+<li class="sol-step">
+<h4>تفسير القرارات</h4>
+<p><code dir="ltr">dict(items or {})</code> ينسخ المدخلات فلا نعدّل القاموس الخارجي ولا نقع في mutable default. <code dir="ltr">__add__</code> ترجع <code dir="ltr">Basket</code> جديدة، وعند تكرار منتج تغلب قيمة السلة الثانية بسبب <code dir="ltr">|</code>. و<code dir="ltr">__call__(discount=0)</code> تعطي الإجمالي كما هو عند عدم تمرير خصم.</p>
+</li>
+<li class="sol-step">
+<h4>اختبار سريع</h4>
+<p>يُشغَّل هذا الكود بعد تعريف <code dir="ltr">Basket</code> أعلاه:</p>
+<figure class="code-block">
+<figcaption class="code-head">
+<span class="code-meta"><span class="code-lang" lang="en">Python</span><span class="code-file" lang="en">basket_test.py</span></span>
+<button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود"><svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-copy"></use></svg><span class="btn-label">نسخ</span></button>
+</figcaption>
+<pre class="code" dir="ltr"><code>morning = Basket({"milk": 40, "bread": 10})
+evening = Basket({"tea": 55, "bread": 12})
+combined = morning + evening
+print(combined)
+print(len(combined), "tea" in combined, "rice" in combined)
+print(morning &lt; evening, combined(10))
+print(sorted([evening, morning]))</code></pre>
+<div class="output" role="group" aria-label="مخرجات البرنامج">
+<div class="output-label" lang="en">Output</div>
+<pre dir="ltr"><code>Basket({'milk': 40, 'bread': 12, 'tea': 55})
+3 True False
+True 96.3
+[Basket({'milk': 40, 'bread': 10}), Basket({'tea': 55, 'bread': 12})]</code></pre>
+</div>
+</figure>
+</li>
+<li class="sol-step">
+<h4>تحسين أو بديل</h4>
+<p>للتحسين: أضف <code dir="ltr">__str__</code> لعرض ملخص للمستخدم، وأرجع <code dir="ltr">NotImplemented</code> من <code dir="ltr">__add__</code> و<code dir="ltr">__lt__</code> عند نوع غير مناسب، وعرّف <code dir="ltr">__eq__</code> لمقارنة المحتويات. البديل دالة عادية <code dir="ltr">total(basket, discount)</code>، وهي أبسط لكنها لا تمنحك صيغ <code dir="ltr">len()</code> و<code dir="ltr">in</code> و<code dir="ltr">+</code> الطبيعية. لا تفرط في استخدام الدوال السحرية: استعملها فقط حين يكون السلوك مطابقًا لمعناها المألوف.</p>
+</li>
+              </ol>
+            </section>
+          </div>
+        </section>
+      </div>
+
+      <footer class="footer">
+        <span class="footer-note" lang="en">Python Learning Roadmap</span>
+        <span class="footer-note">المرحلة 06 - الدرس 29</span>
+      </footer>
+    </main>
+
+    <script>
+      (function () {
+        'use strict'
+
+        var live = document.getElementById('copy-status')
+        var printStates = null
+
+        function fallbackCopy(text) {
+          var textarea = document.createElement('textarea')
+          textarea.value = text
+          textarea.setAttribute('readonly', '')
+          textarea.style.cssText = 'position:fixed;top:-1000px;left:-1000px;opacity:0;'
+
+          try {
+            document.body.appendChild(textarea)
+            textarea.focus()
+            textarea.select()
+            textarea.setSelectionRange(0, textarea.value.length)
+            return document.execCommand('copy')
+          } catch (error) {
+            return false
+          } finally {
+            if (textarea.parentNode) {
+              textarea.parentNode.removeChild(textarea)
+            }
+          }
+        }
+
+        function copyText(text) {
+          if (navigator.clipboard && window.isSecureContext) {
+            return navigator.clipboard.writeText(text).then(
+              function () { return true },
+              function () { return fallbackCopy(text) },
+            ).catch(function () { return false })
+          }
+
+          return Promise.resolve().then(function () {
+            return fallbackCopy(text)
+          }).catch(function () {
+            return false
+          })
+        }
+
+        document.addEventListener('click', function (event) {
+          var target = event.target
+          var button = target && typeof target.closest === 'function'
+            ? target.closest('[data-copy-code]')
+            : null
+
+          if (!button) return
+
+          var label = button.querySelector('.btn-label')
+          var block = button.closest('.code-block')
+          var code = block ? block.querySelector('pre.code > code') : null
+          if (!label || !code) return
+
+          if (!button.dataset.label) button.dataset.label = label.textContent
+
+          copyText(code.textContent).then(function (ok) {
+            label.textContent = ok ? 'تم النسخ' : 'تعذّر النسخ'
+            button.classList.toggle('is-copied', ok)
+            button.classList.toggle('is-failed', !ok)
+
+            if (live) {
+              live.textContent = ok
+                ? 'تم نسخ الكود'
+                : 'تعذّر النسخ، حدّد الكود يدويًا ثم انسخه'
+            }
+
+            window.clearTimeout(button._timer)
+            button._timer = window.setTimeout(function () {
+              label.textContent = button.dataset.label
+              button.classList.remove('is-copied', 'is-failed')
+            }, 1800)
+          })
+        })
+
+        window.addEventListener('beforeprint', function () {
+          if (printStates !== null) return
+
+          var questions = document.querySelectorAll('details.qa')
+          printStates = Array.prototype.map.call(questions, function (item) {
+            return item.open
+          })
+          questions.forEach(function (item) {
+            item.open = true
+          })
+        })
+
+        window.addEventListener('afterprint', function () {
+          if (printStates === null) return
+
+          var questions = document.querySelectorAll('details.qa')
+          questions.forEach(function (item, index) {
+            item.open = printStates[index] === true
+          })
+          printStates = null
+        })
+      })()
+    </script>
+  </body>
+</html>

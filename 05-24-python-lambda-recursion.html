@@ -1,0 +1,525 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#fcfcfc" />
+    <title>دوال Lambda والاستدعاء الذاتي | Python Learning Roadmap</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/style.css" />
+  </head>
+  <body>
+    <svg
+      width="0"
+      height="0"
+      style="position: absolute"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <symbol id="i-copy" viewBox="0 0 24 24">
+        <rect x="9" y="9" width="12" height="12" rx="2.5" />
+        <path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15" />
+      </symbol>
+    </svg>
+    <template id="code-block-pattern">
+      <figure class="code-block">
+        <figcaption class="code-head">
+          <span class="code-meta">
+            <span class="code-lang" lang="en">Python</span>
+            <span class="code-file" lang="en">example.py</span>
+          </span>
+          <button
+            type="button"
+            class="btn btn-ghost btn-sm"
+            data-copy-code
+            aria-label="نسخ الكود"
+          >
+            <svg
+              class="btn-icon"
+              viewBox="0 0 24 24"
+              width="14"
+              height="14"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <use href="#i-copy"></use>
+            </svg>
+            <span class="btn-label">نسخ</span>
+          </button>
+        </figcaption>
+        <pre class="code" dir="ltr"><code><!-- ضع الكود هنا كنص HTML مع تهريب الرموز الخاصة --></code></pre>
+        <!-- احذف كتلة output إذا لم يكن للمثال ناتج ثابت ومفيد. -->
+        <div class="output" role="group" aria-label="مخرجات البرنامج">
+          <div class="output-label" lang="en">Output</div>
+          <pre dir="ltr"><code><!-- ضع المخرجات المتحققة هنا --></code></pre>
+        </div>
+      </figure>
+    </template>
+
+    <div
+      class="sr-only"
+      id="copy-status"
+      role="status"
+      aria-live="polite"
+    ></div>
+
+    <main class="page">
+      <header class="hero lesson-hero">
+        <span class="eyebrow">
+          <span class="eyebrow-dot"></span>
+          المرحلة <span dir="ltr">05</span>:
+          <span dir="ltr" lang="en">Functions</span>
+        </span>
+        <h1>
+          <span class="h1-ar">دوال Lambda والاستدعاء الذاتي</span>
+          <span class="h1-en" dir="ltr" lang="en">Python Lambda &amp; Recursion</span>
+        </h1>
+        <p class="hero-description">كيف نكتب دوالًا قصيرة بلا اسم عبر lambda، وكيف نحل المشكلات المتداخلة بدالة تستدعي نفسها بأمان باستخدام Base Case واضح.</p>
+      </header>
+
+      <div class="lesson-parts">
+        <section class="lesson-part-card" id="complete-lesson" aria-labelledby="complete-lesson-title">
+          <header class="part-header">
+            <div class="part-number">درس متكامل</div>
+            <div class="part-heading">
+              <h2 id="complete-lesson-title">
+                <span class="part-title-en" dir="ltr" lang="en">Complete Lesson</span>
+                <span class="sep" aria-hidden="true"> - </span>
+                <span class="part-title-ar">الشرح والملخص والتطبيق</span>
+              </h2>
+              <span class="part-description">كل محتوى الدرس في ملف HTML واحد</span>
+            </div>
+          </header>
+
+          <div class="lesson-body">
+            <section class="lesson-section" id="explain">
+              <h3 class="section-title"><b>01</b>الشرح</h3>
+
+              <article class="concept">
+                <h4><span dir="ltr" lang="en">Lambda Functions</span> و<span dir="ltr" lang="en">Lambda Parameters</span></h4>
+                <p>الـ <strong dir="ltr" lang="en">Lambda Functions</strong> هي دوال صغيرة بلا اسم (anonymous functions) تُكتب في سطر واحد بالصيغة <code dir="ltr">lambda parameters: expression</code>، وتعيد قيمة التعبير تلقائيًا دون كلمة <code dir="ltr">return</code>. نحتاجها عندما نريد تمرير منطق قصير إلى دالة أخرى مرة واحدة، مثل مفتاح الترتيب، دون تعريف <code dir="ltr">def</code> كاملة.</p>
+                <p>أما <strong dir="ltr" lang="en">Lambda Parameters</strong> فتعمل مثل معاملات <code dir="ltr">def</code> تمامًا: معاملات عادية، وقيم افتراضية، و<code dir="ltr">*args</code> و<code dir="ltr">**kwargs</code>. الفرق في الشكل فقط: تُكتب المعاملات بلا أقواس ولا annotations. المثال التالي يعرض الأنواع الثلاثة داخل dictionary لغرض الشرح فقط.</p>
+                <figure class="code-block">
+                  <figcaption class="code-head">
+                    <span class="code-meta">
+                      <span class="code-lang" lang="en">Python</span>
+                      <span class="code-file" lang="en">lambda_parameters.py</span>
+                    </span>
+                    <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+                      <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-copy"></use></svg>
+                      <span class="btn-label">نسخ</span>
+                    </button>
+                  </figcaption>
+                  <pre class="code" dir="ltr"><code>price_rules = {
+    "discount": lambda price, rate=0.1: price * (1 - rate),
+    "total": lambda *prices: sum(prices),
+    "count_options": lambda **options: len(options),
+}
+
+print(price_rules["discount"](200))
+print(price_rules["discount"](200, rate=0.25))
+print(price_rules["total"](10, 20, 5))
+print(price_rules["count_options"](color="red", size="M"))</code></pre>
+                  <div class="output" role="group" aria-label="مخرجات البرنامج">
+                    <div class="output-label" lang="en">Output</div>
+                    <pre dir="ltr"><code>180.0
+150.0
+35
+2</code></pre>
+                  </div>
+                </figure>
+                <p><strong>تنبيه:</strong> لا تخزّن lambda في متغير بالشكل <code dir="ltr">square = lambda x: x * x</code>؛ فهذا يخالف PEP 8 (القاعدة E731). إن احتجت اسمًا للدالة فاستخدم <code dir="ltr">def</code>.</p>
+              </article>
+
+              <article class="concept">
+                <h4><span dir="ltr" lang="en">Lambda Expressions</span></h4>
+                <p>جسم lambda هو <strong dir="ltr" lang="en">Lambda Expression</strong> واحد فقط: تعبير يُنتج قيمة، مثل عملية حسابية أو استدعاء دالة أو conditional expression بالشكل <code dir="ltr">a if condition else b</code>. السبب أن lambda صُممت لتبقى قصيرة وقابلة للقراءة داخل سطر الاستدعاء.</p>
+                <p>لا تقبل lambda أي statement: لا assignment ولا <code dir="ltr">return</code> ولا loops ولا كتل <code dir="ltr">if</code> متعددة الأسطر. إذا احتجت سطرًا ثانيًا أو شرحًا للمنطق فحوّلها إلى <code dir="ltr">def</code>. أشهر استخداماتها معامل <code dir="ltr">key</code> في <code dir="ltr">sorted()</code> و<code dir="ltr">max()</code> و<code dir="ltr">min()</code>، وتمرير قاعدة قصيرة إلى دالة كما في المثال:</p>
+                <figure class="code-block">
+                  <figcaption class="code-head">
+                    <span class="code-meta">
+                      <span class="code-lang" lang="en">Python</span>
+                      <span class="code-file" lang="en">lambda_expressions.py</span>
+                    </span>
+                    <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+                      <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-copy"></use></svg>
+                      <span class="btn-label">نسخ</span>
+                    </button>
+                  </figcaption>
+                  <pre class="code" dir="ltr"><code>students = [("Sara", 88), ("Omar", 95), ("Lina", 72)]
+
+ranked = sorted(students, key=lambda student: student[1], reverse=True)
+print(ranked)
+
+
+def report(records, rule):
+    for name, score in records:
+        print(name, rule(score))
+
+
+report(students, lambda score: "pass" if score &gt;= 80 else "fail")</code></pre>
+                  <div class="output" role="group" aria-label="مخرجات البرنامج">
+                    <div class="output-label" lang="en">Output</div>
+                    <pre dir="ltr"><code>[('Omar', 95), ('Sara', 88), ('Lina', 72)]
+Sara pass
+Omar pass
+Lina fail</code></pre>
+                  </div>
+                </figure>
+              </article>
+
+              <article class="concept">
+                <h4><span dir="ltr" lang="en">Recursive Functions</span> و<span dir="ltr" lang="en">Base Case</span></h4>
+                <p><strong dir="ltr" lang="en">Recursive Functions</strong> هي دوال تستدعي نفسها لحل نسخة أصغر من المشكلة نفسها. نستخدمها عندما تكون المشكلة متداخلة أو متشابهة الأجزاء (مجلدات داخل مجلدات، قوائم داخل قوائم)، أو تُعرَّف طبيعيًا بدلالة نفسها مثل factorial.</p>
+                <p>كل دالة عودية صحيحة تحتاج جزأين: <strong dir="ltr" lang="en">Base Case</strong> وهو الحالة الأبسط التي تعيد فيها الدالة نتيجة مباشرة دون استدعاء نفسها، وخطوة عودية تقرّب المشكلة من هذه الحالة. في المثال الشرط <code dir="ltr">n &lt;= 1</code> هو الـ Base Case، والاستدعاء <code dir="ltr">factorial(n - 1)</code> يقرّب القيمة منه.</p>
+                <figure class="code-block">
+                  <figcaption class="code-head">
+                    <span class="code-meta">
+                      <span class="code-lang" lang="en">Python</span>
+                      <span class="code-file" lang="en">factorial.py</span>
+                    </span>
+                    <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+                      <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-copy"></use></svg>
+                      <span class="btn-label">نسخ</span>
+                    </button>
+                  </figcaption>
+                  <pre class="code" dir="ltr"><code>def factorial(n):
+    if n &lt;= 1:  # base case
+        return 1
+    return n * factorial(n - 1)  # recursive call
+
+
+print(factorial(5))</code></pre>
+                  <div class="output" role="group" aria-label="مخرجات البرنامج">
+                    <div class="output-label" lang="en">Output</div>
+                    <pre dir="ltr"><code>120</code></pre>
+                  </div>
+                </figure>
+                <p><strong>أهم خطأ:</strong> نسيان الـ Base Case، أو كتابة استدعاء لا يقترب منه (مثل <code dir="ltr">factorial(n)</code> بدل <code dir="ltr">factorial(n - 1)</code>). النتيجة سلسلة استدعاءات لا تنتهي، فيوقفها Python بالخطأ <code dir="ltr">RecursionError</code>.</p>
+              </article>
+
+              <article class="concept">
+                <h4><span dir="ltr" lang="en">Recursive Calls</span></h4>
+                <p>كل <strong dir="ltr" lang="en">Recursive Call</strong> ينشئ نسخة جديدة من الدالة بمتغيراتها المحلية الخاصة (كما في درس Scope)، وتنتظر النسخة الخارجية نتيجة الداخلية. تتراكم الاستدعاءات حتى يتحقق الـ Base Case، ثم تعود النتائج بالترتيب العكسي، وهذا ما يوضحه المثال بإزاحة كل مستوى:</p>
+                <figure class="code-block">
+                  <figcaption class="code-head">
+                    <span class="code-meta">
+                      <span class="code-lang" lang="en">Python</span>
+                      <span class="code-file" lang="en">recursive_calls.py</span>
+                    </span>
+                    <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+                      <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-copy"></use></svg>
+                      <span class="btn-label">نسخ</span>
+                    </button>
+                  </figcaption>
+                  <pre class="code" dir="ltr"><code>def sum_list(numbers, depth=0):
+    indent = "  " * depth
+    if not numbers:
+        print(f"{indent}base case -&gt; 0")
+        return 0
+    print(f"{indent}sum_list({numbers})")
+    result = numbers[0] + sum_list(numbers[1:], depth + 1)
+    print(f"{indent}returns {result}")
+    return result
+
+
+sum_list([3, 5, 2])</code></pre>
+                  <div class="output" role="group" aria-label="مخرجات البرنامج">
+                    <div class="output-label" lang="en">Output</div>
+                    <pre dir="ltr"><code>sum_list([3, 5, 2])
+  sum_list([5, 2])
+    sum_list([2])
+      base case -&gt; 0
+    returns 2
+  returns 7
+returns 10</code></pre>
+                  </div>
+                </figure>
+                <p><strong>القيد:</strong> عمق الاستدعاءات محدود (حوالي 1000 افتراضيًا)، لذلك لا تستخدم recursion لتكرار خطي طويل مثل المرور على قائمة ضخمة؛ الـ loop هناك أبسط وأسرع. اترك recursion للبنى المتداخلة التي يصعب التعامل معها بحلقة واحدة.</p>
+              </article>
+            </section>
+
+            <section class="lesson-section" id="summary">
+              <h3 class="section-title"><b>02</b>الملخص</h3>
+              <ul class="summary-list">
+                <li>الـ lambda دالة مجهولة بالصيغة <code dir="ltr">lambda parameters: expression</code>، تعيد قيمة التعبير تلقائيًا دون <code dir="ltr">return</code>.</li>
+                <li>Lambda Parameters تدعم ما تدعمه <code dir="ltr">def</code>: القيم الافتراضية و<code dir="ltr">*args</code> و<code dir="ltr">**kwargs</code>، لكن بلا أقواس ولا annotations.</li>
+                <li>جسم lambda تعبير واحد فقط؛ لا statements، ويسمح بـ conditional expression، وإذا طال المنطق فاستخدم <code dir="ltr">def</code>.</li>
+                <li>أفضل استخدام لـ lambda هو <code dir="ltr">key</code> في <code dir="ltr">sorted()</code> و<code dir="ltr">max()</code> و<code dir="ltr">min()</code> والقواعد القصيرة المُمرَّرة؛ ولا تخزّنها في متغير (PEP 8).</li>
+                <li>الدالة العودية = Base Case + Recursive Call على مشكلة أصغر؛ وغياب الـ Base Case أو عدم الاقتراب منه يسبب <code dir="ltr">RecursionError</code>.</li>
+                <li>لكل Recursive Call متغيراته المحلية؛ تتراكم الاستدعاءات ثم تعود النتائج بالعكس، والعمق محدود (حوالي 1000)، فاختر loop للتكرار الخطي وrecursion للبنى المتداخلة.</li>
+              </ul>
+            </section>
+
+            <section class="lesson-section" id="interview-questions">
+              <h3 class="section-title"><b>03</b>أسئلة المقابلات</h3>
+              <div class="qa-list">
+                <details class="qa" open>
+                  <summary>
+                    <span class="qa-q">ما الفرق بين <code dir="ltr">lambda</code> و<code dir="ltr">def</code>، ومتى تفضّل كلًّا منهما؟</span>
+                    <span class="level level-basic">أساسي</span>
+                  </summary>
+                  <div class="qa-body">
+                    <p>كلاهما ينشئ function object. الدالة <code dir="ltr">def</code> لها اسم وتقبل عدة statements وdocstring وannotations، بينما lambda بلا اسم وجسمها تعبير واحد يُعاد تلقائيًا. نستخدم lambda لمنطق قصير يُمرَّر مرة واحدة (مثل <code dir="ltr">key</code>)، و<code dir="ltr">def</code> لأي منطق يُعاد استخدامه أو يحتاج وضوحًا.</p>
+                    <p class="qa-follow">سؤال متابعة: لماذا يُفضَّل <code dir="ltr">def</code> على <code dir="ltr">f = lambda ...</code>؟ لأن الدالة المخزّنة تظهر في رسائل الخطأ باسم <code dir="ltr">&lt;lambda&gt;</code> فيصعب تتبعها.</p>
+                  </div>
+                </details>
+
+                <details class="qa">
+                  <summary>
+                    <span class="qa-q">ما هو الـ Base Case، ولماذا لا غنى عنه في الدالة العودية؟</span>
+                    <span class="level level-basic">أساسي</span>
+                  </summary>
+                  <div class="qa-body">
+                    <p>هو الحالة التي تعيد فيها الدالة النتيجة مباشرة دون أن تستدعي نفسها. بدونه لا تتوقف الاستدعاءات، فيرفع Python الخطأ <code dir="ltr">RecursionError</code> عند تجاوز الحد الأقصى للعمق. ويجب أن يقترب كل Recursive Call من الـ Base Case، مثل <code dir="ltr">n - 1</code>.</p>
+                  </div>
+                </details>
+
+                <details class="qa">
+                  <summary>
+                    <span class="qa-q">لماذا تفشل <code dir="ltr">lambda x: return x * 2</code>، وما الذي يمكن كتابته داخل lambda؟</span>
+                    <span class="level level-mid">متوسط</span>
+                  </summary>
+                  <div class="qa-body">
+                    <p>لأن جسم lambda يجب أن يكون expression، بينما <code dir="ltr">return</code> هو statement. المسموح: عمليات حسابية واستدعاء دوال وtuples وconditional expression مثل <code dir="ltr">a if condition else b</code>. الممنوع: assignment وloops وكتل <code dir="ltr">if</code> متعددة الأسطر.</p>
+                  </div>
+                </details>
+
+                <details class="qa">
+                  <summary>
+                    <span class="qa-q">كيف تعمل Recursive Calls خطوة بخطوة، ومتى تفضّل loop عليها؟</span>
+                    <span class="level level-mid">متوسط</span>
+                  </summary>
+                  <div class="qa-body">
+                    <p>كل استدعاء ينتظر نتيجة الاستدعاء الأعمق حتى الوصول إلى الـ Base Case، ثم تعود القيم بالترتيب العكسي كما في trace الدالة <code dir="ltr">sum_list</code>. نفضّل loop للتكرار الخطي البسيط لأنه أسرع ولا يتأثر بحد العمق (حوالي 1000)، ونستخدم recursion للبنى المتداخلة مثل المجلدات.</p>
+                  </div>
+                </details>
+
+                <details class="qa">
+                  <summary>
+                    <span class="qa-q">ماذا تطبع الشيفرة التالية، ولماذا تختلف نتيجة القائمتين؟</span>
+                    <span class="level level-trap">فخ</span>
+                  </summary>
+                  <div class="qa-body">
+                    <figure class="code-block">
+                      <figcaption class="code-head">
+                        <span class="code-meta">
+                          <span class="code-lang" lang="en">Python</span>
+                          <span class="code-file" lang="en">late_binding.py</span>
+                        </span>
+                        <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+                          <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-copy"></use></svg>
+                          <span class="btn-label">نسخ</span>
+                        </button>
+                      </figcaption>
+                      <pre class="code" dir="ltr"><code>broken = []
+fixed = []
+for i in range(3):
+    broken.append(lambda: i)
+    fixed.append(lambda i=i: i)
+
+print(broken[0](), broken[1](), broken[2]())
+print(fixed[0](), fixed[1](), fixed[2]())</code></pre>
+                      <div class="output" role="group" aria-label="مخرجات البرنامج">
+                        <div class="output-label" lang="en">Output</div>
+                        <pre dir="ltr"><code>2 2 2
+0 1 2</code></pre>
+                      </div>
+                    </figure>
+                    <p>الـ lambda تبحث عن <code dir="ltr">i</code> وقت الاستدعاء لا وقت الإنشاء (late binding)، وبعد انتهاء الحلقة قيمة <code dir="ltr">i</code> هي 2، فتطبع القائمة الأولى <code dir="ltr">2 2 2</code>. الحل أن نربط القيمة الحالية كقيمة افتراضية <code dir="ltr">lambda i=i: i</code>، فتُحفظ القيمة لحظة الإنشاء.</p>
+                  </div>
+                </details>
+              </div>
+            </section>
+
+            <section class="lesson-section" id="practical">
+              <h3 class="section-title"><b>04</b>المسألة العملية</h3>
+              <div class="callout callout-problem">
+                <p>لديك شجرة مجلدات مشروع، وكل مجلد tuple بالشكل <code dir="ltr">(name, size_mb, children)</code> حيث <code dir="ltr">children</code> قائمة بالمجلدات الفرعية. اكتب دالة عودية <code dir="ltr">total_size</code> تحسب الحجم الكلي لمجلد مع كل ما بداخله، ثم رتّب المجلدات الفرعية للمشروع من الأكبر إلى الأصغر باستخدام lambda، واطبع الحجم الكلي للمشروع.</p>
+              </div>
+              <ol class="solution">
+                <li class="sol-step">
+                  <h4>فهم المطلوب</h4>
+                  <p>المدخل شجرة tuples بعمق غير معروف، والمخرجات: الحجم الكلي لكل مجلد فرعي مرتبًا تنازليًا، ثم الحجم الكلي للمشروع. تداخل المجلدات داخل بعضها يجعل المشكلة مناسبة للـ recursion.</p>
+                </li>
+                <li class="sol-step">
+                  <h4>خطة الحل</h4>
+                  <p>الـ Base Case: مجلد بلا children يعيد حجمه فقط. الخطوة العودية: حجم المجلد مضافًا إليه <code dir="ltr">total_size</code> لكل مجلد فرعي. للترتيب نستخدم <code dir="ltr">sorted()</code> مع lambda تعيد <code dir="ltr">(-size, name)</code>.</p>
+                </li>
+                <li class="sol-step">
+                  <h4>الكود الكامل</h4>
+                  <figure class="code-block">
+                    <figcaption class="code-head">
+                      <span class="code-meta">
+                        <span class="code-lang" lang="en">Python</span>
+                        <span class="code-file" lang="en">folder_sizes.py</span>
+                      </span>
+                      <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+                        <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-copy"></use></svg>
+                        <span class="btn-label">نسخ</span>
+                      </button>
+                    </figcaption>
+                    <pre class="code" dir="ltr"><code>project = ("project", 4, [
+    ("src", 120, [("utils", 35, []), ("models", 80, [])]),
+    ("docs", 60, []),
+    ("assets", 300, []),
+])
+
+
+def total_size(folder):
+    _, size, children = folder
+    if not children:  # base case
+        return size
+    for child in children:
+        size += total_size(child)  # recursive call
+    return size
+
+
+ranked = sorted(project[2], key=lambda f: (-total_size(f), f[0]))
+for folder in ranked:
+    print(folder[0], total_size(folder))
+print("total:", total_size(project))</code></pre>
+                    <div class="output" role="group" aria-label="مخرجات البرنامج">
+                      <div class="output-label" lang="en">Output</div>
+                      <pre dir="ltr"><code>assets 300
+src 235
+docs 60
+total: 599</code></pre>
+                    </div>
+                  </figure>
+                </li>
+                <li class="sol-step">
+                  <h4>تفسير القرارات</h4>
+                  <p>فككنا الـ tuple بـ <code dir="ltr">_, size, children = folder</code> لأن الاسم غير مطلوب داخل الحساب. استخدمنا <code dir="ltr">-total_size(f)</code> بدل <code dir="ltr">reverse=True</code> كي يبقى كسر التعادل بالاسم تصاعديًا. واخترنا lambda لأن مفتاح الترتيب يُستخدم مرة واحدة فقط. الـ Base Case هنا صريح للتوضيح، والحلقة نفسها تتوقف طبيعيًا عند قائمة children فارغة.</p>
+                </li>
+                <li class="sol-step">
+                  <h4>اختبار سريع</h4>
+                  <p>تحقق يدويًا: <code dir="ltr">4 + 235 + 60 + 300 = 599</code> وهو ناتج <code dir="ltr">total:</code>. جرّب أيضًا <code dir="ltr">total_size(("empty", 7, []))</code> فيعيد 7 مباشرة من الـ Base Case، ثم أضف مجلدًا داخل <code dir="ltr">docs</code> وتأكد أن الإجمالي يزيد بحجمه.</p>
+                </li>
+                <li class="sol-step">
+                  <h4>تحسين أو بديل</h4>
+                  <p>لو كانت الشجرة بالغة العمق (يقترب عمقها من حد الاستدعاءات) فالبديل حل بـ loop ومعه قائمة تعمل كـ stack: نضيف إليها المجلدات بـ <code dir="ltr">append()</code> ونسحب منها بـ <code dir="ltr">pop()</code> ونجمع الأحجام دون أي استدعاء ذاتي.</p>
+                </li>
+              </ol>
+            </section>
+          </div>
+        </section>
+      </div>
+
+      <footer class="footer">
+        <span class="footer-note" lang="en">Python Learning Roadmap</span>
+        <span class="footer-note">المرحلة 05 - الدرس 24</span>
+      </footer>
+    </main>
+
+    <script>
+      (function () {
+        'use strict'
+
+        var live = document.getElementById('copy-status')
+        var printStates = null
+
+        function fallbackCopy(text) {
+          var textarea = document.createElement('textarea')
+          textarea.value = text
+          textarea.setAttribute('readonly', '')
+          textarea.style.cssText = 'position:fixed;top:-1000px;left:-1000px;opacity:0;'
+
+          try {
+            document.body.appendChild(textarea)
+            textarea.focus()
+            textarea.select()
+            textarea.setSelectionRange(0, textarea.value.length)
+            return document.execCommand('copy')
+          } catch (error) {
+            return false
+          } finally {
+            if (textarea.parentNode) {
+              textarea.parentNode.removeChild(textarea)
+            }
+          }
+        }
+
+        function copyText(text) {
+          if (navigator.clipboard && window.isSecureContext) {
+            return navigator.clipboard.writeText(text).then(
+              function () { return true },
+              function () { return fallbackCopy(text) },
+            ).catch(function () { return false })
+          }
+
+          return Promise.resolve().then(function () {
+            return fallbackCopy(text)
+          }).catch(function () {
+            return false
+          })
+        }
+
+        document.addEventListener('click', function (event) {
+          var target = event.target
+          var button = target && typeof target.closest === 'function'
+            ? target.closest('[data-copy-code]')
+            : null
+
+          if (!button) return
+
+          var label = button.querySelector('.btn-label')
+          var block = button.closest('.code-block')
+          var code = block ? block.querySelector('pre.code > code') : null
+          if (!label || !code) return
+
+          if (!button.dataset.label) button.dataset.label = label.textContent
+
+          copyText(code.textContent).then(function (ok) {
+            label.textContent = ok ? 'تم النسخ' : 'تعذّر النسخ'
+            button.classList.toggle('is-copied', ok)
+            button.classList.toggle('is-failed', !ok)
+
+            if (live) {
+              live.textContent = ok
+                ? 'تم نسخ الكود'
+                : 'تعذّر النسخ، حدّد الكود يدويًا ثم انسخه'
+            }
+
+            window.clearTimeout(button._timer)
+            button._timer = window.setTimeout(function () {
+              label.textContent = button.dataset.label
+              button.classList.remove('is-copied', 'is-failed')
+            }, 1800)
+          })
+        })
+
+        window.addEventListener('beforeprint', function () {
+          if (printStates !== null) return
+
+          var questions = document.querySelectorAll('details.qa')
+          printStates = Array.prototype.map.call(questions, function (item) {
+            return item.open
+          })
+          questions.forEach(function (item) {
+            item.open = true
+          })
+        })
+
+        window.addEventListener('afterprint', function () {
+          if (printStates === null) return
+
+          var questions = document.querySelectorAll('details.qa')
+          questions.forEach(function (item, index) {
+            item.open = printStates[index] === true
+          })
+          printStates = null
+        })
+      })()
+    </script>
+  </body>
+</html>

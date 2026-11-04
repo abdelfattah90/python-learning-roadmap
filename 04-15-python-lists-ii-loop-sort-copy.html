@@ -1,0 +1,668 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#fcfcfc" />
+    <title>القوائم (2): التكرار والترتيب والنسخ | Python Learning Roadmap</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/style.css" />
+  </head>
+  <body>
+    <svg
+      width="0"
+      height="0"
+      style="position: absolute"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <symbol id="i-copy" viewBox="0 0 24 24">
+        <rect x="9" y="9" width="12" height="12" rx="2.5" />
+        <path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15" />
+      </symbol>
+    </svg>
+    <template id="code-block-pattern">
+      <figure class="code-block">
+        <figcaption class="code-head">
+          <span class="code-meta">
+            <span class="code-lang" lang="en">Python</span>
+            <span class="code-file" lang="en">example.py</span>
+          </span>
+          <button
+            type="button"
+            class="btn btn-ghost btn-sm"
+            data-copy-code
+            aria-label="نسخ الكود"
+          >
+            <svg
+              class="btn-icon"
+              viewBox="0 0 24 24"
+              width="14"
+              height="14"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <use href="#i-copy"></use>
+            </svg>
+            <span class="btn-label">نسخ</span>
+          </button>
+        </figcaption>
+        <pre class="code" dir="ltr"><code><!-- ضع الكود هنا كنص HTML مع تهريب الرموز الخاصة --></code></pre>
+        <!-- احذف كتلة output إذا لم يكن للمثال ناتج ثابت ومفيد. -->
+        <div class="output" role="group" aria-label="مخرجات البرنامج">
+          <div class="output-label" lang="en">Output</div>
+          <pre dir="ltr"><code><!-- ضع المخرجات المتحققة هنا --></code></pre>
+        </div>
+      </figure>
+    </template>
+
+    <div
+      class="sr-only"
+      id="copy-status"
+      role="status"
+      aria-live="polite"
+    ></div>
+
+    <main class="page">
+      <header class="hero lesson-hero">
+        <span class="eyebrow">
+          <span class="eyebrow-dot"></span>
+          المرحلة <span dir="ltr">04</span>:
+          <span dir="ltr" lang="en">Built-in Data Structures</span>
+        </span>
+        <h1>
+          <span class="h1-ar">القوائم (2): التكرار والترتيب والنسخ</span>
+          <span class="h1-en" dir="ltr" lang="en">Python Lists II: Loop, Sort &amp; Copy</span>
+        </h1>
+        <p class="hero-description">كيف تعالج القائمة عنصرًا بعنصر، وتبني قوائم جديدة منها، وترتّبها وتنسخها وتدمجها، دون أن تُغيّر بياناتك الأصلية بالخطأ.</p>
+      </header>
+
+      <div class="lesson-parts">
+        <section class="lesson-part-card" id="complete-lesson" aria-labelledby="complete-lesson-title">
+          <header class="part-header">
+            <div class="part-number">درس متكامل</div>
+            <div class="part-heading">
+              <h2 id="complete-lesson-title">
+                <span class="part-title-en" dir="ltr" lang="en">Complete Lesson</span>
+                <span class="sep" aria-hidden="true"> - </span>
+                <span class="part-title-ar">الشرح والملخص والتطبيق</span>
+              </h2>
+              <span class="part-description">كل محتوى الدرس في ملف HTML واحد</span>
+            </div>
+          </header>
+
+          <div class="lesson-body">
+            <section class="lesson-section" id="explain">
+              <h3 class="section-title"><b>01</b>الشرح</h3>
+
+              <article class="concept">
+                <h4>1) التكرار على القوائم <span dir="ltr" lang="en">(Loop Lists)</span></h4>
+                <p><strong>لماذا؟</strong> القائمة تحمل بيانات متشابهة (أسعار، درجات، مهام)، وأنت تحتاج أن تفحص كل عنصر أو تعدّله. لديك ثلاث طرق: <code>for item in items</code> لقراءة القيم مباشرة (الأوضح والأكثر استخدامًا)، و<code>for i in range(len(items))</code> عندما تحتاج الـ index لتعديل العنصر في مكانه، و<code>while</code> مع عدّاد يدوي عندما تريد التحكم الكامل في الشرط أو الخطوة.</p>
+                <figure class="code-block">
+                  <figcaption class="code-head">
+                    <span class="code-meta">
+                      <span class="code-lang" lang="en">Python</span>
+                      <span class="code-file" lang="en">loop_lists.py</span>
+                    </span>
+                    <button
+                      type="button"
+                      class="btn btn-ghost btn-sm"
+                      data-copy-code
+                      aria-label="نسخ الكود"
+                    >
+                      <svg
+                        class="btn-icon"
+                        viewBox="0 0 24 24"
+                        width="14"
+                        height="14"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                      >
+                        <use href="#i-copy"></use>
+                      </svg>
+                      <span class="btn-label">نسخ</span>
+                    </button>
+                  </figcaption>
+                  <pre class="code" dir="ltr"><code>prices = [120, 45, 300, 80, 15]
+
+for price in prices:
+    if price &gt; 100:
+        print("expensive:", price)
+
+for i in range(len(prices)):
+    prices[i] = round(prices[i] * 0.9, 2)
+
+i = 0
+while i &lt; len(prices):
+    print(i, prices[i])
+    i += 1</code></pre>
+                  <div class="output" role="group" aria-label="مخرجات البرنامج">
+                    <div class="output-label" lang="en">Output</div>
+                    <pre dir="ltr"><code>expensive: 120
+expensive: 300
+0 108.0
+1 40.5
+2 270.0
+3 72.0
+4 13.5</code></pre>
+                  </div>
+                </figure>
+                <p><strong>الخطأ الأشهر:</strong> المتغير <code>price</code> داخل <code>for price in prices</code> مجرد اسم يشير إلى القيمة الحالية؛ إعادة إسناده (<code>price = price * 0.9</code>) لا تغيّر القائمة نفسها، ولهذا استخدمنا الـ index عند التعديل. وكذلك لا تضف عناصر إلى القائمة أو تحذفها منها أثناء التكرار عليها، لأن الـ iteration سيتخطى عناصر.</p>
+              </article>
+
+              <article class="concept">
+                <h4>2) List Comprehension <span dir="ltr" lang="en">(List Comprehension)</span></h4>
+                <p><strong>لماذا؟</strong> نمط «أنشئ قائمة فارغة ثم loop ثم append» متكرر جدًا، والـ list comprehension تكتبه في سطر واحد: <code>[expression for item in iterable if condition]</code>. تُستخدم للتحويل أو للتصفية، وتُنتج قائمة جديدة دون أن تلمس الأصلية. شرط <code>if</code> في النهاية يُصفّي العناصر، أما <code>if/else</code> فيُكتب قبل <code>for</code> لأنه جزء من التعبير نفسه.</p>
+                <figure class="code-block">
+                  <figcaption class="code-head">
+                    <span class="code-meta">
+                      <span class="code-lang" lang="en">Python</span>
+                      <span class="code-file" lang="en">list_comprehension.py</span>
+                    </span>
+                    <button
+                      type="button"
+                      class="btn btn-ghost btn-sm"
+                      data-copy-code
+                      aria-label="نسخ الكود"
+                    >
+                      <svg
+                        class="btn-icon"
+                        viewBox="0 0 24 24"
+                        width="14"
+                        height="14"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                      >
+                        <use href="#i-copy"></use>
+                      </svg>
+                      <span class="btn-label">نسخ</span>
+                    </button>
+                  </figcaption>
+                  <pre class="code" dir="ltr"><code>prices = [120, 45, 300, 80, 15]
+
+cheap = [price for price in prices if price &lt; 100]
+labels = ["cheap" if price &lt; 100 else "expensive" for price in prices]
+
+cheap_loop = []
+for price in prices:
+    if price &lt; 100:
+        cheap_loop.append(price)
+
+print(cheap)
+print(labels)
+print(cheap == cheap_loop)</code></pre>
+                  <div class="output" role="group" aria-label="مخرجات البرنامج">
+                    <div class="output-label" lang="en">Output</div>
+                    <pre dir="ltr"><code>[45, 80, 15]
+['expensive', 'cheap', 'expensive', 'cheap', 'cheap']
+True</code></pre>
+                  </div>
+                </figure>
+                <p><strong>القيد:</strong> إذا احتاج المنطق إلى أكثر من تحويل وشرط واحد، أو إلى عدة أسطر، فاكتب for loop عادية؛ الوضوح أهم من الاختصار. ولا تستخدمها لتنفيذ أوامر جانبية مثل <code>print()</code>، فهدفها بناء قائمة.</p>
+              </article>
+
+              <article class="concept">
+                <h4>3) ترتيب القوائم <span dir="ltr" lang="en">(Sort Lists)</span></h4>
+                <p><strong>لماذا وكيف؟</strong> <code>list.sort()</code> ترتّب القائمة نفسها في مكانها وتُرجع <code>None</code>، أما <code>sorted()</code> فتُرجع قائمة جديدة وتترك الأصل كما هو. الترتيب تصاعدي افتراضيًا، و<code>reverse=True</code> يجعله تنازليًا، و<code>key=</code> يقبل دالة تُطبَّق على كل عنصر لتحديد معيار المقارنة دون تغيير العناصر نفسها. أما <code>reverse()</code> فتعكس الترتيب الحالي فقط ولا ترتّب شيئًا.</p>
+                <figure class="code-block">
+                  <figcaption class="code-head">
+                    <span class="code-meta">
+                      <span class="code-lang" lang="en">Python</span>
+                      <span class="code-file" lang="en">sort_lists.py</span>
+                    </span>
+                    <button
+                      type="button"
+                      class="btn btn-ghost btn-sm"
+                      data-copy-code
+                      aria-label="نسخ الكود"
+                    >
+                      <svg
+                        class="btn-icon"
+                        viewBox="0 0 24 24"
+                        width="14"
+                        height="14"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                      >
+                        <use href="#i-copy"></use>
+                      </svg>
+                      <span class="btn-label">نسخ</span>
+                    </button>
+                  </figcaption>
+                  <pre class="code" dir="ltr"><code>scores = [72, 95, 60, 88]
+scores.sort(reverse=True)
+print(scores)
+
+names = ["omar", "Sara", "ahmed", "Lina"]
+names.sort()
+print(names)
+names.sort(key=str.lower)
+print(names)
+
+by_length = sorted(names, key=len)
+print(by_length)
+print(names)
+
+names.reverse()
+print(names)</code></pre>
+                  <div class="output" role="group" aria-label="مخرجات البرنامج">
+                    <div class="output-label" lang="en">Output</div>
+                    <pre dir="ltr"><code>[95, 88, 72, 60]
+['Lina', 'Sara', 'ahmed', 'omar']
+['ahmed', 'Lina', 'omar', 'Sara']
+['Lina', 'omar', 'Sara', 'ahmed']
+['ahmed', 'Lina', 'omar', 'Sara']
+['Sara', 'omar', 'Lina', 'ahmed']</code></pre>
+                  </div>
+                </figure>
+                <p><strong>أخطاء شائعة:</strong> الترتيب الافتراضي للنصوص حساس لحالة الأحرف (الحروف الكبيرة تسبق الصغيرة)، ولهذا ظهر <code>'ahmed'</code> بعد <code>'Sara'</code> قبل استخدام <code>key=str.lower</code>. مرّر الدالة دون أقواس (<code>str.lower</code> وليس <code>str.lower()</code>). وكتابة <code>names = names.sort()</code> تضع <code>None</code> في <code>names</code>. وقائمة تجمع أرقامًا ونصوصًا تُسبب <code>TypeError</code> عند الترتيب.</p>
+              </article>
+
+              <article class="concept">
+                <h4>4) النسخ والدمج <span dir="ltr" lang="en">(Copy Lists &amp; Join Lists)</span></h4>
+                <p><strong>النسخ:</strong> الإسناد <code>b = a</code> لا ينسخ شيئًا؛ هو اسم ثانٍ لنفس القائمة، فأي تعديل عبر أحدهما يظهر في الآخر. للنسخ الفعلي استخدم <code>a.copy()</code> أو <code>list(a)</code> أو <code>a[:]</code>. النسخة هنا shallow: إذا كانت العناصر نفسها قوائم فهي تبقى مشتركة بين النسختين (النسخ العميق deep copy يحتاج وحدة من المكتبة القياسية وسيأتي لاحقًا، والمهم الآن أن تعرف المشكلة).</p>
+                <p><strong>الدمج:</strong> <code>a + b</code> تُنشئ قائمة جديدة وتترك الأصليتين كما هما، و<code>a.extend(b)</code> تضيف عناصر <code>b</code> إلى <code>a</code> نفسها (والعملية <code>a += b</code> تعمل مثلها)، ويمكنك أيضًا الدمج بحلقة <code>for</code> مع <code>append()</code> إذا احتجت معالجة كل عنصر قبل إضافته.</p>
+                <figure class="code-block">
+                  <figcaption class="code-head">
+                    <span class="code-meta">
+                      <span class="code-lang" lang="en">Python</span>
+                      <span class="code-file" lang="en">copy_join_lists.py</span>
+                    </span>
+                    <button
+                      type="button"
+                      class="btn btn-ghost btn-sm"
+                      data-copy-code
+                      aria-label="نسخ الكود"
+                    >
+                      <svg
+                        class="btn-icon"
+                        viewBox="0 0 24 24"
+                        width="14"
+                        height="14"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                      >
+                        <use href="#i-copy"></use>
+                      </svg>
+                      <span class="btn-label">نسخ</span>
+                    </button>
+                  </figcaption>
+                  <pre class="code" dir="ltr"><code>cart = ["laptop", "mouse"]
+alias = cart
+alias.append("keyboard")
+print(cart)
+
+backup = cart.copy()
+cart.append("monitor")
+print(backup)
+
+accessories = ["cable", "bag"]
+combined = cart + accessories
+cart.extend(accessories)
+print(combined == cart)
+
+nested = [[1, 2], [3, 4]]
+shallow = nested.copy()
+shallow[0].append(99)
+print(nested)</code></pre>
+                  <div class="output" role="group" aria-label="مخرجات البرنامج">
+                    <div class="output-label" lang="en">Output</div>
+                    <pre dir="ltr"><code>['laptop', 'mouse', 'keyboard']
+['laptop', 'mouse', 'keyboard']
+True
+[[1, 2, 99], [3, 4]]</code></pre>
+                  </div>
+                </figure>
+                <p><strong>اقرأ المثال:</strong> <code>cart</code> تغيّرت عبر <code>alias</code> لأنهما قائمة واحدة، بينما <code>backup</code> لم تتأثر بإضافة <code>"monitor"</code> لأنها نسخة مستقلة. والسطر الأخير يُظهر حدّ النسخ السطحي: <code>[1, 2]</code> داخل <code>nested</code> تغيّرت رغم أن التعديل تم عبر <code>shallow</code>.</p>
+              </article>
+
+              <article class="concept">
+                <h4>5) دوال القوائم <span dir="ltr" lang="en">(List Methods)</span></h4>
+                <p><strong>لماذا؟</strong> معظم ما تحتاجه موجود كـ methods جاهزة، وأهم ما يجب حفظه هو ما تُرجعه كل واحدة، لأن هذا يمنع أكثر الأخطاء. تعدّل القائمة في مكانها وتُرجع <code>None</code>: <code>append()</code> و<code>insert()</code> و<code>extend()</code> و<code>remove()</code> و<code>clear()</code> و<code>sort()</code> و<code>reverse()</code>. وتُرجع قيمة: <code>pop()</code> (العنصر المحذوف) و<code>count()</code> (عدد مرات الظهور) و<code>index()</code> (موضع أول ظهور). وتُرجع قائمة جديدة: <code>copy()</code>.</p>
+                <figure class="code-block">
+                  <figcaption class="code-head">
+                    <span class="code-meta">
+                      <span class="code-lang" lang="en">Python</span>
+                      <span class="code-file" lang="en">list_methods.py</span>
+                    </span>
+                    <button
+                      type="button"
+                      class="btn btn-ghost btn-sm"
+                      data-copy-code
+                      aria-label="نسخ الكود"
+                    >
+                      <svg
+                        class="btn-icon"
+                        viewBox="0 0 24 24"
+                        width="14"
+                        height="14"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                      >
+                        <use href="#i-copy"></use>
+                      </svg>
+                      <span class="btn-label">نسخ</span>
+                    </button>
+                  </figcaption>
+                  <pre class="code" dir="ltr"><code>tasks = ["email", "code", "test", "code"]
+print(tasks.count("code"))
+print(tasks.index("test"))
+
+tasks.insert(1, "review")
+last = tasks.pop()
+tasks.remove("email")
+print(tasks, last)
+
+tasks.clear()
+print(tasks)</code></pre>
+                  <div class="output" role="group" aria-label="مخرجات البرنامج">
+                    <div class="output-label" lang="en">Output</div>
+                    <pre dir="ltr"><code>2
+2
+['review', 'code', 'test'] code
+[]</code></pre>
+                  </div>
+                </figure>
+                <p><strong>قيود:</strong> <code>remove()</code> يحذف أول تطابق فقط، وكل من <code>remove()</code> و<code>index()</code> يُسبب <code>ValueError</code> إذا لم يجد القيمة، فتحقق أولًا بـ <code>if value in items</code>. وتذكّر أن <code>pop()</code> بلا رقم يحذف آخر عنصر، ويمكنك تمرير index لحذف عنصر محدد.</p>
+              </article>
+            </section>
+
+            <section class="lesson-section" id="summary">
+              <h3 class="section-title"><b>02</b>الملخص</h3>
+              <ul class="summary-list">
+                <li><code>for item in items</code> لقراءة القيم، و<code>range(len(items))</code> عند الحاجة للـ index أو التعديل في المكان، و<code>while</code> للتحكم اليدوي؛ ولا تعدّل طول القائمة أثناء التكرار عليها.</li>
+                <li>الـ list comprehension بصيغة <code>[expression for item in items if condition]</code> تبني قائمة جديدة؛ <code>if/else</code> يأتي قبل <code>for</code>، والشرط المنفرد بعدها، والمنطق المعقد أوضح في loop عادية.</li>
+                <li><code>sort()</code> تعدّل القائمة وتُرجع <code>None</code>، و<code>sorted()</code> تُرجع قائمة جديدة؛ <code>reverse=True</code> للتنازلي، و<code>key=</code> لمعيار مخصص، و<code>reverse()</code> تعكس الترتيب فقط.</li>
+                <li><code>b = a</code> لا ينسخ؛ استخدم <code>copy()</code> أو <code>list(a)</code> أو <code>a[:]</code>، وتذكّر أن النسخة shallow تُشارك القوائم المتداخلة.</li>
+                <li><code>a + b</code> تُنشئ قائمة جديدة، و<code>a.extend(b)</code> (و<code>+=</code>) تعدّل <code>a</code> نفسها؛ اختر حسب حاجتك للاحتفاظ بالأصل.</li>
+                <li>احفظ ما تُرجعه كل method: <code>pop()</code> و<code>count()</code> و<code>index()</code> تُرجع قيمة، و<code>copy()</code> قائمة جديدة، وبقية methods التعديل تُرجع <code>None</code>.</li>
+              </ul>
+            </section>
+
+            <section class="lesson-section" id="interview-questions">
+              <h3 class="section-title"><b>03</b>أسئلة المقابلات</h3>
+              <div class="qa-list">
+                <details class="qa" open>
+                  <summary>
+                    <span class="qa-q">متى تستخدم <code>for item in items</code> ومتى <code>for i in range(len(items))</code>؟</span>
+                    <span class="level level-basic">أساسي</span>
+                  </summary>
+                  <div class="qa-body">
+                    <p>الأولى للقراءة فقط عندما تحتاج القيمة وحدها، وهي الأوضح والأقل عرضة للأخطاء. الثانية عندما تحتاج الـ index، مثل تعديل <code>items[i]</code> في مكانه أو مقارنة عنصرين متجاورين، لأن إعادة إسناد متغير الحلقة لا تغيّر القائمة نفسها.</p>
+                  </div>
+                </details>
+
+                <details class="qa">
+                  <summary>
+                    <span class="qa-q">ما الفرق بين <code>sort()</code> و<code>sorted()</code>؟</span>
+                    <span class="level level-basic">أساسي</span>
+                  </summary>
+                  <div class="qa-body">
+                    <p><code>list.sort()</code> method خاصة بالقوائم، تعدّل القائمة نفسها وتُرجع <code>None</code>. أما <code>sorted()</code> فدالة مدمجة تُرجع قائمة جديدة مرتبة وتترك الأصل كما هو، ولهذا فإن <code>names = names.sort()</code> يضع <code>None</code> في <code>names</code>.</p>
+                  </div>
+                </details>
+
+                <details class="qa">
+                  <summary>
+                    <span class="qa-q">ما الفرق بين <code>b = a</code> و<code>b = a.copy()</code>؟ وهل <code>copy()</code> يكفي دائمًا؟</span>
+                    <span class="level level-mid">متوسط</span>
+                  </summary>
+                  <div class="qa-body">
+                    <p><code>b = a</code> لا يُنشئ قائمة جديدة، بل اسمًا ثانيًا لنفس القائمة، فأي تعديل عبر أحدهما يظهر في الآخر. <code>copy()</code> (أو <code>list(a)</code> أو <code>a[:]</code>) تُنشئ قائمة مستقلة، لكنها نسخة shallow: إذا كانت العناصر نفسها قوائم فإنها تبقى مشتركة بين النسختين.</p>
+                    <p class="qa-follow">للقوائم المتداخلة تحتاج نسخًا عميقًا (deep copy)، وهو موضوع لاحق في المسار.</p>
+                  </div>
+                </details>
+
+                <details class="qa">
+                  <summary>
+                    <span class="qa-q">متى تختار <code>a + b</code> ومتى <code>a.extend(b)</code>؟</span>
+                    <span class="level level-mid">متوسط</span>
+                  </summary>
+                  <div class="qa-body">
+                    <p><code>+</code> تُنشئ قائمة ثالثة وتترك الأصليتين كما هما، فهي مناسبة عندما تحتاج الأصل سليمًا. <code>extend()</code> تضيف إلى <code>a</code> نفسها دون قائمة جديدة، وهي أنسب للتجميع داخل loop لأن <code>result = result + chunk</code> تنسخ القائمة كاملة في كل دورة.</p>
+                  </div>
+                </details>
+
+                <details class="qa">
+                  <summary>
+                    <span class="qa-q">لديك <code>nums = [2, 4, 6, 1]</code> وتحذف الأعداد الزوجية بـ <code>nums.remove(n)</code> داخل <code>for n in nums</code>. هل تبقى <code>[1]</code> فقط؟</span>
+                    <span class="level level-trap">فخ</span>
+                  </summary>
+                  <div class="qa-body">
+                    <p>لا، النتيجة <code>[4, 1]</code>. بعد حذف 2 تنزاح العناصر لليسار، فينتقل التكرار إلى index 1 فيجد 6 ويتخطى 4. الحل الآمن هو بناء قائمة جديدة: <code>[n for n in nums if n % 2 != 0]</code>.</p>
+                    <p class="qa-follow">القاعدة: لا تغيّر طول القائمة التي تتكرر عليها؛ كرّر على نسخة أو ابنِ قائمة جديدة.</p>
+                  </div>
+                </details>
+              </div>
+            </section>
+
+            <section class="lesson-section" id="practical">
+              <h3 class="section-title"><b>04</b>المسألة العملية</h3>
+              <div class="callout callout-problem">
+                <p><strong>المسألة: تعزيز درجات فصلين.</strong> لدى معلّم درجات فصلين في القائمتين <code>class_a</code> و<code>class_b</code>. المطلوب: دمج الدرجات في قائمة واحدة مع الاحتفاظ بنسخة أصلية غير معدّلة، ثم إضافة 8 درجات تعزيز لكل طالب بحيث لا تتجاوز الدرجة 100، ثم استخراج الدرجات الناجحة بعد التعزيز (60 فأكثر) مرتبة تنازليًا، وطباعة أفضل ثلاث درجات وعدد الناجحين وعدد من وصلوا إلى 100.</p>
+              </div>
+              <ol class="solution">
+                <li class="sol-step">
+                  <h4>فهم المطلوب</h4>
+                  <p>المدخلات قائمتان من الدرجات. المخرجات: النسخة الأصلية، والقائمة بعد التعزيز، وأفضل ثلاث درجات ناجحة، وعدد الناجحين من الإجمالي، وعدد الدرجات التي بلغت 100. القيدان المهمان: سقف الدرجة 100، وبقاء النسخة الأصلية دون تغيير.</p>
+                </li>
+                <li class="sol-step">
+                  <h4>خطة الحل</h4>
+                  <p>ندمج بـ <code>+</code>، ثم نأخذ <code>copy()</code> قبل أي تعديل. نعدّل الدرجات في مكانها بـ <code>for</code> مع <code>range(len())</code>. نصفّي الناجحين بـ list comprehension، ونرتّبهم بـ <code>sort(reverse=True)</code>، ثم نأخذ أول ثلاثة بالـ slicing ونعدّ الدرجات الكاملة بـ <code>count()</code>.</p>
+                </li>
+                <li class="sol-step">
+                  <h4>الكود الكامل</h4>
+                  <figure class="code-block">
+                    <figcaption class="code-head">
+                      <span class="code-meta">
+                        <span class="code-lang" lang="en">Python</span>
+                        <span class="code-file" lang="en">curve_scores.py</span>
+                      </span>
+                      <button
+                        type="button"
+                        class="btn btn-ghost btn-sm"
+                        data-copy-code
+                        aria-label="نسخ الكود"
+                      >
+                        <svg
+                          class="btn-icon"
+                          viewBox="0 0 24 24"
+                          width="14"
+                          height="14"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          aria-hidden="true"
+                        >
+                          <use href="#i-copy"></use>
+                        </svg>
+                        <span class="btn-label">نسخ</span>
+                      </button>
+                    </figcaption>
+                    <pre class="code" dir="ltr"><code>PASS_MARK = 60
+BONUS_POINTS = 8
+
+class_a = [78, 92, 55, 67, 88]
+class_b = [91, 49, 73, 85]
+
+all_scores = class_a + class_b
+original = all_scores.copy()
+
+for i in range(len(all_scores)):
+    all_scores[i] = min(all_scores[i] + BONUS_POINTS, 100)
+
+passed = [score for score in all_scores if score &gt;= PASS_MARK]
+passed.sort(reverse=True)
+
+print("original:", original)
+print("curved:", all_scores)
+print("top 3:", passed[:3])
+print("passed:", len(passed), "of", len(all_scores))
+print("scores at 100:", all_scores.count(100))</code></pre>
+                    <div class="output" role="group" aria-label="مخرجات البرنامج">
+                      <div class="output-label" lang="en">Output</div>
+                      <pre dir="ltr"><code>original: [78, 92, 55, 67, 88, 91, 49, 73, 85]
+curved: [86, 100, 63, 75, 96, 99, 57, 81, 93]
+top 3: [100, 99, 96]
+passed: 8 of 9
+scores at 100: 1</code></pre>
+                    </div>
+                  </figure>
+                </li>
+                <li class="sol-step">
+                  <h4>تفسير القرارات</h4>
+                  <p>استخدمنا <code>+</code> بدل <code>extend()</code> لأن <code>extend()</code> كانت ستعدّل <code>class_a</code> نفسها. أخذنا <code>copy()</code> قبل الحلقة لأن التعديل يتم في مكانه. استخدمنا <code>range(len())</code> لأننا نُسند قيمًا جديدة بالـ index، و<code>min()</code> (دالة مدمجة تُرجع الأصغر) تضمن عدم تجاوز 100. ورتّبنا <code>passed</code> لا <code>all_scores</code> حتى تبقى الدرجات المعزَّزة بترتيب الطلاب الأصلي.</p>
+                </li>
+                <li class="sol-step">
+                  <h4>اختبار سريع</h4>
+                  <p>غيّر <code>class_b</code> إلى <code>[]</code> وشغّل الكود: يجب أن تكون النتيجة <code>passed: 5 of 5</code> لأن درجات <code>class_a</code> كلها تصبح 60 فأكثر بعد التعزيز، وتبقى <code>original</code> مطابقة للدرجات قبل التعزيز. تحقق أيضًا أن <code>original != all_scores</code> في الحالة الأصلية.</p>
+                </li>
+                <li class="sol-step">
+                  <h4>تحسين أو بديل</h4>
+                  <p>يمكن استبدال الحلقة بـ list comprehension: <code>curved = [min(score + BONUS_POINTS, 100) for score in original]</code>. هذا يلغي الحاجة للـ index، ويُبقي <code>original</code> سليمة بطبيعتها لأن الـ comprehension تبني قائمة جديدة، لكن الحلقة تبقى أوضح عندما تحتاج لتعديل القائمة نفسها في مكانها.</p>
+                </li>
+              </ol>
+            </section>
+          </div>
+        </section>
+      </div>
+
+      <footer class="footer">
+        <span class="footer-note" lang="en">Python Learning Roadmap</span>
+        <span class="footer-note">المرحلة 04 - الدرس 15</span>
+      </footer>
+    </main>
+
+    <script>
+      (function () {
+        'use strict'
+
+        var live = document.getElementById('copy-status')
+        var printStates = null
+
+        function fallbackCopy(text) {
+          var textarea = document.createElement('textarea')
+          textarea.value = text
+          textarea.setAttribute('readonly', '')
+          textarea.style.cssText = 'position:fixed;top:-1000px;left:-1000px;opacity:0;'
+
+          try {
+            document.body.appendChild(textarea)
+            textarea.focus()
+            textarea.select()
+            textarea.setSelectionRange(0, textarea.value.length)
+            return document.execCommand('copy')
+          } catch (error) {
+            return false
+          } finally {
+            if (textarea.parentNode) {
+              textarea.parentNode.removeChild(textarea)
+            }
+          }
+        }
+
+        function copyText(text) {
+          if (navigator.clipboard && window.isSecureContext) {
+            return navigator.clipboard.writeText(text).then(
+              function () { return true },
+              function () { return fallbackCopy(text) },
+            ).catch(function () { return false })
+          }
+
+          return Promise.resolve().then(function () {
+            return fallbackCopy(text)
+          }).catch(function () {
+            return false
+          })
+        }
+
+        document.addEventListener('click', function (event) {
+          var target = event.target
+          var button = target && typeof target.closest === 'function'
+            ? target.closest('[data-copy-code]')
+            : null
+
+          if (!button) return
+
+          var label = button.querySelector('.btn-label')
+          var block = button.closest('.code-block')
+          var code = block ? block.querySelector('pre.code > code') : null
+          if (!label || !code) return
+
+          if (!button.dataset.label) button.dataset.label = label.textContent
+
+          copyText(code.textContent).then(function (ok) {
+            label.textContent = ok ? 'تم النسخ' : 'تعذّر النسخ'
+            button.classList.toggle('is-copied', ok)
+            button.classList.toggle('is-failed', !ok)
+
+            if (live) {
+              live.textContent = ok
+                ? 'تم نسخ الكود'
+                : 'تعذّر النسخ، حدّد الكود يدويًا ثم انسخه'
+            }
+
+            window.clearTimeout(button._timer)
+            button._timer = window.setTimeout(function () {
+              label.textContent = button.dataset.label
+              button.classList.remove('is-copied', 'is-failed')
+            }, 1800)
+          })
+        })
+
+        window.addEventListener('beforeprint', function () {
+          if (printStates !== null) return
+
+          var questions = document.querySelectorAll('details.qa')
+          printStates = Array.prototype.map.call(questions, function (item) {
+            return item.open
+          })
+          questions.forEach(function (item) {
+            item.open = true
+          })
+        })
+
+        window.addEventListener('afterprint', function () {
+          if (printStates === null) return
+
+          var questions = document.querySelectorAll('details.qa')
+          questions.forEach(function (item, index) {
+            item.open = printStates[index] === true
+          })
+          printStates = null
+        })
+      })()
+    </script>
+  </body>
+</html>

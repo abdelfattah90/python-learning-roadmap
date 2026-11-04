@@ -1,0 +1,491 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#fcfcfc" />
+    <title>المولّدات - Python Generators | Python Learning Roadmap</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/style.css" />
+  </head>
+  <body>
+    <svg
+      width="0"
+      height="0"
+      style="position: absolute"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <symbol id="i-copy" viewBox="0 0 24 24">
+        <rect x="9" y="9" width="12" height="12" rx="2.5" />
+        <path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15" />
+      </symbol>
+    </svg>
+    <template id="code-block-pattern">
+      <figure class="code-block">
+        <figcaption class="code-head">
+          <span class="code-meta">
+            <span class="code-lang" lang="en">Python</span>
+            <span class="code-file" lang="en">example.py</span>
+          </span>
+          <button
+            type="button"
+            class="btn btn-ghost btn-sm"
+            data-copy-code
+            aria-label="نسخ الكود"
+          >
+            <svg
+              class="btn-icon"
+              viewBox="0 0 24 24"
+              width="14"
+              height="14"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <use href="#i-copy"></use>
+            </svg>
+            <span class="btn-label">نسخ</span>
+          </button>
+        </figcaption>
+        <pre class="code" dir="ltr"><code><!-- ضع الكود هنا كنص HTML مع تهريب الرموز الخاصة --></code></pre>
+        <!-- احذف كتلة output إذا لم يكن للمثال ناتج ثابت ومفيد. -->
+        <div class="output" role="group" aria-label="مخرجات البرنامج">
+          <div class="output-label" lang="en">Output</div>
+          <pre dir="ltr"><code><!-- ضع المخرجات المتحققة هنا --></code></pre>
+        </div>
+      </figure>
+    </template>
+
+    <div
+      class="sr-only"
+      id="copy-status"
+      role="status"
+      aria-live="polite"
+    ></div>
+
+    <main class="page">
+      <header class="hero lesson-hero">
+        <span class="eyebrow">
+          <span class="eyebrow-dot"></span>
+          المرحلة <span dir="ltr">07</span>:
+          <span dir="ltr" lang="en">Iterators, Generators &amp; Modules</span>
+        </span>
+        <h1>
+          <span class="h1-ar">المولّدات</span>
+          <span class="h1-en" dir="ltr" lang="en">Python Generators</span>
+        </h1>
+        <p class="hero-description">كيف تنتج دالة قيمها واحدة تلو الأخرى عند الطلب بدل بناء قائمة كاملة في الذاكرة، باستخدام yield و generator expressions.</p>
+      </header>
+
+      <div class="lesson-parts">
+        <section class="lesson-part-card" id="complete-lesson" aria-labelledby="complete-lesson-title">
+          <header class="part-header">
+            <div class="part-number">درس متكامل</div>
+            <div class="part-heading">
+              <h2 id="complete-lesson-title">
+                <span class="part-title-en" dir="ltr" lang="en">Complete Lesson</span>
+                <span class="sep" aria-hidden="true"> - </span>
+                <span class="part-title-ar">الشرح والملخص والتطبيق</span>
+              </h2>
+              <span class="part-description">كل محتوى الدرس في ملف HTML واحد</span>
+            </div>
+          </header>
+
+          <div class="lesson-body">
+            <section class="lesson-section" id="explain">
+              <h3 class="section-title"><b>01</b>الشرح</h3>
+              <article class="concept">
+<h4>Generator Functions و yield: دالة تنتج القيم عند الطلب</h4>
+<p>في درس Iterators رأينا أن بناء مكرِّر يدويًا يحتاج class فيه <code>__iter__</code> و<code>__next__</code> وحالة داخلية تتتبعها بنفسك. الـ <strong>Generator Function</strong> تختصر ذلك: أي دالة يظهر داخلها <code>yield</code> تصبح generator function، واستدعاؤها <em>لا ينفّذ جسمها</em> بل يُرجع generator object، وهو iterator جاهز.</p>
+<p>كل استدعاء لـ <code>next()</code> (أو كل دورة في <code>for</code>) يشغّل الدالة حتى أول <code>yield</code>، فيُرجع القيمة ويجمّد مكان التوقف ومعه المتغيرات المحلية. الاستدعاء التالي يكمل من السطر الذي بعد <code>yield</code>. وعندما ينتهي الجسم يُرفع <code>StopIteration</code> ويتعامل معه <code>for</code> تلقائيًا. وهنا الفرق الجوهري عن <code>return</code>: الـ <code>return</code> ينهي الدالة ويمسح حالتها، أما <code>yield</code> فيوقفها مؤقتًا مع الاحتفاظ بالحالة.</p>
+<figure class="code-block">
+<figcaption class="code-head">
+<span class="code-meta">
+<span class="code-lang" lang="en">Python</span>
+<span class="code-file" lang="en">countdown.py</span>
+</span>
+<button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+<svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-copy"></use></svg>
+<span class="btn-label">نسخ</span>
+</button>
+</figcaption>
+<pre class="code" dir="ltr"><code>def countdown(start):
+    print("generator started")
+    while start &gt; 0:
+        yield start
+        print("resumed")
+        start -= 1
+    print("generator finished")
+
+
+timer = countdown(3)
+print(type(timer).__name__)
+print(next(timer))
+print(next(timer))</code></pre>
+<div class="output" role="group" aria-label="مخرجات البرنامج">
+<div class="output-label" lang="en">Output</div>
+<pre dir="ltr"><code>generator
+generator started
+3
+resumed
+2</code></pre>
+</div>
+</figure>
+<p>لاحظ أن <code>generator started</code> لم تظهر عند إنشاء <code>timer</code> بل عند أول <code>next()</code>.</p>
+<p><strong>أهم قيد:</strong> الـ generator يُستهلك مرة واحدة. بعد انتهائه لا يعيد القيم ولا يرفع خطأ عند التكرار عليه من جديد، بل يبدو فارغًا:</p>
+<figure class="code-block">
+<figcaption class="code-head">
+<span class="code-meta">
+<span class="code-lang" lang="en">Python</span>
+<span class="code-file" lang="en">sensor.py</span>
+</span>
+<button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+<svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-copy"></use></svg>
+<span class="btn-label">نسخ</span>
+</button>
+</figcaption>
+<pre class="code" dir="ltr"><code>def read_sensor_values():
+    yield 21.5
+    yield 22.0
+    yield 22.4
+
+
+values = read_sensor_values()
+print(list(values))
+print(list(values))</code></pre>
+<div class="output" role="group" aria-label="مخرجات البرنامج">
+<div class="output-label" lang="en">Output</div>
+<pre dir="ltr"><code>[21.5, 22.0, 22.4]
+[]</code></pre>
+</div>
+</figure>
+</article>
+<article class="concept">
+<h4>Generator Expressions: generator في سطر واحد</h4>
+<p>عندما يكون المطلوب تحويلًا أو تصفية بسيطة لا تستحق <code>def</code>، استخدم <strong>Generator Expression</strong>. صياغتها مثل list comprehension لكن بأقواس عادية <code>( )</code> بدل <code>[ ]</code>، والفرق أنها لا تبني قائمة بل تُرجع generator ينتج العناصر عند الطلب.</p>
+<p>تظهر قيمتها خصوصًا مع الدوال التي تستهلك التسلسل مرة واحدة مثل <code>sum()</code> و<code>max()</code> و<code>any()</code>، ولا تحتاج قوسين إضافيين إذا كانت الوسيط الوحيد. أما إذا صار المنطق متعدد الخطوات (تحويل ثم تحقق ثم معالجة خطأ) فاستخدم generator function واضحة بدل تعبير مزدحم.</p>
+<figure class="code-block">
+<figcaption class="code-head">
+<span class="code-meta">
+<span class="code-lang" lang="en">Python</span>
+<span class="code-file" lang="en">genexp.py</span>
+</span>
+<button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+<svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-copy"></use></svg>
+<span class="btn-label">نسخ</span>
+</button>
+</figcaption>
+<pre class="code" dir="ltr"><code>prices = [120, 80, 45, 300, 15]
+
+expensive_list = [p for p in prices if p &gt; 50]
+expensive_gen = (p for p in prices if p &gt; 50)
+
+print(expensive_list)
+print(type(expensive_gen).__name__)
+print(sum(p for p in prices if p &gt; 50))</code></pre>
+<div class="output" role="group" aria-label="مخرجات البرنامج">
+<div class="output-label" lang="en">Output</div>
+<pre dir="ltr"><code>[120, 80, 300]
+generator
+500</code></pre>
+</div>
+</figure>
+</article>
+<article class="concept">
+<h4>Lazy Evaluation: لا تحسب إلا ما تحتاجه الآن</h4>
+<p><strong>Lazy Evaluation</strong> تعني تأجيل الحساب إلى لحظة الحاجة الفعلية: الـ generator لا ينتج العنصر التالي إلا عندما يطلبه أحد. فوائدها: ذاكرة صغيرة ثابتة تقريبًا مهما كبرت البيانات لأنك تحتفظ بالعنصر الحالي فقط، والتعامل مع متتاليات لا نهائية، والتوقف المبكر دون حساب ما لا تحتاجه، وربط عدة generators في pipeline تمرّ فيه البيانات عنصرًا عنصرًا.</p>
+<figure class="code-block">
+<figcaption class="code-head">
+<span class="code-meta">
+<span class="code-lang" lang="en">Python</span>
+<span class="code-file" lang="en">lazy.py</span>
+</span>
+<button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+<svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-copy"></use></svg>
+<span class="btn-label">نسخ</span>
+</button>
+</figcaption>
+<pre class="code" dir="ltr"><code>def naturals():
+    n = 1
+    while True:
+        print("producing", n)
+        yield n
+        n += 1
+
+
+squares = (n * n for n in naturals())
+print("nothing produced yet")
+for value in squares:
+    if value &gt; 10:
+        break
+    print("got", value)</code></pre>
+<div class="output" role="group" aria-label="مخرجات البرنامج">
+<div class="output-label" lang="en">Output</div>
+<pre dir="ltr"><code>nothing produced yet
+producing 1
+got 1
+producing 2
+got 4
+producing 3
+got 9
+producing 4</code></pre>
+</div>
+</figure>
+<p>تُظهر المخرجات أن شيئًا لم يُحسب قبل أول طلب، وأن كل قيمة تُنتَج وتُستهلك قبل التي بعدها، وأن الحلقة توقفت قبل إنتاج 5 وما بعدها.</p>
+<p><strong>ثمن الكسل:</strong> لا يمكنك استخدام <code>len()</code> أو الفهرسة <code>[i]</code> أو المرور مرتين، والأخطاء والآثار الجانبية (مثل <code>print</code> أو قراءة ملف) تتأخر إلى لحظة الاستهلاك فيصعب تتبعها أحيانًا. وتحذير: <code>list()</code> على generator لا نهائي لن ينتهي. أما إذا كانت البيانات صغيرة وتحتاج تكرارها أو فهرستها فالـ list أبسط.</p>
+</article>
+            </section>
+
+            <section class="lesson-section" id="summary">
+              <h3 class="section-title"><b>02</b>الملخص</h3>
+              <ul class="summary-list">
+                <li>أي دالة تحتوي <code>yield</code> تصبح generator function، واستدعاؤها يُرجع generator object دون تشغيل جسمها.</li>
+<li><code>yield</code> يوقف الدالة مؤقتًا ويحتفظ بحالتها، بينما <code>return</code> ينهيها ويمسح الحالة.</li>
+<li>الـ generator هو iterator: يعمل مع <code>next()</code> و<code>for</code> ويرفع <code>StopIteration</code> عند النهاية.</li>
+<li>Generator expression بصيغة <code>(expr for x in data if cond)</code> مناسبة للتحويل والتصفية البسيطة ومع <code>sum()</code> و<code>max()</code> و<code>any()</code>.</li>
+<li>Lazy evaluation تعني أن العنصر لا يُحسب إلا عند طلبه: ذاكرة أقل، ودعم المتتاليات اللانهائية، وتوقف مبكر.</li>
+<li>الـ generator يُستهلك مرة واحدة ولا يدعم <code>len()</code> ولا الفهرسة؛ استخدم list عند الحاجة لذلك.</li>
+              </ul>
+            </section>
+
+            <section class="lesson-section" id="interview-questions">
+              <h3 class="section-title"><b>03</b>أسئلة المقابلات</h3>
+              <div class="qa-list">
+                <details class="qa" open>
+<summary><span class="qa-q">ما الفرق بين الدالة العادية و generator function؟</span><span class="level level-basic">أساسي</span></summary>
+<div class="qa-body">
+<p>الدالة العادية تنفّذ جسمها كاملًا وتُرجع قيمة واحدة. أما generator function فتحتوي <code>yield</code>، واستدعاؤها يُرجع generator object دون تنفيذ أي سطر، ثم تُنتج قيمها على مراحل كلما طُلب <code>next()</code>.</p>
+<p class="qa-follow">ما نوع الناتج؟ <code>generator</code>، وهو iterator يمكن استخدامه في <code>for</code> مباشرة.</p>
+</div>
+</details>
+<details class="qa">
+<summary><span class="qa-q">ما الفرق بين <code>yield</code> و<code>return</code>؟</span><span class="level level-basic">أساسي</span></summary>
+<div class="qa-body">
+<p><code>return</code> ينهي الدالة ويتخلص من متغيراتها المحلية. أما <code>yield</code> فيُرجع قيمة ويوقف الدالة مؤقتًا مع حفظ مكان التوقف والمتغيرات، فيكمل <code>next()</code> التالي من هناك. ويمكن وضع <code>return</code> داخل generator لكنه ينهي التوليد فقط.</p>
+</div>
+</details>
+<details class="qa">
+<summary><span class="qa-q">متى تفضّل generator expression على list comprehension؟</span><span class="level level-mid">متوسط</span></summary>
+<div class="qa-body">
+<p>عندما تستهلك النتيجة مرة واحدة (<code>sum()</code> أو <code>max()</code> أو حلقة <code>for</code>) أو عندما تكون البيانات كبيرة، لأنها لا تبني القائمة كلها في الذاكرة. وتفضّل list comprehension إذا احتجت <code>len()</code> أو الفهرسة أو أكثر من مرور على النتيجة.</p>
+</div>
+</details>
+<details class="qa">
+<summary><span class="qa-q">ماذا تعني Lazy Evaluation، ولماذا تسمح بمتتاليات لا نهائية؟</span><span class="level level-mid">متوسط</span></summary>
+<div class="qa-body">
+<p>تعني أن القيمة لا تُحسب إلا عند طلبها. الـ generator يحفظ حالته الحالية فقط ويحسب التالي عند الحاجة، فلا توجد قائمة كاملة تحتاج تخزينًا. لذلك تكون <code>while True</code> مع <code>yield</code> آمنة بشرط أن يتوقف المستهلك (<code>break</code> أو عدد محدد من <code>next()</code>).</p>
+<p class="qa-follow">الخطر: <code>list()</code> أو <code>sum()</code> على generator لا نهائي لن ينتهي أبدًا.</p>
+</div>
+</details>
+<details class="qa">
+<summary><span class="qa-q">استُهلك generator expression بـ <code>list()</code> ثم مُرّر نفس الكائن إلى <code>sum()</code>. ما نتيجة <code>sum()</code> ولماذا؟</span><span class="level level-trap">فخ</span></summary>
+<div class="qa-body">
+<p>النتيجة <code>0</code> وليست <code>3</code>. لأن <code>list()</code> استهلك كل عناصر الـ generator، وعند المرور الثاني يكون فارغًا دون أي خطأ. الحل: أنشئ generator جديدًا لكل استهلاك، أو احفظ النتيجة في list إذا احتجت أكثر من مرور.</p>
+<figure class="code-block">
+<figcaption class="code-head">
+<span class="code-meta">
+<span class="code-lang" lang="en">Python</span>
+<span class="code-file" lang="en">exhausted.py</span>
+</span>
+<button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+<svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-copy"></use></svg>
+<span class="btn-label">نسخ</span>
+</button>
+</figcaption>
+<pre class="code" dir="ltr"><code>numbers = (n for n in range(3))
+print(list(numbers))
+print(sum(numbers))</code></pre>
+<div class="output" role="group" aria-label="مخرجات البرنامج">
+<div class="output-label" lang="en">Output</div>
+<pre dir="ltr"><code>[0, 1, 2]
+0</code></pre>
+</div>
+</figure>
+</div>
+</details>
+              </div>
+            </section>
+
+            <section class="lesson-section" id="practical">
+              <h3 class="section-title"><b>04</b>المسألة العملية</h3>
+              <div class="callout callout-problem">
+<p><strong>المسألة:</strong> لديك سجلات خادم (نصوص) بصيغة <code>time method path status ms</code>. اكتب <code>parse</code> كدالة generator تحوّل كل سطر إلى <code>(path, status, ms)</code>، ثم استخدم generator expression لتصفية أخطاء الخادم (<code>status &gt;= 500</code>). اطبع أول خطأ، ثم مجموع زمن الاستجابة لباقي الأخطاء، دون بناء أي list وسيطة.</p>
+</div>
+              <ol class="solution">
+                <li class="sol-step">
+<p><strong>فهم المطلوب:</strong> المدخل قائمة نصوص، والمخرج سطران: أول خطأ (path و status) ومجموع <code>ms</code> لباقي الأخطاء. القيد: معالجة كسولة بلا قوائم وسيطة.</p>
+</li>
+<li class="sol-step">
+<p><strong>خطة الحل:</strong> (1) <code>parse</code> تُنتج tuple لكل سطر. (2) generator expression تصفّي <code>status &gt;= 500</code>. (3) <code>next()</code> تأخذ أول خطأ. (4) <code>sum()</code> تكمل على نفس الـ generator.</p>
+</li>
+<li class="sol-step">
+<p><strong>الكود الكامل:</strong> الكود قابل للتشغيل كما هو:</p>
+<figure class="code-block">
+<figcaption class="code-head">
+<span class="code-meta">
+<span class="code-lang" lang="en">Python</span>
+<span class="code-file" lang="en">log_errors.py</span>
+</span>
+<button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+<svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-copy"></use></svg>
+<span class="btn-label">نسخ</span>
+</button>
+</figcaption>
+<pre class="code" dir="ltr"><code>LOGS = [
+    "10:00:01 GET /home 200 35",
+    "10:00:02 GET /cart 500 120",
+    "10:00:03 POST /pay 503 900",
+    "10:00:04 GET /search 404 15",
+    "10:00:05 POST /pay 500 870",
+]
+
+
+def parse(lines):
+    for line in lines:
+        _, _, path, status, ms = line.split()
+        yield path, int(status), int(ms)
+
+
+errors = (rec for rec in parse(LOGS) if rec[1] &gt;= 500)
+path, status, _ = next(errors)
+print("first error:", path, status)
+print("remaining ms:", sum(ms for _, _, ms in errors))</code></pre>
+<div class="output" role="group" aria-label="مخرجات البرنامج">
+<div class="output-label" lang="en">Output</div>
+<pre dir="ltr"><code>first error: /cart 500
+remaining ms: 1770</code></pre>
+</div>
+</figure>
+</li>
+<li class="sol-step">
+<p><strong>تفسير القرارات:</strong> اخترنا generator function لـ <code>parse</code> لأنها تحتاج خطوتين (<code>split</code> ثم تحويل الأرقام)، وgenerator expression للتصفية لأنها شرط واحد. وبما أن <code>next()</code> استهلك أول عنصر، فإن <code>sum()</code> تبدأ من العنصر الثاني تلقائيًا؛ وهذا بالضبط سلوك الحالة المحفوظة في generator واحد. استخدمنا <code>_</code> للقيم غير المطلوبة.</p>
+</li>
+<li class="sol-step">
+<p><strong>اختبار سريع:</strong> أبقِ سطر الأخطاء 500 و503 و500 فقط وجرّب: يجب أن يطبع <code>first error: /cart 500</code> ثم <code>remaining ms: 1770</code>. وإذا حذفت كل سجلات الأخطاء فسيرفع <code>next(errors)</code> الخطأ <code>StopIteration</code>.</p>
+</li>
+<li class="sol-step">
+<p><strong>تحسين أو بديل:</strong> استخدم <code>next(errors, None)</code> لتفادي <code>StopIteration</code> عندما لا توجد أخطاء. وإذا تعقدت شروط التصفية فحوّلها إلى generator function مستقلة. أما إذا احتجت المرور على الأخطاء أكثر من مرة فاحفظها في list.</p>
+</li>
+              </ol>
+            </section>
+          </div>
+        </section>
+      </div>
+
+      <footer class="footer">
+        <span class="footer-note" lang="en">Python Learning Roadmap</span>
+        <span class="footer-note">المرحلة 07 - الدرس 33</span>
+      </footer>
+    </main>
+
+    <script>
+      (function () {
+        'use strict'
+
+        var live = document.getElementById('copy-status')
+        var printStates = null
+
+        function fallbackCopy(text) {
+          var textarea = document.createElement('textarea')
+          textarea.value = text
+          textarea.setAttribute('readonly', '')
+          textarea.style.cssText = 'position:fixed;top:-1000px;left:-1000px;opacity:0;'
+
+          try {
+            document.body.appendChild(textarea)
+            textarea.focus()
+            textarea.select()
+            textarea.setSelectionRange(0, textarea.value.length)
+            return document.execCommand('copy')
+          } catch (error) {
+            return false
+          } finally {
+            if (textarea.parentNode) {
+              textarea.parentNode.removeChild(textarea)
+            }
+          }
+        }
+
+        function copyText(text) {
+          if (navigator.clipboard && window.isSecureContext) {
+            return navigator.clipboard.writeText(text).then(
+              function () { return true },
+              function () { return fallbackCopy(text) },
+            ).catch(function () { return false })
+          }
+
+          return Promise.resolve().then(function () {
+            return fallbackCopy(text)
+          }).catch(function () {
+            return false
+          })
+        }
+
+        document.addEventListener('click', function (event) {
+          var target = event.target
+          var button = target && typeof target.closest === 'function'
+            ? target.closest('[data-copy-code]')
+            : null
+
+          if (!button) return
+
+          var label = button.querySelector('.btn-label')
+          var block = button.closest('.code-block')
+          var code = block ? block.querySelector('pre.code > code') : null
+          if (!label || !code) return
+
+          if (!button.dataset.label) button.dataset.label = label.textContent
+
+          copyText(code.textContent).then(function (ok) {
+            label.textContent = ok ? 'تم النسخ' : 'تعذّر النسخ'
+            button.classList.toggle('is-copied', ok)
+            button.classList.toggle('is-failed', !ok)
+
+            if (live) {
+              live.textContent = ok
+                ? 'تم نسخ الكود'
+                : 'تعذّر النسخ، حدّد الكود يدويًا ثم انسخه'
+            }
+
+            window.clearTimeout(button._timer)
+            button._timer = window.setTimeout(function () {
+              label.textContent = button.dataset.label
+              button.classList.remove('is-copied', 'is-failed')
+            }, 1800)
+          })
+        })
+
+        window.addEventListener('beforeprint', function () {
+          if (printStates !== null) return
+
+          var questions = document.querySelectorAll('details.qa')
+          printStates = Array.prototype.map.call(questions, function (item) {
+            return item.open
+          })
+          questions.forEach(function (item) {
+            item.open = true
+          })
+        })
+
+        window.addEventListener('afterprint', function () {
+          if (printStates === null) return
+
+          var questions = document.querySelectorAll('details.qa')
+          questions.forEach(function (item, index) {
+            item.open = printStates[index] === true
+          })
+          printStates = null
+        })
+      })()
+    </script>
+  </body>
+</html>

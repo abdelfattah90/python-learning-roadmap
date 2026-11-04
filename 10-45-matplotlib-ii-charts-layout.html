@@ -1,0 +1,493 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#fcfcfc" />
+    <title>Matplotlib (2): أنواع الرسوم والتخطيط | Python Learning Roadmap</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/style.css" />
+  </head>
+  <body>
+    <svg
+      width="0"
+      height="0"
+      style="position: absolute"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <symbol id="i-copy" viewBox="0 0 24 24">
+        <rect x="9" y="9" width="12" height="12" rx="2.5" />
+        <path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15" />
+      </symbol>
+    </svg>
+    <template id="code-block-pattern">
+      <figure class="code-block">
+        <figcaption class="code-head">
+          <span class="code-meta">
+            <span class="code-lang" lang="en">Python</span>
+            <span class="code-file" lang="en">example.py</span>
+          </span>
+          <button
+            type="button"
+            class="btn btn-ghost btn-sm"
+            data-copy-code
+            aria-label="نسخ الكود"
+          >
+            <svg
+              class="btn-icon"
+              viewBox="0 0 24 24"
+              width="14"
+              height="14"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <use href="#i-copy"></use>
+            </svg>
+            <span class="btn-label">نسخ</span>
+          </button>
+        </figcaption>
+        <pre class="code" dir="ltr"><code><!-- ضع الكود هنا كنص HTML مع تهريب الرموز الخاصة --></code></pre>
+        <!-- احذف كتلة output إذا لم يكن للمثال ناتج ثابت ومفيد. -->
+        <div class="output" role="group" aria-label="مخرجات البرنامج">
+          <div class="output-label" lang="en">Output</div>
+          <pre dir="ltr"><code><!-- ضع المخرجات المتحققة هنا --></code></pre>
+        </div>
+      </figure>
+    </template>
+
+    <div
+      class="sr-only"
+      id="copy-status"
+      role="status"
+      aria-live="polite"
+    ></div>
+
+    <main class="page">
+      <header class="hero lesson-hero">
+        <span class="eyebrow">
+          <span class="eyebrow-dot"></span>
+          المرحلة <span dir="ltr">10</span>:
+          <span dir="ltr" lang="en">Data Libraries</span>
+        </span>
+        <h1>
+          <span class="h1-ar">Matplotlib (2): أنواع الرسوم والتخطيط</span>
+          <span class="h1-en" dir="ltr" lang="en">Matplotlib II: Charts &amp; Layout</span>
+        </h1>
+        <p class="hero-description">الرسم الأول يعرض بيانات، أما الرسم الجيد فيجيب عن سؤال. في هذا الدرس نضيف Labels وGrid لتوضيح الرسم، ونستخدم Subplot لتجميع عدة رسوم، ثم نختار بين Scatter وBars وHistograms وPie Charts بحسب نوع البيانات.</p>
+      </header>
+
+      <div class="lesson-parts">
+        <section class="lesson-part-card" id="complete-lesson" aria-labelledby="complete-lesson-title">
+          <header class="part-header">
+            <div class="part-number">درس متكامل</div>
+            <div class="part-heading">
+              <h2 id="complete-lesson-title">
+                <span class="part-title-en" dir="ltr" lang="en">Complete Lesson</span>
+                <span class="sep" aria-hidden="true"> - </span>
+                <span class="part-title-ar">الشرح والملخص والتطبيق</span>
+              </h2>
+              <span class="part-description">كل محتوى الدرس في ملف HTML واحد</span>
+            </div>
+          </header>
+
+          <div class="lesson-body">
+            <section class="lesson-section" id="explain">
+              <h3 class="section-title"><b>01</b>الشرح</h3>
+                            <article class="concept">
+                <h4>Labels و Grid: اجعل الرسم قابلًا للقراءة</h4>
+                <p>الرسم بلا عنوان أو وحدات يجبر القارئ على التخمين. لذلك نستخدم <code>plt.title()</code> للعنوان، و<code>plt.xlabel()</code> و<code>plt.ylabel()</code> لوصف المحورين؛ وكلها تقبل <code>fontsize</code> و<code>color</code> و<code>loc</code> (مثل <code>"left"</code>)، أو <code>fontdict</code> لتجميع الخصائص في قاموس. أما <code>plt.grid()</code> فيرسم خطوط شبكة تسهّل قراءة القيم بدقة؛ <code>axis="y"</code> يقصرها على اتجاه واحد، و<code>linestyle</code> و<code>alpha</code> يجعلانها خفيفة لا تنافس البيانات.</p>
+        <figure class="code-block">
+          <figcaption class="code-head">
+            <span class="code-meta">
+              <span class="code-lang" lang="en">Python</span>
+              <span class="code-file" lang="en">labels_grid.py</span>
+            </span>
+            <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+              <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <use href="#i-copy"></use>
+              </svg>
+              <span class="btn-label">نسخ</span>
+            </button>
+          </figcaption>
+          <pre class="code" dir="ltr"><code>import matplotlib.pyplot as plt
+
+months = ["Jan", "Feb", "Mar", "Apr"]
+sales = [120, 150, 135, 180]
+
+plt.plot(months, sales, marker="o")
+plt.title("Monthly Sales", fontsize=14, loc="left")
+plt.xlabel("Month")
+plt.ylabel("Sales (units)")
+plt.grid(axis="y", linestyle="--", alpha=0.5)
+plt.show()</code></pre>
+        </figure>
+                <p><strong>متى وأي خطأ؟</strong> استخدم الشبكة عندما يحتاج القارئ إلى قيم تقريبية، وتجنبها إذا ازدحم الرسم. الخطأ الشائع: نسيان الوحدة في الـ label (ms أم EGP؟) أو شبكة داكنة تغطي البيانات.</p>
+              </article>
+
+              <article class="concept">
+                <h4>Subplot: عدة رسوم داخل Figure واحد</h4>
+                <p>مقارنة رسمين جنبًا إلى جنب أوضح من فتح نافذتين منفصلتين. الدالة <code>plt.subplot(rows, cols, index)</code> تقسم الـ Figure إلى شبكة، وترقيم <code>index</code> يبدأ من 1 ويسير صفًا بصف. كل استدعاء يجعل المحور الجديد هو الحالي، فأي <code>plt.plot()</code> أو <code>plt.title()</code> بعده تذهب إليه. و<code>plt.suptitle()</code> يضع عنوانًا للـ Figure كله، و<code>plt.tight_layout()</code> يمنع تداخل العناوين والمحاور.</p>
+        <figure class="code-block">
+          <figcaption class="code-head">
+            <span class="code-meta">
+              <span class="code-lang" lang="en">Python</span>
+              <span class="code-file" lang="en">subplot_layout.py</span>
+            </span>
+            <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+              <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <use href="#i-copy"></use>
+              </svg>
+              <span class="btn-label">نسخ</span>
+            </button>
+          </figcaption>
+          <pre class="code" dir="ltr"><code>import numpy as np
+import matplotlib.pyplot as plt
+
+x = np.arange(1, 6)
+
+plt.subplot(1, 2, 1)  # 1 row, 2 columns, panel #1
+plt.plot(x, x ** 2)
+plt.title("Squares")
+
+plt.subplot(1, 2, 2)  # panel #2
+plt.plot(x, x ** 3)
+plt.title("Cubes")
+
+plt.suptitle("Growth Comparison")
+plt.tight_layout()
+plt.show()</code></pre>
+        </figure>
+                <p>النسخة الأحدث <code>fig, axs = plt.subplots(rows, cols)</code> تنشئ الشبكة دفعة واحدة وتعيد كائنات <code>Axes</code> تتعامل معها مباشرة: <code>axs[0].set_title(...)</code>. <strong>القيد:</strong> الترقيم في <code>plt.subplot</code> يبدأ من 1، أما فهرسة <code>axs</code> فتبدأ من 0؛ وتكون <code>axs</code> مصفوفة بُعد واحد إذا كان صف أو عمود واحد، وببعدين <code>axs[row, col]</code> إذا زاد الاثنان عن 1.</p>
+              </article>
+
+              <article class="concept">
+                <h4>Scatter و Bars: علاقات وفئات</h4>
+                <p>استخدم <code>scatter()</code> لإظهار العلاقة بين متغيرين رقميين، كل نقطة تمثل ملاحظة واحدة (مثل ساعات المذاكرة والدرجة). تتحكم <code>s</code> في الحجم، و<code>alpha</code> في الشفافية عند تراكب النقاط، و<code>c</code> مع <code>cmap</code> في تلوين النقاط حسب قيمة ثالثة، و<code>colorbar</code> يشرح الألوان. أما <code>bar()</code> فتقارن قيمة واحدة عبر فئات، و<code>barh()</code> تعرض الأعمدة أفقيًا وتناسب الأسماء الطويلة، و<code>width</code> يحدد سمك العمود.</p>
+        <figure class="code-block">
+          <figcaption class="code-head">
+            <span class="code-meta">
+              <span class="code-lang" lang="en">Python</span>
+              <span class="code-file" lang="en">scatter_bars.py</span>
+            </span>
+            <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+              <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <use href="#i-copy"></use>
+              </svg>
+              <span class="btn-label">نسخ</span>
+            </button>
+          </figcaption>
+          <pre class="code" dir="ltr"><code>import numpy as np
+import matplotlib.pyplot as plt
+
+hours = np.arange(1, 9)
+scores = np.array([52, 55, 61, 64, 70, 74, 79, 85])
+cities = ["Cairo", "Giza", "Alexandria"]
+users = [320, 210, 180]
+
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(9, 3.5))
+sc = ax1.scatter(hours, scores, c=scores, s=hours * 30, cmap="viridis", alpha=0.7)
+fig.colorbar(sc, ax=ax1, label="Score")
+ax1.set(xlabel="Study hours", ylabel="Score", title="Scatter")
+ax2.bar(cities, users, color="steelblue", width=0.6)  # barh() = horizontal
+ax2.set(ylabel="Users", title="Bar")
+plt.show()</code></pre>
+        </figure>
+                <p><strong>أخطاء شائعة:</strong> اختلاف طول <code>x</code> و<code>y</code> يرفع <code>ValueError</code>. وفي الأعمدة، قطع المحور الرأسي عن الصفر يضخّم الفروق ويضلل القارئ.</p>
+              </article>
+
+              <article class="concept">
+                <h4>Histograms و Pie Charts: توزيع وحصص</h4>
+                <p>الـ <code>hist()</code> يأخذ بيانات رقمية خام لمتغير واحد، ويقسم نطاقها إلى فترات (<code>bins</code>) ويعد القيم في كل فترة، فيكشف شكل التوزيع: أين التركز وأين القيم الشاذة. وهو يعيد <code>counts</code> و<code>edges</code> فيمكن قراءة الأعداد نفسها. أما <code>pie()</code> فيعرض أجزاء من كل: يحوّل القيم إلى نسب تلقائيًا، و<code>labels</code> تسمّي الشرائح، و<code>autopct</code> يكتب النسبة، و<code>explode</code> يبرز شريحة.</p>
+        <figure class="code-block">
+          <figcaption class="code-head">
+            <span class="code-meta">
+              <span class="code-lang" lang="en">Python</span>
+              <span class="code-file" lang="en">hist_pie.py</span>
+            </span>
+            <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+              <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <use href="#i-copy"></use>
+              </svg>
+              <span class="btn-label">نسخ</span>
+            </button>
+          </figcaption>
+          <pre class="code" dir="ltr"><code>import numpy as np
+import matplotlib.pyplot as plt
+
+response_ms = np.array([120, 135, 150, 160, 165, 170, 175, 180, 185, 190,
+                        195, 200, 205, 210, 220, 230, 240, 260, 280, 310])
+labels = ["Android", "iOS", "Web", "Other"]
+shares = [45, 30, 15, 10]
+
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(9, 3.5))
+counts, edges, _ = ax1.hist(response_ms, bins=4, edgecolor="black")
+ax1.set(xlabel="Response time (ms)", ylabel="Requests")
+ax2.pie(shares, labels=labels, autopct="%1.0f%%", explode=[0.1, 0, 0, 0])
+ax2.set_title("Platform share")
+print(counts)
+plt.show()</code></pre>
+        <div class="output" role="group" aria-label="مخرجات البرنامج">
+          <div class="output-label" lang="en">Output</div>
+          <pre dir="ltr"><code>[5. 9. 4. 2.]</code></pre>
+        </div>
+        </figure>
+                <p><strong>متى وأي خطأ؟</strong> عدد <code>bins</code> يغيّر الانطباع: قليل جدًا يخفي الشكل، وكثير جدًا يضيف ضجيجًا. والـ Pie مناسب لثلاث إلى خمس فئات تمثل كلًا واحدًا؛ لا يقبل قيمًا سالبة، ويصعب معه مقارنة شرائح متقاربة، وعندها يفضّل <code>bar()</code>.</p>
+              </article>
+            </section>
+
+            <section class="lesson-section" id="summary">
+              <h3 class="section-title"><b>02</b>الملخص</h3>
+              <ul class="summary-list">
+                <li><code>title()</code> و<code>xlabel()</code> و<code>ylabel()</code> تجعل الرسم مفهومًا؛ اذكر الوحدة دائمًا. و<code>grid(axis, linestyle, alpha)</code> تساعد على قراءة القيم دون أن تطغى على البيانات.</li>
+                <li><code>plt.subplot(rows, cols, index)</code> يبدأ ترقيمه من 1 صفًا بصف، و<code>suptitle()</code> عنوان للـ Figure كله، و<code>tight_layout()</code> يمنع التداخل.</li>
+                <li><code>plt.subplots()</code> تعيد <code>fig, axs</code>؛ تكون <code>axs</code> بُعدًا واحدًا إذا كان صف أو عمود واحد، وبُعدين <code>axs[row, col]</code> فيما عدا ذلك.</li>
+                <li><code>scatter()</code> لعلاقة متغيرين رقميين: <code>s</code> للحجم، <code>c</code> مع <code>cmap</code> للون، <code>alpha</code> للشفافية، و<code>x</code> و<code>y</code> بالطول نفسه.</li>
+                <li><code>bar()</code> و<code>barh()</code> لمقارنة الفئات ويجب أن يبدأ محورها من الصفر، أما <code>hist()</code> فلتوزيع متغير رقمي واحد وعدد <code>bins</code> يغيّر شكله.</li>
+                <li><code>pie()</code> لأجزاء من كل بعدد فئات قليل مع <code>autopct</code> و<code>explode</code>؛ واختيار نوع الرسم يتبع السؤال: علاقة أم مقارنة أم توزيع أم حصص.</li>
+              </ul>
+            </section>
+
+            <section class="lesson-section" id="interview-questions">
+              <h3 class="section-title"><b>03</b>أسئلة المقابلات</h3>
+              <div class="qa-list">
+                                <details class="qa" open>
+                  <summary>
+                    <span class="qa-q">ما الفرق بين <code>plt.subplot()</code> و<code>plt.subplots()</code>؟</span>
+                    <span class="level level-basic">أساسي</span>
+                  </summary>
+                  <div class="qa-body">
+                    <p><code>plt.subplot(r, c, i)</code> ينشئ محورًا واحدًا في كل استدعاء ويجعله الحالي، وترقيمه يبدأ من 1. أما <code>plt.subplots(r, c)</code> فتنشئ الـ Figure وكل المحاور دفعة واحدة وتعيد <code>fig, axs</code>، وهي الأفضل لأنها تعطيك مرجعًا صريحًا لكل <code>Axes</code>.</p>
+                  <p class="qa-follow">ماذا تعيد <code>plt.subplots(1, 3)</code>؟ مصفوفة بُعد واحد فيها ثلاثة <code>Axes</code>.</p>
+                  </div>
+                </details>
+                <details class="qa">
+                  <summary>
+                    <span class="qa-q">متى تختار <code>bar()</code> ومتى <code>hist()</code>؟</span>
+                    <span class="level level-basic">أساسي</span>
+                  </summary>
+                  <div class="qa-body">
+                    <p><code>bar()</code> للمقارنة بين فئات منفصلة، وكل عمود له قيمة جاهزة. <code>hist()</code> يأخذ بيانات رقمية خام ويحسب بنفسه عدد القيم في كل فترة، ولذلك تكون أعمدته متلاصقة لأن محوره الأفقي متصل.</p>
+                  </div>
+                </details>
+                <details class="qa">
+                  <summary>
+                    <span class="qa-q">كيف تعرض بُعدًا ثالثًا في <code>scatter()</code>؟</span>
+                    <span class="level level-mid">متوسط</span>
+                  </summary>
+                  <div class="qa-body">
+                    <p>تمرر مصفوفة أرقام إلى <code>c</code> مع <code>cmap</code> لتلوين النقاط حسب قيمة ثالثة، وتضيف <code>colorbar()</code> لشرح الألوان، أو تمرر مصفوفة إلى <code>s</code> لتغيير الحجم. وعند كثرة النقاط المتراكبة يساعد <code>alpha</code> على إظهار الكثافة.</p>
+                  </div>
+                </details>
+                <details class="qa">
+                  <summary>
+                    <span class="qa-q">لماذا قد يضلل الـ bar chart إذا لم يبدأ المحور الرأسي من الصفر؟</span>
+                    <span class="level level-mid">متوسط</span>
+                  </summary>
+                  <div class="qa-body">
+                    <p>لأن طول العمود هو الترميز البصري للقيمة، وقطع المحور يضخّم الفروق النسبية بين الأعمدة. إذا كان القطع ضروريًا فالأفضل استخدام رسم خطي، أو الإشارة إلى القطع بوضوح.</p>
+                  </div>
+                </details>
+                <details class="qa">
+                  <summary>
+                    <span class="qa-q">ما المشكلة في <code>fig, axs = plt.subplots(1, 3)</code> ثم <code>axs[0, 1].plot(...)</code>؟</span>
+                    <span class="level level-trap">فخ</span>
+                  </summary>
+                  <div class="qa-body">
+                    <p>يرفع <code>IndexError</code> لأن <code>axs</code> مصفوفة بُعد واحد عندما يكون عدد الصفوف أو الأعمدة 1، فالصحيح <code>axs[1]</code>. ولضمان بُعدين دائمًا تُمرَّر <code>squeeze=False</code>، فيصبح الفهرس <code>axs[0, 1]</code> صحيحًا.</p>
+                  </div>
+                </details>
+              </div>
+            </section>
+
+            <section class="lesson-section" id="practical">
+              <h3 class="section-title"><b>04</b>المسألة العملية</h3>
+                            <div class="callout callout-problem">
+                <p>لديك بيانات تجريبية لمتجر إلكتروني: مبيعات ستة أشهر، وإنفاق إعلاني شهري، وقيم عدد من الطلبات، وحصة كل فئة منتجات من الإيرادات. ارسم لوحة واحدة 2×2 فيها أربعة رسوم بنوع مناسب لكل سؤال، مع عنوان لكل رسم، وأسماء للمحاور، وشبكة خفيفة، وعنوان عام للوحة.</p>
+              </div>
+              <ol class="solution">
+                                <li class="sol-step">
+                  <h4>فهم المطلوب</h4>
+                  <p>أربعة أسئلة مختلفة في Figure واحد: مبيعات كل شهر (فئات)، علاقة الإعلان بالمبيعات (متغيران رقميان)، توزيع قيم الطلبات (متغير رقمي واحد)، وحصص الفئات (أجزاء من كل). والمطلوب أيضًا Labels وGrid وSubplot.</p>
+                </li>
+                <li class="sol-step">
+                  <h4>خطة الحل</h4>
+                  <p>نختار النوع بحسب السؤال: <code>bar</code> ثم <code>scatter</code> ثم <code>hist</code> ثم <code>pie</code>. ننشئ الشبكة بـ <code>plt.subplots(2, 2)</code>، ونصل إلى كل محور بـ <code>axs[row, col]</code>، ثم نضبط العناوين والمحاور بـ <code>set()</code>، ونضيف الشبكة، وأخيرًا <code>suptitle()</code> و<code>tight_layout()</code>.</p>
+                </li>
+                <li class="sol-step">
+                  <h4>الكود الكامل</h4>
+                  
+        <figure class="code-block">
+          <figcaption class="code-head">
+            <span class="code-meta">
+              <span class="code-lang" lang="en">Python</span>
+              <span class="code-file" lang="en">store_dashboard.py</span>
+            </span>
+            <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+              <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <use href="#i-copy"></use>
+              </svg>
+              <span class="btn-label">نسخ</span>
+            </button>
+          </figcaption>
+          <pre class="code" dir="ltr"><code>import numpy as np
+import matplotlib.pyplot as plt
+
+months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun"]
+sales = [120, 150, 135, 180, 210, 190]
+ads = np.array([10, 15, 12, 20, 25, 22])
+orders = [35, 42, 48, 50, 52, 55, 58, 60, 61, 65, 70, 75, 80, 95, 120]
+labels = ["Phones", "Laptops", "Accessories"]
+shares = [45, 30, 25]
+
+fig, axs = plt.subplots(2, 2, figsize=(10, 7))
+axs[0, 0].bar(months, sales, color="steelblue")
+axs[0, 0].set(title="Monthly Sales", ylabel="Sales (K EGP)")
+axs[0, 1].scatter(ads, sales, s=80, alpha=0.7)
+axs[0, 1].set(title="Ads vs Sales", xlabel="Ads (K EGP)", ylabel="Sales")
+axs[1, 0].hist(orders, bins=5, edgecolor="black")
+axs[1, 0].set(title="Order Value", xlabel="EGP", ylabel="Orders")
+axs[1, 1].pie(shares, labels=labels, autopct="%1.0f%%")
+axs[1, 1].set_title("Revenue Share")
+for ax in (axs[0, 0], axs[0, 1], axs[1, 0]):
+    ax.grid(axis="y", linestyle="--", alpha=0.4)
+fig.suptitle("Store Dashboard")
+fig.tight_layout()
+plt.show()</code></pre>
+        </figure>
+                </li>
+                <li class="sol-step">
+                  <h4>تفسير القرارات</h4>
+                  <p>الأشهر فئات منفصلة فاخترنا <code>bar</code>، وزوج الأرقام (إعلان، مبيعات) يناسب <code>scatter</code>، وقيم الطلبات الخام يناسبها <code>hist</code>، والفئات الثلاث تجمع كلًا واحدًا فيكفي <code>pie</code>. وضعنا الشبكة على المحور <code>y</code> فقط وبـ <code>alpha</code> منخفضة، واستثنينا الـ pie لأنه بلا محاور. استخدمنا <code>axs[row, col]</code> لأن الشبكة 2×2 فهي بُعدان.</p>
+                </li>
+                <li class="sol-step">
+                  <h4>اختبار سريع</h4>
+                  <p>شغّل الكود وتأكد من ظهور أربعة رسوم دون تداخل. ثم احذف عنصرًا من <code>ads</code> وأعد التشغيل: سيرفع <code>scatter</code> الخطأ <code>ValueError</code> لاختلاف الطولين. وغيّر قيم <code>shares</code> إلى 90 و60 و50 لتلاحظ أن الـ pie يحوّلها إلى نسب تلقائيًا.</p>
+                </li>
+                <li class="sol-step">
+                  <h4>تحسين أو بديل</h4>
+                  <p>يمكن استبدال <code>fig.tight_layout()</code> بالخيار <code>layout="constrained"</code> داخل <code>plt.subplots()</code> (Matplotlib 3.5+)، وحفظ اللوحة صورةً بـ <code>fig.savefig("dashboard.png", dpi=150)</code> بدل <code>plt.show()</code>.</p>
+                </li>
+              </ol>
+            </section>
+          </div>
+        </section>
+      </div>
+
+      <footer class="footer">
+        <span class="footer-note" lang="en">Python Learning Roadmap</span>
+        <span class="footer-note">المرحلة 10 - الدرس 45</span>
+      </footer>
+    </main>
+
+    <script>
+      (function () {
+        'use strict'
+
+        var live = document.getElementById('copy-status')
+        var printStates = null
+
+        function fallbackCopy(text) {
+          var textarea = document.createElement('textarea')
+          textarea.value = text
+          textarea.setAttribute('readonly', '')
+          textarea.style.cssText = 'position:fixed;top:-1000px;left:-1000px;opacity:0;'
+
+          try {
+            document.body.appendChild(textarea)
+            textarea.focus()
+            textarea.select()
+            textarea.setSelectionRange(0, textarea.value.length)
+            return document.execCommand('copy')
+          } catch (error) {
+            return false
+          } finally {
+            if (textarea.parentNode) {
+              textarea.parentNode.removeChild(textarea)
+            }
+          }
+        }
+
+        function copyText(text) {
+          if (navigator.clipboard && window.isSecureContext) {
+            return navigator.clipboard.writeText(text).then(
+              function () { return true },
+              function () { return fallbackCopy(text) },
+            ).catch(function () { return false })
+          }
+
+          return Promise.resolve().then(function () {
+            return fallbackCopy(text)
+          }).catch(function () {
+            return false
+          })
+        }
+
+        document.addEventListener('click', function (event) {
+          var target = event.target
+          var button = target && typeof target.closest === 'function'
+            ? target.closest('[data-copy-code]')
+            : null
+
+          if (!button) return
+
+          var label = button.querySelector('.btn-label')
+          var block = button.closest('.code-block')
+          var code = block ? block.querySelector('pre.code > code') : null
+          if (!label || !code) return
+
+          if (!button.dataset.label) button.dataset.label = label.textContent
+
+          copyText(code.textContent).then(function (ok) {
+            label.textContent = ok ? 'تم النسخ' : 'تعذّر النسخ'
+            button.classList.toggle('is-copied', ok)
+            button.classList.toggle('is-failed', !ok)
+
+            if (live) {
+              live.textContent = ok
+                ? 'تم نسخ الكود'
+                : 'تعذّر النسخ، حدّد الكود يدويًا ثم انسخه'
+            }
+
+            window.clearTimeout(button._timer)
+            button._timer = window.setTimeout(function () {
+              label.textContent = button.dataset.label
+              button.classList.remove('is-copied', 'is-failed')
+            }, 1800)
+          })
+        })
+
+        window.addEventListener('beforeprint', function () {
+          if (printStates !== null) return
+
+          var questions = document.querySelectorAll('details.qa')
+          printStates = Array.prototype.map.call(questions, function (item) {
+            return item.open
+          })
+          questions.forEach(function (item) {
+            item.open = true
+          })
+        })
+
+        window.addEventListener('afterprint', function () {
+          if (printStates === null) return
+
+          var questions = document.querySelectorAll('details.qa')
+          questions.forEach(function (item, index) {
+            item.open = printStates[index] === true
+          })
+          printStates = null
+        })
+      })()
+    </script>
+  </body>
+</html>

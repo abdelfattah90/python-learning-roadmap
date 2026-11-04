@@ -1,0 +1,488 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#fcfcfc" />
+    <title>NumPy (2): العمليات على المصفوفات | Python Learning Roadmap</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/style.css" />
+  </head>
+  <body>
+    <svg
+      width="0"
+      height="0"
+      style="position: absolute"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <symbol id="i-copy" viewBox="0 0 24 24">
+        <rect x="9" y="9" width="12" height="12" rx="2.5" />
+        <path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15" />
+      </symbol>
+    </svg>
+    <template id="code-block-pattern">
+      <figure class="code-block">
+        <figcaption class="code-head">
+          <span class="code-meta">
+            <span class="code-lang" lang="en">Python</span>
+            <span class="code-file" lang="en">example.py</span>
+          </span>
+          <button
+            type="button"
+            class="btn btn-ghost btn-sm"
+            data-copy-code
+            aria-label="نسخ الكود"
+          >
+            <svg
+              class="btn-icon"
+              viewBox="0 0 24 24"
+              width="14"
+              height="14"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <use href="#i-copy"></use>
+            </svg>
+            <span class="btn-label">نسخ</span>
+          </button>
+        </figcaption>
+        <pre class="code" dir="ltr"><code><!-- ضع الكود هنا كنص HTML مع تهريب الرموز الخاصة --></code></pre>
+        <!-- احذف كتلة output إذا لم يكن للمثال ناتج ثابت ومفيد. -->
+        <div class="output" role="group" aria-label="مخرجات البرنامج">
+          <div class="output-label" lang="en">Output</div>
+          <pre dir="ltr"><code><!-- ضع المخرجات المتحققة هنا --></code></pre>
+        </div>
+      </figure>
+    </template>
+
+    <div
+      class="sr-only"
+      id="copy-status"
+      role="status"
+      aria-live="polite"
+    ></div>
+
+    <main class="page">
+      <header class="hero lesson-hero">
+        <span class="eyebrow">
+          <span class="eyebrow-dot"></span>
+          المرحلة <span dir="ltr">10</span>:
+          <span dir="ltr" lang="en">Data Libraries</span>
+        </span>
+        <h1>
+          <span class="h1-ar">NumPy (2): العمليات على المصفوفات</span>
+          <span class="h1-en" dir="ltr" lang="en">NumPy II: Array Operations</span>
+        </h1>
+        <p class="hero-description">تعلّم كيف تعيد تشكيل المصفوفات وتمر على عناصرها وتدمجها وتقسمها، ثم تبحث فيها وترتبها وتصفّيها بدل كتابة حلقات يدوية بطيئة.</p>
+      </header>
+
+      <div class="lesson-parts">
+        <section class="lesson-part-card" id="complete-lesson" aria-labelledby="complete-lesson-title">
+          <header class="part-header">
+            <div class="part-number">درس متكامل</div>
+            <div class="part-heading">
+              <h2 id="complete-lesson-title">
+                <span class="part-title-en" dir="ltr" lang="en">Complete Lesson</span>
+                <span class="sep" aria-hidden="true"> - </span>
+                <span class="part-title-ar">الشرح والملخص والتطبيق</span>
+              </h2>
+              <span class="part-description">كل محتوى الدرس في ملف HTML واحد</span>
+            </div>
+          </header>
+
+          <div class="lesson-body">
+            <section class="lesson-section" id="explain">
+              <h3 class="section-title"><b>01</b>الشرح</h3>
+              <article class="concept">
+  <h4>Reshaping و Iterating: تغيير الشكل والمرور على العناصر</h4>
+  <p>نحتاج <code dir="ltr">reshape</code> لأن نفس البيانات قد تُقرأ بأشكال مختلفة: 12 قراءة خطية قد تصبح جدولًا 3×4 (ساعات × حساسات). الدالة <code dir="ltr">reshape(rows, cols)</code> تعيد نفس العناصر بشكل جديد بشرط أن يساوي حاصل ضرب الأبعاد عدد العناصر، وإلا يظهر <code dir="ltr">ValueError</code>. يمكنك وضع <code dir="ltr">-1</code> في بُعد واحد ليحسبه NumPy تلقائيًا. القيد المهم: الناتج غالبًا view على نفس البيانات، فتعديله قد يغيّر المصفوفة الأصلية.</p>
+  <p>في Iterating، الحلقة <code dir="ltr">for</code> على مصفوفة ثنائية تعطيك صفًّا في كل دورة. استخدم <code dir="ltr">np.ndenumerate</code> عندما تحتاج الفهرس مع القيمة، و<code dir="ltr">np.nditer</code> للمرور على كل عنصر مفرد مهما كان عدد الأبعاد. تذكّر أن الحلقات أبطأ كثيرًا من العمليات المتجهية، فاحتفظ بها للعرض أو للمنطق الذي لا يمكن التعبير عنه بعملية واحدة.</p>
+  <figure class="code-block">
+  <figcaption class="code-head">
+    <span class="code-meta">
+      <span class="code-lang" lang="en">Python</span>
+      <span class="code-file" lang="en">reshape_iterate.py</span>
+    </span>
+    <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+      <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <use href="#i-copy"></use>
+      </svg>
+      <span class="btn-label">نسخ</span>
+    </button>
+  </figcaption>
+  <pre class="code" dir="ltr"><code>import numpy as np
+
+readings = np.arange(1, 13)       # 12 sensor readings
+grid = readings.reshape(3, 4)     # 3 hours x 4 sensors
+auto = readings.reshape(2, -1)    # NumPy infers 6 columns
+print(grid.shape, auto.shape)
+
+for hour in grid:                 # one row per iteration
+    print(hour)
+
+for index, value in np.ndenumerate(grid[:2, :2]):
+    print(index, value)
+
+print([int(v) for v in np.nditer(grid[:, :2])])</code></pre>
+  <div class="output" role="group" aria-label="مخرجات البرنامج">
+    <div class="output-label" lang="en">Output</div>
+    <pre dir="ltr"><code>(3, 4) (2, 6)
+[1 2 3 4]
+[5 6 7 8]
+[ 9 10 11 12]
+(0, 0) 1
+(0, 1) 2
+(1, 0) 5
+(1, 1) 6
+[1, 2, 5, 6, 9, 10]</code></pre>
+  </div>
+</figure>
+</article>
+<article class="concept">
+  <h4>Joining و Splitting: دمج المصفوفات وتقسيمها</h4>
+  <p>نحتاج الدمج عندما تصل البيانات على دفعات (شهر بعد شهر مثلًا)، ونحتاج التقسيم لمعالجة أجزاء مستقلة. الدالة <code dir="ltr">np.concatenate((a, b), axis=...)</code> تضم المصفوفات على محور موجود: <code dir="ltr">axis=0</code> يزيد الصفوف و<code dir="ltr">axis=1</code> يزيد الأعمدة. أما <code dir="ltr">np.stack</code> فينشئ محورًا جديدًا فيزيد عدد الأبعاد، ويشترط تطابق الأشكال تمامًا. الدالتان <code dir="ltr">vstack</code> و<code dir="ltr">hstack</code> اختصاران شائعان للدمج على الصفوف والأعمدة.</p>
+  <p>للتقسيم: <code dir="ltr">np.split(arr, n)</code> يشترط أن يقبل الطول القسمة بالتساوي وإلا يرفع <code dir="ltr">ValueError</code>، بينما <code dir="ltr">np.array_split</code> يقبل أي عدد ويعطي الأجزاء الأولى العناصر الزائدة. للمصفوفات الثنائية استخدم <code dir="ltr">np.hsplit</code> و<code dir="ltr">np.vsplit</code> أو حدّد <code dir="ltr">axis</code>. النتيجة دائمًا list من المصفوفات.</p>
+  <figure class="code-block">
+  <figcaption class="code-head">
+    <span class="code-meta">
+      <span class="code-lang" lang="en">Python</span>
+      <span class="code-file" lang="en">join_split.py</span>
+    </span>
+    <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+      <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <use href="#i-copy"></use>
+      </svg>
+      <span class="btn-label">نسخ</span>
+    </button>
+  </figcaption>
+  <pre class="code" dir="ltr"><code>import numpy as np
+
+jan = np.array([[120, 95], [80, 110]])
+feb = np.array([[130, 100], [85, 105]])
+
+by_rows = np.concatenate((jan, feb), axis=0)   # more rows
+by_cols = np.concatenate((jan, feb), axis=1)   # more columns
+stacked = np.stack((jan, feb))                 # new axis
+print(by_rows.shape, by_cols.shape, stacked.shape)
+
+print(np.array_split(np.arange(10), 3))        # 4 + 3 + 3
+left, right = np.hsplit(by_cols, 2)
+print(left.shape, right.shape)</code></pre>
+  <div class="output" role="group" aria-label="مخرجات البرنامج">
+    <div class="output-label" lang="en">Output</div>
+    <pre dir="ltr"><code>(4, 2) (2, 4) (2, 2, 2)
+[array([0, 1, 2, 3]), array([4, 5, 6]), array([7, 8, 9])]
+(2, 2) (2, 2)</code></pre>
+  </div>
+</figure>
+</article>
+<article class="concept">
+  <h4>Searching و Sorting: البحث والترتيب</h4>
+  <p><code dir="ltr">np.where(condition)</code> يعيد فهارس العناصر التي تحقق الشرط على شكل tuple من المصفوفات، ولذلك نأخذ <code dir="ltr">[0]</code> في المصفوفة الأحادية. أما <code dir="ltr">np.searchsorted(sorted_arr, value)</code> فيعيد الموضع الذي تُدرج عنده القيمة ليبقى الترتيب سليمًا، ويعتمد على binary search، لذلك يجب أن تكون المصفوفة مرتبة مسبقًا وإلا تكون النتيجة غير موثوقة دون أي خطأ. الخيار <code dir="ltr">side="right"</code> يغيّر موضع الإدراج عند وجود قيم مكررة.</p>
+  <p><code dir="ltr">np.sort(arr)</code> يعيد نسخة مرتبة ولا يغيّر الأصل، بخلاف <code dir="ltr">arr.sort()</code> الذي يرتب في المكان. في المصفوفات الثنائية يعمل على آخر محور افتراضيًا، ويمكنك تحديد <code dir="ltr">axis</code>. أما <code dir="ltr">np.argsort</code> فيعيد فهارس الترتيب، وهو الأداة المناسبة لترتيب مصفوفة مرتبطة (كالأسماء مع الأسعار). استخدم <code dir="ltr">kind="stable"</code> عندما يهم ثبات ترتيب القيم المتساوية.</p>
+  <figure class="code-block">
+  <figcaption class="code-head">
+    <span class="code-meta">
+      <span class="code-lang" lang="en">Python</span>
+      <span class="code-file" lang="en">search_sort.py</span>
+    </span>
+    <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+      <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <use href="#i-copy"></use>
+      </svg>
+      <span class="btn-label">نسخ</span>
+    </button>
+  </figcaption>
+  <pre class="code" dir="ltr"><code>import numpy as np
+
+items = np.array(["monitor", "cable", "laptop", "mouse pad", "keyboard"])
+prices = np.array([250, 90, 310, 90, 150])
+
+print(np.where(prices == 90)[0])          # indexes of cheap items
+
+order = np.argsort(prices, kind="stable")
+print(items[order])                       # names sorted by price
+
+ordered = np.sort(prices)                 # sorted copy; prices unchanged
+print(ordered, prices)
+print(np.searchsorted(ordered, 150), np.searchsorted(ordered, 150, side="right"))</code></pre>
+  <div class="output" role="group" aria-label="مخرجات البرنامج">
+    <div class="output-label" lang="en">Output</div>
+    <pre dir="ltr"><code>[1 3]
+['cable' 'mouse pad' 'keyboard' 'monitor' 'laptop']
+[ 90  90 150 250 310] [250  90 310  90 150]
+2 3</code></pre>
+  </div>
+</figure>
+</article>
+<article class="concept">
+  <h4>Filtering: التصفية بالشروط المنطقية</h4>
+  <p>التصفية تعني اختيار العناصر بشرط بدل حلقة و<code dir="ltr">if</code>. نُنشئ boolean mask (مصفوفة True/False بنفس الحجم) من مقارنة، ثم نمررها كفهرس: <code dir="ltr">arr[mask]</code>. لدمج الشروط نستخدم <code dir="ltr">&amp;</code> و<code dir="ltr">|</code> و<code dir="ltr">~</code> مع أقواس حول كل شرط، وليس <code dir="ltr">and</code> أو <code dir="ltr">or</code>. الناتج نسخة جديدة وأحادية البعد، ويمكن تطبيق نفس الـ mask على مصفوفة أخرى بنفس الطول. وإذا أردت الاختيار بين قيمتين دون حذف عناصر فاستخدم <code dir="ltr">np.where(mask, x, y)</code>.</p>
+  <figure class="code-block">
+  <figcaption class="code-head">
+    <span class="code-meta">
+      <span class="code-lang" lang="en">Python</span>
+      <span class="code-file" lang="en">filter_mask.py</span>
+    </span>
+    <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+      <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <use href="#i-copy"></use>
+      </svg>
+      <span class="btn-label">نسخ</span>
+    </button>
+  </figcaption>
+  <pre class="code" dir="ltr"><code>import numpy as np
+
+temps = np.array([18.5, 31.0, 27.2, 35.4, 22.8, 39.1])
+days = np.array(["Sat", "Sun", "Mon", "Tue", "Wed", "Thu"])
+
+hot_mask = temps &gt; 30                           # boolean mask
+print(temps[hot_mask])
+print(days[hot_mask])                           # same mask, other array
+print(temps[(temps &gt;= 20) &amp; (temps &lt;= 30)])     # parentheses are required
+print(np.where(hot_mask, "hot", "ok"))</code></pre>
+  <div class="output" role="group" aria-label="مخرجات البرنامج">
+    <div class="output-label" lang="en">Output</div>
+    <pre dir="ltr"><code>[31.  35.4 39.1]
+['Sun' 'Tue' 'Thu']
+[27.2 22.8]
+['ok' 'hot' 'ok' 'hot' 'ok' 'hot']</code></pre>
+  </div>
+</figure>
+</article>
+            </section>
+
+            <section class="lesson-section" id="summary">
+              <h3 class="section-title"><b>02</b>الملخص</h3>
+              <ul class="summary-list">
+                <li><code dir="ltr">reshape</code> يغيّر الشكل بشرط تطابق عدد العناصر، و<code dir="ltr">-1</code> يترك حساب بُعد واحد لـ NumPy، والناتج غالبًا view لا نسخة.</li>
+<li>الحلقة <code dir="ltr">for</code> تمر على الصفوف (axis 0)، و<code dir="ltr">np.ndenumerate</code> يعطي الفهرس والقيمة، و<code dir="ltr">np.nditer</code> يمر على كل عنصر؛ والعمليات المتجهية أفضل من الحلقات.</li>
+<li><code dir="ltr">np.concatenate</code> يضم على محور موجود، و<code dir="ltr">np.stack</code> ينشئ محورًا جديدًا، و<code dir="ltr">vstack</code> و<code dir="ltr">hstack</code> اختصاران للصفوف والأعمدة.</li>
+<li><code dir="ltr">np.split</code> يتطلب تقسيمًا متساويًا، و<code dir="ltr">np.array_split</code> يقبل أي عدد من الأجزاء، وكلاهما يعيد list من المصفوفات.</li>
+<li><code dir="ltr">np.where(condition)</code> يعيد الفهارس، و<code dir="ltr">np.searchsorted</code> يحتاج مصفوفة مرتبة، و<code dir="ltr">np.sort</code> يعيد نسخة مرتبة، و<code dir="ltr">np.argsort</code> يعيد فهارس الترتيب.</li>
+<li>التصفية تتم بـ boolean mask؛ اجمع الشروط بـ <code dir="ltr">&amp;</code> و<code dir="ltr">|</code> مع أقواس، والناتج نسخة جديدة وليس view.</li>
+              </ul>
+            </section>
+
+            <section class="lesson-section" id="interview-questions">
+              <h3 class="section-title"><b>03</b>أسئلة المقابلات</h3>
+              <div class="qa-list">
+                <details class="qa" open>
+  <summary><span class="qa-q">ماذا يحدث إذا استخدمت reshape بحجم لا يطابق عدد العناصر، وما فائدة -1؟</span><span class="level level-basic">أساسي</span></summary>
+  <div class="qa-body"><p>يرفع <code dir="ltr">ValueError</code> لأن حاصل ضرب الأبعاد الجديدة يجب أن يساوي عدد العناصر. استخدام <code dir="ltr">-1</code> في بُعد واحد فقط يجعل NumPy يحسبه تلقائيًا؛ فمثلًا <code dir="ltr">reshape(2, -1)</code> على 12 عنصرًا يعطي الشكل (2, 6).</p></div>
+</details>
+<details class="qa">
+  <summary><span class="qa-q">ما الفرق بين np.concatenate وnp.stack؟</span><span class="level level-basic">أساسي</span></summary>
+  <div class="qa-body"><p><code dir="ltr">concatenate</code> يضم المصفوفات على محور موجود فيبقى عدد الأبعاد كما هو، مثل ضم مصفوفتين شكل كل منهما (2, 2) إلى (4, 2). أما <code dir="ltr">stack</code> فيضيف محورًا جديدًا ويشترط تطابق الأشكال، فتصبح النتيجة (2, 2, 2).</p></div>
+</details>
+<details class="qa">
+  <summary><span class="qa-q">متى أستخدم argsort بدل sort، وما شرط استخدام searchsorted؟</span><span class="level level-mid">متوسط</span></summary>
+  <div class="qa-body"><p>أستخدم <code dir="ltr">argsort</code> عندما أريد ترتيب مصفوفة أخرى مرتبطة بنفس الترتيب (مثل <code dir="ltr">items[order]</code>) أو معرفة المواضع الأصلية، بينما <code dir="ltr">sort</code> يعيد القيم فقط. و<code dir="ltr">searchsorted</code> يعتمد على binary search، فيلزم أن تكون المصفوفة مرتبة تصاعديًا وإلا تكون النتيجة خاطئة بصمت.</p></div>
+</details>
+<details class="qa">
+  <summary><span class="qa-q">هل يعيد reshape والتصفية بالـ boolean mask نسخة أم view؟</span><span class="level level-mid">متوسط</span></summary>
+  <div class="qa-body"><p><code dir="ltr">reshape</code> يعيد view كلما أمكن، فتعديل الناتج قد يعدّل الأصل، ولا يعيد نسخة إلا عند تعذّر ذلك. أما التصفية بـ boolean mask فتعيد دائمًا نسخة جديدة، فتعديلها لا يؤثر في المصفوفة الأصلية.</p></div>
+</details>
+<details class="qa">
+  <summary><span class="qa-q">لماذا يفشل التعبير temps[temps &gt; 20 and temps &lt; 30]؟</span><span class="level level-trap">فخ</span></summary>
+  <div class="qa-body"><p>لأن <code dir="ltr">and</code> يحاول تحويل مصفوفة كاملة إلى قيمة منطقية واحدة، فيرفع <code dir="ltr">ValueError</code> برسالة The truth value of an array is ambiguous. الصحيح هو <code dir="ltr">temps[(temps &gt; 20) &amp; (temps &lt; 30)]</code> مع الأقواس، لأن أولوية <code dir="ltr">&amp;</code> أعلى من أولوية المقارنات.</p></div>
+</details>
+              </div>
+            </section>
+
+            <section class="lesson-section" id="practical">
+              <h3 class="section-title"><b>04</b>المسألة العملية</h3>
+              <div class="callout callout-problem">
+  <p>لدى متجر مبيعات 14 يومًا (أسبوعان). المطلوب: حساب إجمالي كل أسبوع، واستخراج الأيام التي بلغت مبيعاتها 600 فأكثر، وتحديد أفضل 3 أيام برقم اليوم، وعدّ الأيام التي قلّت مبيعاتها عن 500، ثم إعادة ترتيب البيانات بحيث يأتي الأسبوع الأحدث أولًا.</p>
+</div>
+              <ol class="solution">
+                <li class="sol-step">
+  <h4>فهم المطلوب</h4>
+  <p>المدخل مصفوفة من 14 قيمة. المخرجات: إجماليا الأسبوعين، والمبيعات المرتفعة (&gt;= 600)، وأرقام أفضل 3 أيام، وعدد الأيام تحت 500، ومصفوفة مرتبة بالأسبوع الأحدث أولًا.</p>
+</li>
+<li class="sol-step">
+  <h4>خطة الحل</h4>
+  <p><code dir="ltr">reshape(2, 7)</code> ثم مرور على الأسابيع للإجماليات؛ boolean mask للتصفية؛ <code dir="ltr">argsort</code> مع عكس الترتيب لأفضل الأيام؛ <code dir="ltr">sort</code> ثم <code dir="ltr">searchsorted</code> لعدّ الأيام تحت 500؛ <code dir="ltr">split</code> ثم <code dir="ltr">concatenate</code> لإعادة ترتيب الأسبوعين.</p>
+</li>
+<li class="sol-step">
+  <h4>الكود الكامل</h4>
+  <figure class="code-block">
+  <figcaption class="code-head">
+    <span class="code-meta">
+      <span class="code-lang" lang="en">Python</span>
+      <span class="code-file" lang="en">sales_report.py</span>
+    </span>
+    <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+      <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <use href="#i-copy"></use>
+      </svg>
+      <span class="btn-label">نسخ</span>
+    </button>
+  </figcaption>
+  <pre class="code" dir="ltr"><code>import numpy as np
+
+daily_sales = np.array([420, 515, 380, 610, 495, 700, 560,
+                        450, 530, 400, 645, 520, 730, 590])
+
+weeks = daily_sales.reshape(2, 7)
+week_totals = [int(week.sum()) for week in weeks]
+assert sum(week_totals) == daily_sales.sum()
+
+strong_days = daily_sales[daily_sales &gt;= 600]
+top3_days = np.argsort(daily_sales, kind="stable")[::-1][:3] + 1
+below_500 = int(np.searchsorted(np.sort(daily_sales), 500))
+
+older, recent = np.split(daily_sales, 2)
+recent_first = np.concatenate((recent, older))
+
+print("Week totals:", week_totals)
+print("Strong days:", strong_days)
+print("Top 3 day numbers:", top3_days)
+print("Days below 500:", below_500)
+print("Recent first:", recent_first[:3])</code></pre>
+  <div class="output" role="group" aria-label="مخرجات البرنامج">
+    <div class="output-label" lang="en">Output</div>
+    <pre dir="ltr"><code>Week totals: [3680, 3865]
+Strong days: [610 700 645 730]
+Top 3 day numbers: [13  6 11]
+Days below 500: 5
+Recent first: [450 530 400]</code></pre>
+  </div>
+</figure>
+</li>
+<li class="sol-step">
+  <h4>تفسير القرارات</h4>
+  <p><code dir="ltr">reshape(2, 7)</code> يفصل الأسبوعين دون نسخ. عكسنا نتيجة <code dir="ltr">argsort</code> بـ <code dir="ltr">[::-1]</code> لنحصل على الأعلى أولًا، وأضفنا 1 لتحويل الفهرس إلى رقم يوم. الموضع الأيسر في <code dir="ltr">searchsorted(sorted, 500)</code> يساوي عدد القيم الأصغر من 500. أما <code dir="ltr">split</code> ثم <code dir="ltr">concatenate</code> فيعيدان ترتيب الأسبوعين صراحةً دون تقطيع يدوي.</p>
+</li>
+<li class="sol-step">
+  <h4>اختبار سريع</h4>
+  <p>سطر <code dir="ltr">assert</code> يتحقق أن مجموع الأسبوعين يساوي مجموع كل المبيعات. وبالعدّ اليدوي فالأيام تحت 500 هي 420 و380 و495 و450 و400 (خمسة أيام)، وأعلى يوم هو اليوم 13 بمبيعات 730، وهذا يطابق المخرجات.</p>
+</li>
+<li class="sol-step">
+  <h4>تحسين أو بديل</h4>
+  <p>يمكن حساب الإجماليات بسطر واحد متجهي هو <code dir="ltr">weeks.sum(axis=1)</code> بدل list comprehension، وهو أقصر وأسرع. وعند الحاجة لتصفية أكثر دقة، اجمع الشروط بـ <code dir="ltr">&amp;</code> مع أقواس، مثل <code dir="ltr">daily_sales[(daily_sales &gt;= 500) &amp; (daily_sales &lt; 600)]</code>.</p>
+</li>
+              </ol>
+            </section>
+          </div>
+        </section>
+      </div>
+
+      <footer class="footer">
+        <span class="footer-note" lang="en">Python Learning Roadmap</span>
+        <span class="footer-note">المرحلة 10 - الدرس 43</span>
+      </footer>
+    </main>
+
+    <script>
+      (function () {
+        'use strict'
+
+        var live = document.getElementById('copy-status')
+        var printStates = null
+
+        function fallbackCopy(text) {
+          var textarea = document.createElement('textarea')
+          textarea.value = text
+          textarea.setAttribute('readonly', '')
+          textarea.style.cssText = 'position:fixed;top:-1000px;left:-1000px;opacity:0;'
+
+          try {
+            document.body.appendChild(textarea)
+            textarea.focus()
+            textarea.select()
+            textarea.setSelectionRange(0, textarea.value.length)
+            return document.execCommand('copy')
+          } catch (error) {
+            return false
+          } finally {
+            if (textarea.parentNode) {
+              textarea.parentNode.removeChild(textarea)
+            }
+          }
+        }
+
+        function copyText(text) {
+          if (navigator.clipboard && window.isSecureContext) {
+            return navigator.clipboard.writeText(text).then(
+              function () { return true },
+              function () { return fallbackCopy(text) },
+            ).catch(function () { return false })
+          }
+
+          return Promise.resolve().then(function () {
+            return fallbackCopy(text)
+          }).catch(function () {
+            return false
+          })
+        }
+
+        document.addEventListener('click', function (event) {
+          var target = event.target
+          var button = target && typeof target.closest === 'function'
+            ? target.closest('[data-copy-code]')
+            : null
+
+          if (!button) return
+
+          var label = button.querySelector('.btn-label')
+          var block = button.closest('.code-block')
+          var code = block ? block.querySelector('pre.code > code') : null
+          if (!label || !code) return
+
+          if (!button.dataset.label) button.dataset.label = label.textContent
+
+          copyText(code.textContent).then(function (ok) {
+            label.textContent = ok ? 'تم النسخ' : 'تعذّر النسخ'
+            button.classList.toggle('is-copied', ok)
+            button.classList.toggle('is-failed', !ok)
+
+            if (live) {
+              live.textContent = ok
+                ? 'تم نسخ الكود'
+                : 'تعذّر النسخ، حدّد الكود يدويًا ثم انسخه'
+            }
+
+            window.clearTimeout(button._timer)
+            button._timer = window.setTimeout(function () {
+              label.textContent = button.dataset.label
+              button.classList.remove('is-copied', 'is-failed')
+            }, 1800)
+          })
+        })
+
+        window.addEventListener('beforeprint', function () {
+          if (printStates !== null) return
+
+          var questions = document.querySelectorAll('details.qa')
+          printStates = Array.prototype.map.call(questions, function (item) {
+            return item.open
+          })
+          questions.forEach(function (item) {
+            item.open = true
+          })
+        })
+
+        window.addEventListener('afterprint', function () {
+          if (printStates === null) return
+
+          var questions = document.querySelectorAll('details.qa')
+          questions.forEach(function (item, index) {
+            item.open = printStates[index] === true
+          })
+          printStates = null
+        })
+      })()
+    </script>
+  </body>
+</html>

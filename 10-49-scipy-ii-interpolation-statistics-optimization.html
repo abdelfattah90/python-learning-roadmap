@@ -1,0 +1,522 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#fcfcfc" />
+    <title>SciPy (2): الاستيفاء والإحصاء والتحسين | Python Learning Roadmap</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/style.css" />
+  </head>
+  <body>
+    <svg
+      width="0"
+      height="0"
+      style="position: absolute"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <symbol id="i-copy" viewBox="0 0 24 24">
+        <rect x="9" y="9" width="12" height="12" rx="2.5" />
+        <path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15" />
+      </symbol>
+    </svg>
+    <template id="code-block-pattern">
+      <figure class="code-block">
+        <figcaption class="code-head">
+          <span class="code-meta">
+            <span class="code-lang" lang="en">Python</span>
+            <span class="code-file" lang="en">example.py</span>
+          </span>
+          <button
+            type="button"
+            class="btn btn-ghost btn-sm"
+            data-copy-code
+            aria-label="نسخ الكود"
+          >
+            <svg
+              class="btn-icon"
+              viewBox="0 0 24 24"
+              width="14"
+              height="14"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <use href="#i-copy"></use>
+            </svg>
+            <span class="btn-label">نسخ</span>
+          </button>
+        </figcaption>
+        <pre class="code" dir="ltr"><code><!-- ضع الكود هنا كنص HTML مع تهريب الرموز الخاصة --></code></pre>
+        <!-- احذف كتلة output إذا لم يكن للمثال ناتج ثابت ومفيد. -->
+        <div class="output" role="group" aria-label="مخرجات البرنامج">
+          <div class="output-label" lang="en">Output</div>
+          <pre dir="ltr"><code><!-- ضع المخرجات المتحققة هنا --></code></pre>
+        </div>
+      </figure>
+    </template>
+
+    <div
+      class="sr-only"
+      id="copy-status"
+      role="status"
+      aria-live="polite"
+    ></div>
+
+    <main class="page">
+      <header class="hero lesson-hero">
+        <span class="eyebrow">
+          <span class="eyebrow-dot"></span>
+          المرحلة <span dir="ltr">10</span>:
+          <span dir="ltr" lang="en">Data Libraries</span>
+        </span>
+        <h1>
+          <span class="h1-ar">SciPy (2): الاستيفاء والإحصاء والتحسين</span>
+          <span class="h1-en" dir="ltr" lang="en">SciPy II: Interpolation, Statistics &amp; Optimization</span>
+        </h1>
+        <p class="hero-description">كيف تتبادل مصفوفات NumPy مع ملفات MATLAB، وتقدّر قيمًا بين قياسات متفرقة، وتختبر الفروق إحصائيًا، وتجد أفضل قيمة لدالة تكلفة باستخدام SciPy.</p>
+      </header>
+
+      <div class="lesson-parts">
+        <section class="lesson-part-card" id="complete-lesson" aria-labelledby="complete-lesson-title">
+          <header class="part-header">
+            <div class="part-number">درس متكامل</div>
+            <div class="part-heading">
+              <h2 id="complete-lesson-title">
+                <span class="part-title-en" dir="ltr" lang="en">Complete Lesson</span>
+                <span class="sep" aria-hidden="true"> - </span>
+                <span class="part-title-ar">الشرح والملخص والتطبيق</span>
+              </h2>
+              <span class="part-description">كل محتوى الدرس في ملف HTML واحد</span>
+            </div>
+          </header>
+
+          <div class="lesson-body">
+            <section class="lesson-section" id="explain">
+              <h3 class="section-title"><b>01</b>الشرح</h3>
+
+              <article class="concept">
+                <h4>1. <span dir="ltr" lang="en">MATLAB Arrays</span>: تبادل المصفوفات مع ملفات <span dir="ltr" lang="en">.mat</span></h4>
+                <p>كثير من المختبرات والأبحاث تحفظ بياناتها بصيغة MATLAB، ونحتاج قراءتها في Python أو إعادة حفظ نتائجنا لهم. الوحدة <code>scipy.io</code> تقوم بذلك: <code>savemat(filename, dict)</code> يكتب قاموسًا من الاسم إلى المصفوفة، و<code>loadmat</code> يعيد قاموسًا فيه مصفوفاتك ومعها مفاتيح وصفية تبدأ بـ <code>__</code> مثل <code>__header__</code>، و<code>whosmat</code> يعرض أسماء المتغيرات وأشكالها دون تحميلها.</p>
+                <p>أهم قيد: MATLAB لا يعرف المصفوفات أحادية البعد، فمصفوفة NumPy من <code>(4,)</code> تعود من <code>loadmat</code> بشكل <code>(1, 4)</code>. استخدم <code>squeeze_me=True</code> لإزالة الأبعاد الزائدة. وانتبه أيضًا أن <code>loadmat</code> لا يقرأ ملفات MAT بإصدار v7.3 المبنية على HDF5.</p>
+                <figure class="code-block">
+                  <figcaption class="code-head">
+                    <span class="code-meta">
+                      <span class="code-lang" lang="en">Python</span>
+                      <span class="code-file" lang="en">mat_files.py</span>
+                    </span>
+                    <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+                      <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <use href="#i-copy"></use>
+                      </svg>
+                      <span class="btn-label">نسخ</span>
+                    </button>
+                  </figcaption>
+                  <pre class="code" dir="ltr"><code>import numpy as np
+from scipy import io
+
+sensor_readings = np.array([21.5, 22.1, 23.0, 22.4])
+io.savemat("lab_data.mat", {"temps": sensor_readings})
+
+raw = io.loadmat("lab_data.mat")
+print(raw["temps"].shape)
+
+clean = io.loadmat("lab_data.mat", squeeze_me=True)
+print(clean["temps"].shape)
+print(io.whosmat("lab_data.mat"))</code></pre>
+                  <div class="output" role="group" aria-label="مخرجات البرنامج">
+                    <div class="output-label" lang="en">Output</div>
+                    <pre dir="ltr"><code>(1, 4)
+(4,)
+[('temps', (1, 4), 'double')]</code></pre>
+                  </div>
+                </figure>
+              </article>
+
+              <article class="concept">
+                <h4>2. <span dir="ltr" lang="en">Interpolation</span>: تقدير القيم بين النقاط المعروفة</h4>
+                <p>عندما تكون القياسات متفرقة (كل 4 ساعات مثلًا) ونحتاج قيمة عند وقت لم يُقَس فيه، نبني دالة تمر بالنقاط المعروفة ثم نسألها عن النقاط الجديدة. <code>interp1d(x, y, kind=...)</code> يعيد دالة قابلة للاستدعاء: <code>"linear"</code> يصل النقاط بخطوط مستقيمة وهو الأبسط والأكثر أمانًا، و<code>"cubic"</code> ينتج منحنى أنعم لكنه قد يتذبذب عند التغيرات الحادة. في الإصدارات الحديثة تُصنَّف <code>interp1d</code> كواجهة legacy لكنها ما زالت تعمل وكثيرة الاستخدام.</p>
+                <p>لبيانات أكثر تعقيدًا: <code>UnivariateSpline(x, y, s=0)</code> يمر بكل النقاط تمامًا، وقيمة <code>s</code> الأكبر من صفر تسمح بالتنعيم؛ و<code>RBFInterpolator(points, values)</code> يعمل على نقاط موزعة في عدة أبعاد (مثل قراءات حرارة من مواقع على خريطة)، وهو بديل الصنف القديم <code>Rbf</code>. تذكّر أن الاستيفاء يمر بالبيانات حرفيًا، فيعيد إنتاج الضوضاء ولا يصلح كنموذج تنبؤ؛ وطلب قيمة خارج نطاق <code>x</code> يرفع <code>ValueError</code> افتراضيًا، والتمديد خارج النطاق بـ <code>fill_value="extrapolate"</code> تخمين غير موثوق.</p>
+                <figure class="code-block">
+                  <figcaption class="code-head">
+                    <span class="code-meta">
+                      <span class="code-lang" lang="en">Python</span>
+                      <span class="code-file" lang="en">interpolation.py</span>
+                    </span>
+                    <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+                      <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <use href="#i-copy"></use>
+                      </svg>
+                      <span class="btn-label">نسخ</span>
+                    </button>
+                  </figcaption>
+                  <pre class="code" dir="ltr"><code>import numpy as np
+from scipy.interpolate import interp1d
+
+hours = np.array([0, 4, 8, 12, 16, 20])
+temps = np.array([14.0, 12.5, 18.0, 26.0, 24.0, 17.0])
+
+linear = interp1d(hours, temps)
+cubic = interp1d(hours, temps, kind="cubic")
+print(linear(10), round(float(cubic(10)), 2))
+
+safe = interp1d(hours, temps, bounds_error=False, fill_value="extrapolate")
+print(safe(22))
+
+try:
+    linear(22)
+except ValueError:
+    print("ValueError: out of range")</code></pre>
+                  <div class="output" role="group" aria-label="مخرجات البرنامج">
+                    <div class="output-label" lang="en">Output</div>
+                    <pre dir="ltr"><code>22.0 22.59
+13.5
+ValueError: out of range</code></pre>
+                  </div>
+                </figure>
+              </article>
+
+              <article class="concept">
+                <h4>3. <span dir="ltr" lang="en">Statistics</span>: وصف البيانات واختبار الفروق</h4>
+                <p>الوحدة <code>scipy.stats</code> تجيب عن سؤالين: كيف تبدو بياناتي؟ وهل الفرق بين مجموعتين حقيقي أم صدفة؟ <code>stats.describe</code> يعيد في خطوة واحدة <code>nobs</code> والمتوسط والتباين والالتواء <code>skewness</code> والتفرطح <code>kurtosis</code>، ومنها دوال منفصلة مثل <code>stats.skew</code> و<code>stats.kurtosis</code>. للتحقق من أن البيانات قريبة من التوزيع الطبيعي استخدم <code>stats.normaltest</code> (يحتاج 8 قيم على الأقل)، ولمقارنة توزيعَي عينتين مباشرة استخدم <code>stats.ks_2samp</code>.</p>
+                <p>اختبار <code>stats.ttest_ind(a, b)</code> يقارن متوسطَي عينتين مستقلتين، والفرضية الصفرية فيه أن المتوسطين متساويان. القيمة <code>pvalue</code> الصغيرة (أقل من 0.05 بالعرف الشائع) تعني أن هذا الفرق نادر لو كان المتوسطان متساويين فعلًا. القيد: p-value لا تقيس حجم الفرق ولا تثبت الفرضية، والاختبار يفترض توزيعًا قريبًا من الطبيعي، ومع اختلاف التباينين استخدم <code>equal_var=False</code>.</p>
+                <figure class="code-block">
+                  <figcaption class="code-head">
+                    <span class="code-meta">
+                      <span class="code-lang" lang="en">Python</span>
+                      <span class="code-file" lang="en">stats_test.py</span>
+                    </span>
+                    <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+                      <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <use href="#i-copy"></use>
+                      </svg>
+                      <span class="btn-label">نسخ</span>
+                    </button>
+                  </figcaption>
+                  <pre class="code" dir="ltr"><code>import numpy as np
+from scipy import stats
+
+old_ms = np.array([310, 295, 302, 288, 315, 299, 307, 292, 304, 298])
+new_ms = np.array([280, 276, 290, 271, 285, 279, 288, 274, 283, 277])
+
+summary = stats.describe(old_ms)
+print(summary.nobs, summary.mean, round(summary.variance, 2))
+
+result = stats.ttest_ind(old_ms, new_ms)
+print(round(result.statistic, 2), result.pvalue &lt; 0.05)</code></pre>
+                  <div class="output" role="group" aria-label="مخرجات البرنامج">
+                    <div class="output-label" lang="en">Output</div>
+                    <pre dir="ltr"><code>10 301.0 69.11
+6.33 True</code></pre>
+                  </div>
+                </figure>
+              </article>
+
+              <article class="concept">
+                <h4>4. <span dir="ltr" lang="en">Optimization</span>: إيجاد أفضل قيمة لدالة</h4>
+                <p>كثير من المسائل تُختزل في «أي قيم للمعاملات تجعل التكلفة أقل ما يمكن؟». <code>scipy.optimize.minimize(fun, x0, method=...)</code> يأخذ دالة هدف تستقبل مصفوفة معاملات وتعيد رقمًا واحدًا، وتخمينًا ابتدائيًا <code>x0</code>، ويعيد كائن نتيجة فيه <code>x</code> (الحل) و<code>fun</code> (قيمة الدالة عنده) و<code>success</code>. لتعظيم دالة قلّل سالبها. أما <code>root(fun, x0)</code> فيحل معادلة من الشكل <code>f(x) = 0</code>، ويدعم <code>minimize</code> أيضًا <code>bounds</code> و<code>constraints</code> عند الحاجة.</p>
+                <p>أهم خطأ: الخوارزميات هنا محلية، فتنزل من <code>x0</code> إلى أقرب قاع. لذلك قد تعيد نقطة مختلفة عند تخمين ابتدائي مختلف، و<code>success=True</code> تعني أن المحسّن تقارب لا أنه وجد الحد الأدنى العام. جرّب أكثر من <code>x0</code> عندما تشك في تعدد القيعان.</p>
+                <figure class="code-block">
+                  <figcaption class="code-head">
+                    <span class="code-meta">
+                      <span class="code-lang" lang="en">Python</span>
+                      <span class="code-file" lang="en">optimize_demo.py</span>
+                    </span>
+                    <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+                      <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <use href="#i-copy"></use>
+                      </svg>
+                      <span class="btn-label">نسخ</span>
+                    </button>
+                  </figcaption>
+                  <pre class="code" dir="ltr"><code>import numpy as np
+from scipy.optimize import minimize, root
+
+
+def cost(p):
+    return (p[0] - 3) ** 2 + (p[1] + 1) ** 2 + 5
+
+
+res = minimize(cost, x0=[0.0, 0.0], method="BFGS")
+print(np.round(res.x, 3), round(res.fun, 3), res.success)
+
+sol = root(lambda x: x + 2 * np.cos(x), x0=0)
+print(np.round(sol.x, 3), sol.success)
+
+
+def wavy(x):
+    return x[0] ** 4 - 3 * x[0] ** 2 + x[0]
+
+
+left = minimize(wavy, x0=[2.0])
+right = minimize(wavy, x0=[-2.0])
+print(np.round(left.x, 2), np.round(right.x, 2))</code></pre>
+                  <div class="output" role="group" aria-label="مخرجات البرنامج">
+                    <div class="output-label" lang="en">Output</div>
+                    <pre dir="ltr"><code>[ 3. -1.] 5.0 True
+[-1.03] True
+[1.13] [-1.3]</code></pre>
+                  </div>
+                </figure>
+              </article>
+            </section>
+
+            <section class="lesson-section" id="summary">
+              <h3 class="section-title"><b>02</b>الملخص</h3>
+              <ul class="summary-list">
+                <li><code>scipy.io.savemat</code> و<code>loadmat</code> و<code>whosmat</code> تتبادل المصفوفات مع ملفات MATLAB؛ والمصفوفة أحادية البعد تعود بشكل <code>(1, n)</code> ما لم تستخدم <code>squeeze_me=True</code>.</li>
+                <li><code>interp1d</code> يعيد دالة تقدّر القيم بين النقاط: <code>linear</code> آمن وبسيط، و<code>cubic</code> أنعم لكنه قد يتذبذب.</li>
+                <li><code>UnivariateSpline</code> مناسب لمنحنى أحادي البعد قابل للتنعيم، و<code>RBFInterpolator</code> للنقاط المتناثرة في عدة أبعاد.</li>
+                <li>الاستيفاء يمر بالبيانات حرفيًا ولا يصلح كنموذج تنبؤ، وطلب قيمة خارج النطاق يرفع <code>ValueError</code> ما لم تضبط <code>bounds_error</code> و<code>fill_value</code>.</li>
+                <li><code>stats.describe</code> يلخص العينة، و<code>normaltest</code> و<code>ks_2samp</code> يفحصان التوزيع، و<code>ttest_ind</code> يقارن متوسطَي عينتين؛ وp-value لا تقيس حجم الأثر.</li>
+                <li><code>minimize</code> يجد قاعًا محليًا انطلاقًا من <code>x0</code>، و<code>root</code> يحل <code>f(x) = 0</code>؛ و<code>success=True</code> لا تضمن الحد الأدنى العام.</li>
+              </ul>
+            </section>
+
+            <section class="lesson-section" id="interview-questions">
+              <h3 class="section-title"><b>03</b>أسئلة المقابلات</h3>
+              <div class="qa-list">
+                <details class="qa" open>
+                  <summary>
+                    <span class="qa-q">حفظتُ مصفوفة أحادية البعد بـ <code>savemat</code>، فلماذا عادت من <code>loadmat</code> بشكل <code>(1, n)</code>؟</span>
+                    <span class="level level-basic">أساسي</span>
+                  </summary>
+                  <div class="qa-body">
+                    <p>لأن MATLAB يتعامل مع كل مصفوفة كأنها ثنائية الأبعاد على الأقل، فتُحفظ المصفوفة <code>(n,)</code> كصف واحد. عند القراءة استخدم <code>squeeze_me=True</code> أو <code>reshape</code> لتعود إلى الشكل الذي يتوقعه كودك في NumPy.</p>
+                  </div>
+                </details>
+
+                <details class="qa">
+                  <summary>
+                    <span class="qa-q">ما الفرق العملي بين <code>kind="linear"</code> و<code>kind="cubic"</code> في <code>interp1d</code>؟</span>
+                    <span class="level level-basic">أساسي</span>
+                  </summary>
+                  <div class="qa-body">
+                    <p><code>linear</code> يصل كل نقطتين بخط مستقيم، فلا يتجاوز القيم المحيطة أبدًا لكن المنحنى منكسر عند النقاط. <code>cubic</code> ينتج منحنى أنعم يناسب الظواهر المتغيرة تدريجيًا، لكنه قد يتذبذب أو يتجاوز القيم عند القفزات الحادة، لذا أبدأ بالخطي ولا أنتقل للتكعيبي إلا لسبب واضح.</p>
+                  </div>
+                </details>
+
+                <details class="qa">
+                  <summary>
+                    <span class="qa-q">ماذا يحدث إذا طلبتَ من دالة <code>interp1d</code> قيمة خارج نطاق <code>x</code>؟ وكيف تتعامل معها؟</span>
+                    <span class="level level-mid">متوسط</span>
+                  </summary>
+                  <div class="qa-body">
+                    <p>يُرفع <code>ValueError</code> افتراضيًا لأن أي قيمة هناك تخمين بلا بيانات. يمكنك ضبط <code>bounds_error=False</code> مع <code>fill_value</code> برقم ثابت أو <code>NaN</code> لتعليم القيم غير المعروفة، أو <code>"extrapolate"</code> للتمديد، لكنه خطير بعيدًا عن البيانات خصوصًا مع <code>cubic</code>.</p>
+                  </div>
+                </details>
+
+                <details class="qa">
+                  <summary>
+                    <span class="qa-q">كيف تقرأ <code>pvalue</code> الناتجة من <code>ttest_ind</code>، وما افتراضات الاختبار؟</span>
+                    <span class="level level-mid">متوسط</span>
+                  </summary>
+                  <div class="qa-body">
+                    <p>هي احتمال ملاحظة فرق بهذا الحجم أو أكبر لو كان المتوسطان متساويين فعلًا؛ فالقيمة الصغيرة تجعل فرضية التساوي مستبعدة، لكنها لا تقول شيئًا عن أهمية الفرق عمليًا. الاختبار يفترض عينتين مستقلتين وتوزيعًا قريبًا من الطبيعي، ومع اختلاف التباين أستخدم <code>equal_var=False</code>.</p>
+                  </div>
+                </details>
+
+                <details class="qa">
+                  <summary>
+                    <span class="qa-q">أعاد <code>minimize</code> النتيجة <code>success=True</code>. هل هذا يعني أنه وجد أقل قيمة ممكنة للدالة؟</span>
+                    <span class="level level-trap">فخ</span>
+                  </summary>
+                  <div class="qa-body">
+                    <p>لا. <code>success</code> تعني أن المحسّن توقف بعد استيفاء معيار التقارب، وهو يجد قاعًا محليًا قريبًا من <code>x0</code> فقط. في دالة <code>wavy</code> أعلاه يعطي <code>x0=2.0</code> الحل <code>1.13</code> بينما يعطي <code>x0=-2.0</code> الحل <code>-1.3</code>، وكلاهما <code>success=True</code> مع أن الثاني هو الأفضل.</p>
+                  </div>
+                </details>
+              </div>
+            </section>
+
+            <section class="lesson-section" id="practical">
+              <h3 class="section-title"><b>04</b>المسألة العملية</h3>
+              <div class="callout callout-problem">
+                <p>محطتان تقيسان درجة حرارة المخزن خلال 24 ساعة، لكن بأوقات قياس مختلفة: المحطة A عند الساعات <code>[0, 2, 5, 9, 12, 16, 20, 24]</code> والمحطة B عند <code>[0, 3, 6, 10, 14, 18, 24]</code>. المطلوب: مقارنة المحطتين على شبكة زمنية موحدة كل ساعتين، واختبار هل بين قراءاتهما فرق منتظم (offset) بدلالة إحصائية، وإيجاد قيمة offset بالتحسين، ثم حفظ النتائج في ملف <code>.mat</code> يفتحه زملاؤك في MATLAB والتأكد من إعادة قراءته.</p>
+              </div>
+              <ol class="solution">
+                <li class="sol-step">
+                  <h4>فهم المطلوب</h4>
+                  <p>القراءتان غير متزامنتين، فلا يمكن طرح إحداهما من الأخرى مباشرة. نحتاج أولًا توحيد الأوقات (Interpolation)، ثم اختبار متوسط الفروق (Statistics)، ثم تقدير offset (Optimization)، ثم التصدير (MATLAB Arrays).</p>
+                </li>
+                <li class="sol-step">
+                  <h4>خطة الحل</h4>
+                  <p>نبني شبكة <code>grid</code> كل ساعتين، ونستوفي كل محطة عليها بـ <code>interp1d</code> الخطي، ونحسب <code>diff</code> بطرح A من B، ونختبر <code>diff</code> مقابل صفر بـ <code>ttest_1samp</code>، ونقلل مجموع المربعات بـ <code>minimize</code>، ونحفظ ثم نقرأ الملف.</p>
+                </li>
+                <li class="sol-step">
+                  <h4>الكود الكامل</h4>
+                  <figure class="code-block">
+                    <figcaption class="code-head">
+                      <span class="code-meta">
+                        <span class="code-lang" lang="en">Python</span>
+                        <span class="code-file" lang="en">sensor_calibration.py</span>
+                      </span>
+                      <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+                        <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                          <use href="#i-copy"></use>
+                        </svg>
+                        <span class="btn-label">نسخ</span>
+                      </button>
+                    </figcaption>
+                    <pre class="code" dir="ltr"><code>import numpy as np
+from scipy import io, stats
+from scipy.interpolate import interp1d
+from scipy.optimize import minimize
+
+hours_a = np.array([0, 2, 5, 9, 12, 16, 20, 24])
+temp_a = np.array([14.2, 13.1, 16.8, 24.5, 27.9, 25.0, 19.3, 15.1])
+hours_b = np.array([0, 3, 6, 10, 14, 18, 24])
+temp_b = np.array([14.9, 14.3, 18.4, 25.9, 27.5, 21.0, 15.9])
+
+grid = np.arange(0, 25, 2)
+diff = interp1d(hours_b, temp_b)(grid) - interp1d(hours_a, temp_a)(grid)
+
+test = stats.ttest_1samp(diff, popmean=0)
+fit = minimize(lambda c: np.sum((diff - c[0]) ** 2), x0=[0.0])
+
+io.savemat("calibration.mat", {"grid": grid, "diff": diff, "offset": fit.x})
+back = io.loadmat("calibration.mat", squeeze_me=True)
+print(np.round(diff, 2))
+print(round(test.pvalue, 4), round(fit.x[0], 3), back["diff"].shape)</code></pre>
+                    <div class="output" role="group" aria-label="مخرجات البرنامج">
+                      <div class="output-label" lang="en">Output</div>
+                      <pre dir="ltr"><code>[ 0.7   1.4   0.1  -0.33 -0.43  0.27 -1.2   1.05 -0.75 -1.15  0.    0.4
+  0.8 ]
+0.7733 0.067 (13,)</code></pre>
+                    </div>
+                  </figure>
+                </li>
+                <li class="sol-step">
+                  <h4>تفسير القرارات</h4>
+                  <p>اخترنا الاستيفاء الخطي لأن أوقات القياس متقاربة ولا نريد تذبذب <code>cubic</code>، وشبكة 0–24 تقع داخل نطاق المحطتين فلا نحتاج extrapolation. القيمة <code>pvalue = 0.7733</code> كبيرة، فلا يوجد دليل على offset منتظم، وهذا لا يثبت أنه صفر. و<code>x0=[0.0]</code> تخمين ابتدائي معقول لأن الفروق صغيرة حول الصفر.</p>
+                </li>
+                <li class="sol-step">
+                  <h4>اختبار سريع</h4>
+                  <p>تحقق من أن الشبكة تحوي 13 نقطة وأن <code>back["diff"].shape</code> يطبع <code>(13,)</code> بفضل <code>squeeze_me=True</code>. وتحقق من أن <code>fit.x[0]</code> يساوي <code>diff.mean()</code> تقريبًا، فمجموع المربعات يبلغ حده الأدنى عند المتوسط؛ وهنا طُبعت القيمة <code>0.067</code> لكليهما.</p>
+                </li>
+                <li class="sol-step">
+                  <h4>تحسين أو بديل</h4>
+                  <p>في هذه المسألة بالذات للحل المغلق صيغة بسيطة هي <code>diff.mean()</code>، فاستخدام <code>minimize</code> هنا غرضه التدريب؛ والفائدة الحقيقية للتحسين تظهر حين لا توجد صيغة مغلقة، كنموذج يضم أكثر من معامل. كما يمكن استبدال <code>ttest_1samp</code> بـ <code>ttest_rel</code> إذا كانت القراءتان مقترنتين بالوقت نفسه.</p>
+                </li>
+              </ol>
+            </section>
+          </div>
+        </section>
+      </div>
+
+      <footer class="footer">
+        <span class="footer-note" lang="en">Python Learning Roadmap</span>
+        <span class="footer-note">المرحلة 10 - الدرس 49</span>
+      </footer>
+    </main>
+
+    <script>
+      (function () {
+        'use strict'
+
+        var live = document.getElementById('copy-status')
+        var printStates = null
+
+        function fallbackCopy(text) {
+          var textarea = document.createElement('textarea')
+          textarea.value = text
+          textarea.setAttribute('readonly', '')
+          textarea.style.cssText = 'position:fixed;top:-1000px;left:-1000px;opacity:0;'
+
+          try {
+            document.body.appendChild(textarea)
+            textarea.focus()
+            textarea.select()
+            textarea.setSelectionRange(0, textarea.value.length)
+            return document.execCommand('copy')
+          } catch (error) {
+            return false
+          } finally {
+            if (textarea.parentNode) {
+              textarea.parentNode.removeChild(textarea)
+            }
+          }
+        }
+
+        function copyText(text) {
+          if (navigator.clipboard && window.isSecureContext) {
+            return navigator.clipboard.writeText(text).then(
+              function () { return true },
+              function () { return fallbackCopy(text) },
+            ).catch(function () { return false })
+          }
+
+          return Promise.resolve().then(function () {
+            return fallbackCopy(text)
+          }).catch(function () {
+            return false
+          })
+        }
+
+        document.addEventListener('click', function (event) {
+          var target = event.target
+          var button = target && typeof target.closest === 'function'
+            ? target.closest('[data-copy-code]')
+            : null
+
+          if (!button) return
+
+          var label = button.querySelector('.btn-label')
+          var block = button.closest('.code-block')
+          var code = block ? block.querySelector('pre.code > code') : null
+          if (!label || !code) return
+
+          if (!button.dataset.label) button.dataset.label = label.textContent
+
+          copyText(code.textContent).then(function (ok) {
+            label.textContent = ok ? 'تم النسخ' : 'تعذّر النسخ'
+            button.classList.toggle('is-copied', ok)
+            button.classList.toggle('is-failed', !ok)
+
+            if (live) {
+              live.textContent = ok
+                ? 'تم نسخ الكود'
+                : 'تعذّر النسخ، حدّد الكود يدويًا ثم انسخه'
+            }
+
+            window.clearTimeout(button._timer)
+            button._timer = window.setTimeout(function () {
+              label.textContent = button.dataset.label
+              button.classList.remove('is-copied', 'is-failed')
+            }, 1800)
+          })
+        })
+
+        window.addEventListener('beforeprint', function () {
+          if (printStates !== null) return
+
+          var questions = document.querySelectorAll('details.qa')
+          printStates = Array.prototype.map.call(questions, function (item) {
+            return item.open
+          })
+          questions.forEach(function (item) {
+            item.open = true
+          })
+        })
+
+        window.addEventListener('afterprint', function () {
+          if (printStates === null) return
+
+          var questions = document.querySelectorAll('details.qa')
+          questions.forEach(function (item, index) {
+            item.open = printStates[index] === true
+          })
+          printStates = null
+        })
+      })()
+    </script>
+  </body>
+</html>

@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#fcfcfc" />
+    <title>فتح الملفات وقراءتها - Python Open &amp; Read Files | Python Learning Roadmap</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/style.css" />
+  </head>
+  <body>
+    <svg
+      width="0"
+      height="0"
+      style="position: absolute"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <symbol id="i-copy" viewBox="0 0 24 24">
+        <rect x="9" y="9" width="12" height="12" rx="2.5" />
+        <path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15" />
+      </symbol>
+    </svg>
+    <template id="code-block-pattern">
+      <figure class="code-block">
+        <figcaption class="code-head">
+          <span class="code-meta">
+            <span class="code-lang" lang="en">Python</span>
+            <span class="code-file" lang="en">example.py</span>
+          </span>
+          <button
+            type="button"
+            class="btn btn-ghost btn-sm"
+            data-copy-code
+            aria-label="نسخ الكود"
+          >
+            <svg
+              class="btn-icon"
+              viewBox="0 0 24 24"
+              width="14"
+              height="14"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <use href="#i-copy"></use>
+            </svg>
+            <span class="btn-label">نسخ</span>
+          </button>
+        </figcaption>
+        <pre class="code" dir="ltr"><code><!-- ضع الكود هنا كنص HTML مع تهريب الرموز الخاصة --></code></pre>
+        <!-- احذف كتلة output إذا لم يكن للمثال ناتج ثابت ومفيد. -->
+        <div class="output" role="group" aria-label="مخرجات البرنامج">
+          <div class="output-label" lang="en">Output</div>
+          <pre dir="ltr"><code><!-- ضع المخرجات المتحققة هنا --></code></pre>
+        </div>
+      </figure>
+    </template>
+
+    <div
+      class="sr-only"
+      id="copy-status"
+      role="status"
+      aria-live="polite"
+    ></div>
+
+    <main class="page">
+      <header class="hero lesson-hero">
+        <span class="eyebrow">
+          <span class="eyebrow-dot"></span>
+          المرحلة <span dir="ltr">08</span>:
+          <span dir="ltr" lang="en">Exceptions &amp; File Handling</span>
+        </span>
+        <h1>
+          <span class="h1-ar">فتح الملفات وقراءتها</span>
+          <span class="h1-en" dir="ltr" lang="en">Python Open &amp; Read Files</span>
+        </h1>
+        <p class="hero-description">كيف يقرأ برنامجك بيانات من ملف نصي بأمان وكفاءة: فتح الملف، اختيار الوضع، إغلاقه تلقائيًا، واختيار طريقة القراءة المناسبة.</p>
+      </header>
+
+      <div class="lesson-parts">
+        <section class="lesson-part-card" id="complete-lesson" aria-labelledby="complete-lesson-title">
+          <header class="part-header">
+            <div class="part-number">درس متكامل</div>
+            <div class="part-heading">
+              <h2 id="complete-lesson-title">
+                <span class="part-title-en" dir="ltr" lang="en">Complete Lesson</span>
+                <span class="sep" aria-hidden="true"> - </span>
+                <span class="part-title-ar">الشرح والملخص والتطبيق</span>
+              </h2>
+              <span class="part-description">كل محتوى الدرس في ملف HTML واحد</span>
+            </div>
+          </header>
+
+          <div class="lesson-body">
+            <section class="lesson-section" id="explain">
+              <h3 class="section-title"><b>01</b>الشرح</h3>
+              
+<article class="concept">
+<h4>open() وFile Modes وFile Objects</h4>
+<p>البرنامج يعمل في الذاكرة، أما الملفات فتعيش على القرص. الدالة <code>open()</code> هي الجسر بينهما: تطلب من نظام التشغيل فتح الملف وتعيد <strong>File Object</strong>، وهو مقبض (handle) يحمل الاسم والوضع ومؤشر قراءة داخليًا، وليس محتوى الملف نفسه. الصيغة المعتادة: <code>open(path, mode="r", encoding="utf-8")</code>.</p>
+<p>الوضع (<code>mode</code>) يحدد ما يُسمح لك بفعله:</p>
+<ul>
+<li><code>"r"</code> قراءة، وهو الافتراضي؛ يرفع <code>FileNotFoundError</code> إن لم يوجد الملف.</li>
+<li><code>"w"</code> كتابة؛ ينشئ الملف أو <strong>يفرّغه فورًا</strong> عند الفتح.</li>
+<li><code>"a"</code> إضافة في نهاية الملف دون مسح، و<code>"x"</code> إنشاء حصري يفشل إن كان الملف موجودًا.</li>
+<li><code>"+"</code> يضيف القراءة والكتابة معًا (مثل <code>"r+"</code>)، و<code>"b"</code> وضع ثنائي بدل النصي الافتراضي <code>"t"</code>.</li>
+</ul>
+<p>نركّز هنا على <code>"r"</code> (الكتابة موضوع لاحق). مرّر <code>encoding="utf-8"</code> دائمًا للملفات النصية، وإلا استُخدم ترميز النظام وقد تفسد الحروف العربية. والمسار النسبي يُحسب من مجلد التشغيل الحالي لا من مكان السكربت، وهذا سبب شائع لـ <code>FileNotFoundError</code>. أمثلة الدرس تفترض وجود هذا الملف بجانب السكربت (ينتهي بسطر جديد):</p>
+<figure class="code-block"><figcaption class="code-head"><span class="code-meta"><span class="code-lang" lang="en">Text</span><span class="code-file" lang="en">courses.txt</span></span><button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود"><svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-copy"></use></svg><span class="btn-label">نسخ</span></button></figcaption>
+<pre class="code" dir="ltr"><code>Python Basics
+Data Structures
+File Handling
+</code></pre></figure>
+<figure class="code-block"><figcaption class="code-head"><span class="code-meta"><span class="code-lang" lang="en">Python</span><span class="code-file" lang="en">open_basics.py</span></span><button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود"><svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-copy"></use></svg><span class="btn-label">نسخ</span></button></figcaption>
+<pre class="code" dir="ltr"><code>file = open("courses.txt", mode="r", encoding="utf-8")
+print(type(file))
+print(file.name, file.mode)
+print(file.closed)
+file.close()  # closing is covered next</code></pre>
+<div class="output" role="group" aria-label="مخرجات البرنامج"><div class="output-label" lang="en">Output</div><pre dir="ltr"><code>&lt;class '_io.TextIOWrapper'&gt;
+courses.txt r
+False</code></pre></div></figure>
+
+</article>
+
+<article class="concept">
+<h4>Close Files وwith Statement</h4>
+<p>الملف المفتوح يستهلك مورد نظام تشغيل (file descriptor)، وقد تبقى البيانات في buffer ولا تصل للقرص إلا عند الإغلاق، وقد يُقفل الملف عن برامج أخرى. لذلك نغلقه بـ <code>close()</code>، وأي قراءة بعده ترفع <code>ValueError</code>. لكن الإغلاق اليدوي هش: إن وقع استثناء قبل <code>close()</code> فلن يُنفَّذ.</p>
+<p>الحل هو <code>with</code>: يضمن إغلاق الملف عند مغادرة الكتلة حتى مع الاستثناءات. القيد: يبقى المتغير موجودًا بعد الكتلة لكن الملف مغلق، فاقرأ ما تحتاجه داخلها.</p>
+<figure class="code-block"><figcaption class="code-head"><span class="code-meta"><span class="code-lang" lang="en">Python</span><span class="code-file" lang="en">close_and_with.py</span></span><button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود"><svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-copy"></use></svg><span class="btn-label">نسخ</span></button></figcaption>
+<pre class="code" dir="ltr"><code>file = open("courses.txt", encoding="utf-8")
+file.close()
+print(file.closed)
+
+with open("courses.txt", encoding="utf-8") as file:
+    content = file.read()
+print(file.closed)
+print(content.splitlines())</code></pre>
+<div class="output" role="group" aria-label="مخرجات البرنامج"><div class="output-label" lang="en">Output</div><pre dir="ltr"><code>True
+True
+['Python Basics', 'Data Structures', 'File Handling']</code></pre></div></figure>
+
+</article>
+
+<article class="concept">
+<h4>read() وreadline() وreadlines()</h4>
+<p>كل قراءة تبدأ من موضع المؤشر الحالي وتحرّكه للأمام:</p>
+<ul>
+<li><code>read()</code> تعيد كل ما تبقّى كسلسلة واحدة، و<code>read(n)</code> تعيد <code>n</code> حرفًا فقط.</li>
+<li><code>readline()</code> تعيد سطرًا واحدًا بما فيه <code>\n</code>.</li>
+<li><code>readlines()</code> تعيد <code>list</code> بكل الأسطر المتبقية.</li>
+</ul>
+<p>عند نهاية الملف تعيد <code>read()</code> و<code>readline()</code> سلسلة فارغة <code>""</code> دون استثناء، وتعيد <code>readlines()</code> قائمة فارغة. الثلاث تحمّل ما تقرؤه في الذاكرة، فلا تستخدم <code>read()</code> أو <code>readlines()</code> مع ملفات ضخمة.</p>
+<figure class="code-block"><figcaption class="code-head"><span class="code-meta"><span class="code-lang" lang="en">Python</span><span class="code-file" lang="en">read_methods.py</span></span><button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود"><svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-copy"></use></svg><span class="btn-label">نسخ</span></button></figcaption>
+<pre class="code" dir="ltr"><code>with open("courses.txt", encoding="utf-8") as file:
+    first = file.readline()
+    rest = file.readlines()
+    after_end = file.read()
+
+print(repr(first))
+print(rest)
+print(repr(after_end))</code></pre>
+<div class="output" role="group" aria-label="مخرجات البرنامج"><div class="output-label" lang="en">Output</div><pre dir="ltr"><code>'Python Basics\n'
+['Data Structures\n', 'File Handling\n']
+''</code></pre></div></figure>
+
+</article>
+
+<article class="concept">
+<h4>Read Files Line by Line</h4>
+<p>الـ File Object نفسه iterator (كما في درس Iterators)، فـ <code>for line in file</code> يقرأ سطرًا واحدًا في كل دورة دون تحميل الملف كله، وهو الخيار الافتراضي للملفات الكبيرة. كل <code>line</code> ينتهي بـ <code>\n</code> و<code>print</code> تضيف سطرًا آخر فتظهر أسطر فارغة، لذا استخدم <code>rstrip()</code>. ولترقيم الأسطر استخدم <code>enumerate(file, start=1)</code>. تنبيه: لا تخلط <code>readline()</code> مع الحلقة على نفس الملف، فالمؤشر واحد وستتداخل القراءتان.</p>
+<figure class="code-block"><figcaption class="code-head"><span class="code-meta"><span class="code-lang" lang="en">Python</span><span class="code-file" lang="en">line_by_line.py</span></span><button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود"><svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-copy"></use></svg><span class="btn-label">نسخ</span></button></figcaption>
+<pre class="code" dir="ltr"><code>with open("courses.txt", encoding="utf-8") as file:
+    for number, line in enumerate(file, start=1):
+        print(f"{number}. {line.rstrip()}")</code></pre>
+<div class="output" role="group" aria-label="مخرجات البرنامج"><div class="output-label" lang="en">Output</div><pre dir="ltr"><code>1. Python Basics
+2. Data Structures
+3. File Handling</code></pre></div></figure>
+
+</article>
+
+            </section>
+
+            <section class="lesson-section" id="summary">
+              <h3 class="section-title"><b>02</b>الملخص</h3>
+              <ul class="summary-list">
+                <li><code>open()</code> تعيد File Object (مقبضًا) وليس المحتوى، والوضع الافتراضي <code>"r"</code> للقراءة النصية.</li>
+<li>الأوضاع: <code>"r"</code> قراءة، <code>"w"</code> يفرّغ الملف عند الفتح، <code>"a"</code> يضيف، <code>"x"</code> ينشئ حصريًا، <code>"+"</code> للقراءة والكتابة، <code>"b"</code> ثنائي.</li>
+<li>حدّد <code>encoding="utf-8"</code> للملفات النصية، وتذكّر أن المسار النسبي يُحسب من مجلد التشغيل.</li>
+<li>استخدم <code>with</code> لإغلاق الملف تلقائيًا حتى عند الاستثناءات؛ والقراءة بعد الإغلاق ترفع <code>ValueError</code>.</li>
+<li><code>read()</code> نص كامل، <code>readline()</code> سطر واحد، <code>readlines()</code> قائمة أسطر؛ ونهاية الملف تعطي <code>""</code> أو قائمة فارغة.</li>
+<li>للملفات الكبيرة مرّ بـ <code>for line in file</code> واحذف <code>\n</code> بـ <code>rstrip()</code>.</li>
+
+              </ul>
+            </section>
+
+            <section class="lesson-section" id="interview-questions">
+              <h3 class="section-title"><b>03</b>أسئلة المقابلات</h3>
+              <div class="qa-list">
+                <details class="qa" open><summary><span class="qa-q">ماذا تعيد <code>open()</code>، وما وضعها الافتراضي؟</span><span class="level level-basic">أساسي</span></summary><div class="qa-body"><p>تعيد File Object وليس نص الملف؛ لقراءة المحتوى تستدعي عليه <code>read()</code> أو <code>readline()</code> أو تمرّ عليه بحلقة. الوضع الافتراضي <code>"rt"</code> أي قراءة نصية، وإن لم يوجد الملف يُرفع <code>FileNotFoundError</code>.</p><p class="qa-follow">متابعة: لماذا نكتب <code>encoding="utf-8"</code> صراحةً؟ لأن الترميز الافتراضي يختلف بين الأنظمة وقد يفسد النص العربي.</p></div></details>
+<details class="qa"><summary><span class="qa-q">لماذا يُفضَّل <code>with</code> على <code>open()</code> مع <code>close()</code> يدويًا؟</span><span class="level level-basic">أساسي</span></summary><div class="qa-body"><p>لأن <code>with</code> يغلق الملف عند مغادرة الكتلة حتى لو وقع استثناء، بينما قد يُتخطّى <code>close()</code> اليدوي فيبقى الملف مفتوحًا ويتسرّب المورد. كما أنه يبيّن بوضوح أين ينتهي استخدام الملف.</p></div></details>
+<details class="qa"><summary><span class="qa-q">ما الفرق بين <code>read()</code> و<code>readline()</code> و<code>readlines()</code>؟</span><span class="level level-mid">متوسط</span></summary><div class="qa-body"><p><code>read()</code> تعيد المتبقي كنص واحد، و<code>readline()</code> سطرًا واحدًا بما فيه <code>\n</code>، و<code>readlines()</code> قائمة بكل الأسطر. الأولى والثالثة مناسبتان للملفات الصغيرة، أما <code>readline()</code> فتفيد عند قراءة سطر محدد كترويسة ثم معالجة الباقي بطريقة أخرى.</p></div></details>
+<details class="qa"><summary><span class="qa-q">ملف سجل حجمه عدة GB: كيف تعالجه؟ ولماذا تظهر أسطر فارغة عند الطباعة؟</span><span class="level level-mid">متوسط</span></summary><div class="qa-body"><p>نستخدم <code>for line in file</code> لأنها تقرأ سطرًا بسطر دون تحميل الملف كله. الأسطر الفارغة سببها أن كل <code>line</code> يحمل <code>\n</code> و<code>print</code> تضيف سطرًا جديدًا؛ الحل <code>line.rstrip()</code> أو <code>print(line, end="")</code>.</p></div></details>
+<details class="qa"><summary><span class="qa-q">ماذا يحدث لملف <code>report.txt</code> المليء بالبيانات عند تنفيذ <code>open("report.txt", "w")</code> فقط دون كتابة أي شيء؟</span><span class="level level-trap">فخ</span></summary><div class="qa-body"><p>يُفرَّغ الملف فورًا عند الفتح وتضيع بياناته، حتى لو لم تكتب شيئًا ولم تغلقه. للقراءة استخدم <code>"r"</code>، وللإضافة دون مسح <code>"a"</code>، ولمنع الكتابة فوق ملف موجود <code>"x"</code>.</p></div></details>
+
+              </div>
+            </section>
+
+            <section class="lesson-section" id="practical">
+              <h3 class="section-title"><b>04</b>المسألة العملية</h3>
+              <div class="callout callout-problem"><p><strong>المطلوب:</strong> لديك ملف سجل <code>server.log</code> (أدناه). اكتب برنامجًا يقرؤه سطرًا بسطر، ويحسب عدد أسطر كل مستوى (<code>INFO</code> و<code>WARNING</code> و<code>ERROR</code>)، ويطبع أسطر <code>ERROR</code> مع أرقامها، ويتعامل بهدوء مع غياب الملف أو وجود أسطر فارغة.</p><figure class="code-block"><figcaption class="code-head"><span class="code-meta"><span class="code-lang" lang="en">Text</span><span class="code-file" lang="en">server.log</span></span><button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود"><svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-copy"></use></svg><span class="btn-label">نسخ</span></button></figcaption>
+<pre class="code" dir="ltr"><code>INFO startup complete
+WARNING disk usage 82%
+ERROR database timeout
+INFO user login
+ERROR payment failed
+</code></pre></figure>
+</div>
+              <ol class="solution">
+                <li class="sol-step"><strong>فهم المطلوب</strong><p>مدخل: ملف نصي سجلّاته بصيغة <code>LEVEL message</code>. مخرجات: عدّاد لكل مستوى وقائمة بأسطر الأخطاء بأرقامها، بدون انهيار إن غاب الملف.</p></li>
+<li class="sol-step"><strong>خطة الحل</strong><p>دالة تفتح الملف بـ <code>with</code>، وتمرّ عليه بـ <code>enumerate</code>، وتتخطى الأسطر الفارغة، وتحدّث <code>dict</code> العدّاد وقائمة الأخطاء. خارج الدالة نلتقط <code>FileNotFoundError</code>.</p></li>
+<li class="sol-step"><strong>الكود الكامل</strong><figure class="code-block"><figcaption class="code-head"><span class="code-meta"><span class="code-lang" lang="en">Python</span><span class="code-file" lang="en">log_analyzer.py</span></span><button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود"><svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-copy"></use></svg><span class="btn-label">نسخ</span></button></figcaption>
+<pre class="code" dir="ltr"><code>def analyze_log(path):
+    counts = {"INFO": 0, "WARNING": 0, "ERROR": 0}
+    errors = []
+    with open(path, encoding="utf-8") as log_file:
+        for number, line in enumerate(log_file, start=1):
+            parts = line.split()
+            if not parts:
+                continue
+            if parts[0] in counts:
+                counts[parts[0]] += 1
+            if parts[0] == "ERROR":
+                errors.append(f"{number}: {line.rstrip()}")
+    return counts, errors
+
+
+try:
+    counts, errors = analyze_log("server.log")
+except FileNotFoundError:
+    print("server.log was not found next to the script")
+else:
+    print(counts)
+    for item in errors:
+        print(item)</code></pre>
+<div class="output" role="group" aria-label="مخرجات البرنامج"><div class="output-label" lang="en">Output</div><pre dir="ltr"><code>{'INFO': 2, 'WARNING': 1, 'ERROR': 2}
+3: ERROR database timeout
+5: ERROR payment failed</code></pre></div></figure>
+</li>
+<li class="sol-step"><strong>تفسير القرارات</strong><p><code>with</code> يضمن الإغلاق، والتكرار على الملف يوفّر الذاكرة، و<code>enumerate</code> يعطي رقم السطر، و<code>rstrip()</code> يحذف <code>\n</code>. <code>split()</code> تعيد قائمة فارغة للسطر الفارغ فنتخطاه. التقاط الاستثناء خارج الدالة لأن المستدعي هو من يقرر ماذا يفعل عند غياب الملف.</p></li>
+<li class="sol-step"><strong>اختبار سريع</strong><p>شغّل البرنامج بالملف المعطى فتظهر النتيجة أعلاه. ثم أضف سطرًا فارغًا في منتصف الملف (يُتخطّى دون خطأ)، وغيّر اسم الملف لترى رسالة الخطأ بدل انهيار البرنامج.</p></li>
+<li class="sol-step"><strong>تحسين أو بديل</strong><p>للملفات الصغيرة يمكن استبدال الحلقة بـ <code>readlines()</code>، لكن الحلقة تبقى صالحة للملف الكبير دون تغيير. وإن كان المطلوب الأخطاء فقط فـ <code>line.startswith("ERROR")</code> أبسط.</p></li>
+
+              </ol>
+            </section>
+          </div>
+        </section>
+      </div>
+
+      <footer class="footer">
+        <span class="footer-note" lang="en">Python Learning Roadmap</span>
+        <span class="footer-note">المرحلة 08 - الدرس 36</span>
+      </footer>
+    </main>
+
+    <script>
+      (function () {
+        'use strict'
+
+        var live = document.getElementById('copy-status')
+        var printStates = null
+
+        function fallbackCopy(text) {
+          var textarea = document.createElement('textarea')
+          textarea.value = text
+          textarea.setAttribute('readonly', '')
+          textarea.style.cssText = 'position:fixed;top:-1000px;left:-1000px;opacity:0;'
+
+          try {
+            document.body.appendChild(textarea)
+            textarea.focus()
+            textarea.select()
+            textarea.setSelectionRange(0, textarea.value.length)
+            return document.execCommand('copy')
+          } catch (error) {
+            return false
+          } finally {
+            if (textarea.parentNode) {
+              textarea.parentNode.removeChild(textarea)
+            }
+          }
+        }
+
+        function copyText(text) {
+          if (navigator.clipboard && window.isSecureContext) {
+            return navigator.clipboard.writeText(text).then(
+              function () { return true },
+              function () { return fallbackCopy(text) },
+            ).catch(function () { return false })
+          }
+
+          return Promise.resolve().then(function () {
+            return fallbackCopy(text)
+          }).catch(function () {
+            return false
+          })
+        }
+
+        document.addEventListener('click', function (event) {
+          var target = event.target
+          var button = target && typeof target.closest === 'function'
+            ? target.closest('[data-copy-code]')
+            : null
+
+          if (!button) return
+
+          var label = button.querySelector('.btn-label')
+          var block = button.closest('.code-block')
+          var code = block ? block.querySelector('pre.code > code') : null
+          if (!label || !code) return
+
+          if (!button.dataset.label) button.dataset.label = label.textContent
+
+          copyText(code.textContent).then(function (ok) {
+            label.textContent = ok ? 'تم النسخ' : 'تعذّر النسخ'
+            button.classList.toggle('is-copied', ok)
+            button.classList.toggle('is-failed', !ok)
+
+            if (live) {
+              live.textContent = ok
+                ? 'تم نسخ الكود'
+                : 'تعذّر النسخ، حدّد الكود يدويًا ثم انسخه'
+            }
+
+            window.clearTimeout(button._timer)
+            button._timer = window.setTimeout(function () {
+              label.textContent = button.dataset.label
+              button.classList.remove('is-copied', 'is-failed')
+            }, 1800)
+          })
+        })
+
+        window.addEventListener('beforeprint', function () {
+          if (printStates !== null) return
+
+          var questions = document.querySelectorAll('details.qa')
+          printStates = Array.prototype.map.call(questions, function (item) {
+            return item.open
+          })
+          questions.forEach(function (item) {
+            item.open = true
+          })
+        })
+
+        window.addEventListener('afterprint', function () {
+          if (printStates === null) return
+
+          var questions = document.querySelectorAll('details.qa')
+          questions.forEach(function (item, index) {
+            item.open = printStates[index] === true
+          })
+          printStates = null
+        })
+      })()
+    </script>
+  </body>
+</html>
