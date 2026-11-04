@@ -21,6 +21,10 @@
   --font-family: "Baloo Bhaijaan 2", "Noto Sans Arabic", sans-serif;
   --radius-card: 18px;
   --shadow-soft: 0 5px 20px rgba(36, 49, 91, .045);
+  --font-code: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  --clr-purple-dark: #96578a;
+  --clr-term: #202235;
+  --clr-term-text: #e8ebf3;
 }
 
 * {
@@ -662,11 +666,134 @@ h1 {
 /* =====================================================================
    Lesson template (templet.html)
    ===================================================================== */
-:root {
-  --font-code: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
-  --clr-purple-dark: #96578a;
-  --clr-term: #202235;
-  --clr-term-text: #e8ebf3;
+/* ---------- Lesson parts: semantic structure ---------- */
+.lesson-parts {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.lesson-part-card {
+  overflow: hidden;
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-card);
+  background: var(--clr-white);
+  box-shadow: var(--shadow-soft);
+}
+
+.part-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 15px;
+  min-height: 87px;
+  padding: 16px 22px;
+  border-bottom: 1px solid var(--clr-gray-3);
+  background: linear-gradient(100deg, #fff 0%, var(--clr-gray-1) 55%, var(--clr-blue-soft) 100%);
+}
+
+.part-number {
+  flex: 0 0 auto;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 91px;
+  min-height: 37px;
+  padding: 5px 11px;
+  border-radius: 10px;
+  background: var(--clr-blue);
+  color: #fff;
+  font-family: var(--font-family);
+  font-size: 14px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+#part-2 .part-number {
+  background: var(--clr-purple);
+}
+
+.part-heading {
+  flex: 1 1 240px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.part-heading h2 {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 5px 11px;
+  margin: 0;
+  color: var(--clr-ink);
+  font-family: var(--font-family);
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 1.45;
+}
+
+.part-title-en {
+  font-family: var(--font-family);
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -.2px;
+}
+
+.part-title-ar {
+  color: var(--clr-text-soft);
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.part-description {
+  color: var(--clr-text-mute);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+
+@media (max-width: 640px) {
+  .part-header {
+    gap: 10px 11px;
+    padding: 15px;
+  }
+
+  .part-number {
+    min-width: 78px;
+    min-height: 34px;
+    font-size: 12px;
+  }
+
+  .part-heading {
+    flex-basis: 150px;
+  }
+
+  .part-heading h2 {
+    gap: 2px 8px;
+    font-size: 18px;
+  }
+
+  .part-title-en {
+    font-size: 14px;
+  }
+
+  .part-title-ar {
+    font-size: 15px;
+  }
+}
+
+@media print {
+  /* The lesson card may span several pages; keep its small content blocks intact instead. */
+  .lesson-part-card {
+    overflow: visible;
+    box-shadow: none;
+  }
+
+  .summary-list li {
+    break-inside: avoid;
+  }
 }
 
 /* ---------- Hero (lesson) ---------- */
@@ -822,6 +949,14 @@ h1 {
   font: inherit;
 }
 
+/* Keep source code LTR regardless of the document's Arabic direction. */
+.code-block pre.code,
+.code-block pre.code > code {
+  direction: ltr;
+  text-align: left;
+  unicode-bidi: isolate;
+}
+
 .output {
   border-top: 1px solid var(--clr-gray-4);
   background: var(--clr-term);
@@ -847,6 +982,9 @@ h1 {
 .output pre {
   padding-top: 6px;
   color: var(--clr-term-text);
+  direction: ltr;
+  text-align: left;
+  unicode-bidi: isolate;
 }
 
 .output.is-error .output-label::before {
@@ -1166,28 +1304,6 @@ h1 {
 
 .sol-step> :last-child {
   margin-bottom: 0;
-}
-
-/* ---------- Next lesson ---------- */
-.next-lesson {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 4px 12px;
-  margin-top: 15px;
-  padding: 13px 20px;
-  border: 1px solid #e1e5f3;
-  border-radius: 14px;
-  background: var(--clr-blue-soft);
-  color: var(--clr-text-mute);
-  font-size: 13.5px;
-}
-
-.next-lesson strong {
-  color: var(--clr-blue-dark);
-  font-family: var(--font-family);
-  font-size: 16px;
-  font-weight: 800;
 }
 
 /* ---------- Lesson: responsive / motion / print ---------- */
