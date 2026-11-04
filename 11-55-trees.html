@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#fcfcfc" />
+    <title>الأشجار | Python Learning Roadmap</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/style.css" />
+  </head>
+  <body>
+    <svg
+      width="0"
+      height="0"
+      style="position: absolute"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <symbol id="i-copy" viewBox="0 0 24 24">
+        <rect x="9" y="9" width="12" height="12" rx="2.5" />
+        <path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15" />
+      </symbol>
+    </svg>
+    <template id="code-block-pattern">
+      <figure class="code-block">
+        <figcaption class="code-head">
+          <span class="code-meta">
+            <span class="code-lang" lang="en">Python</span>
+            <span class="code-file" lang="en">example.py</span>
+          </span>
+          <button
+            type="button"
+            class="btn btn-ghost btn-sm"
+            data-copy-code
+            aria-label="نسخ الكود"
+          >
+            <svg
+              class="btn-icon"
+              viewBox="0 0 24 24"
+              width="14"
+              height="14"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <use href="#i-copy"></use>
+            </svg>
+            <span class="btn-label">نسخ</span>
+          </button>
+        </figcaption>
+        <pre class="code" dir="ltr"><code><!-- ضع الكود هنا كنص HTML مع تهريب الرموز الخاصة --></code></pre>
+        <!-- احذف كتلة output إذا لم يكن للمثال ناتج ثابت ومفيد. -->
+        <div class="output" role="group" aria-label="مخرجات البرنامج">
+          <div class="output-label" lang="en">Output</div>
+          <pre dir="ltr"><code><!-- ضع المخرجات المتحققة هنا --></code></pre>
+        </div>
+      </figure>
+    </template>
+
+    <div
+      class="sr-only"
+      id="copy-status"
+      role="status"
+      aria-live="polite"
+    ></div>
+
+    <main class="page">
+      <header class="hero lesson-hero">
+        <span class="eyebrow">
+          <span class="eyebrow-dot"></span>
+          المرحلة <span dir="ltr">11</span>:
+          <span dir="ltr" lang="en">Data Structures &amp; Algorithms (DSA)</span>
+        </span>
+        <h1>
+          <span class="h1-ar">الأشجار</span>
+          <span class="h1-en" dir="ltr" lang="en">Trees</span>
+        </h1>
+        <p class="hero-description">كيف نخزّن البيانات الهرمية ونبحث فيها بسرعة؟ من Binary Trees وBST إلى AVL Trees التي تحافظ على توازنها.</p>
+      </header>
+
+      <div class="lesson-parts">
+        <section class="lesson-part-card" id="complete-lesson" aria-labelledby="complete-lesson-title">
+          <header class="part-header">
+            <div class="part-number">درس متكامل</div>
+            <div class="part-heading">
+              <h2 id="complete-lesson-title">
+                <span class="part-title-en" dir="ltr" lang="en">Complete Lesson</span>
+                <span class="sep" aria-hidden="true"> - </span>
+                <span class="part-title-ar">الشرح والملخص والتطبيق</span>
+              </h2>
+              <span class="part-description">كل محتوى الدرس في ملف HTML واحد</span>
+            </div>
+          </header>
+
+          <div class="lesson-body">
+            <section class="lesson-section" id="explain">
+              <h3 class="section-title"><b>01</b>الشرح</h3>
+              
+<article class="concept">
+<h4>Trees و Binary Trees: بنية هرمية بدل الخطية</h4>
+<p>القوائم والـ arrays خطية، لكن بيانات مثل المجلدات وتصنيفات المنتجات وشجرة DOM هرمية بطبيعتها. الـ <code>Tree</code> مجموعة <code>nodes</code> مرتبطة بحواف دون دورات، لها <code>root</code> واحد؛ كل node غير الجذر له <code>parent</code> واحد، والعقدة بلا أبناء تسمى <code>leaf</code>. الـ <code>depth</code> هو عدد الحواف من الجذر إلى العقدة، و<code>height</code> هو أطول مسار نزولًا.</p>
+<p>في الـ <code>Binary Tree</code> لكل node على الأكثر ابنان: <code>left</code> و<code>right</code>. نزورها بالـ recursion بثلاثة ترتيبات تختلف بموضع معالجة node: <code>preorder</code> (node ثم left ثم right)، و<code>inorder</code> (left ثم node ثم right)، و<code>postorder</code> (الأبناء أولًا). وهناك <code>level-order</code> يمر مستوى بعد مستوى باستخدام queue من درس Stacks &amp; Queues.</p>
+<figure class="code-block"><figcaption class="code-head"><span class="code-meta"><span class="code-lang" lang="en">Python</span><span class="code-file" lang="en">binary_tree.py</span></span><button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود"><svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-copy"></use></svg><span class="btn-label">نسخ</span></button></figcaption>
+<pre class="code" dir="ltr"><code>class Node:
+    def __init__(self, value, left=None, right=None):
+        self.value = value
+        self.left = left
+        self.right = right
+
+
+def preorder(node):
+    if node is None:
+        return []
+    return [node.value] + preorder(node.left) + preorder(node.right)
+
+
+root = Node("docs", Node("images", Node("icons")), Node("code"))
+print(preorder(root))</code></pre>
+<div class="output" role="group" aria-label="مخرجات البرنامج"><div class="output-label" lang="en">Output</div><pre dir="ltr"><code>['docs', 'images', 'icons', 'code']</code></pre></div></figure>
+<p><strong>انتبه:</strong> لا تنسَ base case (<code>node is None</code>)، وتذكّر أن Python لها حد recursion (نحو 1000 افتراضيًا) فلا تناسب الشجرة المنحرفة العميقة جدًا.</p>
+</article>
+<article class="concept">
+<h4>Binary Search Trees: ترتيب يسمح بالبحث السريع</h4>
+<p>الـ <code>BST</code> هي binary tree بشرط: كل key في الـ subtree الأيسر أصغر من key الـ node، وكل key في الأيمن أكبر منه (الشرط على الـ subtree كله لا على الابن المباشر فقط). عند البحث أو الإدخال نقارن ثم ننزل يسارًا أو يمينًا فنتجاهل جزءًا كبيرًا من الشجرة كما في binary search، والتكلفة <code>O(h)</code> حيث h ارتفاع الشجرة. وزيارة <code>inorder</code> تُخرج المفاتيح مرتبة تصاعديًا.</p>
+<figure class="code-block"><figcaption class="code-head"><span class="code-meta"><span class="code-lang" lang="en">Python</span><span class="code-file" lang="en">bst_insert.py</span></span><button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود"><svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-copy"></use></svg><span class="btn-label">نسخ</span></button></figcaption>
+<pre class="code" dir="ltr"><code>class Node:
+    def __init__(self, key):
+        self.key = key
+        self.left = None
+        self.right = None
+
+
+def insert(node, key):
+    if node is None:
+        return Node(key)
+    if key &lt; node.key:
+        node.left = insert(node.left, key)
+    elif key &gt; node.key:
+        node.right = insert(node.right, key)
+    return node
+
+
+root = None
+for key in [50, 30, 70, 40]:
+    root = insert(root, key)
+print(root.key, root.left.key, root.right.key, root.left.right.key)</code></pre>
+<div class="output" role="group" aria-label="مخرجات البرنامج"><div class="output-label" lang="en">Output</div><pre dir="ltr"><code>50 30 70 40</code></pre></div></figure>
+<p>الحذف أصعب: leaf يُحذف مباشرة، وnode بابن واحد يُستبدل بابنه، وnode بابنين يُستبدل بـ inorder successor (أصغر key في الـ subtree الأيمن). <strong>الخطأ الأشهر:</strong> إدخال بيانات مرتبة (1, 2, 3, ...) يجعل الشجرة سلسلة بارتفاع n فتصبح العمليات <code>O(n)</code> مثل linked list.</p>
+</article>
+<article class="concept">
+<h4>AVL Trees: BST تحافظ على توازنها</h4>
+<p>لمنع الانحراف، الـ <code>AVL Tree</code> هي BST تفرض أن <code>balance factor = height(left) - height(right)</code> يبقى -1 أو 0 أو 1 عند كل node. بعد كل insert أو delete نصعد من الأسفل ونحدّث الارتفاعات، وإذا خرج balance factor عن المدى نصلحه بـ <code>rotation</code>: حالة <code>Left-Left</code> تُحل بـ right rotation، و<code>Right-Right</code> بـ left rotation، و<code>Left-Right</code> بـ left rotation على الابن ثم right rotation على node، و<code>Right-Left</code> بالعكس.</p>
+<figure class="code-block"><figcaption class="code-head"><span class="code-meta"><span class="code-lang" lang="en">Python</span><span class="code-file" lang="en">avl_rotation.py</span></span><button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود"><svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-copy"></use></svg><span class="btn-label">نسخ</span></button></figcaption>
+<pre class="code" dir="ltr"><code>class Node:
+    def __init__(self, key, left=None, right=None):
+        self.key = key
+        self.left = left
+        self.right = right
+
+
+def rotate_right(y):
+    x = y.left
+    y.left = x.right
+    x.right = y
+    return x
+
+
+skewed = Node(30, Node(20, Node(10)))
+root = rotate_right(skewed)
+print(root.key, root.left.key, root.right.key)</code></pre>
+<div class="output" role="group" aria-label="مخرجات البرنامج"><div class="output-label" lang="en">Output</div><pre dir="ltr"><code>20 10 30</code></pre></div></figure>
+<p>المثال يعرض الدوران فقط؛ في AVL كاملة نحدّث حقل <code>height</code> للعقدتين بعد الدوران. النتيجة: ارتفاع <code>O(log n)</code> مضمون، فالبحث والإدخال والحذف <code>O(log n)</code> حتى مع بيانات مرتبة. الثمن: حقل height في كل node وكود أعقد وتكلفة rebalance عند الكتابة، لذلك تناسب الأنظمة كثيرة القراءة.</p>
+</article>
+
+            </section>
+
+            <section class="lesson-section" id="summary">
+              <h3 class="section-title"><b>02</b>الملخص</h3>
+              <ul class="summary-list">
+                <li>الـ Tree بنية هرمية: root وparent/child وleaf، والـ height هو أطول مسار نزولًا.</li>
+<li>الـ Binary Tree لكل node فيها ابنان على الأكثر؛ preorder وinorder وpostorder تختلف بموضع معالجة node، وlevel-order يستخدم queue.</li>
+<li>شرط الـ BST يخص الـ subtree كله؛ البحث والإدخال <code>O(h)</code>، وinorder يعطي المفاتيح مرتبة.</li>
+<li>أسوأ حالة في BST هي إدخال بيانات مرتبة: h = n فتصبح العمليات <code>O(n)</code>.</li>
+<li>الـ AVL تُبقي balance factor بين -1 و1 وتصلح الخلل بأربع حالات rotation: LL وRR وLR وRL.</li>
+<li>AVL تضمن <code>O(log n)</code> مقابل تكلفة إضافية عند الكتابة؛ والتحقق من BST يحتاج نطاق (low, high) لا مقارنة الأب فقط.</li>
+              </ul>
+            </section>
+
+            <section class="lesson-section" id="interview-questions">
+              <h3 class="section-title"><b>03</b>أسئلة المقابلات</h3>
+              <div class="qa-list">
+                <details class="qa" open><summary><span class="qa-q">ما الفرق بين Binary Tree وBinary Search Tree؟</span><span class="level level-basic">أساسي</span></summary><div class="qa-body"><p>الـ Binary Tree شكل فقط: لكل node ابنان على الأكثر دون أي شرط على القيم. أما الـ BST فهي binary tree مع شرط ترتيب: كل key في الأيسر أصغر وفي الأيمن أكبر، لذلك تدعم بحثًا سريعًا. كل BST هي binary tree وليس العكس.</p></div></details>
+<details class="qa"><summary><span class="qa-q">ما الفرق بين preorder وinorder وpostorder، ومتى تفيد inorder؟</span><span class="level level-basic">أساسي</span></summary><div class="qa-body"><p>الفرق في موضع معالجة node نسبةً إلى ابنيه: قبلهما (preorder)، بينهما (inorder)، بعدهما (postorder). الـ inorder على BST تُخرج المفاتيح مرتبة تصاعديًا؛ والـ postorder مناسبة عندما نحتاج نتائج الأبناء أولًا مثل حساب الارتفاع أو حذف الشجرة.</p></div></details>
+<details class="qa"><summary><span class="qa-q">لماذا قد يصبح البحث في BST بطيئًا <code>O(n)</code>، وكيف يعالج AVL ذلك؟</span><span class="level level-mid">متوسط</span></summary><div class="qa-body"><p>لأن التكلفة <code>O(h)</code>، وإدخال بيانات مرتبة يبني سلسلة بارتفاع n. الـ AVL تعيد التوازن بـ rotations بعد كل تعديل فيبقى الارتفاع <code>O(log n)</code>.</p><p class="qa-follow">متابعة: ما الثمن؟ حقل height إضافي لكل node وتكلفة rotations عند insert وdelete.</p></div></details>
+<details class="qa"><summary><span class="qa-q">ما هو balance factor، وماذا نفعل في حالة Left-Right؟</span><span class="level level-mid">متوسط</span></summary><div class="qa-body"><p>هو <code>height(left) - height(right)</code> ويجب أن يبقى بين -1 و1. في Left-Right يكون الثقل في الابن الأيمن للابن الأيسر؛ نعمل left rotation على الابن الأيسر فيتحول إلى Left-Left، ثم right rotation على node.</p></div></details>
+<details class="qa"><summary><span class="qa-q">هل يكفي فحص <code>left.key &lt; node.key &lt; right.key</code> عند كل node للحكم أن الشجرة BST صالحة؟</span><span class="level level-trap">فخ</span></summary><div class="qa-body"><p>لا، لأن الشرط يخص الـ subtree كله. في شجرة جذرها 10 وابنها الأيسر 5 وله ابن أيمن 15، كل node يجتاز فحص أبنائه المباشرين، لكن 15 يقع في يسار 10 وهو أكبر منه فالشجرة غير صالحة. الحل: تمرير نطاق (low, high) أو التأكد أن inorder تصاعدي صارم.</p></div></details>
+              </div>
+            </section>
+
+            <section class="lesson-section" id="practical">
+              <h3 class="section-title"><b>04</b>المسألة العملية</h3>
+              <div class="callout callout-problem"><p><strong>المسألة:</strong> نظام فهرسة يستقبل شجرة <code>root</code> ويريد معرفة: هل هي BST صالحة؟ وما ارتفاعها؟ وهل هي متوازنة بشرط AVL؟ اكتب دالة تُرجع <code>(is_bst, height, is_balanced)</code> واختبرها على ثلاث أشجار.</p></div>
+              <ol class="solution">
+                <li class="sol-step"><strong>فهم المطلوب:</strong> المدخل node الجذر (أو <code>None</code>)، والمخرج ثلاثية. نختبر شجرة سليمة، وشجرة سليمة لكنها منحرفة، وشجرة فيها القيمة الفخ 15.</li>
+<li class="sol-step"><strong>خطة الحل:</strong> مرور واحد بالـ recursion: ننزل بنطاق <code>(low, high)</code> لكل node، ونصعد بنتيجة <code>(is_bst, height, is_balanced)</code> للـ subtree، فيكتمل الفحص في <code>O(n)</code>.</li>
+<li class="sol-step"><strong>الكود الكامل:</strong> <figure class="code-block"><figcaption class="code-head"><span class="code-meta"><span class="code-lang" lang="en">Python</span><span class="code-file" lang="en">tree_check.py</span></span><button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود"><svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-copy"></use></svg><span class="btn-label">نسخ</span></button></figcaption>
+<pre class="code" dir="ltr"><code>class Node:
+    def __init__(self, key, left=None, right=None):
+        self.key = key
+        self.left = left
+        self.right = right
+
+
+def analyze(node, low=float("-inf"), high=float("inf")):
+    if node is None:
+        return True, 0, True
+    in_range = low &lt; node.key &lt; high
+    l_bst, l_h, l_bal = analyze(node.left, low, node.key)
+    r_bst, r_h, r_bal = analyze(node.right, node.key, high)
+    is_bst = in_range and l_bst and r_bst
+    is_balanced = l_bal and r_bal and abs(l_h - r_h) &lt;= 1
+    return is_bst, 1 + max(l_h, r_h), is_balanced
+
+
+good = Node(8, Node(4, Node(2), Node(6)), Node(12))
+skewed = Node(1, None, Node(2, None, Node(3)))
+trap = Node(10, Node(5, None, Node(15)), Node(20))
+for name, tree in [("good", good), ("skewed", skewed), ("trap", trap)]:
+    print(name, analyze(tree))</code></pre>
+<div class="output" role="group" aria-label="مخرجات البرنامج"><div class="output-label" lang="en">Output</div><pre dir="ltr"><code>good (True, 3, True)
+skewed (True, 3, False)
+trap (False, 3, True)</code></pre></div></figure></li>
+<li class="sol-step"><strong>تفسير القرارات:</strong> النطاق بدل مقارنة الأب فقط يلتقط حالة 15 داخل يسار 10. الـ base case يرجع height = 0 فتصير الورقة height = 1. وإرجاع tuple يجمع الفحوص الثلاثة في مرور واحد.</li>
+<li class="sol-step"><strong>اختبار سريع:</strong> الشجرة <code>good</code> تعطي True في الخانتين، و<code>skewed</code> BST صحيحة لكنها غير متوازنة لأن الفرق عند الجذر 2، و<code>trap</code> مرفوضة كـ BST لأن 15 خارج النطاق (5, 10).</li>
+<li class="sol-step"><strong>تحسين أو بديل:</strong> الـ recursion تفشل على شجرة أعمق من حد Python، فيمكن تحويل الفحص إلى iterative باستخدام stack. وللتحقق من BST فقط يكفي inorder والتأكد أن المفاتيح تصاعدية صارمة، بمساحة <code>O(h)</code> إضافية.</li>
+              </ol>
+            </section>
+          </div>
+        </section>
+      </div>
+
+      <footer class="footer">
+        <span class="footer-note" lang="en">Python Learning Roadmap</span>
+        <span class="footer-note">المرحلة 11 - الدرس 55</span>
+      </footer>
+    </main>
+
+    <script>
+      (function () {
+        'use strict'
+
+        var live = document.getElementById('copy-status')
+        var printStates = null
+
+        function fallbackCopy(text) {
+          var textarea = document.createElement('textarea')
+          textarea.value = text
+          textarea.setAttribute('readonly', '')
+          textarea.style.cssText = 'position:fixed;top:-1000px;left:-1000px;opacity:0;'
+
+          try {
+            document.body.appendChild(textarea)
+            textarea.focus()
+            textarea.select()
+            textarea.setSelectionRange(0, textarea.value.length)
+            return document.execCommand('copy')
+          } catch (error) {
+            return false
+          } finally {
+            if (textarea.parentNode) {
+              textarea.parentNode.removeChild(textarea)
+            }
+          }
+        }
+
+        function copyText(text) {
+          if (navigator.clipboard && window.isSecureContext) {
+            return navigator.clipboard.writeText(text).then(
+              function () { return true },
+              function () { return fallbackCopy(text) },
+            ).catch(function () { return false })
+          }
+
+          return Promise.resolve().then(function () {
+            return fallbackCopy(text)
+          }).catch(function () {
+            return false
+          })
+        }
+
+        document.addEventListener('click', function (event) {
+          var target = event.target
+          var button = target && typeof target.closest === 'function'
+            ? target.closest('[data-copy-code]')
+            : null
+
+          if (!button) return
+
+          var label = button.querySelector('.btn-label')
+          var block = button.closest('.code-block')
+          var code = block ? block.querySelector('pre.code > code') : null
+          if (!label || !code) return
+
+          if (!button.dataset.label) button.dataset.label = label.textContent
+
+          copyText(code.textContent).then(function (ok) {
+            label.textContent = ok ? 'تم النسخ' : 'تعذّر النسخ'
+            button.classList.toggle('is-copied', ok)
+            button.classList.toggle('is-failed', !ok)
+
+            if (live) {
+              live.textContent = ok
+                ? 'تم نسخ الكود'
+                : 'تعذّر النسخ، حدّد الكود يدويًا ثم انسخه'
+            }
+
+            window.clearTimeout(button._timer)
+            button._timer = window.setTimeout(function () {
+              label.textContent = button.dataset.label
+              button.classList.remove('is-copied', 'is-failed')
+            }, 1800)
+          })
+        })
+
+        window.addEventListener('beforeprint', function () {
+          if (printStates !== null) return
+
+          var questions = document.querySelectorAll('details.qa')
+          printStates = Array.prototype.map.call(questions, function (item) {
+            return item.open
+          })
+          questions.forEach(function (item) {
+            item.open = true
+          })
+        })
+
+        window.addEventListener('afterprint', function () {
+          if (printStates === null) return
+
+          var questions = document.querySelectorAll('details.qa')
+          questions.forEach(function (item, index) {
+            item.open = printStates[index] === true
+          })
+          printStates = null
+        })
+      })()
+    </script>
+  </body>
+</html>

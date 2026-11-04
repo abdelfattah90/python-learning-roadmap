@@ -1,0 +1,473 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#fcfcfc" />
+    <title>خوارزميات الترتيب المتقدمة | Python Learning Roadmap</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/style.css" />
+  </head>
+  <body>
+    <svg
+      width="0"
+      height="0"
+      style="position: absolute"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <symbol id="i-copy" viewBox="0 0 24 24">
+        <rect x="9" y="9" width="12" height="12" rx="2.5" />
+        <path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15" />
+      </symbol>
+    </svg>
+    <template id="code-block-pattern">
+      <figure class="code-block">
+        <figcaption class="code-head">
+          <span class="code-meta">
+            <span class="code-lang" lang="en">Python</span>
+            <span class="code-file" lang="en">example.py</span>
+          </span>
+          <button
+            type="button"
+            class="btn btn-ghost btn-sm"
+            data-copy-code
+            aria-label="نسخ الكود"
+          >
+            <svg
+              class="btn-icon"
+              viewBox="0 0 24 24"
+              width="14"
+              height="14"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <use href="#i-copy"></use>
+            </svg>
+            <span class="btn-label">نسخ</span>
+          </button>
+        </figcaption>
+        <pre class="code" dir="ltr"><code><!-- ضع الكود هنا كنص HTML مع تهريب الرموز الخاصة --></code></pre>
+        <!-- احذف كتلة output إذا لم يكن للمثال ناتج ثابت ومفيد. -->
+        <div class="output" role="group" aria-label="مخرجات البرنامج">
+          <div class="output-label" lang="en">Output</div>
+          <pre dir="ltr"><code><!-- ضع المخرجات المتحققة هنا --></code></pre>
+        </div>
+      </figure>
+    </template>
+
+    <div
+      class="sr-only"
+      id="copy-status"
+      role="status"
+      aria-live="polite"
+    ></div>
+
+    <main class="page">
+      <header class="hero lesson-hero">
+        <span class="eyebrow">
+          <span class="eyebrow-dot"></span>
+          المرحلة <span dir="ltr">11</span>:
+          <span dir="ltr" lang="en">Data Structures &amp; Algorithms (DSA)</span>
+        </span>
+        <h1>
+          <span class="h1-ar">خوارزميات الترتيب المتقدمة</span>
+          <span class="h1-en" dir="ltr" lang="en">Advanced Sorting Algorithms</span>
+        </h1>
+        <p class="hero-description">كيف نرتب بيانات كبيرة بسرعة؟ نتعلم Merge Sort وQuick Sort بأسلوب divide and conquer، ثم Counting Sort وRadix Sort اللذين يتجاوزان حد المقارنات.</p>
+      </header>
+
+      <div class="lesson-parts">
+        <section class="lesson-part-card" id="complete-lesson" aria-labelledby="complete-lesson-title">
+          <header class="part-header">
+            <div class="part-number">درس متكامل</div>
+            <div class="part-heading">
+              <h2 id="complete-lesson-title">
+                <span class="part-title-en" dir="ltr" lang="en">Complete Lesson</span>
+                <span class="sep" aria-hidden="true"> - </span>
+                <span class="part-title-ar">الشرح والملخص والتطبيق</span>
+              </h2>
+              <span class="part-description">كل محتوى الدرس في ملف HTML واحد</span>
+            </div>
+          </header>
+
+          <div class="lesson-body">
+            <section class="lesson-section" id="explain">
+              <h3 class="section-title"><b>01</b>الشرح</h3>
+              <article class="concept">
+  <h4>Merge Sort: قسّم ثم ادمج</h4>
+  <p>الترتيب الأساسي بتكلفة <code dir="ltr">O(n²)</code> يصبح بطيئًا مع آلاف العناصر. يعتمد <strong>Merge Sort</strong> على أسلوب divide and conquer: نقسم القائمة نصفين حتى يبقى عنصر واحد (وهو مرتب بطبيعته)، ثم ندمج كل نصفين مرتبين بمقارنة أول عنصر في كل جهة فقط.</p>
+<figure class="code-block">
+  <figcaption class="code-head">
+    <span class="code-meta">
+      <span class="code-lang" lang="en">Python</span>
+      <span class="code-file" lang="en">merge_sort.py</span>
+    </span>
+    <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+      <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-copy"></use></svg>
+      <span class="btn-label">نسخ</span>
+    </button>
+  </figcaption>
+  <pre class="code" dir="ltr"><code>def merge(left, right):
+    merged = []
+    i = j = 0
+    while i &lt; len(left) and j &lt; len(right):
+        if left[i] &lt;= right[j]:
+            merged.append(left[i])
+            i += 1
+        else:
+            merged.append(right[j])
+            j += 1
+    merged.extend(left[i:])
+    merged.extend(right[j:])
+    return merged
+
+
+def merge_sort(items):
+    if len(items) &lt;= 1:
+        return items
+    mid = len(items) // 2
+    return merge(merge_sort(items[:mid]), merge_sort(items[mid:]))
+
+
+delivery_minutes = [42, 15, 33, 8, 27, 15]
+print(merge_sort(delivery_minutes))</code></pre>
+  <div class="output" role="group" aria-label="مخرجات البرنامج">
+    <div class="output-label" lang="en">Output</div>
+    <pre dir="ltr"><code>[8, 15, 15, 27, 33, 42]</code></pre>
+  </div>
+</figure>
+  <p>عدد مستويات التقسيم <code dir="ltr">log n</code> وكل مستوى يدمج <code dir="ltr">n</code> عنصرًا، فالتكلفة <code dir="ltr">O(n log n)</code> في كل الحالات، والثمن ذاكرة إضافية <code dir="ltr">O(n)</code>. والخوارزمية stable: عند التساوي يأخذ الشرط <code dir="ltr">&lt;=</code> العنصر الأيسر فيبقى الترتيب الأصلي. استخدمها عندما تريد أداءً مضمونًا أو ثباتًا. <strong>الخطأ الشائع:</strong> كتابة <code dir="ltr">&lt;</code> بدل <code dir="ltr">&lt;=</code> تكسر الثبات.</p>
+</article>
+
+<article class="concept">
+  <h4>Quick Sort: اختر pivot وقسّم</h4>
+  <p>يحقق <strong>Quick Sort</strong> متوسط <code dir="ltr">O(n log n)</code> تقريبًا بدون قوائم مؤقتة، ولذلك يُفضَّل كثيرًا عمليًا. نختار pivot ثم نعمل partition: الأصغر منه يسارًا والأكبر يمينًا، فيستقر pivot في موضعه النهائي، ثم نكرر على الجانبين.</p>
+<figure class="code-block">
+  <figcaption class="code-head">
+    <span class="code-meta">
+      <span class="code-lang" lang="en">Python</span>
+      <span class="code-file" lang="en">quick_sort.py</span>
+    </span>
+    <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+      <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-copy"></use></svg>
+      <span class="btn-label">نسخ</span>
+    </button>
+  </figcaption>
+  <pre class="code" dir="ltr"><code>import random
+
+
+def quick_sort(items, low=0, high=None):
+    if high is None:
+        high = len(items) - 1
+    if low &gt;= high:
+        return
+    pivot_index = random.randint(low, high)
+    items[pivot_index], items[high] = items[high], items[pivot_index]
+    pivot = items[high]
+    boundary = low
+    for i in range(low, high):
+        if items[i] &lt; pivot:
+            items[i], items[boundary] = items[boundary], items[i]
+            boundary += 1
+    items[boundary], items[high] = items[high], items[boundary]
+    quick_sort(items, low, boundary - 1)
+    quick_sort(items, boundary + 1, high)
+
+
+scores = [71, 90, 55, 90, 62, 38]
+quick_sort(scores)
+print(scores)</code></pre>
+  <div class="output" role="group" aria-label="مخرجات البرنامج">
+    <div class="output-label" lang="en">Output</div>
+    <pre dir="ltr"><code>[38, 55, 62, 71, 90, 90]</code></pre>
+  </div>
+</figure>
+  <p>في الكود ننقل pivot العشوائي إلى النهاية، ويحدّ <code dir="ltr">boundary</code> منطقة العناصر الأصغر. إذا كان pivot متطرفًا باستمرار (مثل أول عنصر في قائمة مرتبة) يصير التقسيم <code dir="ltr">0</code> و<code dir="ltr">n-1</code> فتنزل التكلفة إلى <code dir="ltr">O(n²)</code> ويزداد عمق recursion. الحل: pivot عشوائي أو median-of-three. والخوارزمية <strong>غير stable</strong>.</p>
+</article>
+
+<article class="concept">
+  <h4>Counting Sort و Radix Sort: ترتيب بلا مقارنات</h4>
+  <p>أي خوارزمية تعتمد على المقارنة لا تتجاوز <code dir="ltr">O(n log n)</code> في الأسوأ. لكن إن كانت القيم أعدادًا صحيحة في نطاق صغير يمكن تجاوز هذا الحد. يعدّ <strong>Counting Sort</strong> تكرار كل قيمة في <code dir="ltr">counts</code> بحجم <code dir="ltr">k+1</code>، ثم يحوّل العدّ إلى prefix sums (موضع نهاية كل قيمة)، ثم يضع العناصر من اليمين لليسار ليبقى الثبات. التكلفة <code dir="ltr">O(n + k)</code> زمنًا وذاكرة، ولا يناسب <code dir="ltr">k</code> ضخمًا.</p>
+  <p>عندما يكبر <code dir="ltr">k</code> (مثل أرقام طلبات من ست خانات) يأتي <strong>Radix Sort</strong>: نرتب خانة خانة من الأقل أهمية (LSD) باستخدام counting sort مستقر على كل خانة، والثبات هو سر صحته. التكلفة <code dir="ltr">O(d · (n + b))</code> حيث <code dir="ltr">d</code> عدد الخانات و<code dir="ltr">b</code> الأساس. في المثال التالي <code dir="ltr">counting_sort_by_digit</code> هي Counting Sort نفسها لكن المفتاح هو الخانة (<code dir="ltr">k = 10</code>).</p>
+<figure class="code-block">
+  <figcaption class="code-head">
+    <span class="code-meta">
+      <span class="code-lang" lang="en">Python</span>
+      <span class="code-file" lang="en">radix_sort.py</span>
+    </span>
+    <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+      <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-copy"></use></svg>
+      <span class="btn-label">نسخ</span>
+    </button>
+  </figcaption>
+  <pre class="code" dir="ltr"><code>def counting_sort_by_digit(numbers, place):
+    counts = [0] * 10
+    for number in numbers:
+        counts[(number // place) % 10] += 1
+    for digit in range(1, 10):
+        counts[digit] += counts[digit - 1]
+    output = [0] * len(numbers)
+    for number in reversed(numbers):
+        digit = (number // place) % 10
+        counts[digit] -= 1
+        output[counts[digit]] = number
+    return output
+
+
+def radix_sort(numbers):
+    place = 1
+    while place &lt;= max(numbers):
+        numbers = counting_sort_by_digit(numbers, place)
+        place *= 10
+    return numbers
+
+
+order_ids = [170, 45, 75, 90, 802, 24, 2, 66]
+print(radix_sort(order_ids))</code></pre>
+  <div class="output" role="group" aria-label="مخرجات البرنامج">
+    <div class="output-label" lang="en">Output</div>
+    <pre dir="ltr"><code>[2, 24, 45, 66, 75, 90, 170, 802]</code></pre>
+  </div>
+</figure>
+  <p><strong>قيد:</strong> هذا المثال لأعداد صحيحة غير سالبة فقط، و<code dir="ltr">max()</code> على قائمة فارغة ترفع <code dir="ltr">ValueError</code>.</p>
+</article>
+            </section>
+
+            <section class="lesson-section" id="summary">
+              <h3 class="section-title"><b>02</b>الملخص</h3>
+              <ul class="summary-list">
+                <li><strong>Merge Sort:</strong> يقسم ثم يدمج، <code dir="ltr">O(n log n)</code> في كل الحالات، stable، ويحتاج ذاكرة <code dir="ltr">O(n)</code>.</li>
+<li><strong>Quick Sort:</strong> partition حول pivot، متوسط <code dir="ltr">O(n log n)</code> وتقريبًا in-place، غير stable، وأسوأ حالة <code dir="ltr">O(n²)</code>.</li>
+<li>pivot عشوائي أو median-of-three يقلل الحالة الأسوأ، والقيم المكررة الكثيرة تحتاج three-way partitioning.</li>
+<li><strong>Counting Sort:</strong> عدّ ثم prefix sums، <code dir="ltr">O(n + k)</code> لأعداد صحيحة في نطاق صغير ولا يناسب <code dir="ltr">k</code> ضخمًا.</li>
+<li><strong>Radix Sort:</strong> يرتب خانة خانة بـ counting sort مستقر، بتكلفة <code dir="ltr">O(d · (n + b))</code>.</li>
+<li>الثبات (stability) يحفظ ترتيب العناصر المتساوية؛ وفي الإنتاج استخدم <code dir="ltr">sorted()</code> أو <code dir="ltr">list.sort()</code> ما لم يوجد سبب واضح غير ذلك.</li>
+              </ul>
+            </section>
+
+            <section class="lesson-section" id="interview-questions">
+              <h3 class="section-title"><b>03</b>أسئلة المقابلات</h3>
+              <div class="qa-list">
+                <details class="qa" open>
+  <summary><span class="qa-q">ما الفرق الأساسي بين Merge Sort و Quick Sort؟</span> <span class="level level-basic">أساسي</span></summary>
+  <div class="qa-body">
+    <p>كلاهما divide and conquer بمتوسط <code dir="ltr">O(n log n)</code>. Merge Sort يضمن <code dir="ltr">O(n log n)</code> دائمًا وهو stable لكنه يحتاج ذاكرة <code dir="ltr">O(n)</code>. Quick Sort يعمل تقريبًا in-place وغالبًا أسرع عمليًا، لكنه غير stable وأسوأ حالته <code dir="ltr">O(n²)</code>.</p>
+    <p class="qa-follow">لو أردت الحفاظ على ترتيب السجلات المتساوية فأيهما تختار؟ Merge Sort.</p>
+  </div>
+</details>
+<details class="qa">
+  <summary><span class="qa-q">متى يكون Counting Sort خيارًا جيدًا، ولماذا يتخطى <code dir="ltr">O(n log n)</code>؟</span> <span class="level level-basic">أساسي</span></summary>
+  <div class="qa-body">
+    <p>عندما تكون القيم أعدادًا صحيحة ضمن نطاق <code dir="ltr">k</code> صغير مقارنة بـ <code dir="ltr">n</code>. لا يقارن العناصر ببعضها، بل يستخدم القيمة فهرسًا في <code dir="ltr">counts</code>، فتكون التكلفة <code dir="ltr">O(n + k)</code>. إذا كبر <code dir="ltr">k</code> كثيرًا صار الزمن والذاكرة مرتبطين بالنطاق لا بعدد العناصر.</p>
+  </div>
+</details>
+<details class="qa">
+  <summary><span class="qa-q">لماذا يحتاج Radix Sort إلى ترتيب مستقر في كل خانة؟</span> <span class="level level-mid">متوسط</span></summary>
+  <div class="qa-body">
+    <p>لأننا نرتب من الخانة الأقل أهمية إلى الأعلى، وعند ترتيب خانة المئات يجب أن يبقى ترتيب العناصر المتساوية فيها كما أنتجته خانتا الآحاد والعشرات. إن لم يكن المرور مستقرًا ضاع عمل الخانات السابقة وكانت النتيجة خاطئة.</p>
+    <p class="qa-follow">كيف يضمن الكود ذلك؟ بالمرور على <code dir="ltr">reversed(numbers)</code> عند ملء <code dir="ltr">output</code>.</p>
+  </div>
+</details>
+<details class="qa">
+  <summary><span class="qa-q">كيف يؤثر اختيار pivot في Quick Sort، وكيف نقلل الحالة الأسوأ؟</span> <span class="level level-mid">متوسط</span></summary>
+  <div class="qa-body">
+    <p>pivot متوازن يقسم المصفوفة تقريبًا نصفين فنحصل على <code dir="ltr">O(n log n)</code>. أما pivot متطرف باستمرار فيعطي تقسيمًا غير متوازن، فتصل التكلفة إلى <code dir="ltr">O(n²)</code> ويزداد عمق recursion. نقلل ذلك باختيار pivot عشوائي أو median-of-three.</p>
+  </div>
+</details>
+<details class="qa">
+  <summary><span class="qa-q">متوسط Quick Sort هو <code dir="ltr">O(n log n)</code>، فلماذا قد تبطئه قائمة كل عناصرها متساوية؟</span> <span class="level level-trap">فخ</span></summary>
+  <div class="qa-body">
+    <p>في تقسيم Lomuto المستخدم هنا لا يتحقق الشرط <code dir="ltr">items[i] &lt; pivot</code> أبدًا مع القيم المتساوية، فتذهب كل العناصر إلى جهة واحدة ويصبح التقسيم <code dir="ltr">0</code> و<code dir="ltr">n-1</code>، فتكون التكلفة <code dir="ltr">O(n²)</code> حتى مع pivot عشوائي. الحل: three-way partitioning (أصغر / يساوي / أكبر).</p>
+  </div>
+</details>
+              </div>
+            </section>
+
+            <section class="lesson-section" id="practical">
+              <h3 class="section-title"><b>04</b>المسألة العملية</h3>
+              <div class="callout callout-problem">
+  <p>تريد مدرسة ترتيب درجات الطلاب (أعداد صحيحة من <code dir="ltr">0</code> إلى <code dir="ltr">100</code>) تصاعديًا بسرعة، مع الحفاظ على ترتيب التسجيل الأصلي للطلاب أصحاب الدرجة نفسها. اكتب الدالة <code dir="ltr">sort_students_by_score</code> بالاعتماد على Counting Sort وأعد قائمة جديدة مرتبة.</p>
+</div>
+              <ol class="solution">
+                <li class="sol-step">
+<h4>فهم المطلوب</h4>
+<p>المدخل قائمة tuples بالشكل <code dir="ltr">(name, score)</code> بدرجات من <code dir="ltr">0</code> إلى <code dir="ltr">100</code>. المخرج قائمة جديدة مرتبة تصاعديًا وبثبات، دون تعديل القائمة الأصلية.</p>
+</li>
+<li class="sol-step">
+<h4>خطة الحل</h4>
+<p>نعدّ تكرار كل درجة، ثم نحوّل العدّ إلى prefix sums لتحديد موضع نهاية كل درجة، ثم نضع الطلاب من النهاية إلى البداية في <code dir="ltr">ranked</code>. اخترنا Counting Sort لأن <code dir="ltr">k = 101</code> صغير و<code dir="ltr">n</code> قد يكون كبيرًا، فتكون التكلفة <code dir="ltr">O(n + k)</code>.</p>
+</li>
+<li class="sol-step">
+<h4>الكود الكامل</h4>
+<figure class="code-block">
+  <figcaption class="code-head">
+    <span class="code-meta">
+      <span class="code-lang" lang="en">Python</span>
+      <span class="code-file" lang="en">sort_students.py</span>
+    </span>
+    <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+      <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-copy"></use></svg>
+      <span class="btn-label">نسخ</span>
+    </button>
+  </figcaption>
+  <pre class="code" dir="ltr"><code>def sort_students_by_score(students, max_score=100):
+    counts = [0] * (max_score + 1)
+    for _, score in students:
+        counts[score] += 1
+    for score in range(1, max_score + 1):
+        counts[score] += counts[score - 1]
+    ranked = [None] * len(students)
+    for student in reversed(students):
+        score = student[1]
+        counts[score] -= 1
+        ranked[counts[score]] = student
+    return ranked
+
+
+students = [("Mona", 88), ("Omar", 95), ("Salma", 88), ("Youssef", 70), ("Nour", 95)]
+ranked = sort_students_by_score(students)
+print(ranked)
+print(ranked == sorted(students, key=lambda s: s[1]))</code></pre>
+  <div class="output" role="group" aria-label="مخرجات البرنامج">
+    <div class="output-label" lang="en">Output</div>
+    <pre dir="ltr"><code>[('Youssef', 70), ('Mona', 88), ('Salma', 88), ('Omar', 95), ('Nour', 95)]
+True</code></pre>
+  </div>
+</figure>
+</li>
+<li class="sol-step">
+<h4>تفسير القرارات</h4>
+<p>نمر على <code dir="ltr">reversed(students)</code> حتى يأخذ آخر طالب بدرجة معينة آخر موضع لها فيبقى الثبات. نخزن tuples كاملة لأننا نحتاج الأسماء لا الدرجات فقط. ونطرح <code dir="ltr">1</code> من <code dir="ltr">counts[score]</code> قبل الكتابة لأن prefix sum يمثل نهاية النطاق غير المشمولة.</p>
+</li>
+<li class="sol-step">
+<h4>اختبار سريع</h4>
+<p>يبقى Mona قبل Salma (الدرجة <code dir="ltr">88</code>) و Omar قبل Nour (الدرجة <code dir="ltr">95</code>)، والمقارنة مع <code dir="ltr">sorted(..., key=...)</code> تعطي <code dir="ltr">True</code> لأن <code dir="ltr">sorted()</code> مستقرة أيضًا. وقائمة فارغة تعيد <code dir="ltr">[]</code>.</p>
+</li>
+<li class="sol-step">
+<h4>تحسين أو بديل</h4>
+<p>درجة سالبة ستستخدم فهرسًا سالبًا في <code dir="ltr">counts</code> بصمت وتفسد النتيجة، فأضف تحققًا مثل <code dir="ltr">if not 0 &lt;= score &lt;= max_score: raise ValueError</code>. وفي الإنتاج تكفي غالبًا <code dir="ltr">sorted(students, key=...)</code> لبساطتها؛ ويبقى Counting Sort مفيدًا عندما يكون <code dir="ltr">k</code> صغيرًا و<code dir="ltr">n</code> ضخمًا.</p>
+</li>
+              </ol>
+            </section>
+          </div>
+        </section>
+      </div>
+
+      <footer class="footer">
+        <span class="footer-note" lang="en">Python Learning Roadmap</span>
+        <span class="footer-note">المرحلة 11 - الدرس 52</span>
+      </footer>
+    </main>
+
+    <script>
+      (function () {
+        'use strict'
+
+        var live = document.getElementById('copy-status')
+        var printStates = null
+
+        function fallbackCopy(text) {
+          var textarea = document.createElement('textarea')
+          textarea.value = text
+          textarea.setAttribute('readonly', '')
+          textarea.style.cssText = 'position:fixed;top:-1000px;left:-1000px;opacity:0;'
+
+          try {
+            document.body.appendChild(textarea)
+            textarea.focus()
+            textarea.select()
+            textarea.setSelectionRange(0, textarea.value.length)
+            return document.execCommand('copy')
+          } catch (error) {
+            return false
+          } finally {
+            if (textarea.parentNode) {
+              textarea.parentNode.removeChild(textarea)
+            }
+          }
+        }
+
+        function copyText(text) {
+          if (navigator.clipboard && window.isSecureContext) {
+            return navigator.clipboard.writeText(text).then(
+              function () { return true },
+              function () { return fallbackCopy(text) },
+            ).catch(function () { return false })
+          }
+
+          return Promise.resolve().then(function () {
+            return fallbackCopy(text)
+          }).catch(function () {
+            return false
+          })
+        }
+
+        document.addEventListener('click', function (event) {
+          var target = event.target
+          var button = target && typeof target.closest === 'function'
+            ? target.closest('[data-copy-code]')
+            : null
+
+          if (!button) return
+
+          var label = button.querySelector('.btn-label')
+          var block = button.closest('.code-block')
+          var code = block ? block.querySelector('pre.code > code') : null
+          if (!label || !code) return
+
+          if (!button.dataset.label) button.dataset.label = label.textContent
+
+          copyText(code.textContent).then(function (ok) {
+            label.textContent = ok ? 'تم النسخ' : 'تعذّر النسخ'
+            button.classList.toggle('is-copied', ok)
+            button.classList.toggle('is-failed', !ok)
+
+            if (live) {
+              live.textContent = ok
+                ? 'تم نسخ الكود'
+                : 'تعذّر النسخ، حدّد الكود يدويًا ثم انسخه'
+            }
+
+            window.clearTimeout(button._timer)
+            button._timer = window.setTimeout(function () {
+              label.textContent = button.dataset.label
+              button.classList.remove('is-copied', 'is-failed')
+            }, 1800)
+          })
+        })
+
+        window.addEventListener('beforeprint', function () {
+          if (printStates !== null) return
+
+          var questions = document.querySelectorAll('details.qa')
+          printStates = Array.prototype.map.call(questions, function (item) {
+            return item.open
+          })
+          questions.forEach(function (item) {
+            item.open = true
+          })
+        })
+
+        window.addEventListener('afterprint', function () {
+          if (printStates === null) return
+
+          var questions = document.querySelectorAll('details.qa')
+          questions.forEach(function (item, index) {
+            item.open = printStates[index] === true
+          })
+          printStates = null
+        })
+      })()
+    </script>
+  </body>
+</html>

@@ -1,0 +1,464 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#fcfcfc" />
+    <title>Stacks &amp; Queues - Stacks وQueues | Python Learning Roadmap</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/style.css" />
+  </head>
+  <body>
+    <svg
+      width="0"
+      height="0"
+      style="position: absolute"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <symbol id="i-copy" viewBox="0 0 24 24">
+        <rect x="9" y="9" width="12" height="12" rx="2.5" />
+        <path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15" />
+      </symbol>
+    </svg>
+    <template id="code-block-pattern">
+      <figure class="code-block">
+        <figcaption class="code-head">
+          <span class="code-meta">
+            <span class="code-lang" lang="en">Python</span>
+            <span class="code-file" lang="en">example.py</span>
+          </span>
+          <button
+            type="button"
+            class="btn btn-ghost btn-sm"
+            data-copy-code
+            aria-label="نسخ الكود"
+          >
+            <svg
+              class="btn-icon"
+              viewBox="0 0 24 24"
+              width="14"
+              height="14"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <use href="#i-copy"></use>
+            </svg>
+            <span class="btn-label">نسخ</span>
+          </button>
+        </figcaption>
+        <pre class="code" dir="ltr"><code><!-- ضع الكود هنا كنص HTML مع تهريب الرموز الخاصة --></code></pre>
+        <!-- احذف كتلة output إذا لم يكن للمثال ناتج ثابت ومفيد. -->
+        <div class="output" role="group" aria-label="مخرجات البرنامج">
+          <div class="output-label" lang="en">Output</div>
+          <pre dir="ltr"><code><!-- ضع المخرجات المتحققة هنا --></code></pre>
+        </div>
+      </figure>
+    </template>
+
+    <div
+      class="sr-only"
+      id="copy-status"
+      role="status"
+      aria-live="polite"
+    ></div>
+
+    <main class="page">
+      <header class="hero lesson-hero">
+        <span class="eyebrow">
+          <span class="eyebrow-dot"></span>
+          المرحلة <span dir="ltr">11</span>:
+          <span dir="ltr" lang="en">Data Structures &amp; Algorithms (DSA)</span>
+        </span>
+        <h1>
+          <span class="h1-ar">Stacks وQueues</span>
+          <span class="h1-en" dir="ltr" lang="en">Stacks &amp; Queues</span>
+        </h1>
+        <p class="hero-description">كيف ننظّم البيانات بحسب ترتيب الدخول والخروج: LIFO مع Stack عند التراجع عن آخر خطوة، وFIFO مع Queue عند معالجة الطلبات بترتيب وصولها، وكيف ننفّذهما بكفاءة في Python.</p>
+      </header>
+
+      <div class="lesson-parts">
+        <section class="lesson-part-card" id="complete-lesson" aria-labelledby="complete-lesson-title">
+          <header class="part-header">
+            <div class="part-number">درس متكامل</div>
+            <div class="part-heading">
+              <h2 id="complete-lesson-title">
+                <span class="part-title-en" dir="ltr" lang="en">Complete Lesson</span>
+                <span class="sep" aria-hidden="true"> - </span>
+                <span class="part-title-ar">الشرح والملخص والتطبيق</span>
+              </h2>
+              <span class="part-description">كل محتوى الدرس في ملف HTML واحد</span>
+            </div>
+          </header>
+
+          <div class="lesson-body">
+            <section class="lesson-section" id="explain">
+              <h3 class="section-title"><b>01</b>الشرح</h3>
+              <article class="concept">
+  <h4>Stacks: قاعدة LIFO وعمليات push / pop / peek</h4>
+  <p>الـ <b lang="en">Stack</b> هيكل بيانات يتبع قاعدة <span dir="ltr" lang="en">LIFO (Last In, First Out)</span>: آخر عنصر يدخل هو أول عنصر يخرج، كأطباق فوق بعضها. نحتاجه حين يجب التراجع عن آخر خطوة أولًا، كما في <span lang="en">Undo</span> وفي الـ <span lang="en">call stack</span> الذي مرّ بك في الـ recursion. عملياته: <code>push</code> لإضافة عنصر إلى القمة، <code>pop</code> لإزالة عنصر القمة وإرجاعه، <code>peek</code> لقراءته دون إزالة، و<code>is_empty</code> لفحص الخلو.</p>
+  <p>في Python تكفي الـ <code>list</code>: <code>append</code> تعمل كـ push و<code>pop()</code> بلا معامل تعمل كـ pop، وكلاهما <span dir="ltr">O(1)</span> (amortized) لأنهما يعملان على نهاية القائمة. غلّفناها في class لنكشف واجهة الـ Stack فقط.</p>
+  <figure class="code-block">
+  <figcaption class="code-head">
+    <span class="code-meta">
+      <span class="code-lang" lang="en">Python</span>
+      <span class="code-file" lang="en">stack.py</span>
+    </span>
+    <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+      <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <use href="#i-copy"></use>
+      </svg>
+      <span class="btn-label">نسخ</span>
+    </button>
+  </figcaption>
+  <pre class="code" dir="ltr"><code>class Stack:
+    def __init__(self):
+        self._items = []
+
+    def push(self, item):
+        self._items.append(item)
+
+    def pop(self):
+        return self._items.pop()
+
+    def peek(self):
+        return self._items[-1]
+
+    def is_empty(self):
+        return not self._items
+
+
+undo_stack = Stack()
+undo_stack.push("type text")
+undo_stack.push("apply bold")
+print(undo_stack.pop())
+print(undo_stack.peek())</code></pre>
+  <div class="output" role="group" aria-label="مخرجات البرنامج">
+    <div class="output-label" lang="en">Output</div>
+    <pre dir="ltr"><code>apply bold
+type text</code></pre>
+  </div>
+</figure>
+  <p><b>الخطأ الشائع:</b> استدعاء <code>pop()</code> أو <code>peek()</code> على Stack فارغ يرفع <code>IndexError</code>؛ افحص <code>is_empty()</code> أولًا أو تعامل مع الاستثناء بـ <code>try...except</code>.</p>
+</article>
+
+<article class="concept">
+  <h4>Stacks في التطبيق: التحقق من توازن الأقواس</h4>
+  <p>المسألة الكلاسيكية: هل لكل قوس مفتوح قوس إغلاق مناسب وبالترتيب الصحيح؟ تحتاجها المحرّرات ومحلّلات التعبيرات. نضع كل قوس فتح في الـ stack، وعند قوس إغلاق نخرج القمة ونقارنها بنظيرها المتوقع، لأن آخر قوس فُتح يجب أن يُغلق أولًا، وهذا هو <span dir="ltr" lang="en">LIFO</span> بعينه.</p>
+  <figure class="code-block">
+  <figcaption class="code-head">
+    <span class="code-meta">
+      <span class="code-lang" lang="en">Python</span>
+      <span class="code-file" lang="en">balanced_brackets.py</span>
+    </span>
+    <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+      <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <use href="#i-copy"></use>
+      </svg>
+      <span class="btn-label">نسخ</span>
+    </button>
+  </figcaption>
+  <pre class="code" dir="ltr"><code>def is_balanced(text):
+    pairs = {")": "(", "]": "[", "}": "{"}
+    stack = []
+    for char in text:
+        if char in "([{":
+            stack.append(char)
+        elif char in pairs:
+            if not stack or stack.pop() != pairs[char]:
+                return False
+    return not stack
+
+
+print(is_balanced("{[()]}"), is_balanced("(]"), is_balanced("(("))</code></pre>
+  <div class="output" role="group" aria-label="مخرجات البرنامج">
+    <div class="output-label" lang="en">Output</div>
+    <pre dir="ltr"><code>True False False</code></pre>
+  </div>
+</figure>
+  <p>انتبه لحالتين: إغلاق بلا فتح (لذلك نفحص <code>not stack</code> قبل <code>pop</code>)، وفتح بلا إغلاق (يبقى شيء في الـ stack، لذلك نرجع <code>not stack</code> في النهاية).</p>
+</article>
+
+<article class="concept">
+  <h4>Queues: قاعدة FIFO وlist مقابل deque</h4>
+  <p>الـ <b lang="en">Queue</b> يتبع <span dir="ltr" lang="en">FIFO (First In, First Out)</span>: أول عنصر يدخل أول عنصر يخرج، كطابور شباك التذاكر. نحتاجه حين تُعالَج الطلبات بترتيب وصولها، كمهام الطباعة والطلبات المنتظرة. التسمية المعتادة: <code>enqueue</code> للإضافة من النهاية، و<code>dequeue</code> للإخراج من البداية.</p>
+  <p>لا تنفّذه بـ <code>list</code>: الأمر <code>pop(0)</code> يزيح كل العناصر المتبقية خطوة واحدة فيصبح <span dir="ltr">O(n)</span>. استخدم <code>collections.deque</code> من الـ standard library: <code>append</code> للـ enqueue و<code>popleft</code> للـ dequeue، وكلاهما <span dir="ltr">O(1)</span>.</p>
+  <figure class="code-block">
+  <figcaption class="code-head">
+    <span class="code-meta">
+      <span class="code-lang" lang="en">Python</span>
+      <span class="code-file" lang="en">queue_deque.py</span>
+    </span>
+    <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+      <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <use href="#i-copy"></use>
+      </svg>
+      <span class="btn-label">نسخ</span>
+    </button>
+  </figcaption>
+  <pre class="code" dir="ltr"><code>from collections import deque
+
+tickets = deque()
+tickets.append("Sara")
+tickets.append("Omar")
+tickets.append("Lina")
+print(tickets.popleft())
+print(tickets[0], len(tickets))
+print(list(tickets))</code></pre>
+  <div class="output" role="group" aria-label="مخرجات البرنامج">
+    <div class="output-label" lang="en">Output</div>
+    <pre dir="ltr"><code>Sara
+Omar 2
+['Omar', 'Lina']</code></pre>
+  </div>
+</figure>
+  <p><b>قيود:</b> الـ <code>deque</code> ممتاز عند الطرفين، لكن الوصول للعنصر الأوسط بالفهرس <span dir="ltr">O(n)</span>، فلا تستخدمه كمصفوفة عشوائية الوصول. وتنفيذ <code>popleft()</code> على deque فارغ يرفع <code>IndexError</code> كما في الـ Stack. للاختيار: إن كان آخر ما دخل يُعالج أولًا فاستخدم Stack، وإن كان الأول أولًا فاستخدم Queue.</p>
+</article>
+            </section>
+
+            <section class="lesson-section" id="summary">
+              <h3 class="section-title"><b>02</b>الملخص</h3>
+              <ul class="summary-list">
+                <li>الـ Stack يتبع <span dir="ltr" lang="en">LIFO</span>: آخر عنصر يدخل أول عنصر يخرج، وعملياته push وpop وpeek وis_empty.</li>
+<li>الـ <code>list</code> تصلح لتنفيذ Stack: <code>append</code> و<code>pop()</code> كلاهما <span dir="ltr">O(1)</span> (amortized) لأنهما يعملان على نهاية القائمة.</li>
+<li>pop أو peek على Stack فارغ يرفع <code>IndexError</code>؛ افحص الخلو قبل الاستدعاء.</li>
+<li>التحقق من توازن الأقواس تطبيق نموذجي للـ Stack: نضع الفتح ونطابق الإغلاق مع القمة.</li>
+<li>الـ Queue يتبع <span dir="ltr" lang="en">FIFO</span>: أول عنصر يدخل أول عنصر يخرج (enqueue من النهاية وdequeue من البداية).</li>
+<li>استخدم <code>collections.deque</code> مع <code>append</code> و<code>popleft</code> بدل <code>list.pop(0)</code> لأن الأخير <span dir="ltr">O(n)</span>.</li>
+              </ul>
+            </section>
+
+            <section class="lesson-section" id="interview-questions">
+              <h3 class="section-title"><b>03</b>أسئلة المقابلات</h3>
+              <div class="qa-list">
+                <details class="qa" open>
+  <summary><span class="qa-q">ما الفرق بين Stack وQueue؟</span><span class="level level-basic">أساسي</span></summary>
+  <div class="qa-body">
+    <p>الـ Stack يتبع <span dir="ltr" lang="en">LIFO</span> فيخرج آخر عنصر دخل، والـ Queue يتبع <span dir="ltr" lang="en">FIFO</span> فيخرج أول عنصر دخل. الأول يناسب التراجع (Undo) والـ call stack، والثاني يناسب معالجة الطلبات بترتيب وصولها.</p>
+    <p class="qa-follow">مثال: الأطباق المرصوصة Stack، وطابور الانتظار Queue.</p>
+  </div>
+</details>
+<details class="qa">
+  <summary><span class="qa-q">كيف تنفّذ Stack في Python وما تعقيد عملياته؟</span><span class="level level-basic">أساسي</span></summary>
+  <div class="qa-body">
+    <p>نستخدم <code>list</code>: <code>append(x)</code> للـ push و<code>pop()</code> للـ pop و<code>[-1]</code> للـ peek. الثلاث <span dir="ltr">O(1)</span> (amortized للـ append)، لأنها تعمل على نهاية القائمة فلا تزيح عناصر.</p>
+  </div>
+</details>
+<details class="qa">
+  <summary><span class="qa-q">لماذا لا نستخدم <code>list.pop(0)</code> لتنفيذ Queue، وما البديل؟</span><span class="level level-mid">متوسط</span></summary>
+  <div class="qa-body">
+    <p>لأن حذف أول عنصر يُزيح كل العناصر الباقية خطوة، فتكلفته <span dir="ltr">O(n)</span> وتبطؤ مع كبر الطابور. البديل <code>collections.deque</code> حيث <code>popleft()</code> بتكلفة <span dir="ltr">O(1)</span>.</p>
+    <p class="qa-follow">عيب deque: الوصول بالفهرس إلى منتصفه <span dir="ltr">O(n)</span>.</p>
+  </div>
+</details>
+<details class="qa">
+  <summary><span class="qa-q">كيف تتحقق من توازن الأقواس باستخدام Stack؟</span><span class="level level-mid">متوسط</span></summary>
+  <div class="qa-body">
+    <p>نمر على النص: كل قوس فتح نضعه في الـ stack، وعند قوس إغلاق نخرج القمة ونقارنها بالنظير المتوقع. النص متوازن فقط إذا لم يحدث عدم تطابق ولا إغلاق على stack فارغ، وكان الـ stack فارغًا في النهاية.</p>
+  </div>
+</details>
+<details class="qa">
+  <summary><span class="qa-q">فخ: نضيف بـ <code>stack.append(x)</code> ثم نُخرج بـ <code>stack.pop(0)</code>؛ هل ما زال هذا Stack؟</span><span class="level level-trap">فخ</span></summary>
+  <div class="qa-body">
+    <p>لا. <code>pop(0)</code> يزيل أقدم عنصر لا آخر عنصر، فيصبح السلوك <span dir="ltr" lang="en">FIFO</span> أي Queue، ويصبح مكلفًا <span dir="ltr">O(n)</span>. الـ Stack الصحيح يضيف ويُخرج من الطرف نفسه: <code>append</code> مع <code>pop()</code>.</p>
+  </div>
+</details>
+              </div>
+            </section>
+
+            <section class="lesson-section" id="practical">
+              <h3 class="section-title"><b>04</b>المسألة العملية</h3>
+              <div class="callout callout-problem">
+  <p><b>المسألة:</b> تحتاج شركة إلى <span lang="en">spooler</span> صغير لإدارة الطباعة: تُطبع المستندات بترتيب إرسالها (Queue)، ويحتفظ النظام بسجل المستندات المطبوعة ليعيد طباعة آخر مستند طُبع عند الطلب (Stack). ابنِ class باسم <code>PrintSpooler</code> بالعمليات <code>submit</code> و<code>process_next</code> و<code>reprint_last</code>.</p>
+</div>
+              <ol class="solution">
+                <li class="sol-step">
+  <h4>فهم المطلوب</h4>
+  <p>المستندات تخرج للطباعة بترتيب وصولها (FIFO)، وآخر مستند طُبع هو أول ما يُعاد طباعته (LIFO). إذن نحتاج هيكلين مختلفين داخل class واحد.</p>
+</li>
+<li class="sol-step">
+  <h4>خطة الحل</h4>
+  <p><code>pending</code> هو <code>deque</code> للانتظار: <code>append</code> عند الإرسال و<code>popleft</code> عند الطباعة. <code>history</code> هو <code>list</code> نضيف إليه كل مستند مطبوع ونخرج منه آخر عنصر عند إعادة الطباعة. إعادة الطباعة تعيد المستند إلى <code>submit</code>.</p>
+</li>
+<li class="sol-step">
+  <h4>الكود الكامل</h4>
+  <figure class="code-block">
+  <figcaption class="code-head">
+    <span class="code-meta">
+      <span class="code-lang" lang="en">Python</span>
+      <span class="code-file" lang="en">print_spooler.py</span>
+    </span>
+    <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+      <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <use href="#i-copy"></use>
+      </svg>
+      <span class="btn-label">نسخ</span>
+    </button>
+  </figcaption>
+  <pre class="code" dir="ltr"><code>from collections import deque
+
+
+class PrintSpooler:
+    def __init__(self):
+        self.pending, self.history = deque(), []
+
+    def submit(self, job):
+        self.pending.append(job)
+
+    def process_next(self):
+        job = self.pending.popleft()
+        self.history.append(job)
+        return job
+
+    def reprint_last(self):
+        self.submit(self.history.pop())
+
+
+spooler = PrintSpooler()
+for job in ("invoice", "report", "contract"):
+    spooler.submit(job)
+print(spooler.process_next())
+spooler.reprint_last()
+print(list(spooler.pending))</code></pre>
+  <div class="output" role="group" aria-label="مخرجات البرنامج">
+    <div class="output-label" lang="en">Output</div>
+    <pre dir="ltr"><code>invoice
+['report', 'contract', 'invoice']</code></pre>
+  </div>
+</figure>
+</li>
+<li class="sol-step">
+  <h4>تفسير القرارات</h4>
+  <p>اخترنا <code>deque</code> للانتظار لأن <code>popleft</code> بتكلفة <span dir="ltr">O(1)</span> بخلاف <code>list.pop(0)</code>. واخترنا <code>list</code> للسجل لأننا نتعامل مع نهايته فقط. وأعدنا المستند عبر <code>submit</code> ليأخذ دوره في آخر الطابور بدل أن يتجاوز المستندات المنتظرة.</p>
+</li>
+<li class="sol-step">
+  <h4>اختبار سريع</h4>
+  <p>أرسلنا ثلاثة مستندات وعالجنا الأول، فطُبع <code>invoice</code> وانتقل إلى السجل. بعد <code>reprint_last()</code> يظهر <code>invoice</code> في آخر الطابور خلف <code>report</code> و<code>contract</code>، وهذا يطابق الناتج أعلاه.</p>
+</li>
+<li class="sol-step">
+  <h4>تحسين أو بديل</h4>
+  <p>الكود يرفع <code>IndexError</code> إذا استُدعيت <code>process_next</code> أو <code>reprint_last</code> دون عناصر؛ أضف فحص <code>if not self.pending</code> وأرجع <code>None</code>. ولمنع نمو السجل بلا حد يمكن جعله <code>deque(maxlen=10)</code> فتبقى آخر 10 مستندات فقط.</p>
+</li>
+              </ol>
+            </section>
+          </div>
+        </section>
+      </div>
+
+      <footer class="footer">
+        <span class="footer-note" lang="en">Python Learning Roadmap</span>
+        <span class="footer-note">المرحلة 11 - الدرس 53</span>
+      </footer>
+    </main>
+
+    <script>
+      (function () {
+        'use strict'
+
+        var live = document.getElementById('copy-status')
+        var printStates = null
+
+        function fallbackCopy(text) {
+          var textarea = document.createElement('textarea')
+          textarea.value = text
+          textarea.setAttribute('readonly', '')
+          textarea.style.cssText = 'position:fixed;top:-1000px;left:-1000px;opacity:0;'
+
+          try {
+            document.body.appendChild(textarea)
+            textarea.focus()
+            textarea.select()
+            textarea.setSelectionRange(0, textarea.value.length)
+            return document.execCommand('copy')
+          } catch (error) {
+            return false
+          } finally {
+            if (textarea.parentNode) {
+              textarea.parentNode.removeChild(textarea)
+            }
+          }
+        }
+
+        function copyText(text) {
+          if (navigator.clipboard && window.isSecureContext) {
+            return navigator.clipboard.writeText(text).then(
+              function () { return true },
+              function () { return fallbackCopy(text) },
+            ).catch(function () { return false })
+          }
+
+          return Promise.resolve().then(function () {
+            return fallbackCopy(text)
+          }).catch(function () {
+            return false
+          })
+        }
+
+        document.addEventListener('click', function (event) {
+          var target = event.target
+          var button = target && typeof target.closest === 'function'
+            ? target.closest('[data-copy-code]')
+            : null
+
+          if (!button) return
+
+          var label = button.querySelector('.btn-label')
+          var block = button.closest('.code-block')
+          var code = block ? block.querySelector('pre.code > code') : null
+          if (!label || !code) return
+
+          if (!button.dataset.label) button.dataset.label = label.textContent
+
+          copyText(code.textContent).then(function (ok) {
+            label.textContent = ok ? 'تم النسخ' : 'تعذّر النسخ'
+            button.classList.toggle('is-copied', ok)
+            button.classList.toggle('is-failed', !ok)
+
+            if (live) {
+              live.textContent = ok
+                ? 'تم نسخ الكود'
+                : 'تعذّر النسخ، حدّد الكود يدويًا ثم انسخه'
+            }
+
+            window.clearTimeout(button._timer)
+            button._timer = window.setTimeout(function () {
+              label.textContent = button.dataset.label
+              button.classList.remove('is-copied', 'is-failed')
+            }, 1800)
+          })
+        })
+
+        window.addEventListener('beforeprint', function () {
+          if (printStates !== null) return
+
+          var questions = document.querySelectorAll('details.qa')
+          printStates = Array.prototype.map.call(questions, function (item) {
+            return item.open
+          })
+          questions.forEach(function (item) {
+            item.open = true
+          })
+        })
+
+        window.addEventListener('afterprint', function () {
+          if (printStates === null) return
+
+          var questions = document.querySelectorAll('details.qa')
+          questions.forEach(function (item, index) {
+            item.open = printStates[index] === true
+          })
+          printStates = null
+        })
+      })()
+    </script>
+  </body>
+</html>

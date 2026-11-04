@@ -1,0 +1,460 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#fcfcfc" />
+    <title>البحث والترتيب الأساسي | Python Learning Roadmap</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/style.css" />
+  </head>
+  <body>
+    <svg
+      width="0"
+      height="0"
+      style="position: absolute"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <symbol id="i-copy" viewBox="0 0 24 24">
+        <rect x="9" y="9" width="12" height="12" rx="2.5" />
+        <path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15" />
+      </symbol>
+    </svg>
+    <template id="code-block-pattern">
+      <figure class="code-block">
+        <figcaption class="code-head">
+          <span class="code-meta">
+            <span class="code-lang" lang="en">Python</span>
+            <span class="code-file" lang="en">example.py</span>
+          </span>
+          <button
+            type="button"
+            class="btn btn-ghost btn-sm"
+            data-copy-code
+            aria-label="نسخ الكود"
+          >
+            <svg
+              class="btn-icon"
+              viewBox="0 0 24 24"
+              width="14"
+              height="14"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <use href="#i-copy"></use>
+            </svg>
+            <span class="btn-label">نسخ</span>
+          </button>
+        </figcaption>
+        <pre class="code" dir="ltr"><code><!-- ضع الكود هنا كنص HTML مع تهريب الرموز الخاصة --></code></pre>
+        <!-- احذف كتلة output إذا لم يكن للمثال ناتج ثابت ومفيد. -->
+        <div class="output" role="group" aria-label="مخرجات البرنامج">
+          <div class="output-label" lang="en">Output</div>
+          <pre dir="ltr"><code><!-- ضع المخرجات المتحققة هنا --></code></pre>
+        </div>
+      </figure>
+    </template>
+
+    <div
+      class="sr-only"
+      id="copy-status"
+      role="status"
+      aria-live="polite"
+    ></div>
+
+    <main class="page">
+      <header class="hero lesson-hero">
+        <span class="eyebrow">
+          <span class="eyebrow-dot"></span>
+          المرحلة <span dir="ltr">11</span>:
+          <span dir="ltr" lang="en">Data Structures &amp; Algorithms (DSA)</span>
+        </span>
+        <h1>
+          <span class="h1-ar">البحث والترتيب الأساسي</span>
+          <span class="h1-en" dir="ltr" lang="en">Searching &amp; Basic Sorting</span>
+        </h1>
+        <p class="hero-description">كيف نجد عنصرًا داخل البيانات بسرعة، وكيف نرتبها بخوارزميات بسيطة تكشف فكرة المقارنة والمبادلة قبل الانتقال إلى الخوارزميات الأسرع.</p>
+      </header>
+
+      <div class="lesson-parts">
+        <section class="lesson-part-card" id="complete-lesson" aria-labelledby="complete-lesson-title">
+          <header class="part-header">
+            <div class="part-number">درس متكامل</div>
+            <div class="part-heading">
+              <h2 id="complete-lesson-title">
+                <span class="part-title-en" dir="ltr" lang="en">Complete Lesson</span>
+                <span class="sep" aria-hidden="true"> - </span>
+                <span class="part-title-ar">الشرح والملخص والتطبيق</span>
+              </h2>
+              <span class="part-description">كل محتوى الدرس في ملف HTML واحد</span>
+            </div>
+          </header>
+
+          <div class="lesson-body">
+            <section class="lesson-section" id="explain">
+              <h3 class="section-title"><b>01</b>الشرح</h3>
+              <article class="concept">
+                <h4>البحث: Linear Search و Binary Search</h4>
+                <p>نحتاج البحث لنعرف هل عنصر موجود في البيانات وأين. <b>Linear Search</b> يفحص العناصر واحدًا واحدًا من البداية حتى يجد الهدف أو تنتهي القائمة، فتكلفته <code>O(n)</code> ويعمل على أي قائمة مرتبة أو غير مرتبة. <b>Binary Search</b> يشترط قائمة <b>مرتبة</b>: يقارن الهدف بالعنصر الأوسط ثم يتجاهل نصف القائمة في كل خطوة، فتكلفته <code>O(log n)</code>. نعيد عادةً <code>-1</code> عند عدم العثور على الهدف. أهم خطأ: تطبيق Binary Search على قائمة غير مرتبة، فيعيد <code>-1</code> خطأً دون أي استثناء. تذكير: <code>in</code> و <code>list.index()</code> يعملان بمنطق Linear Search داخليًا.</p>
+                <figure class="code-block">
+        <figcaption class="code-head">
+          <span class="code-meta">
+            <span class="code-lang" lang="en">Python</span>
+            <span class="code-file" lang="en">search.py</span>
+          </span>
+          <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+            <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-copy"></use></svg>
+            <span class="btn-label">نسخ</span>
+          </button>
+        </figcaption>
+        <pre class="code" dir="ltr"><code>def linear_search(items, target):
+    for index, value in enumerate(items):
+        if value == target:
+            return index
+    return -1
+
+
+def binary_search(sorted_items, target):
+    low, high = 0, len(sorted_items) - 1
+    while low &lt;= high:
+        mid = (low + high) // 2
+        if sorted_items[mid] == target:
+            return mid
+        if sorted_items[mid] &lt; target:
+            low = mid + 1
+        else:
+            high = mid - 1
+    return -1
+
+
+order_ids = [1004, 1008, 1015, 1023, 1042, 1057]
+print(linear_search(order_ids, 1023))
+print(binary_search(order_ids, 1023))
+print(binary_search(order_ids, 1000))</code></pre>
+        <div class="output" role="group" aria-label="مخرجات البرنامج">
+          <div class="output-label" lang="en">Output</div>
+          <pre dir="ltr"><code>3
+3
+-1</code></pre>
+        </div>
+      </figure>
+              </article>
+
+              <article class="concept">
+                <h4>الترتيب بالمبادلة: Bubble Sort و Selection Sort</h4>
+                <p>الترتيب يجهّز البيانات للـ Binary Search وللعرض. <b>Bubble Sort</b> يقارن كل عنصرين متجاورين ويبدّلهما إذا كانا بترتيب خاطئ، فيصعد أكبر عنصر إلى آخر القائمة في كل مرور؛ والعلم <code>swapped</code> يوقفه مبكرًا فيصير <code>O(n)</code> على قائمة مرتبة أصلًا. <b>Selection Sort</b> يختار أصغر عنصر في الجزء غير المرتب ويضعه في موضعه، فعدد مبادلاته قليل (حتى <code>n - 1</code>) لكنه يبقى <code>O(n²)</code> مقارنات دائمًا حتى لو القائمة مرتبة. القيد: كلاهما بطيء على البيانات الكبيرة.</p>
+                <figure class="code-block">
+        <figcaption class="code-head">
+          <span class="code-meta">
+            <span class="code-lang" lang="en">Python</span>
+            <span class="code-file" lang="en">swap_sorts.py</span>
+          </span>
+          <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+            <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-copy"></use></svg>
+            <span class="btn-label">نسخ</span>
+          </button>
+        </figcaption>
+        <pre class="code" dir="ltr"><code>def bubble_sort(items):
+    for end in range(len(items) - 1, 0, -1):
+        swapped = False
+        for i in range(end):
+            if items[i] &gt; items[i + 1]:
+                items[i], items[i + 1] = items[i + 1], items[i]
+                swapped = True
+        if not swapped:
+            break
+
+
+def selection_sort(items):
+    for i in range(len(items) - 1):
+        smallest = i
+        for j in range(i + 1, len(items)):
+            if items[j] &lt; items[smallest]:
+                smallest = j
+        items[i], items[smallest] = items[smallest], items[i]
+
+
+for sorter in (bubble_sort, selection_sort):
+    data = [64, 25, 12, 22, 11]
+    sorter(data)
+    print(sorter.__name__, data)</code></pre>
+        <div class="output" role="group" aria-label="مخرجات البرنامج">
+          <div class="output-label" lang="en">Output</div>
+          <pre dir="ltr"><code>bubble_sort [11, 12, 22, 25, 64]
+selection_sort [11, 12, 22, 25, 64]</code></pre>
+        </div>
+      </figure>
+              </article>
+
+              <article class="concept">
+                <h4>Insertion Sort والمقارنة بين الثلاثة</h4>
+                <p><b>Insertion Sort</b> يبني جزءًا مرتبًا من اليسار؛ يأخذ العنصر التالي <code>key</code> ويزيح العناصر الأكبر منه يمينًا ثم يضعه في مكانه، مثل ترتيب أوراق اللعب في يدك. هو <code>O(n)</code> على القوائم شبه المرتبة و<code>O(n²)</code> في الأسوأ، وهو <b>stable</b> ومناسب للقوائم الصغيرة، لذلك هو الأفضل عمليًا بين الثلاثة. في الإنتاج استخدم <code>sorted()</code> أو <code>list.sort()</code> وتعلّم هذه الخوارزميات لفهم الفكرة.</p>
+                <figure class="code-block">
+        <figcaption class="code-head">
+          <span class="code-meta">
+            <span class="code-lang" lang="en">Python</span>
+            <span class="code-file" lang="en">insertion_sort.py</span>
+          </span>
+          <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+            <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-copy"></use></svg>
+            <span class="btn-label">نسخ</span>
+          </button>
+        </figcaption>
+        <pre class="code" dir="ltr"><code>def insertion_sort(items):
+    for i in range(1, len(items)):
+        key = items[i]
+        j = i - 1
+        while j &gt;= 0 and items[j] &gt; key:
+            items[j + 1] = items[j]
+            j -= 1
+        items[j + 1] = key
+
+
+prices = [250, 90, 400, 120, 90]
+insertion_sort(prices)
+print(prices)</code></pre>
+        <div class="output" role="group" aria-label="مخرجات البرنامج">
+          <div class="output-label" lang="en">Output</div>
+          <pre dir="ltr"><code>[90, 90, 120, 250, 400]</code></pre>
+        </div>
+      </figure>
+              </article>
+            </section>
+
+            <section class="lesson-section" id="summary">
+              <h3 class="section-title"><b>02</b>الملخص</h3>
+              <ul class="summary-list">
+                <li>Linear Search يعمل على أي قائمة بتكلفة <code>O(n)</code>، وBinary Search أسرع (<code>O(log n)</code>) لكنه يشترط قائمة مرتبة.</li>
+                <li>تطبيق Binary Search على قائمة غير مرتبة يعطي نتيجة خاطئة بصمت، لذلك تحقق من الترتيب أولًا.</li>
+                <li>Bubble Sort يبدّل المتجاورين ويصعد الأكبر لآخر القائمة، وعلم <code>swapped</code> يجعله <code>O(n)</code> على قائمة مرتبة.</li>
+                <li>Selection Sort يختار الأصغر ويضعه في موضعه؛ مبادلاته قليلة لكن مقارناته دائمًا <code>O(n²)</code>.</li>
+                <li>Insertion Sort يدرج كل عنصر في مكانه داخل الجزء المرتب، وهو الأفضل للبيانات الصغيرة أو شبه المرتبة.</li>
+                <li>الثلاثة <code>O(n²)</code> في الأسوأ وبمساحة إضافية <code>O(1)</code>؛ في الواقع استخدم <code>sorted()</code>.</li>
+              </ul>
+            </section>
+
+            <section class="lesson-section" id="interview-questions">
+              <h3 class="section-title"><b>03</b>أسئلة المقابلات</h3>
+              <div class="qa-list">
+                <details class="qa" open>
+                  <summary><span class="qa-q">ما الفرق بين Linear Search و Binary Search، ومتى نستخدم كل منهما؟</span> <span class="level level-basic">أساسي</span></summary>
+                  <div class="qa-body">
+                    <p>Linear Search يفحص العناصر بالتتابع بتكلفة <code>O(n)</code> ولا يتطلب ترتيبًا. Binary Search يقسم نطاق البحث للنصف في كل خطوة بتكلفة <code>O(log n)</code> لكنه يتطلب قائمة مرتبة. نستخدم الأول للبيانات الصغيرة أو غير المرتبة، والثاني للبيانات المرتبة التي نبحث فيها مرات كثيرة.</p>
+                  <p class="qa-follow">كم مقارنة يحتاجها Binary Search تقريبًا في قائمة من مليون عنصر؟ نحو 20.</p>
+                  </div>
+                </details>
+                <details class="qa">
+                  <summary><span class="qa-q">ما فكرة كل من Bubble Sort و Selection Sort و Insertion Sort باختصار؟</span> <span class="level level-basic">أساسي</span></summary>
+                  <div class="qa-body">
+                    <p>Bubble يبدّل العناصر المتجاورة المعكوسة حتى يصعد الأكبر للنهاية. Selection يختار الأصغر من الجزء غير المرتب ويضعه في بدايته. Insertion يأخذ عنصرًا جديدًا ويدرجه في موضعه الصحيح داخل الجزء المرتب. تكلفة الثلاثة <code>O(n²)</code> في الحالة العامة.</p>
+                  </div>
+                </details>
+                <details class="qa">
+                  <summary><span class="qa-q">متى يكون Insertion Sort أفضل من Bubble Sort و Selection Sort؟</span> <span class="level level-mid">متوسط</span></summary>
+                  <div class="qa-body">
+                    <p>عندما تكون البيانات صغيرة أو شبه مرتبة، إذ يقترب من <code>O(n)</code> لأن كل عنصر يحتاج إزاحات قليلة. أما Selection Sort فيبقى <code>O(n²)</code> دائمًا، وBubble يقترب من <code>O(n)</code> فقط مع علم <code>swapped</code> ويقوم بمبادلات أكثر.</p>
+                  </div>
+                </details>
+                <details class="qa">
+                  <summary><span class="qa-q">ما معنى أن الترتيب stable، وأي هذه الخوارزميات stable؟</span> <span class="level level-mid">متوسط</span></summary>
+                  <div class="qa-body">
+                    <p>الترتيب stable يحافظ على الترتيب الأصلي للعناصر المتساوية في القيمة. Bubble و Insertion stable في التطبيق المعتاد، أما Selection Sort فغير stable عادةً لأن المبادلة البعيدة قد تقلب ترتيب عنصرين متساويين.</p>
+                  </div>
+                </details>
+                <details class="qa">
+                  <summary><span class="qa-q">هل Binary Search دائمًا أسرع من Linear Search؟ وماذا يحدث على قائمة غير مرتبة؟</span> <span class="level level-trap">فخ</span></summary>
+                  <div class="qa-body">
+                    <p>لا. على قائمة غير مرتبة قد يعيد <code>-1</code> رغم وجود العنصر. وإذا احتجنا بحثًا واحدًا فقط، فترتيب القائمة أولًا (على الأقل <code>O(n log n)</code> بالأدوات الجاهزة) أغلى من Linear Search واحد بتكلفة <code>O(n)</code>. يستحق الترتيب عندما نبحث مرات كثيرة.</p>
+                  </div>
+                </details>
+              </div>
+            </section>
+
+            <section class="lesson-section" id="practical">
+              <h3 class="section-title"><b>04</b>المسألة العملية</h3>
+              <div class="callout callout-problem">
+                <p>مخزن يحتفظ بأسعار منتجاته في قائمة غير مرتبة، مثل <code>[250, 90, 400, 120, 90]</code>. اكتب دالة <code>find_price(prices, target)</code> ترتب نسخة من الأسعار باستخدام Insertion Sort دون تعديل القائمة الأصلية، ثم تبحث عن <code>target</code> باستخدام Binary Search وتعيد موضعه في القائمة المرتبة، أو <code>-1</code> إن لم يوجد.</p>
+              </div>
+              <ol class="solution">
+                <li class="sol-step">
+                  <h4>فهم المطلوب</h4>
+                  <p>المدخل قائمة أسعار غير مرتبة (قد تحتوي تكرارًا) وسعر مطلوب. المخرج رقم الموضع في النسخة المرتبة أو <code>-1</code>، مع بقاء القائمة الأصلية كما هي.</p>
+                </li>
+                <li class="sol-step">
+                  <h4>خطة الحل</h4>
+                  <p>ننسخ القائمة، نرتب النسخة بـ <code>insertion_sort</code>، ثم نطبق Binary Search بالمؤشرين <code>low</code> و <code>high</code> حتى نجد الهدف أو ينتهي النطاق.</p>
+                </li>
+                <li class="sol-step">
+                  <h4>الكود الكامل</h4>
+                  <figure class="code-block">
+        <figcaption class="code-head">
+          <span class="code-meta">
+            <span class="code-lang" lang="en">Python</span>
+            <span class="code-file" lang="en">find_price.py</span>
+          </span>
+          <button type="button" class="btn btn-ghost btn-sm" data-copy-code aria-label="نسخ الكود">
+            <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-copy"></use></svg>
+            <span class="btn-label">نسخ</span>
+          </button>
+        </figcaption>
+        <pre class="code" dir="ltr"><code>def insertion_sort(items):
+    for i in range(1, len(items)):
+        key = items[i]
+        j = i - 1
+        while j &gt;= 0 and items[j] &gt; key:
+            items[j + 1] = items[j]
+            j -= 1
+        items[j + 1] = key
+
+
+def find_price(prices, target):
+    ordered = prices.copy()
+    insertion_sort(ordered)
+    low, high = 0, len(ordered) - 1
+    while low &lt;= high:
+        mid = (low + high) // 2
+        if ordered[mid] == target:
+            return mid
+        if ordered[mid] &lt; target:
+            low = mid + 1
+        else:
+            high = mid - 1
+    return -1</code></pre>
+      </figure>
+                </li>
+                <li class="sol-step">
+                  <h4>تفسير القرارات</h4>
+                  <p>النسخة <code>prices.copy()</code> تمنع تعديل بيانات المستدعي. الترتيب شرط أساسي لصحة Binary Search. الشرط <code>low &lt;= high</code> يضمن فحص آخر عنصر متبقٍ، و<code>mid + 1</code> و<code>mid - 1</code> يضمنان تقلص النطاق دائمًا فلا تحدث حلقة لا نهائية.</p>
+                </li>
+                <li class="sol-step">
+                  <h4>اختبار سريع</h4>
+                  <p>استدعاء <code>find_price([250, 90, 400, 120, 90], 250)</code> يعيد <code>3</code> لأن القائمة المرتبة هي <code>[90, 90, 120, 250, 400]</code>، واستدعاء نفس القائمة مع <code>100</code> يعيد <code>-1</code>.</p>
+                </li>
+                <li class="sol-step">
+                  <h4>تحسين أو بديل</h4>
+                  <p>إذا كان البحث متكررًا فرتّب القائمة مرة واحدة خارج الدالة ثم ابحث مرات كثيرة. وفي الإنتاج استخدم <code>sorted(prices)</code>، وإن احتجت Binary Search جاهزًا فالوحدة <code>bisect</code> توفره (تُذكر هنا تنبيهًا فقط).</p>
+                </li>
+              </ol>
+            </section>
+          </div>
+        </section>
+      </div>
+
+      <footer class="footer">
+        <span class="footer-note" lang="en">Python Learning Roadmap</span>
+        <span class="footer-note">المرحلة 11 - الدرس 51</span>
+      </footer>
+    </main>
+
+    <script>
+      (function () {
+        'use strict'
+
+        var live = document.getElementById('copy-status')
+        var printStates = null
+
+        function fallbackCopy(text) {
+          var textarea = document.createElement('textarea')
+          textarea.value = text
+          textarea.setAttribute('readonly', '')
+          textarea.style.cssText = 'position:fixed;top:-1000px;left:-1000px;opacity:0;'
+
+          try {
+            document.body.appendChild(textarea)
+            textarea.focus()
+            textarea.select()
+            textarea.setSelectionRange(0, textarea.value.length)
+            return document.execCommand('copy')
+          } catch (error) {
+            return false
+          } finally {
+            if (textarea.parentNode) {
+              textarea.parentNode.removeChild(textarea)
+            }
+          }
+        }
+
+        function copyText(text) {
+          if (navigator.clipboard && window.isSecureContext) {
+            return navigator.clipboard.writeText(text).then(
+              function () { return true },
+              function () { return fallbackCopy(text) },
+            ).catch(function () { return false })
+          }
+
+          return Promise.resolve().then(function () {
+            return fallbackCopy(text)
+          }).catch(function () {
+            return false
+          })
+        }
+
+        document.addEventListener('click', function (event) {
+          var target = event.target
+          var button = target && typeof target.closest === 'function'
+            ? target.closest('[data-copy-code]')
+            : null
+
+          if (!button) return
+
+          var label = button.querySelector('.btn-label')
+          var block = button.closest('.code-block')
+          var code = block ? block.querySelector('pre.code > code') : null
+          if (!label || !code) return
+
+          if (!button.dataset.label) button.dataset.label = label.textContent
+
+          copyText(code.textContent).then(function (ok) {
+            label.textContent = ok ? 'تم النسخ' : 'تعذّر النسخ'
+            button.classList.toggle('is-copied', ok)
+            button.classList.toggle('is-failed', !ok)
+
+            if (live) {
+              live.textContent = ok
+                ? 'تم نسخ الكود'
+                : 'تعذّر النسخ، حدّد الكود يدويًا ثم انسخه'
+            }
+
+            window.clearTimeout(button._timer)
+            button._timer = window.setTimeout(function () {
+              label.textContent = button.dataset.label
+              button.classList.remove('is-copied', 'is-failed')
+            }, 1800)
+          })
+        })
+
+        window.addEventListener('beforeprint', function () {
+          if (printStates !== null) return
+
+          var questions = document.querySelectorAll('details.qa')
+          printStates = Array.prototype.map.call(questions, function (item) {
+            return item.open
+          })
+          questions.forEach(function (item) {
+            item.open = true
+          })
+        })
+
+        window.addEventListener('afterprint', function () {
+          if (printStates === null) return
+
+          var questions = document.querySelectorAll('details.qa')
+          questions.forEach(function (item, index) {
+            item.open = printStates[index] === true
+          })
+          printStates = null
+        })
+      })()
+    </script>
+  </body>
+</html>
